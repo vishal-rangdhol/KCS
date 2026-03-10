@@ -1,44 +1,55 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 216 10% 10%;
+    --background: 216 20% 4%;
     --foreground: 0 0% 100%;
-    --card: 216 10% 12%;
+    --card: 216 15% 8%;
     --card-foreground: 0 0% 100%;
-    --popover: 216 10% 10%;
+    --popover: 216 20% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 215 69% 55%;
+    --primary: 215 89% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 257 72% 70%;
-    --secondary-foreground: 216 10% 10%;
-    --muted: 216 10% 20%;
+    --secondary: 270 70% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 216 10% 15%;
     --muted-foreground: 0 0% 70%;
-    --accent: 257 72% 70%;
-    --accent-foreground: 216 10% 10%;
+    --accent: 215 89% 60%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 216 10% 20%;
-    --input: 216 10% 20%;
-    --ring: 215 69% 55%;
-    --radius: 0.75rem;
+    --border: 216 10% 15%;
+    --input: 216 10% 15%;
+    --ring: 215 89% 60%;
+    --radius: 1rem;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important; /* Hide default cursor for custom follower */
   }
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
     overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    @apply font-headline tracking-tighter;
   }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
 }
 
 html.lenis {
@@ -57,16 +68,6 @@ html.lenis {
   overflow: hidden;
 }
 
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-/* Custom transitions */
-.page-transition {
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* ThreeJS Canvas styling */
 .canvas-container {
   position: fixed;
   top: 0;
@@ -75,4 +76,12 @@ html.lenis {
   height: 100%;
   z-index: -1;
   pointer-events: none;
+}
+
+.glass {
+  @apply bg-card/40 backdrop-blur-2xl border border-white/10;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(62, 128, 219, 0.4);
 }
