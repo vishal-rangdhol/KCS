@@ -6,126 +6,185 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageSquare, Globe, ArrowUpRight } from 'lucide-react'
 import { Label } from '@/components/ui/label'
+import { useState } from 'react'
 
 export function ContactChapter() {
+  const [focusedField, setFocusedField] = useState<string | null>(null)
+
   return (
-    <Chapter id="contact" className="py-20 bg-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-20 items-start">
-        <div className="space-y-10 sm:space-y-12">
+    <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
+      {/* Decorative background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
+        <div className="space-y-12">
           <div>
             <motion.span 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-primary font-headline uppercase tracking-[0.3em] text-[10px] sm:text-xs mb-3 sm:mb-4 block font-bold"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="text-primary font-headline uppercase tracking-[0.4em] text-xs mb-6 block font-bold"
             >
               Get In Touch
             </motion.span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">Let's Connect.</h2>
-            <p className="text-base sm:text-xl text-muted-foreground max-w-md">
-              Whether you have a specific project in mind or just want to explore possibilities, our team is ready to listen.
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tighter">
+              Let's build <br />
+              <span className="text-secondary italic">something great.</span>
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-md leading-relaxed">
+              Whether you have a specific project in mind or just want to explore possibilities, our team of architects is ready to listen.
             </p>
           </div>
 
-          <div className="space-y-6 sm:space-y-8">
-            <div className="flex items-center gap-4 sm:gap-6 group">
-              <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                <MapPin size={20} className="sm:size-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-[10px] sm:text-sm uppercase tracking-widest text-muted-foreground">Location</h4>
-                <p className="text-base sm:text-lg font-medium">Hyderabad, Telangana.</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 sm:gap-6 group">
-              <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500">
-                <Mail size={20} className="sm:size-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-[10px] sm:text-sm uppercase tracking-widest text-muted-foreground">Email</h4>
-                <p className="text-base sm:text-lg font-medium">hello@kcs-narrative.com</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 sm:gap-6 group">
-              <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                <Phone size={20} className="sm:size-6" />
-              </div>
-              <div>
-                <h4 className="font-bold text-[10px] sm:text-sm uppercase tracking-widest text-muted-foreground">Phone</h4>
-                <p className="text-base sm:text-lg font-medium">+91 40 1234 5678</p>
-              </div>
-            </div>
+          <div className="space-y-8">
+            <ContactInfoItem 
+              icon={MapPin} 
+              label="Location" 
+              value="Hyderabad, Telangana, India" 
+              delay={0.1}
+            />
+            <ContactInfoItem 
+              icon={Mail} 
+              label="Email" 
+              value="hello@kcs-narrative.com" 
+              delay={0.2}
+              href="mailto:hello@kcs-narrative.com"
+            />
+            <ContactInfoItem 
+              icon={Phone} 
+              label="Phone" 
+              value="+91 40 1234 5678" 
+              delay={0.3}
+              href="tel:+914012345678"
+            />
           </div>
 
-          <div className="h-48 sm:h-64 rounded-2xl sm:rounded-3xl bg-muted/30 border border-white/5 relative overflow-hidden group">
-             {/* Map Placeholder */}
-             <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-60 transition-opacity">
-               <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--border)_1px,_transparent_1px)] bg-[size:15px_15px] sm:bg-[size:20px_20px]" />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="h-64 rounded-[2rem] bg-card/30 border border-white/5 relative overflow-hidden group shadow-2xl"
+          >
+             <div className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+               <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:24px_24px]" />
              </div>
-             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-background/80 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-3 rounded-full border border-white/10 shadow-xl">
-                  <span className="text-[10px] sm:text-sm font-bold tracking-widest uppercase">KCS Global HQ</span>
+             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                <Globe className="w-12 h-12 text-primary/40 mb-4 animate-pulse" />
+                <div className="bg-background/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-white/10 shadow-2xl">
+                  <span className="text-sm font-bold tracking-[0.3em] uppercase text-primary">KCS Global HQ</span>
+                  <p className="text-xs text-muted-foreground mt-2">Innovation Corridor, Hyderabad</p>
                 </div>
              </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="p-6 sm:p-8 md:p-12 rounded-[24px] sm:rounded-[40px] bg-card border border-white/5 shadow-2xl relative overflow-hidden w-full">
+        <div className="relative">
+          {/* Animated decorative element behind form */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="absolute top-0 right-0 p-4 sm:p-8 text-primary/5 -rotate-12 pointer-events-none"
+            animate={{ 
+              rotate: [0, 360],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-12 -right-12 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"
+          />
+
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="p-8 sm:p-12 rounded-[3rem] glass border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden"
           >
-            <MessageSquare size={80} className="sm:size-[120px]" />
-          </motion.div>
-
-          <form className="space-y-6 sm:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-4">
-              <div className="relative group">
-                <Label className="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-muted-foreground mb-1 sm:mb-2 block">Full Name</Label>
-                <Input 
-                  className="bg-background/50 border-white/10 h-12 sm:h-14 px-4 sm:px-6 rounded-xl sm:rounded-2xl focus:ring-primary focus:border-primary transition-all text-sm sm:text-base"
-                  placeholder="John Doe"
-                />
-              </div>
-
-              <div className="relative group">
-                <Label className="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-muted-foreground mb-1 sm:mb-2 block">Email Address</Label>
-                <Input 
-                  type="email"
-                  className="bg-background/50 border-white/10 h-12 sm:h-14 px-4 sm:px-6 rounded-xl sm:rounded-2xl focus:ring-primary focus:border-primary transition-all text-sm sm:text-base"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div className="relative group">
-                <Label className="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-muted-foreground mb-1 sm:mb-2 block">How can we help?</Label>
-                <Textarea 
-                  className="bg-background/50 border-white/10 min-h-[120px] sm:min-h-[160px] p-4 sm:p-6 rounded-xl sm:rounded-2xl focus:ring-primary focus:border-primary transition-all text-sm sm:text-base"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
+            <div className="absolute top-0 right-0 p-12 text-primary/5 -rotate-12 pointer-events-none">
+              <MessageSquare size={160} strokeWidth={1} />
             </div>
 
-            <Button className="w-full h-14 sm:h-16 rounded-xl sm:rounded-2xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all">
-              Send Message
-              <Send className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </Button>
-          </form>
+            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 gap-8">
+                <FloatingInput 
+                  label="Full Name" 
+                  id="name" 
+                  placeholder="Enter your name"
+                  onFocus={() => setFocusedField('name')}
+                  onBlur={() => setFocusedField(null)}
+                />
+                
+                <FloatingInput 
+                  label="Email Address" 
+                  id="email" 
+                  type="email" 
+                  placeholder="john@example.com"
+                  onFocus={() => setFocusedField('email')}
+                  onBlur={() => setFocusedField(null)}
+                />
+
+                <div className="space-y-3">
+                  <Label className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2">Your Message</Label>
+                  <Textarea 
+                    className="bg-background/20 border-white/10 min-h-[160px] p-6 rounded-3xl focus:ring-primary/50 focus:border-primary/50 transition-all text-base backdrop-blur-md resize-none"
+                    placeholder="How can we help you architect your future?"
+                  />
+                </div>
+              </div>
+
+              <Button className="w-full h-18 rounded-3xl text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-8 shadow-[0_12px_40px_rgba(62,128,219,0.3)] hover:shadow-[0_20px_60px_rgba(62,128,219,0.5)]">
+                Send Message
+                <Send className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              </Button>
+            </form>
+          </motion.div>
         </div>
       </div>
 
-      <div className="mt-20 sm:mt-32 pt-8 sm:pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-muted-foreground text-center md:text-left">
-        <p className="text-[10px] sm:text-xs md:text-sm tracking-wide">© 2025 Kandhugule Consultancy Services. Hyderabad, India.</p>
-        <div className="flex gap-6 sm:gap-12 text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-widest">
-           <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-           <a href="#" className="hover:text-primary transition-colors">Terms</a>
-           <a href="#" className="hover:text-primary transition-colors">Cookies</a>
+      <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground">
+        <div className="flex flex-col gap-2 items-center md:items-start">
+          <p className="text-xs tracking-widest uppercase font-bold text-white/40">© 2025 KCS Narrative</p>
+          <p className="text-[10px] tracking-widest uppercase">Kandhugule Consultancy Services. All Rights Reserved.</p>
+        </div>
+        
+        <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.3em]">
+           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight size={12} /></a>
+           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Twitter <ArrowUpRight size={12} /></a>
+           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Instagram <ArrowUpRight size={12} /></a>
         </div>
       </div>
     </Chapter>
+  )
+}
+
+function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay }}
+      className="flex items-center gap-6 group cursor-pointer"
+      onClick={() => href && window.open(href)}
+    >
+      <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
+        <Icon size={24} />
+      </div>
+      <div>
+        <h4 className="font-bold text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-1">{label}</h4>
+        <p className="text-xl font-medium group-hover:text-primary transition-colors">{value}</p>
+      </div>
+    </motion.div>
+  )
+}
+
+function FloatingInput({ label, id, type = "text", placeholder, onFocus, onBlur }: any) {
+  return (
+    <div className="space-y-3 group">
+      <Label htmlFor={id} className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2 group-focus-within:text-primary transition-colors">
+        {label}
+      </Label>
+      <Input 
+        id={id}
+        type={type}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        className="bg-background/20 border-white/10 h-16 px-6 rounded-2xl focus:ring-primary/50 focus:border-primary/50 transition-all text-base backdrop-blur-md shadow-inner"
+        placeholder={placeholder}
+      />
+    </div>
   )
 }
