@@ -8,6 +8,9 @@ import { AboutChapter } from '@/components/story/AboutChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
 import { SolutionsChapter } from '@/components/story/SolutionsChapter'
 import { ProductsChapter } from '@/components/story/ProductsChapter'
+import { ImpactChapter } from '@/components/story/ImpactChapter'
+import { TestimonialsChapter } from '@/components/story/TestimonialsChapter'
+import { CTAChapter } from '@/components/story/CTAChapter'
 import { ContactChapter } from '@/components/story/ContactChapter'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { motion, useScroll, useSpring } from 'framer-motion'
@@ -40,6 +43,9 @@ export default function Home() {
         <ServicesChapter />
         <SolutionsChapter />
         <ProductsChapter />
+        <ImpactChapter />
+        <TestimonialsChapter />
+        <CTAChapter />
         <ContactChapter />
       </div>
 
@@ -47,13 +53,11 @@ export default function Home() {
       <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 px-8 py-4 bg-card/60 backdrop-blur-2xl border border-white/10 rounded-full z-40 hidden md:flex shadow-2xl">
         <a href="#hero" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Intro</a>
         <div className="w-1 h-1 rounded-full bg-border" />
-        <a href="#problem" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Challenge</a>
+        <a href="#services" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Expertise</a>
         <div className="w-1 h-1 rounded-full bg-border" />
-        <a href="#story" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">About</a>
+        <a href="#impact" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Impact</a>
         <div className="w-1 h-1 rounded-full bg-border" />
-        <a href="#services" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Services</a>
-        <div className="w-1 h-1 rounded-full bg-border" />
-        <a href="#products" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Products</a>
+        <a href="#testimonials" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Reviews</a>
         <div className="w-1 h-1 rounded-full bg-border" />
         <a href="#contact" className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors">Contact</a>
       </nav>

@@ -41,6 +41,24 @@
       "description": "Cloud infrastructure diagram",
       "imageUrl": "https://picsum.photos/seed/kcs7/1200/800",
       "imageHint": "cloud computing"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Corporate client testimonial 1",
+      "imageUrl": "https://picsum.photos/seed/avatar1/400/400",
+      "imageHint": "professional avatar"
+    },
+    {
+      "id": "avatar-2",
+      "description": "Corporate client testimonial 2",
+      "imageUrl": "https://picsum.photos/seed/avatar2/400/400",
+      "imageHint": "business person"
+    },
+    {
+      "id": "avatar-3",
+      "description": "Corporate client testimonial 3",
+      "imageUrl": "https://picsum.photos/seed/avatar3/400/400",
+      "imageHint": "smiling professional"
     }
   ]
 }
