@@ -1,10 +1,8 @@
-
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 const navItems = [
   { name: 'Home', href: '#hero' },
@@ -21,17 +19,11 @@ export function Navbar() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const scrollHeight = document.documentElement.scrollHeight
-    const clientHeight = document.documentElement.clientHeight
-    
-    // Check if reached the bottom of the page
-    const reachedBottom = latest + clientHeight >= scrollHeight - 50
-    // Check if reached the very top of the page
-    const reachedTop = latest <= 10
-
-    if (reachedBottom) {
+    // If user has scrolled at all (beyond a small threshold), move to bottom
+    // If user is back at the very top, move back to top
+    if (latest > 10) {
       setIsBottomPos(true)
-    } else if (reachedTop) {
+    } else {
       setIsBottomPos(false)
     }
   })

@@ -1,10 +1,8 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { PlaceHolderImages } from '@/lib/placeholder-images'
 import { ArrowRight, MessageSquare, Database } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
