@@ -12,7 +12,7 @@ const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A premium communication platform connecting people seamlessly through secure, encrypted channels.",
+    description: "A premium communication platform connecting people seamlessly through secure, encrypted channels, while also integrating a powerful Learning Management System (LMS) that enables organizations and institutions to deliver, manage, and track learning experiences in one unified ecosystem.",
     image: "https://picsum.photos/seed/catchup/1200/800",
     icon: MessageSquare,
     color: "from-blue-600/20 via-primary/5 to-transparent",
