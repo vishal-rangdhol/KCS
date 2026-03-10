@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-abstract",
+      "description": "Abstract blue tech innovation",
+      "imageUrl": "https://picsum.photos/seed/kcs1/1920/1080",
+      "imageHint": "abstract technology"
+    },
+    {
+      "id": "consultancy-team",
+      "description": "Professional consultancy team brainstorming",
+      "imageUrl": "https://picsum.photos/seed/kcs2/1200/800",
+      "imageHint": "professional team"
+    },
+    {
+      "id": "innovation-light",
+      "description": "Futuristic office concept",
+      "imageUrl": "https://picsum.photos/seed/kcs3/1200/800",
+      "imageHint": "innovation light"
+    }
+  ]
 }
