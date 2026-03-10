@@ -2,6 +2,8 @@
 "use client"
 
 import { HeroChapter } from '@/components/story/HeroChapter'
+import { ProblemChapter } from '@/components/story/ProblemChapter'
+import { VisionChapter } from '@/components/story/VisionChapter'
 import { AboutChapter } from '@/components/story/AboutChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
 import { ContactChapter } from '@/components/story/ContactChapter'
@@ -30,6 +32,8 @@ export default function Home() {
       {/* Chapters */}
       <div className="relative z-10">
         <HeroChapter />
+        <ProblemChapter />
+        <VisionChapter />
         <AboutChapter />
         <ServicesChapter />
         <ContactChapter />
@@ -38,7 +42,8 @@ export default function Home() {
       {/* Navigation Overlay */}
       <nav className="fixed top-8 left-1/2 -translate-x-1/2 flex items-center gap-8 px-8 py-3 bg-card/50 backdrop-blur-xl border border-border rounded-full z-40 hidden md:flex">
         <a href="#hero" className="text-sm font-medium hover:text-primary transition-colors">Intro</a>
-        <a href="#story" className="text-sm font-medium hover:text-primary transition-colors">Our Story</a>
+        <a href="#problem" className="text-sm font-medium hover:text-primary transition-colors">The Challenge</a>
+        <a href="#vision" className="text-sm font-medium hover:text-primary transition-colors">Vision</a>
         <a href="#services" className="text-sm font-medium hover:text-primary transition-colors">Expertise</a>
         <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Contact</a>
       </nav>
