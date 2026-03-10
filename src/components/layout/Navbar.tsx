@@ -68,7 +68,7 @@ export function Navbar() {
     >
       <motion.nav 
         layout
-        className="glass rounded-full px-6 sm:px-10 py-3 sm:py-5 flex items-center justify-between w-full max-w-5xl shadow-2xl pointer-events-auto"
+        className="glass rounded-full px-6 sm:px-10 py-3 sm:py-5 flex items-center justify-between w-full max-w-5xl shadow-2xl pointer-events-auto bg-white/10 backdrop-blur-xl border-white/20"
       >
         <div 
           className="flex items-center gap-2 sm:gap-4 group cursor-pointer"
@@ -78,7 +78,7 @@ export function Navbar() {
           }}
         >
           <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center font-bold text-sm sm:text-base text-white shadow-[0_0_20px_rgba(62,128,219,0.6)]">K</div>
-          <span className="font-headline font-bold text-lg sm:text-xl tracking-tight">KCS <span className="text-primary">Narrative</span></span>
+          <span className="font-headline font-bold text-lg sm:text-xl tracking-tight">KCS</span>
         </div>
 
         {/* Desktop Menu */}

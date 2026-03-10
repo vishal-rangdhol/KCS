@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -41,15 +40,15 @@ export function ContactChapter() {
             <ContactInfoItem 
               icon={MapPin} 
               label="Location" 
-              value="Hyderabad, Telangana, India" 
+              value="3-37 RC Puram, behind SR chambers, Hyderabad, 502032, Telangana" 
               delay={0.1}
             />
             <ContactInfoItem 
               icon={Mail} 
               label="Email" 
-              value="hello@kcs-narrative.com" 
+              value="info@kandhugule-kcs.com" 
               delay={0.2}
-              href="mailto:hello@kcs-narrative.com"
+              href="mailto:info@kandhugule-kcs.com"
             />
             <ContactInfoItem 
               icon={Phone} 
@@ -137,7 +136,7 @@ export function ContactChapter() {
 
       <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground">
         <div className="flex flex-col gap-2 items-center md:items-start">
-          <p className="text-xs tracking-widest uppercase font-bold text-white/40">© 2025 KCS Narrative</p>
+          <p className="text-xs tracking-widest uppercase font-bold text-white/40">© 2025 KCS</p>
           <p className="text-[10px] tracking-widest uppercase">Kandhugule Consultancy Services. All Rights Reserved.</p>
         </div>
         
@@ -163,9 +162,9 @@ function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
       <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
         <Icon size={24} />
       </div>
-      <div>
+      <div className="flex-1">
         <h4 className="font-bold text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-1">{label}</h4>
-        <p className="text-xl font-medium group-hover:text-primary transition-colors">{value}</p>
+        <p className="text-lg font-medium group-hover:text-primary transition-colors">{value}</p>
       </div>
     </motion.div>
   )

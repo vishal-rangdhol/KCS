@@ -4,7 +4,7 @@ import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
 import { CustomCursor } from '@/components/ui/CustomCursor';
 
 export const metadata: Metadata = {
-  title: 'KCS Narrative | Immersive Storytelling',
+  title: 'KCS | Immersive Storytelling',
   description: 'Experience the vision of Kandhugule Consultancy Services through a premium narrative journey.',
 };
 
