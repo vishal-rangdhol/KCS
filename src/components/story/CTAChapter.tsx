@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useRef, useState, ReactNode, MouseEvent } from 'react'
@@ -38,7 +37,7 @@ export function CTAChapter() {
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <MagneticWrapper>
-              <Button size="lg" className="h-16 px-12 text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group">
+              <Button size="lg" className="h-16 px-12 text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group border-none">
                 Start the Journey
                 <Rocket className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Button>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -31,16 +31,19 @@ export function Navbar() {
   return (
     <motion.header
       variants={{
-        visible: { y: 0 },
-        hidden: { y: -100 },
+        visible: { y: 0, opacity: 1 },
+        hidden: { y: -100, opacity: 0 },
       }}
       animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
+      transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
       className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-3rem)] max-w-5xl"
     >
-      <nav className="glass rounded-full px-8 py-4 flex items-center justify-between shadow-2xl">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-8 h-8 rounded-lg bg-primary group-hover:rotate-45 transition-transform duration-500 flex items-center justify-center font-bold text-sm">K</div>
+      <nav className="glass rounded-full px-8 py-4 flex items-center justify-between shadow-2xl border border-white/10">
+        <div 
+          className="flex items-center gap-3 group cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <div className="w-8 h-8 rounded-lg bg-primary group-hover:rotate-[360deg] transition-transform duration-700 flex items-center justify-center font-bold text-sm text-white">K</div>
           <span className="font-headline font-bold text-lg tracking-tight">KCS <span className="text-primary">Narrative</span></span>
         </div>
 
@@ -53,7 +56,11 @@ export function Navbar() {
                 className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all duration-300 group-hover:w-full" />
+                <motion.span 
+                  className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary"
+                  whileHover={{ width: '100%' }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
               </a>
             </li>
           ))}
@@ -72,10 +79,10 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-0 right-0 glass rounded-3xl p-8 md:hidden"
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="absolute top-20 left-0 right-0 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl"
           >
             <ul className="space-y-6">
               {navItems.map((item) => (
@@ -83,7 +90,7 @@ export function Navbar() {
                   <a 
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-bold tracking-tight hover:text-primary transition-colors"
+                    className="block text-xl font-headline font-bold tracking-tight hover:text-primary transition-colors"
                   >
                     {item.name}
                   </a>

@@ -26,12 +26,12 @@ export default function Home() {
 
   return (
     <main className="relative selection:bg-primary selection:text-white bg-background overflow-hidden">
-      {/* Navbar */}
+      {/* Navigation */}
       <Navbar />
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110]"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(62,128,219,0.8)]"
         style={{ scaleX }}
       />
 
@@ -55,7 +55,7 @@ export default function Home() {
       </div>
 
       {/* Background Vignette for cinematic feel */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)]" />
     </main>
   )
 }
