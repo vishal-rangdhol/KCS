@@ -9,8 +9,8 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  // Bolder, smoother spring configuration
-  const springConfig = { damping: 30, stiffness: 300, mass: 0.5 }
+  // Smooth spring configuration for movement
+  const springConfig = { damping: 35, stiffness: 350, mass: 0.5 }
   const x = useSpring(cursorX, springConfig)
   const y = useSpring(cursorY, springConfig)
 
@@ -30,7 +30,8 @@ export function CustomCursor() {
         target.tagName === 'BUTTON' || 
         target.closest('button') || 
         target.closest('a') ||
-        target.classList.contains('cursor-pointer')
+        target.classList.contains('cursor-pointer') ||
+        target.closest('.cursor-pointer')
       ) {
         setIsHovered(true)
       } else {
@@ -55,25 +56,33 @@ export function CustomCursor() {
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
       {/* Outer Circle - Bolder and Glowy */}
       <motion.div
-        className="w-12 h-12 rounded-full border-2 border-primary/60 flex items-center justify-center mix-blend-screen shadow-[0_0_15px_rgba(62,128,219,0.3)]"
+        className="w-12 h-12 rounded-full border-2 border-primary/60 flex items-center justify-center mix-blend-screen shadow-[0_0_20px_rgba(62,128,219,0.4)]"
         style={{
           x,
           y,
           translateX: '-50%',
           translateY: '-50%',
-          scale: isPressed ? 0.8 : isHovered ? 1.8 : 1,
-          backgroundColor: isHovered ? 'rgba(62, 128, 219, 0.2)' : 'rgba(62, 128, 219, 0.05)',
+        }}
+        animate={{
+          scale: isPressed ? 0.7 : isHovered ? 1.6 : 1,
+          backgroundColor: isHovered ? 'rgba(62, 128, 219, 0.25)' : 'rgba(62, 128, 219, 0.05)',
           borderColor: isHovered ? 'rgba(62, 128, 219, 1)' : 'rgba(62, 128, 219, 0.6)',
         }}
-        transition={{ type: 'spring', damping: 20, stiffness: 200 }}
+        transition={{ 
+          type: 'spring', 
+          damping: 25, 
+          stiffness: 250,
+          mass: 0.5
+        }}
       >
         {/* Inner Dot - Larger and Vibrant */}
         <motion.div 
-          className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_10px_rgba(62,128,219,0.8)]"
+          className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(62,128,219,1)]"
           animate={{ 
-            scale: isHovered ? 0.4 : 1,
-            opacity: isPressed ? 0.5 : 1
+            scale: isHovered ? 0.5 : 1,
+            opacity: isPressed ? 0.6 : 1
           }}
+          transition={{ type: 'spring', damping: 20, stiffness: 200 }}
         />
       </motion.div>
       
@@ -81,8 +90,8 @@ export function CustomCursor() {
       <motion.div
         className="absolute w-2 h-2 rounded-full bg-secondary/40 blur-sm"
         style={{
-          x: useSpring(cursorX, { damping: 40, stiffness: 200 }),
-          y: useSpring(cursorY, { damping: 40, stiffness: 200 }),
+          x: useSpring(cursorX, { damping: 45, stiffness: 250 }),
+          y: useSpring(cursorY, { damping: 45, stiffness: 250 }),
           translateX: '-50%',
           translateY: '-50%',
         }}

@@ -30,7 +30,7 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important; /* Hide default cursor for custom follower */
+    cursor: none !important;
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
@@ -79,7 +79,8 @@ html.lenis {
 }
 
 .glass {
-  @apply bg-card/40 backdrop-blur-2xl border border-white/10;
+  @apply bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
 }
 
 .text-glow {
