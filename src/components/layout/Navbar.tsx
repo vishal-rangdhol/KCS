@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react'
@@ -19,8 +20,6 @@ export function Navbar() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // If user has scrolled at all (beyond a small threshold), move to bottom
-    // If user is back at the very top, move back to top
     if (latest > 10) {
       setIsBottomPos(true)
     } else {
@@ -36,30 +35,33 @@ export function Navbar() {
         opacity: { duration: 0.4 }
       }}
       style={{
-        top: isBottomPos ? 'auto' : '24px',
-        bottom: isBottomPos ? '24px' : 'auto',
+        top: isBottomPos ? 'auto' : '16px',
+        bottom: isBottomPos ? '16px' : 'auto',
       }}
-      className="fixed left-0 right-0 z-[100] flex justify-center px-6 pointer-events-none"
+      className="fixed left-0 right-0 z-[100] flex justify-center px-4 sm:px-6 pointer-events-none"
     >
       <motion.nav 
         layout
-        className="glass rounded-full px-8 py-4 flex items-center justify-between w-full max-w-5xl shadow-2xl border border-white/10 pointer-events-auto"
+        className="glass rounded-full px-6 sm:px-8 py-3 sm:py-4 flex items-center justify-between w-full max-w-5xl shadow-2xl border border-white/10 pointer-events-auto"
       >
         <div 
-          className="flex items-center gap-3 group cursor-pointer"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            setMobileMenuOpen(false)
+          }}
         >
-          <div className="w-8 h-8 rounded-lg bg-primary group-hover:rotate-[360deg] transition-transform duration-700 flex items-center justify-center font-bold text-sm text-white shadow-[0_0_15px_rgba(62,128,219,0.5)]">K</div>
-          <span className="font-headline font-bold text-lg tracking-tight">KCS <span className="text-primary">Narrative</span></span>
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary group-hover:rotate-[360deg] transition-transform duration-700 flex items-center justify-center font-bold text-xs sm:text-sm text-white shadow-[0_0_15px_rgba(62,128,219,0.5)]">K</div>
+          <span className="font-headline font-bold text-base sm:text-lg tracking-tight">KCS <span className="text-primary">Narrative</span></span>
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
             <li key={item.name} className="relative group">
               <a 
                 href={item.href}
-                className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors block py-1"
+                className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors block py-1"
               >
                 {item.name}
                 <motion.span 
@@ -74,14 +76,15 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-foreground"
+          className="md:hidden p-2 text-foreground focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -89,18 +92,18 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: isBottomPos ? 20 : -20 }}
             style={{
-              top: isBottomPos ? 'auto' : '80px',
-              bottom: isBottomPos ? '80px' : 'auto',
+              top: isBottomPos ? 'auto' : '70px',
+              bottom: isBottomPos ? '70px' : 'auto',
             }}
-            className="absolute left-6 right-6 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
+            className="absolute left-4 right-4 glass rounded-3xl p-6 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
           >
-            <ul className="space-y-6">
+            <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => (
                 <li key={item.name}>
                   <a 
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-headline font-bold tracking-tight hover:text-primary transition-colors"
+                    className="block p-4 rounded-2xl bg-white/5 hover:bg-primary/20 text-sm font-headline font-bold tracking-tight hover:text-primary transition-all text-center border border-white/5"
                   >
                     {item.name}
                   </a>

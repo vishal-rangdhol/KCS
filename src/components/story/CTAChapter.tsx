@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useRef, useState, ReactNode, MouseEvent } from 'react'
@@ -8,8 +9,8 @@ import { Rocket, ArrowRight } from 'lucide-react'
 
 export function CTAChapter() {
   return (
-    <Chapter id="cta" className="py-24 overflow-visible">
-      <div className="w-full relative rounded-[40px] md:rounded-[80px] p-12 md:p-32 text-center overflow-hidden border border-white/10 group">
+    <Chapter id="cta" className="py-20 overflow-visible px-4">
+      <div className="w-full relative rounded-[32px] sm:rounded-[40px] md:rounded-[80px] p-8 sm:p-16 md:p-32 text-center overflow-hidden border border-white/10 group">
         {/* Animated Gradient Background */}
         <motion.div
           animate={{ 
@@ -17,36 +18,36 @@ export function CTAChapter() {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_var(--primary)_0%,_var(--secondary)_50%,_var(--primary)_100%)] opacity-20 blur-[120px]"
+          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_var(--primary)_0%,_var(--secondary)_50%,_var(--primary)_100%)] opacity-20 blur-[80px] sm:blur-[120px]"
         />
         
         <div className="relative z-10 max-w-4xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="text-4xl md:text-8xl font-bold mb-10 leading-tight tracking-tighter"
+            className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-10 leading-tight tracking-tighter"
           >
             Ready to <br />
             <span className="text-primary italic">Transform</span> <br />
             Your Business?
           </motion.h2>
           
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto">
             Let's collaborate to build the intelligent solutions that will define your organization's future in the digital era.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
             <MagneticWrapper>
-              <Button size="lg" className="h-16 px-12 text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group border-none">
+              <Button size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group border-none w-full sm:w-auto">
                 Start the Journey
-                <Rocket className="ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Button>
             </MagneticWrapper>
             
             <MagneticWrapper>
-              <Button variant="outline" size="lg" className="h-16 px-12 text-lg rounded-full border-white/20 hover:bg-white/10 group">
+              <Button variant="outline" size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full border-white/20 hover:bg-white/10 group w-full sm:w-auto">
                 View Case Studies
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </MagneticWrapper>
           </div>
@@ -61,6 +62,7 @@ function MagneticWrapper({ children }: { children: ReactNode }) {
   const [pos, setPos] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = (e: MouseEvent) => {
+    if (window.innerWidth < 768) return
     if (!ref.current) return
     const { clientX, clientY } = e
     const { left, top, width, height } = ref.current.getBoundingClientRect()
@@ -76,7 +78,7 @@ function MagneticWrapper({ children }: { children: ReactNode }) {
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
       animate={{ x: pos.x, y: pos.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15 }}
-      className="inline-block"
+      className="inline-block w-full sm:w-auto"
     >
       {children}
     </motion.div>

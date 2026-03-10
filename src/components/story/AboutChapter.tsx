@@ -30,44 +30,44 @@ export function AboutChapter() {
     offset: ["start end", "end start"]
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+  const y = useTransform(scrollYProgress, [0, 1], [50, -50])
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   const aboutImage = PlaceHolderImages.find(img => img.id === 'consultancy-team')
 
   return (
-    <Chapter id="story" className="bg-background relative">
-      <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
-        <div className="space-y-12">
+    <Chapter id="story" className="bg-background relative py-20 overflow-hidden">
+      <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+        <div className="space-y-8 sm:space-y-12 order-2 lg:order-1">
           <motion.div style={{ opacity }}>
-            <span className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Our Origin</span>
-            <h2 className="text-4xl md:text-7xl font-bold leading-tight">
+            <span className="text-primary font-bold tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-3 sm:mb-4 block">Our Origin</span>
+            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
               Founded by <br /><span className="text-secondary italic">Visionaries.</span>
             </h2>
           </motion.div>
           
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
             KCS was born from a collective of experts in high-stakes digital environments. We realized that while tech evolves, the human narrative behind it needs careful stewardship.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {expertise.map((item, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-3 text-lg"
+                className="flex items-center gap-3 text-base sm:text-lg"
               >
-                <CheckCircle2 className="text-primary w-5 h-5" />
+                <CheckCircle2 className="text-primary w-5 h-5 flex-shrink-0" />
                 <span>{item}</span>
               </motion.div>
             ))}
           </div>
           
-          <div className="space-y-8 pt-12 border-t border-border/50">
-            <h4 className="font-bold uppercase tracking-widest text-sm text-muted-foreground">The Journey</h4>
-            <div className="relative pl-8 space-y-12 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-border">
+          <div className="space-y-6 sm:space-y-8 pt-8 sm:pt-12 border-t border-border/50">
+            <h4 className="font-bold uppercase tracking-widest text-xs sm:text-sm text-muted-foreground">The Journey</h4>
+            <div className="relative pl-6 sm:pl-8 space-y-8 sm:space-y-12 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-border">
               {timeline.map((item, i) => (
                 <motion.div 
                   key={i}
@@ -75,17 +75,17 @@ export function AboutChapter() {
                   whileInView={{ opacity: 1, y: 0 }}
                   className="relative"
                 >
-                  <div className="absolute -left-[35px] top-1 w-3 h-3 rounded-full bg-primary border-4 border-background" />
-                  <span className="text-primary font-bold">{item.year}</span>
-                  <p className="text-muted-foreground mt-1">{item.event}</p>
+                  <div className="absolute -left-[27px] sm:-left-[35px] top-1 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-primary border-4 border-background" />
+                  <span className="text-primary font-bold text-sm sm:text-base">{item.year}</span>
+                  <p className="text-muted-foreground mt-1 text-sm sm:text-base">{item.event}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl group">
-          <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
+        <div className="relative aspect-[4/5] rounded-[24px] sm:rounded-[40px] overflow-hidden shadow-2xl group order-1 lg:order-2">
+          <motion.div style={{ y }} className="absolute inset-0 w-full h-[110%] -top-[5%]">
              <Image 
               src={aboutImage?.imageUrl || "https://picsum.photos/seed/kcs2/1200/800"} 
               alt="Consultancy Leaders" 
@@ -95,9 +95,9 @@ export function AboutChapter() {
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-          <div className="absolute bottom-12 left-12 right-12 p-8 bg-card/40 backdrop-blur-xl border border-white/10 rounded-3xl">
-            <p className="text-xl italic font-light">"We don't just build tech; we architect legacies for the digital age."</p>
-            <p className="mt-4 font-bold text-sm uppercase tracking-widest">— The KCS Founders</p>
+          <div className="absolute bottom-6 left-6 right-6 sm:bottom-12 sm:left-12 sm:right-12 p-6 sm:p-8 bg-card/40 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl">
+            <p className="text-base sm:text-xl italic font-light">"We don't just build tech; we architect legacies for the digital age."</p>
+            <p className="mt-3 sm:mt-4 font-bold text-[10px] sm:text-sm uppercase tracking-widest">— The KCS Founders</p>
           </div>
         </div>
       </div>
