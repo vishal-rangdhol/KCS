@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Navbar } from '@/components/layout/Navbar'
@@ -38,8 +39,13 @@ export default function Home() {
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Chapters */}
-      <div className="relative z-10">
+      {/* Chapters Wrapper with Page Transition */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="relative z-10"
+      >
         <HeroChapter />
         <ProblemChapter />
         <VisionChapter />
@@ -52,7 +58,7 @@ export default function Home() {
         <TestimonialsChapter />
         <CTAChapter />
         <ContactChapter />
-      </div>
+      </motion.div>
 
       {/* Background Vignette for cinematic feel */}
       <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)]" />

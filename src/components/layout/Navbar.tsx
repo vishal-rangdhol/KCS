@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from 'react'
@@ -36,28 +37,28 @@ export function Navbar() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[calc(100%-3rem)] max-w-5xl"
+      className="fixed top-6 left-0 right-0 z-[100] flex justify-center px-6 pointer-events-none"
     >
-      <nav className="glass rounded-full px-8 py-4 flex items-center justify-between shadow-2xl border border-white/10">
+      <nav className="glass rounded-full px-8 py-4 flex items-center justify-between w-full max-w-5xl shadow-2xl border border-white/10 pointer-events-auto">
         <div 
           className="flex items-center gap-3 group cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="w-8 h-8 rounded-lg bg-primary group-hover:rotate-[360deg] transition-transform duration-700 flex items-center justify-center font-bold text-sm text-white">K</div>
+          <div className="w-8 h-8 rounded-lg bg-primary group-hover:rotate-[360deg] transition-transform duration-700 flex items-center justify-center font-bold text-sm text-white shadow-[0_0_15px_rgba(62,128,219,0.5)]">K</div>
           <span className="font-headline font-bold text-lg tracking-tight">KCS <span className="text-primary">Narrative</span></span>
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <li key={item.name}>
+            <li key={item.name} className="relative group">
               <a 
                 href={item.href}
-                className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative group"
+                className="text-xs font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors block py-1"
               >
                 {item.name}
                 <motion.span 
-                  className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary"
+                  className="absolute bottom-0 left-0 w-0 h-[2px] bg-primary"
                   whileHover={{ width: '100%' }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
@@ -82,7 +83,7 @@ export function Navbar() {
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="absolute top-20 left-0 right-0 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl"
+            className="absolute top-20 left-6 right-6 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
           >
             <ul className="space-y-6">
               {navItems.map((item) => (
