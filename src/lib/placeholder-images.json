@@ -17,6 +17,30 @@
       "description": "Futuristic office concept",
       "imageUrl": "https://picsum.photos/seed/kcs3/1200/800",
       "imageHint": "innovation light"
+    },
+    {
+      "id": "product-chat",
+      "description": "Modern communication app interface",
+      "imageUrl": "https://picsum.photos/seed/kcs4/1200/800",
+      "imageHint": "communication app"
+    },
+    {
+      "id": "product-data",
+      "description": "Data management dashboard",
+      "imageUrl": "https://picsum.photos/seed/kcs5/1200/800",
+      "imageHint": "data dashboard"
+    },
+    {
+      "id": "solution-ai",
+      "description": "AI neural network visualization",
+      "imageUrl": "https://picsum.photos/seed/kcs6/1200/800",
+      "imageHint": "artificial intelligence"
+    },
+    {
+      "id": "solution-cloud",
+      "description": "Cloud infrastructure diagram",
+      "imageUrl": "https://picsum.photos/seed/kcs7/1200/800",
+      "imageHint": "cloud computing"
     }
   ]
 }
