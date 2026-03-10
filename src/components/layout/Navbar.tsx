@@ -1,7 +1,7 @@
 
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -16,30 +16,43 @@ const navItems = [
 ]
 
 export function Navbar() {
-  const [hidden, setHidden] = useState(false)
+  const [isBottomPos, setIsBottomPos] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0
-    if (latest > previous && latest > 150) {
-      setHidden(true)
-    } else {
-      setHidden(false)
+    const scrollHeight = document.documentElement.scrollHeight
+    const clientHeight = document.documentElement.clientHeight
+    
+    // Check if reached the bottom of the page
+    const reachedBottom = latest + clientHeight >= scrollHeight - 50
+    // Check if reached the very top of the page
+    const reachedTop = latest <= 10
+
+    if (reachedBottom) {
+      setIsBottomPos(true)
+    } else if (reachedTop) {
+      setIsBottomPos(false)
     }
   })
 
   return (
     <motion.header
-      variants={{
-        visible: { y: 0, opacity: 1 },
-        hidden: { y: -100, opacity: 0 },
+      layout
+      transition={{ 
+        layout: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
+        opacity: { duration: 0.4 }
       }}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.45, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed top-6 left-0 right-0 z-[100] flex justify-center px-6 pointer-events-none"
+      style={{
+        top: isBottomPos ? 'auto' : '24px',
+        bottom: isBottomPos ? '24px' : 'auto',
+      }}
+      className="fixed left-0 right-0 z-[100] flex justify-center px-6 pointer-events-none"
     >
-      <nav className="glass rounded-full px-8 py-4 flex items-center justify-between w-full max-w-5xl shadow-2xl border border-white/10 pointer-events-auto">
+      <motion.nav 
+        layout
+        className="glass rounded-full px-8 py-4 flex items-center justify-between w-full max-w-5xl shadow-2xl border border-white/10 pointer-events-auto"
+      >
         <div 
           className="flex items-center gap-3 group cursor-pointer"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -74,16 +87,20 @@ export function Navbar() {
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            initial={{ opacity: 0, scale: 0.95, y: isBottomPos ? 20 : -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="absolute top-20 left-6 right-6 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
+            exit={{ opacity: 0, scale: 0.95, y: isBottomPos ? 20 : -20 }}
+            style={{
+              top: isBottomPos ? 'auto' : '80px',
+              bottom: isBottomPos ? '80px' : 'auto',
+            }}
+            className="absolute left-6 right-6 glass rounded-3xl p-8 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
           >
             <ul className="space-y-6">
               {navItems.map((item) => (
