@@ -37,11 +37,12 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  const mouseXSpring = useSpring(x, { stiffness: 100, damping: 15 })
-  const mouseYSpring = useSpring(y, { stiffness: 100, damping: 15 })
+  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
+  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"])
+  // Reverse rotation: side under cursor goes back
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-8deg", "8deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["8deg", "-8deg"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -71,7 +72,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       
-      <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-10">
         <motion.div 
           whileHover={{ scale: 1.15, rotate: -10 }}
           className="bg-background/40 p-5 rounded-2xl w-fit mb-8 border border-white/10 group-hover:border-primary/30 transition-all duration-500 shadow-xl"

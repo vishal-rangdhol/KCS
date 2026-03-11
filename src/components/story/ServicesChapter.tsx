@@ -55,11 +55,13 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
+  // Fast but smooth spring for the "pressed" feel
+  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
+  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"])
+  // Reverse rotation: mouse at top (-0.5) makes X rotation negative (tilting top away)
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-10deg", "10deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["10deg", "-10deg"])
   
   const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
@@ -96,17 +98,17 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full p-8 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/10"
+      className="group relative h-full p-8 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20"
     >
       {/* Dynamic Glow Overlay */}
       <motion.div 
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(62, 128, 219, 0.15), transparent 70%)`
+          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(62, 128, 219, 0.2), transparent 70%)`
         }}
       />
       
-      <div style={{ transform: "translateZ(60px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-10">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 5 }}
           className={`p-5 rounded-2xl bg-background/60 border border-white/10 w-fit mb-8 shadow-xl group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
