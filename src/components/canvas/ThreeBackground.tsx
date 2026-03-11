@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useEffect, useRef } from 'react'
@@ -19,39 +18,56 @@ export function ThreeBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Neural Network Style Particles
-    const particlesCount = 1500
+    // Primary Particles (Blue)
+    const particlesCount = 2000
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
     
     for (let i = 0; i < particlesCount * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 12
-      velocities[i] = (Math.random() - 0.5) * 0.01
+      velocities[i] = (Math.random() - 0.5) * 0.008
     }
 
     const particlesGeometry = new THREE.BufferGeometry()
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.015,
+      size: 0.02,
       color: 0x3E80DB,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
+    // Secondary Particles (Purple/Indigo)
+    const secondaryCount = 800
+    const secPositions = new Float32Array(secondaryCount * 3)
+    for (let i = 0; i < secondaryCount * 3; i++) {
+      secPositions[i] = (Math.random() - 0.5) * 15
+    }
+    const secGeometry = new THREE.BufferGeometry()
+    secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
+    const secMaterial = new THREE.PointsMaterial({
+      size: 0.03,
+      color: 0x8B5CF6,
+      transparent: true,
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending
+    })
+    const secParticles = new THREE.Points(secGeometry, secMaterial)
+    scene.add(secParticles)
+
     // Connections (Neural Network effect)
     const lineMaterial = new THREE.LineBasicMaterial({
       color: 0x3E80DB,
       transparent: true,
-      opacity: 0.05
+      opacity: 0.08
     })
     
-    // Using a limited number of lines for performance
-    const maxConnections = 400
+    const maxConnections = 500
     const lineGeometry = new THREE.BufferGeometry()
     const linePositions = new Float32Array(maxConnections * 2 * 3)
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3))
@@ -82,17 +98,14 @@ export function ThreeBackground() {
       for (let i = 0; i < particlesCount; i++) {
         const i3 = i * 3
         
-        // Update positions
         positionsAttr.array[i3] += velocities[i3]
         positionsAttr.array[i3 + 1] += velocities[i3 + 1]
         positionsAttr.array[i3 + 2] += velocities[i3 + 2]
 
-        // Boundary checks
-        if (Math.abs(positionsAttr.array[i3]) > 6) velocities[i3] *= -1
-        if (Math.abs(positionsAttr.array[i3 + 1]) > 6) velocities[i3 + 1] *= -1
-        if (Math.abs(positionsAttr.array[i3 + 2]) > 6) velocities[i3 + 2] *= -1
+        if (Math.abs(positionsAttr.array[i3]) > 7) velocities[i3] *= -1
+        if (Math.abs(positionsAttr.array[i3 + 1]) > 7) velocities[i3 + 1] *= -1
+        if (Math.abs(positionsAttr.array[i3 + 2]) > 7) velocities[i3 + 2] *= -1
 
-        // Simple line connection logic (random nodes for neural network look)
         if (i < maxConnections && lineIndex < maxConnections * 6) {
           const nextIndex = (i + 1) % particlesCount
           const n3 = nextIndex * 3
@@ -110,13 +123,13 @@ export function ThreeBackground() {
       positionsAttr.needsUpdate = true
       linePositionsAttr.needsUpdate = true
 
-      // Gentle camera parallax
-      camera.position.x += (mouse.current.x * 2 - camera.position.x) * 0.05
-      camera.position.y += (-mouse.current.y * 2 - camera.position.y) * 0.05
+      camera.position.x += (mouse.current.x * 2.5 - camera.position.x) * 0.05
+      camera.position.y += (-mouse.current.y * 2.5 - camera.position.y) * 0.05
       camera.lookAt(scene.position)
 
-      particles.rotation.y += 0.0002
-      lines.rotation.y += 0.0002
+      particles.rotation.y += 0.0003
+      secParticles.rotation.y -= 0.0002
+      lines.rotation.y += 0.0003
 
       renderer.render(scene, camera)
     }
@@ -135,5 +148,5 @@ export function ThreeBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="canvas-container opacity-40" />
+  return <div ref={containerRef} className="canvas-container opacity-60" />
 }
