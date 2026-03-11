@@ -15,7 +15,7 @@ export function ContactChapter() {
   return (
     <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
       {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
         <div className="space-y-12">
@@ -85,7 +85,7 @@ export function ContactChapter() {
               scale: [1, 1.1, 1]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-12 -right-12 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] pointer-events-none"
+            className="absolute -top-12 -right-12 w-64 h-64 bg-secondary/15 rounded-full blur-[80px] pointer-events-none"
           />
 
           <motion.div 

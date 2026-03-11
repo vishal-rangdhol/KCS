@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Navbar } from '@/components/layout/Navbar'
@@ -39,13 +38,13 @@ export default function Home() {
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Background Ambient Glows - Enhanced for a more colorful feel */}
+      {/* Background Ambient Glows - Intensified for a more colorful feel */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-5%] left-[-5%] w-[60%] h-[60%] bg-primary/20 blur-[140px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-5%] right-[-5%] w-[60%] h-[60%] bg-secondary/15 blur-[140px] rounded-full" />
-        <div className="absolute top-1/4 right-1/4 w-[40%] h-[40%] bg-blue-400/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 left-1/4 w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-background/40 radial-gradient(circle, transparent 0%, var(--background) 100%)" />
+        <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/25 blur-[160px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/20 blur-[160px] rounded-full" />
+        <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-blue-500/15 blur-[140px] rounded-full" />
+        <div className="absolute bottom-1/3 left-1/4 w-[50%] h-[50%] bg-purple-600/15 blur-[140px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-background/20 radial-gradient(circle, transparent 0%, var(--background) 100%)" />
       </div>
 
       {/* Chapters Wrapper with Page Transition */}
@@ -70,7 +69,7 @@ export default function Home() {
       </motion.div>
 
       {/* Background Vignette for cinematic feel */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.3)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)]" />
     </main>
   )
 }

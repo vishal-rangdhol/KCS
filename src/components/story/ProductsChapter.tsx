@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -56,7 +55,7 @@ export function ProductsChapter() {
         <Carousel
           opts={{
             align: "start",
-            loop: products.length > 2,
+            loop: false,
           }}
           className="w-full max-w-5xl mx-auto"
         >
