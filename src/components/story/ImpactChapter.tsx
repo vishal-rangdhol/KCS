@@ -74,7 +74,7 @@ export function ImpactChapter() {
             }}
             className="text-center group"
           >
-            <div className="text-6xl md:text-9xl font-bold text-primary mb-6 group-hover:scale-105 transition-transform duration-700 tracking-tighter">
+            <div className="text-5xl md:text-7xl font-bold text-primary mb-6 group-hover:scale-105 transition-transform duration-700 tracking-tighter">
               <Counter value={stat.value} suffix={stat.suffix} />
             </div>
             <p className="text-muted-foreground font-bold uppercase tracking-[0.3em] text-xs md:text-sm group-hover:text-foreground transition-colors">
