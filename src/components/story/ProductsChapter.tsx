@@ -4,7 +4,7 @@
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowRight, MessageSquare, Database, Shield, BarChart3, Brain, Globe } from 'lucide-react'
+import { ArrowRight, MessageSquare, Database } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Carousel,
@@ -18,7 +18,7 @@ const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A premium communication platform connecting people seamlessly through secure channels, integrating a powerful LMS to deliver and manage learning experiences in one unified ecosystem.",
+    description: "A premium communication platform connecting people seamlessly through secure, encrypted channels, while also integrating a powerful Learning Management System (LMS) that enables organizations and institutions to deliver, manage, and track learning experiences in one unified ecosystem.",
     image: "https://picsum.photos/seed/catchup/1200/800",
     icon: MessageSquare,
     color: "from-blue-600/40 via-primary/20 to-transparent",
@@ -32,42 +32,6 @@ const products = [
     icon: Database,
     color: "from-purple-600/40 via-secondary/20 to-transparent",
     hint: "data processing"
-  },
-  {
-    id: "cloudguard",
-    name: "Cloud Guard",
-    description: "Next-generation security perimeter providing real-time threat detection and autonomous response for distributed cloud environments.",
-    image: "https://picsum.photos/seed/cg1/1200/800",
-    icon: Shield,
-    color: "from-red-600/40 via-destructive/20 to-transparent",
-    hint: "cloud security"
-  },
-  {
-    id: "insight-engine",
-    name: "Insight Engine",
-    description: "AI-driven analytics platform that deciphers complex patterns into actionable business strategy with millisecond latency.",
-    image: "https://picsum.photos/seed/ie1/1200/800",
-    icon: BarChart3,
-    color: "from-emerald-600/40 via-emerald-400/20 to-transparent",
-    hint: "business analytics"
-  },
-  {
-    id: "neural-flow",
-    name: "Neural Flow",
-    description: "Cognitive workflow automation that learns from organizational behavior to optimize every internal process automatically.",
-    image: "https://picsum.photos/seed/nf1/1200/800",
-    icon: Brain,
-    color: "from-cyan-600/40 via-cyan-400/20 to-transparent",
-    hint: "ai automation"
-  },
-  {
-    id: "global-sync",
-    name: "Global Sync",
-    description: "Seamless synchronization layer for multi-region architectures, maintaining data consistency across the planet in real-time.",
-    image: "https://picsum.photos/seed/gs1/1200/800",
-    icon: Globe,
-    color: "from-orange-600/40 via-orange-400/20 to-transparent",
-    hint: "global network"
   }
 ]
 
@@ -84,7 +48,7 @@ export function ProductsChapter() {
         </motion.span>
         <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter">Innovation Ecosystem</h2>
         <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base">
-          Explore our suite of intelligent products designed to solve complex challenges in communication, data, and security.
+          Explore our specialized solutions designed to solve complex challenges in communication and data management.
         </p>
       </div>
 
@@ -92,13 +56,13 @@ export function ProductsChapter() {
         <Carousel
           opts={{
             align: "start",
-            loop: true,
+            loop: products.length > 2,
           }}
-          className="w-full max-w-7xl mx-auto"
+          className="w-full max-w-5xl mx-auto"
         >
           <CarouselContent className="-ml-4 sm:-ml-8">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 sm:pl-8 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="pl-4 sm:pl-8 md:basis-1/2 lg:basis-1/2">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -141,10 +105,12 @@ export function ProductsChapter() {
             ))}
           </CarouselContent>
           
-          <div className="hidden md:flex justify-end gap-4 mt-12">
-            <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all" />
-            <CarouselNext className="static translate-y-0 h-12 w-12 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all" />
-          </div>
+          {products.length > 2 && (
+            <div className="hidden md:flex justify-end gap-4 mt-12">
+              <CarouselPrevious className="static translate-y-0 h-12 w-12 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all" />
+              <CarouselNext className="static translate-y-0 h-12 w-12 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all" />
+            </div>
+          )}
         </Carousel>
       </div>
     </Chapter>
