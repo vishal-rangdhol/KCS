@@ -14,17 +14,17 @@ const navItems = [
 ]
 
 export function Navbar() {
-  const [isBottomPos, setIsBottomPos] = useState(false)
+  const [isSidebarPos, setIsSidebarPos] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // If scrolled at all, move to bottom. Only top if at exactly 0.
+    // Immediately move to sidebar if scrolled at all.
     if (latest > 10) {
-      setIsBottomPos(true)
+      setIsSidebarPos(true)
     } else {
-      setIsBottomPos(false)
+      setIsSidebarPos(false)
     }
   })
 
@@ -60,29 +60,37 @@ export function Navbar() {
         layout: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
         opacity: { duration: 0.4 }
       }}
+      className="fixed z-[110] flex items-center justify-center pointer-events-none"
       style={{
-        top: isBottomPos ? 'auto' : '24px',
-        bottom: isBottomPos ? '24px' : 'auto',
+        left: isSidebarPos ? '24px' : '0',
+        right: isSidebarPos ? 'auto' : '0',
+        top: isSidebarPos ? '50%' : '24px',
+        transform: isSidebarPos ? 'translateY(-50%)' : 'none',
+        width: isSidebarPos ? 'auto' : '100%',
+        padding: isSidebarPos ? '0' : '0 24px',
       }}
-      className="fixed left-0 right-0 z-[100] flex justify-center px-4 sm:px-6 pointer-events-none"
     >
       <motion.nav 
         layout
-        className="glass rounded-full px-6 sm:px-10 py-3 sm:py-5 flex items-center justify-between w-full max-w-5xl shadow-2xl pointer-events-auto bg-white/10 backdrop-blur-xl border-white/20"
+        className={`glass rounded-[2rem] shadow-2xl pointer-events-auto bg-white/10 backdrop-blur-xl border-white/20 flex transition-all duration-700 ${
+          isSidebarPos 
+            ? 'flex-col py-8 px-4 gap-8 min-w-[80px]' 
+            : 'flex-row py-4 px-8 sm:px-10 justify-between w-full max-w-5xl'
+        }`}
       >
         <div 
-          className="flex items-center gap-2 sm:gap-4 group cursor-pointer"
+          className={`flex items-center gap-4 group cursor-pointer ${isSidebarPos ? 'flex-col' : 'flex-row'}`}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setMobileMenuOpen(false)
           }}
         >
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-primary group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center font-bold text-sm sm:text-base text-white shadow-[0_0_20px_rgba(62,128,219,0.6)]">K</div>
-          <span className="font-headline font-bold text-lg sm:text-xl tracking-tight">KCS</span>
+          <div className="w-10 h-10 rounded-xl bg-primary group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(62,128,219,0.6)]">K</div>
+          {!isSidebarPos && <span className="font-headline font-bold text-xl tracking-tight text-white">KCS</span>}
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 lg:gap-10">
+        <ul className={`hidden md:flex items-center ${isSidebarPos ? 'flex-col gap-6' : 'flex-row gap-8 lg:gap-10'}`}>
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1)
             return (
@@ -91,15 +99,23 @@ export function Navbar() {
                   href={item.href}
                   className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
                     isActive ? 'text-primary' : 'text-white/60 hover:text-white'
-                  }`}
+                  } ${isSidebarPos ? '[writing-mode:vertical-lr] rotate-180' : ''}`}
                 >
                   {item.name}
-                  <motion.span 
-                    className="absolute bottom-0 left-0 h-[2px] bg-primary"
-                    initial={false}
-                    animate={{ width: isActive ? '100%' : '0%' }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  />
+                  {!isSidebarPos && (
+                    <motion.span 
+                      className="absolute bottom-0 left-0 h-[2px] bg-primary"
+                      initial={false}
+                      animate={{ width: isActive ? '100%' : '0%' }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  {isSidebarPos && isActive && (
+                    <motion.span 
+                      className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-[3px] h-full bg-primary rounded-full"
+                      layoutId="activeTabSidebar"
+                    />
+                  )}
                 </a>
               </li>
             )
@@ -120,14 +136,12 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: isBottomPos ? 40 : -40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: isBottomPos ? 40 : -40 }}
-            style={{
-              top: isBottomPos ? 'auto' : '85px',
-              bottom: isBottomPos ? '85px' : 'auto',
-            }}
-            className="absolute left-4 right-4 glass rounded-[2.5rem] p-8 md:hidden border border-white/20 shadow-2xl pointer-events-auto"
+            initial={{ opacity: 0, scale: 0.95, x: -40 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            exit={{ opacity: 0, scale: 0.95, x: -40 }}
+            className={`absolute glass rounded-[2.5rem] p-8 md:hidden border border-white/20 shadow-2xl pointer-events-auto ${
+              isSidebarPos ? 'left-[100px] top-0' : 'left-4 right-4 top-[85px]'
+            }`}
           >
             <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => {
