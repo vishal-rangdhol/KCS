@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -10,7 +9,6 @@ const navItems = [
   { name: 'About', href: '#story' },
   { name: 'Services', href: '#services' },
   { name: 'Products', href: '#products' },
-  { name: 'Impact', href: '#impact' },
   { name: 'Careers', href: '#careers' },
   { name: 'Contact', href: '#contact' },
 ]
