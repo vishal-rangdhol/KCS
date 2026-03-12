@@ -21,6 +21,7 @@ export function Navbar() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
+    // Moves to top-left sidebar mode as soon as scroll starts
     if (latest > 50) {
       setIsSidebarPos(true)
     } else {
@@ -73,12 +74,12 @@ export function Navbar() {
         layout
         className={`glass rounded-[2rem] shadow-2xl pointer-events-auto bg-white/10 backdrop-blur-xl border-white/20 flex transition-all duration-700 ${
           isSidebarPos 
-            ? 'flex-col py-8 px-4 gap-8 min-w-[80px]' 
+            ? 'flex-col py-8 px-6 gap-8 min-w-[140px] items-start' 
             : 'flex-row py-4 px-8 sm:px-10 justify-between w-full max-w-5xl items-center'
         }`}
       >
         <div 
-          className={`flex items-center gap-4 group cursor-pointer ${isSidebarPos ? 'flex-col' : 'flex-row'}`}
+          className={`flex items-center gap-4 group cursor-pointer ${isSidebarPos ? 'mb-4' : 'flex-row'}`}
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setMobileMenuOpen(false)
@@ -89,16 +90,16 @@ export function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className={`hidden md:flex items-center ${isSidebarPos ? 'flex-col gap-6' : 'flex-row gap-8 lg:gap-10'}`}>
+        <ul className={`hidden md:flex ${isSidebarPos ? 'flex-col gap-4 items-start w-full' : 'flex-row gap-8 lg:gap-10 items-center'}`}>
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1)
             return (
-              <li key={item.name} className="relative group">
+              <li key={item.name} className="relative group w-full">
                 <a 
                   href={item.href}
                   className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
                     isActive ? 'text-primary' : 'text-white/60 hover:text-white'
-                  } ${isSidebarPos ? '[writing-mode:vertical-lr] rotate-180' : ''}`}
+                  }`}
                 >
                   {item.name}
                   {!isSidebarPos && (
@@ -111,7 +112,7 @@ export function Navbar() {
                   )}
                   {isSidebarPos && isActive && (
                     <motion.span 
-                      className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-[3px] h-full bg-primary rounded-full"
+                      className="absolute left-[-16px] top-1/2 -translate-y-1/2 w-[3px] h-4 bg-primary rounded-full shadow-[0_0_10px_rgba(62,128,219,0.8)]"
                       layoutId="activeTabSidebar"
                     />
                   )}
@@ -139,7 +140,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.95, x: -40 }}
             className={`absolute glass rounded-[2.5rem] p-8 md:hidden border border-white/20 shadow-2xl pointer-events-auto ${
-              isSidebarPos ? 'left-[100px] top-0' : 'left-0 right-0 top-[85px]'
+              isSidebarPos ? 'left-[160px] top-0' : 'left-0 right-0 top-[85px]'
             }`}
           >
             <ul className="grid grid-cols-2 gap-4">
