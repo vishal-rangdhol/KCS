@@ -9,6 +9,7 @@ const navItems = [
   { name: 'About', href: '#story' },
   { name: 'Services', href: '#services' },
   { name: 'Products', href: '#products' },
+  { name: 'Impact', href: '#impact' },
   { name: 'Careers', href: '#careers' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -20,8 +21,7 @@ export function Navbar() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    // Immediately move to sidebar if scrolled at all.
-    if (latest > 10) {
+    if (latest > 50) {
       setIsSidebarPos(true)
     } else {
       setIsSidebarPos(false)
@@ -60,14 +60,13 @@ export function Navbar() {
         layout: { duration: 0.8, ease: [0.23, 1, 0.32, 1] },
         opacity: { duration: 0.4 }
       }}
-      className="fixed z-[110] flex items-center justify-center pointer-events-none"
+      className="fixed z-[110] flex items-start pointer-events-none"
       style={{
-        left: isSidebarPos ? '24px' : '0',
-        right: isSidebarPos ? 'auto' : '0',
-        top: isSidebarPos ? '50%' : '24px',
-        transform: isSidebarPos ? 'translateY(-50%)' : 'none',
-        width: isSidebarPos ? 'auto' : '100%',
-        padding: isSidebarPos ? '0' : '0 24px',
+        left: '24px',
+        top: '24px',
+        right: isSidebarPos ? 'auto' : '24px',
+        width: isSidebarPos ? 'auto' : 'calc(100% - 48px)',
+        justifyContent: isSidebarPos ? 'flex-start' : 'center',
       }}
     >
       <motion.nav 
@@ -75,7 +74,7 @@ export function Navbar() {
         className={`glass rounded-[2rem] shadow-2xl pointer-events-auto bg-white/10 backdrop-blur-xl border-white/20 flex transition-all duration-700 ${
           isSidebarPos 
             ? 'flex-col py-8 px-4 gap-8 min-w-[80px]' 
-            : 'flex-row py-4 px-8 sm:px-10 justify-between w-full max-w-5xl'
+            : 'flex-row py-4 px-8 sm:px-10 justify-between w-full max-w-5xl items-center'
         }`}
       >
         <div 
@@ -140,7 +139,7 @@ export function Navbar() {
             animate={{ opacity: 1, scale: 1, x: 0 }}
             exit={{ opacity: 0, scale: 0.95, x: -40 }}
             className={`absolute glass rounded-[2.5rem] p-8 md:hidden border border-white/20 shadow-2xl pointer-events-auto ${
-              isSidebarPos ? 'left-[100px] top-0' : 'left-4 right-4 top-[85px]'
+              isSidebarPos ? 'left-[100px] top-0' : 'left-0 right-0 top-[85px]'
             }`}
           >
             <ul className="grid grid-cols-2 gap-4">
