@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -14,13 +13,6 @@ const expertise = [
   "Cybersecurity",
   "Data Analytics",
   "Enterprise Systems"
-]
-
-const timeline = [
-  { year: "2015", event: "Foundation by senior tech architects." },
-  { year: "2018", event: "Launch of first proprietary AI engine." },
-  { year: "2021", event: "Global expansion into enterprise cloud ops." },
-  { year: "2025", event: "Leading the narrative in intelligent tech." }
 ]
 
 export function AboutChapter() {
@@ -63,24 +55,6 @@ export function AboutChapter() {
                 <span>{item}</span>
               </motion.div>
             ))}
-          </div>
-          
-          <div className="space-y-6 sm:space-y-8 pt-8 sm:pt-12 border-t border-border/50">
-            <h4 className="font-bold uppercase tracking-widest text-xs sm:text-sm text-muted-foreground">The Journey</h4>
-            <div className="relative pl-6 sm:pl-8 space-y-8 sm:space-y-12 before:absolute before:left-0 before:top-2 before:bottom-2 before:w-px before:bg-border">
-              {timeline.map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  className="relative"
-                >
-                  <div className="absolute -left-[27px] sm:-left-[35px] top-1 w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-primary border-4 border-background" />
-                  <span className="text-primary font-bold text-sm sm:text-base">{item.year}</span>
-                  <p className="text-muted-foreground mt-1 text-sm sm:text-base">{item.event}</p>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </div>
 
