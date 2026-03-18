@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 const navItems = [
   { name: 'Home', href: '#hero' },
@@ -64,7 +65,15 @@ export function Navbar() {
             setMobileMenuOpen(false)
           }}
         >
-          <div className="w-10 h-10 rounded-xl bg-primary group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(62,128,219,0.6)]">K</div>
+          <div className="relative w-10 h-10 rounded-xl bg-white/5 group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center shadow-[0_0_20px_rgba(62,128,219,0.3)] border border-white/10 overflow-hidden">
+            <Image 
+              src="/logo.png" 
+              alt="KCS Logo" 
+              fill 
+              className="object-contain p-1.5"
+              priority
+            />
+          </div>
           <span className="font-headline font-bold text-xl tracking-tight text-white">KCS</span>
         </div>
 

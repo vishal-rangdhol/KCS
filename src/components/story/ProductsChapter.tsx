@@ -57,7 +57,7 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-muted-foreground mt-6 max-w-3xl mx-auto text-lg sm:text-xl leading-relaxed"
+          className="text-muted-foreground mt-6 w-full text-lg sm:text-xl leading-relaxed"
         >
           Explore our specialized solutions designed to solve complex challenges in communication and data management.
         </motion.p>
@@ -69,7 +69,7 @@ export function ProductsChapter() {
             align: "start",
             loop: false,
           }}
-          className="w-full max-w-6xl mx-auto"
+          className="w-full mx-auto"
         >
           <CarouselContent className="-ml-6 sm:-ml-10">
             {products.map((product, index) => (
@@ -85,7 +85,6 @@ export function ProductsChapter() {
                   viewport={{ once: true }}
                   className="group relative h-[550px] sm:h-[700px] w-full rounded-[3rem] overflow-hidden bg-card border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]"
                 >
-                  {/* Product Image Background */}
                   <div className="absolute inset-0 z-0">
                     <Image 
                       src={product.image} 
@@ -93,13 +92,12 @@ export function ProductsChapter() {
                       fill 
                       className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[40%] group-hover:grayscale-0 brightness-75 group-hover:brightness-100"
                       data-ai-hint={product.hint}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10" />
                     <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 mix-blend-overlay opacity-50 group-hover:opacity-100 transition-opacity duration-700`} />
                   </div>
 
-                  {/* Content Overlay */}
                   <div className="absolute inset-0 z-20 p-10 sm:p-14 flex flex-col justify-end">
                     <motion.div 
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -121,8 +119,6 @@ export function ProductsChapter() {
                       <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-500" />
                     </Button>
                   </div>
-
-                  {/* Top Animated Highlight */}
                   <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 </motion.div>
               </CarouselItem>

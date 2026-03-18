@@ -1,11 +1,9 @@
-
 "use client"
 
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
-import { PlaceHolderImages } from '@/lib/placeholder-images'
 import { motion } from 'framer-motion'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -73,7 +71,7 @@ export function SolutionsChapter() {
       <div ref={sectionRef} className="h-screen w-[400vw] flex flex-row relative bg-card/10">
         {solutions.map((item, index) => (
           <div key={index} className="h-screen w-screen flex items-center justify-center p-6 md:p-24 border-r border-border/30">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
               <div className="space-y-8">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}

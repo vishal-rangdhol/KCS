@@ -40,7 +40,6 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
   const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
   const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
 
-  // Reverse rotation: side under cursor goes back
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-8deg", "8deg"])
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["8deg", "-8deg"])
 
@@ -91,7 +90,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
 export function VisionChapter() {
   return (
     <Chapter id="vision" className="bg-card/20 py-32">
-      <div className="max-w-5xl mx-auto text-center mb-32">
+      <div className="w-full text-center mb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +110,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative perspective-2000"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative w-full perspective-2000"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />
