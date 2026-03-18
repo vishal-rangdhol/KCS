@@ -59,9 +59,9 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
   const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
 
-  // Reverse rotation: mouse at top (-0.5) makes X rotation negative (tilting top away)
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-10deg", "10deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["10deg", "-10deg"])
+  // "Press Down" logic: tilts the side under the cursor away
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-12deg", "12deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["12deg", "-12deg"])
   
   const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
@@ -88,8 +88,13 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
     <motion.div
       ref={cardRef}
       variants={{
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } }
+        hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+        visible: { 
+          opacity: 1, 
+          y: 0, 
+          filter: 'blur(0px)',
+          transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
+        }
       }}
       style={{
         rotateX,
@@ -98,19 +103,19 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full p-8 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20"
+      className="group relative h-full p-8 rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20 cursor-none"
     >
-      {/* Dynamic Glow Overlay */}
+      {/* Dynamic Radial Glow Overlay */}
       <motion.div 
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(62, 128, 219, 0.2), transparent 70%)`
+          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(62, 128, 219, 0.15), transparent 60%)`
         }}
       />
       
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
         <motion.div 
-          whileHover={{ scale: 1.1, rotate: 5 }}
+          whileHover={{ scale: 1.1, rotate: 10 }}
           className={`p-5 rounded-2xl bg-background/60 border border-white/10 w-fit mb-8 shadow-xl group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
         >
           <service.icon size={36} />
@@ -119,13 +124,13 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
           {service.title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-base">
+        <p className="text-muted-foreground leading-relaxed text-base group-hover:text-foreground/80 transition-colors">
           {service.description}
         </p>
       </div>
 
-      {/* Interactive Border Highlight */}
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/10 rounded-[2rem] transition-all duration-500 pointer-events-none" />
+      {/* Decorative inner light */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
     </motion.div>
   )
 }
@@ -133,7 +138,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
 export function ServicesChapter() {
   return (
     <Chapter id="services" className="py-32">
-      <div className="text-center mb-24">
+      <div className="text-center mb-24 w-full px-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -162,7 +167,7 @@ export function ServicesChapter() {
       <motion.div 
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
         variants={{
           visible: {
             transition: {
@@ -170,7 +175,7 @@ export function ServicesChapter() {
             }
           }
         }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 perspective-2000"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 perspective-2000 w-full px-6"
       >
         {services.map((service, index) => (
           <ServiceCard key={index} service={service} index={index} />

@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight, MessageSquare, Database } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import React, { useRef } from 'react'
 
 const products = [
   {
@@ -34,10 +35,96 @@ const products = [
   }
 ]
 
+function ProductCard({ product, index }: { product: typeof products[0], index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-10deg", "10deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["10deg", "-10deg"])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const xPct = (e.clientX - rect.left) / rect.width - 0.5
+    const yPct = (e.clientY - rect.top) / rect.height - 0.5
+    x.set(xPct)
+    y.set(yPct)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <motion.div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d"
+      }}
+      initial={{ opacity: 0, scale: 0.9, y: 30 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ 
+        duration: 1, 
+        delay: index * 0.2,
+        ease: [0.23, 1, 0.32, 1] 
+      }}
+      viewport={{ once: true }}
+      className="group relative h-[600px] sm:h-[800px] w-full rounded-[4rem] overflow-hidden bg-card border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.8)] cursor-none"
+    >
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src={product.image} 
+          alt={product.name} 
+          fill 
+          className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0 brightness-50 group-hover:brightness-90"
+          data-ai-hint={product.hint}
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent z-10" />
+        <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 mix-blend-overlay opacity-40 group-hover:opacity-100 transition-opacity duration-700`} />
+      </div>
+
+      <div style={{ transform: "translateZ(60px)" }} className="absolute inset-0 z-20 p-10 sm:p-20 flex flex-col justify-end">
+        <motion.div 
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          className="bg-background/20 backdrop-blur-2xl p-5 rounded-[2rem] w-fit mb-10 border border-white/10 group-hover:bg-primary/40 group-hover:border-primary/60 transition-all duration-500 shadow-2xl"
+        >
+          <product.icon className="w-10 h-10 text-primary" />
+        </motion.div>
+        
+        <h3 className="text-4xl sm:text-7xl font-bold mb-8 tracking-tighter text-glow group-hover:text-primary transition-colors duration-500">
+          {product.name}
+        </h3>
+        
+        <p className="text-lg sm:text-2xl text-muted-foreground leading-relaxed mb-12 line-clamp-4 group-hover:text-foreground/95 transition-colors duration-500 max-w-2xl">
+          {product.description}
+        </p>
+        
+        <Button variant="ghost" className="w-full justify-between hover:bg-primary hover:text-white rounded-[2rem] h-20 px-12 group/btn border border-white/10 bg-white/5 transition-all duration-500 text-xl font-bold">
+          Explore Product
+          <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-3 transition-transform duration-500" />
+        </Button>
+      </div>
+      
+      {/* Top light sweep */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+    </motion.div>
+  )
+}
+
 export function ProductsChapter() {
   return (
     <Chapter id="products" className="bg-card/10 py-32 overflow-visible">
-      <div className="text-center mb-24">
+      <div className="text-center mb-32 w-full px-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,78 +144,32 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-muted-foreground mt-6 w-full text-lg sm:text-xl leading-relaxed"
+          className="text-muted-foreground mt-8 w-full max-w-4xl mx-auto text-xl sm:text-2xl leading-relaxed"
         >
           Explore our specialized solutions designed to solve complex challenges in communication and data management.
         </motion.p>
       </div>
 
-      <div className="w-full relative px-4 md:px-12">
+      <div className="w-full relative px-6 md:px-12">
         <Carousel
           opts={{
             align: "start",
             loop: false,
           }}
-          className="w-full mx-auto"
+          className="w-full"
         >
-          <CarouselContent className="-ml-6 sm:-ml-10">
+          <CarouselContent className="-ml-6 md:-ml-12">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-6 sm:pl-10 md:basis-1/2 lg:basis-1/2">
-                <motion.div 
-                  initial={{ opacity: 0, scale: 0.95, y: 30 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.8, 
-                    delay: index * 0.2,
-                    ease: [0.23, 1, 0.32, 1] 
-                  }}
-                  viewport={{ once: true }}
-                  className="group relative h-[550px] sm:h-[700px] w-full rounded-[3rem] overflow-hidden bg-card border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)]"
-                >
-                  <div className="absolute inset-0 z-0">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[40%] group-hover:grayscale-0 brightness-75 group-hover:brightness-100"
-                      data-ai-hint={product.hint}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 mix-blend-overlay opacity-50 group-hover:opacity-100 transition-opacity duration-700`} />
-                  </div>
-
-                  <div className="absolute inset-0 z-20 p-10 sm:p-14 flex flex-col justify-end">
-                    <motion.div 
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="bg-background/30 backdrop-blur-xl p-4 rounded-2xl w-fit mb-8 border border-white/10 group-hover:bg-primary/30 group-hover:border-primary/50 transition-all duration-500 shadow-2xl"
-                    >
-                      <product.icon className="w-8 h-8 text-primary" />
-                    </motion.div>
-                    
-                    <h3 className="text-3xl sm:text-5xl font-bold mb-6 tracking-tight text-glow group-hover:text-primary transition-colors duration-500">
-                      {product.name}
-                    </h3>
-                    
-                    <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-10 line-clamp-4 group-hover:text-foreground/90 transition-colors duration-500">
-                      {product.description}
-                    </p>
-                    
-                    <Button variant="ghost" className="w-full justify-between hover:bg-primary hover:text-white rounded-[1.5rem] h-14 px-8 group/btn border border-white/5 bg-white/5 transition-all duration-500 text-lg font-bold">
-                      Explore Product
-                      <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform duration-500" />
-                    </Button>
-                  </div>
-                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
-                </motion.div>
+              <CarouselItem key={index} className="pl-6 md:pl-12 md:basis-1/2 lg:basis-1/2 perspective-2000">
+                <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
           </CarouselContent>
           
           {products.length > 2 && (
             <div className="hidden md:flex justify-end gap-6 mt-16">
-              <CarouselPrevious className="static translate-y-0 h-14 w-14 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all duration-500" />
-              <CarouselNext className="static translate-y-0 h-14 w-14 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all duration-500" />
+              <CarouselPrevious className="static translate-y-0 h-16 w-16 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all duration-500" />
+              <CarouselNext className="static translate-y-0 h-16 w-16 rounded-2xl border-white/10 bg-card/40 hover:bg-primary hover:border-primary transition-all duration-500" />
             </div>
           )}
         </Carousel>

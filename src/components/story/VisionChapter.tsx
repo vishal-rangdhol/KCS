@@ -40,8 +40,12 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
   const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
   const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
 
+  // "Press Down" interaction
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-8deg", "8deg"])
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["8deg", "-8deg"])
+  
+  const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
+  const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -61,25 +65,36 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
     <motion.div
       ref={cardRef}
       variants={{
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, delay: index * 0.1 } }
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          transition: { duration: 0.8, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
+        }
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`p-10 rounded-[2.5rem] bg-gradient-to-br ${value.color} border border-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden`}
+      className={`p-10 rounded-[3rem] bg-gradient-to-br ${value.color} border border-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden cursor-none`}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Dynamic glow overlay */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(255, 255, 255, 0.05), transparent 70%)`
+        }}
+      />
       
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
         <motion.div 
-          whileHover={{ scale: 1.15, rotate: -10 }}
+          whileHover={{ scale: 1.2, rotate: -5 }}
           className="bg-background/40 p-5 rounded-2xl w-fit mb-8 border border-white/10 group-hover:border-primary/30 transition-all duration-500 shadow-xl"
         >
           <value.icon className="w-10 h-10 text-primary" />
         </motion.div>
         <h3 className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{value.title}</h3>
-        <p className="text-muted-foreground leading-relaxed text-lg sm:text-xl">
+        <p className="text-muted-foreground leading-relaxed text-lg sm:text-xl group-hover:text-foreground/90 transition-colors">
           {value.description}
         </p>
       </div>
@@ -90,7 +105,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
 export function VisionChapter() {
   return (
     <Chapter id="vision" className="bg-card/20 py-32">
-      <div className="w-full text-center mb-32">
+      <div className="w-full text-center mb-32 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +125,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative w-full perspective-2000"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative w-full perspective-2000 px-6"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />
