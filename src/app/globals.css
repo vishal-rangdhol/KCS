@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Slightly brighter and more saturated indigo/navy background */
-    --background: 222 47% 8%;
+    /* Premium Violet Theme */
+    --background: 264 43% 6%;
     --foreground: 0 0% 100%;
-    --card: 222 47% 12%;
+    --card: 264 43% 9%;
     --card-foreground: 0 0% 100%;
-    --popover: 222 47% 8%;
+    --popover: 264 43% 6%;
     --popover-foreground: 0 0% 100%;
-    --primary: 215 89% 60%;
+    --primary: 270 91% 68%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 270 70% 60%;
+    --secondary: 252 87% 65%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 222 30% 15%;
+    --muted: 264 30% 15%;
     --muted-foreground: 0 0% 70%;
-    --accent: 215 89% 60%;
+    --accent: 270 91% 68%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 222 20% 20%;
-    --input: 222 20% 20%;
-    --ring: 215 89% 60%;
+    --border: 264 20% 20%;
+    --input: 264 20% 20%;
+    --ring: 270 91% 68%;
     --radius: 1rem;
   }
 }
@@ -85,5 +85,5 @@ html.lenis {
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(62, 128, 219, 0.4);
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
 }

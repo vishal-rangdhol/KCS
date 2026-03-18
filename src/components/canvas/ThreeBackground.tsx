@@ -18,7 +18,7 @@ export function ThreeBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Primary Particles (Blue)
+    // Primary Particles (Violet)
     const particlesCount = 2000
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
@@ -33,7 +33,7 @@ export function ThreeBackground() {
     
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.02,
-      color: 0x3E80DB,
+      color: 0xA78BFA, // Violet
       transparent: true,
       opacity: 0.8,
       blending: THREE.AdditiveBlending
@@ -42,7 +42,7 @@ export function ThreeBackground() {
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
-    // Secondary Particles (Purple/Indigo)
+    // Secondary Particles (Soft Purple)
     const secondaryCount = 800
     const secPositions = new Float32Array(secondaryCount * 3)
     for (let i = 0; i < secondaryCount * 3; i++) {
@@ -52,7 +52,7 @@ export function ThreeBackground() {
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
       size: 0.03,
-      color: 0x8B5CF6,
+      color: 0xDDD6FE, // Lavender
       transparent: true,
       opacity: 0.4,
       blending: THREE.AdditiveBlending
@@ -62,7 +62,7 @@ export function ThreeBackground() {
 
     // Connections (Neural Network effect)
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x3E80DB,
+      color: 0xA78BFA,
       transparent: true,
       opacity: 0.08
     })

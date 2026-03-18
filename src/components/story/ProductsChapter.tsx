@@ -21,7 +21,7 @@ const products = [
     description: "A premium communication platform connecting people seamlessly through secure, encrypted channels, while also integrating a powerful Learning Management System (LMS) that enables organizations and institutions to deliver, manage, and track learning experiences in one unified ecosystem.",
     image: "https://picsum.photos/seed/catchup/1200/800",
     icon: MessageSquare,
-    color: "from-blue-600/40 via-primary/20 to-transparent",
+    color: "from-violet-600/40 via-primary/20 to-transparent",
     hint: "communication chat",
     href: "https://letscatchup-kcs.com/"
   },
@@ -31,7 +31,7 @@ const products = [
     description: "Advanced data management and processing platform designed for hyper-scalable enterprise operations, ensuring integrity and speed at scale.",
     image: "https://picsum.photos/seed/sushrt/1200/800",
     icon: Database,
-    color: "from-purple-600/40 via-secondary/20 to-transparent",
+    color: "from-fuchsia-600/40 via-secondary/20 to-transparent",
     hint: "data processing",
     href: "#"
   }
