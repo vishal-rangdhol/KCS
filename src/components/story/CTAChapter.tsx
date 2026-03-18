@@ -1,11 +1,10 @@
-
 "use client"
 
 import React, { useRef, useState, ReactNode, MouseEvent } from 'react'
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Rocket, ArrowRight } from 'lucide-react'
+import { Rocket } from 'lucide-react'
 
 export function CTAChapter() {
   return (
@@ -41,13 +40,6 @@ export function CTAChapter() {
               <Button size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group border-none w-full sm:w-auto">
                 Start the Journey
                 <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </Button>
-            </MagneticWrapper>
-            
-            <MagneticWrapper>
-              <Button variant="outline" size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full border-white/20 hover:bg-white/10 group w-full sm:w-auto">
-                View Case Studies
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </MagneticWrapper>
           </div>

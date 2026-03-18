@@ -6,7 +6,6 @@ import { ProblemChapter } from '@/components/story/ProblemChapter'
 import { VisionChapter } from '@/components/story/VisionChapter'
 import { AboutChapter } from '@/components/story/AboutChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
-import { SolutionsChapter } from '@/components/story/SolutionsChapter'
 import { ProductsChapter } from '@/components/story/ProductsChapter'
 import { CareersChapter } from '@/components/story/CareersChapter'
 import { ImpactChapter } from '@/components/story/ImpactChapter'
@@ -59,7 +58,6 @@ export default function Home() {
         <VisionChapter />
         <AboutChapter />
         <ServicesChapter />
-        <SolutionsChapter />
         <ProductsChapter />
         <ImpactChapter />
         <CareersChapter />
