@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -65,13 +66,14 @@ export function Navbar() {
             setMobileMenuOpen(false)
           }}
         >
-          <div className="relative rounded-xl bg-white/5 flex items-center justify-center shadow-[0_0_20px_rgba(62,128,219,0.3)] border border-white/10 overflow-hidden p-1">
+          <div className="relative flex items-center justify-center">
             <Image 
               src="/kcs-logo.png" 
               alt="KCS Logo" 
-              width={40}
+              width={120}
               height={40}
-              className="h-10 w-auto object-contain"
+              className="h-10 w-auto object-contain antialiased"
+              style={{ imageRendering: 'auto' }}
               priority
             />
           </div>
