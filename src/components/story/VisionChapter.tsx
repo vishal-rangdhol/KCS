@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -48,6 +49,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 768) return // Disable interaction on small screens
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
     const xPct = (e.clientX - rect.left) / rect.width - 0.5
@@ -76,7 +78,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`p-10 rounded-[3rem] bg-gradient-to-br ${value.color} border border-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden cursor-none`}
+      className={`p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br ${value.color} border border-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden cursor-none`}
     >
       {/* Dynamic glow overlay */}
       <motion.div 
@@ -89,12 +91,12 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
       <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
         <motion.div 
           whileHover={{ scale: 1.2, rotate: -5 }}
-          className="bg-background/40 p-5 rounded-2xl w-fit mb-8 border border-white/10 group-hover:border-primary/30 transition-all duration-500 shadow-xl"
+          className="bg-background/40 p-4 sm:p-5 rounded-2xl w-fit mb-6 sm:mb-8 border border-white/10 group-hover:border-primary/30 transition-all duration-500 shadow-xl"
         >
-          <value.icon className="w-10 h-10 text-primary" />
+          <value.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
         </motion.div>
-        <h3 className="text-2xl sm:text-3xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{value.title}</h3>
-        <p className="text-muted-foreground leading-relaxed text-lg sm:text-xl group-hover:text-foreground/90 transition-colors">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{value.title}</h3>
+        <p className="text-muted-foreground leading-relaxed text-base sm:text-lg md:text-xl group-hover:text-foreground/90 transition-colors">
           {value.description}
         </p>
       </div>
@@ -104,16 +106,16 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
 
 export function VisionChapter() {
   return (
-    <Chapter id="vision" className="bg-card/20 py-32">
-      <div className="w-full text-center mb-32 px-6">
+    <Chapter id="vision" className="bg-card/20 py-20 lg:py-32">
+      <div className="w-full text-center mb-16 lg:mb-32 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.4em] text-xs sm:text-sm mb-6 block font-bold">The Vision</span>
-          <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-10 leading-[1.1] tracking-tighter">
+          <span className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-sm mb-4 sm:mb-6 block font-bold">The Vision</span>
+          <h2 className="text-3xl sm:text-6xl md:text-8xl font-bold mb-6 lg:mb-10 leading-[1.1] tracking-tighter">
             KCS helps organizations <br />
             <span className="text-secondary italic">transform complexity</span> <br />
             into innovation.
@@ -125,7 +127,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative w-full perspective-2000 px-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16 relative w-full perspective-2000 px-4 sm:px-6"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />

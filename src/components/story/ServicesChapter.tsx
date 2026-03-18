@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -67,6 +68,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 768) return // Disable on mobile
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
     const width = rect.width
@@ -103,7 +105,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full p-8 rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20 cursor-none"
+      className="group relative h-full p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20 cursor-none"
     >
       {/* Dynamic Radial Glow Overlay */}
       <motion.div 
@@ -116,15 +118,15 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 10 }}
-          className={`p-5 rounded-2xl bg-background/60 border border-white/10 w-fit mb-8 shadow-xl group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
+          className={`p-4 sm:p-5 rounded-2xl bg-background/60 border border-white/10 w-fit mb-6 sm:mb-8 shadow-xl group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
         >
-          <service.icon size={36} />
+          <service.icon size={32} className="sm:size-[36px]" />
         </motion.div>
         
-        <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
           {service.title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-base group-hover:text-foreground/80 transition-colors">
+        <p className="text-muted-foreground leading-relaxed text-sm sm:text-base group-hover:text-foreground/80 transition-colors">
           {service.description}
         </p>
       </div>
@@ -137,8 +139,8 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="py-32">
-      <div className="text-center mb-24 w-full px-6">
+    <Chapter id="services" className="py-20 lg:py-32">
+      <div className="text-center mb-16 lg:mb-24 w-full px-4 sm:px-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -150,7 +152,7 @@ export function ServicesChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-8xl font-bold mb-8 tracking-tighter"
+          className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-8 tracking-tighter"
         >
           Premium Solutions
         </motion.h2>
@@ -158,7 +160,7 @@ export function ServicesChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-muted-foreground max-w-3xl mx-auto text-lg sm:text-xl leading-relaxed"
+          className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-xl leading-relaxed"
         >
           We combine technical depth with strategic foresight to deliver architectures that power the next generation of global businesses.
         </motion.p>
@@ -175,7 +177,7 @@ export function ServicesChapter() {
             }
           }
         }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 perspective-2000 w-full px-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 perspective-2000 w-full px-4 sm:px-6"
       >
         {services.map((service, index) => (
           <ServiceCard key={index} service={service} index={index} />

@@ -9,8 +9,8 @@ import { Rocket, ArrowRight } from 'lucide-react'
 
 export function CTAChapter() {
   return (
-    <Chapter id="cta" className="py-20 overflow-visible px-4">
-      <div className="w-full relative rounded-[32px] sm:rounded-[40px] md:rounded-[80px] p-8 sm:p-16 md:p-32 text-center overflow-hidden border border-white/10 group">
+    <Chapter id="cta" className="py-20 overflow-visible px-4 sm:px-6">
+      <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-white/10 group">
         {/* Animated Gradient Background */}
         <motion.div
           animate={{ 
@@ -18,7 +18,7 @@ export function CTAChapter() {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_var(--primary)_0%,_var(--secondary)_50%,_var(--primary)_100%)] opacity-20 blur-[80px] sm:blur-[120px]"
+          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_var(--primary)_0%,_var(--secondary)_50%,_var(--primary)_100%)] opacity-20 blur-[60px] sm:blur-[120px]"
         />
         
         <div className="relative z-10 max-w-4xl mx-auto">
@@ -32,11 +32,11 @@ export function CTAChapter() {
             Your Business?
           </motion.h2>
           
-          <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
             Let's collaborate to build the intelligent solutions that will define your organization's future in the digital era.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <MagneticWrapper>
               <Button size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full bg-primary hover:bg-primary/90 shadow-[0_0_40px_rgba(62,128,219,0.4)] group border-none w-full sm:w-auto">
                 Start the Journey

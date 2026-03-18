@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -33,12 +34,12 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function ImpactChapter() {
   return (
-    <Chapter id="impact" className="bg-background py-32">
-      <div className="text-center mb-24">
+    <Chapter id="impact" className="bg-background py-20 lg:py-32">
+      <div className="text-center mb-16 lg:mb-24 px-4">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-xs mb-4 block font-bold"
+          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 block font-bold"
         >
           Our Impact
         </motion.span>
@@ -46,7 +47,7 @@ export function ImpactChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-8xl font-bold tracking-tighter"
+          className="text-3xl sm:text-5xl md:text-8xl font-bold tracking-tighter"
         >
           Driving Measurable Results
         </motion.h2>
@@ -63,7 +64,7 @@ export function ImpactChapter() {
             }
           }
         }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 px-4"
       >
         {stats.map((stat, i) => (
           <motion.div
@@ -74,14 +75,14 @@ export function ImpactChapter() {
             }}
             className="text-center group"
           >
-            <div className="text-5xl md:text-7xl font-bold text-primary mb-6 group-hover:scale-105 transition-transform duration-700 tracking-tighter">
+            <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-primary mb-4 sm:mb-6 group-hover:scale-105 transition-transform duration-700 tracking-tighter">
               <Counter value={stat.value} suffix={stat.suffix} />
             </div>
-            <p className="text-muted-foreground font-bold uppercase tracking-[0.3em] text-xs md:text-sm group-hover:text-foreground transition-colors">
+            <p className="text-muted-foreground font-bold uppercase tracking-[0.3em] text-[10px] sm:text-xs md:text-sm group-hover:text-foreground transition-colors">
               {stat.label}
             </p>
             <motion.div 
-              className="w-12 h-1 bg-secondary mx-auto mt-8 rounded-full shadow-[0_0_15px_rgba(139,92,246,0.5)]"
+              className="w-10 sm:w-12 h-1 bg-secondary mx-auto mt-6 sm:mt-8 rounded-full shadow-[0_0_15px_rgba(139,92,246,0.5)]"
               initial={{ width: 0 }}
               whileInView={{ width: 48 }}
               transition={{ delay: i * 0.15 + 0.6, duration: 0.8 }}

@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -15,28 +16,28 @@ export function ContactChapter() {
   return (
     <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
       {/* Decorative background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
-        <div className="space-y-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="space-y-8 sm:space-y-12">
           <div>
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="text-primary font-headline uppercase tracking-[0.4em] text-xs mb-6 block font-bold"
+              className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 sm:mb-6 block font-bold"
             >
               Get In Touch
             </motion.span>
-            <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tighter">
+            <h2 className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter">
               Let's build <br />
               <span className="text-secondary italic">something great.</span>
             </h2>
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-md leading-relaxed">
+            <p className="text-base sm:text-xl text-muted-foreground max-w-md leading-relaxed">
               Whether you have a specific project in mind or just want to explore possibilities, our team of architects is ready to listen.
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <ContactInfoItem 
               icon={MapPin} 
               label="Location" 
@@ -62,22 +63,22 @@ export function ContactChapter() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="h-64 rounded-[2rem] bg-card/30 border border-white/5 relative overflow-hidden group shadow-2xl"
+            className="h-48 sm:h-64 rounded-[2rem] bg-card/30 border border-white/5 relative overflow-hidden group shadow-2xl"
           >
              <div className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 transition-opacity duration-700">
                <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:24px_24px]" />
              </div>
-             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <Globe className="w-12 h-12 text-primary/40 mb-4 animate-pulse" />
-                <div className="bg-background/80 backdrop-blur-xl px-8 py-4 rounded-2xl border border-white/10 shadow-2xl">
-                  <span className="text-sm font-bold tracking-[0.3em] uppercase text-primary">KCS Global HQ</span>
-                  <p className="text-xs text-muted-foreground mt-2">Innovation Corridor, Hyderabad</p>
+             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 text-center">
+                <Globe className="w-8 sm:w-12 h-8 sm:h-12 text-primary/40 mb-3 sm:mb-4 animate-pulse" />
+                <div className="bg-background/80 backdrop-blur-xl px-6 sm:px-8 py-3 sm:py-4 rounded-2xl border border-white/10 shadow-2xl">
+                  <span className="text-[10px] sm:text-sm font-bold tracking-[0.3em] uppercase text-primary">KCS Global HQ</span>
+                  <p className="text-[8px] sm:text-xs text-muted-foreground mt-1 sm:mt-2">Innovation Corridor, Hyderabad</p>
                 </div>
              </div>
           </motion.div>
         </div>
 
-        <div className="relative">
+        <div className="relative w-full">
           {/* Animated decorative element behind form */}
           <motion.div 
             animate={{ 
@@ -85,20 +86,20 @@ export function ContactChapter() {
               scale: [1, 1.1, 1]
             }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-12 -right-12 w-64 h-64 bg-secondary/15 rounded-full blur-[80px] pointer-events-none"
+            className="absolute -top-12 -right-12 w-48 sm:w-64 h-48 sm:h-64 bg-secondary/15 rounded-full blur-[80px] pointer-events-none"
           />
 
           <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="p-8 sm:p-12 rounded-[3rem] glass border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden"
+            className="p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] glass border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 p-12 text-primary/5 -rotate-12 pointer-events-none">
-              <MessageSquare size={160} strokeWidth={1} />
+            <div className="absolute top-0 right-0 p-8 sm:p-12 text-primary/5 -rotate-12 pointer-events-none">
+              <MessageSquare size={120} className="sm:size-[160px]" strokeWidth={1} />
             </div>
 
-            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 gap-8">
+            <form className="space-y-6 sm:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 gap-6 sm:gap-8">
                 <FloatingInput 
                   label="Full Name" 
                   id="name" 
@@ -117,30 +118,30 @@ export function ContactChapter() {
                 />
 
                 <div className="space-y-3">
-                  <Label className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2">Your Message</Label>
+                  <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2">Your Message</Label>
                   <Textarea 
-                    className="bg-background/20 border-white/10 min-h-[160px] p-6 rounded-3xl focus:ring-primary/50 focus:border-primary/50 transition-all text-base backdrop-blur-md resize-none"
+                    className="bg-background/20 border-white/10 min-h-[140px] sm:min-h-[160px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base backdrop-blur-md resize-none"
                     placeholder="How can we help you architect your future?"
                   />
                 </div>
               </div>
 
-              <Button className="w-full h-18 rounded-3xl text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-8 shadow-[0_12px_40px_rgba(62,128,219,0.3)] hover:shadow-[0_20px_60px_rgba(62,128,219,0.5)]">
+              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(62,128,219,0.3)] hover:shadow-[0_20px_60px_rgba(62,128,219,0.5)]">
                 Send Message
-                <Send className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                <Send className="ml-3 w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               </Button>
             </form>
           </motion.div>
         </div>
       </div>
 
-      <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground">
-        <div className="flex flex-col gap-2 items-center md:items-start">
-          <p className="text-xs tracking-widest uppercase font-bold text-white/40">© 2025 KCS</p>
-          <p className="text-[10px] tracking-widest uppercase">Kandhugule Consultancy Services. All Rights Reserved.</p>
+      <div className="mt-20 sm:mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground px-4 sm:px-6">
+        <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
+          <p className="text-[10px] tracking-widest uppercase font-bold text-white/40">© 2025 KCS</p>
+          <p className="text-[9px] sm:text-[10px] tracking-widest uppercase">Kandhugule Consultancy Services. All Rights Reserved.</p>
         </div>
         
-        <div className="flex gap-8 text-[11px] font-bold uppercase tracking-[0.3em]">
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em]">
            <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight size={12} /></a>
            <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Twitter <ArrowUpRight size={12} /></a>
            <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Instagram <ArrowUpRight size={12} /></a>
@@ -156,15 +157,15 @@ function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ delay }}
-      className="flex items-center gap-6 group cursor-pointer"
+      className="flex items-center gap-4 sm:gap-6 group cursor-pointer"
       onClick={() => href && window.open(href)}
     >
-      <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
-        <Icon size={24} />
+      <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
+        <Icon size={20} className="sm:size-[24px]" />
       </div>
       <div className="flex-1">
-        <h4 className="font-bold text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-1">{label}</h4>
-        <p className="text-lg font-medium group-hover:text-primary transition-colors">{value}</p>
+        <h4 className="font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-1">{label}</h4>
+        <p className="text-sm sm:text-lg font-medium group-hover:text-primary transition-colors line-clamp-2">{value}</p>
       </div>
     </motion.div>
   )
@@ -172,8 +173,8 @@ function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
 
 function FloatingInput({ label, id, type = "text", placeholder, onFocus, onBlur }: any) {
   return (
-    <div className="space-y-3 group">
-      <Label htmlFor={id} className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2 group-focus-within:text-primary transition-colors">
+    <div className="space-y-2 sm:space-y-3 group">
+      <Label htmlFor={id} className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2 group-focus-within:text-primary transition-colors">
         {label}
       </Label>
       <Input 
@@ -181,7 +182,7 @@ function FloatingInput({ label, id, type = "text", placeholder, onFocus, onBlur 
         type={type}
         onFocus={onFocus}
         onBlur={onBlur}
-        className="bg-background/20 border-white/10 h-16 px-6 rounded-2xl focus:ring-primary/50 focus:border-primary/50 transition-all text-base backdrop-blur-md shadow-inner"
+        className="bg-background/20 border-white/10 h-12 sm:h-16 px-4 sm:px-6 rounded-xl sm:rounded-2xl focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base backdrop-blur-md shadow-inner"
         placeholder={placeholder}
       />
     </div>
