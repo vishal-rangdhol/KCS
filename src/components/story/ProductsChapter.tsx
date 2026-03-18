@@ -22,7 +22,8 @@ const products = [
     image: "https://picsum.photos/seed/catchup/1200/800",
     icon: MessageSquare,
     color: "from-blue-600/40 via-primary/20 to-transparent",
-    hint: "communication chat"
+    hint: "communication chat",
+    href: "https://letscatchup-kcs.com/"
   },
   {
     id: "sushrt",
@@ -31,7 +32,8 @@ const products = [
     image: "https://picsum.photos/seed/sushrt/1200/800",
     icon: Database,
     color: "from-purple-600/40 via-secondary/20 to-transparent",
-    hint: "data processing"
+    hint: "data processing",
+    href: "#"
   }
 ]
 
@@ -113,6 +115,11 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         <Button 
           variant="ghost" 
           className="w-full justify-between hover:bg-primary hover:text-white rounded-xl sm:rounded-[2rem] h-12 sm:h-20 px-5 sm:px-12 group/btn border border-white/10 bg-white/5 transition-all duration-500 text-sm sm:text-lg lg:text-xl font-bold whitespace-normal text-left"
+          onClick={() => {
+            if (product.href && product.href !== "#") {
+              window.open(product.href, '_blank', 'noopener,noreferrer');
+            }
+          }}
         >
           <span className="flex-1 pr-4">Explore Product</span>
           <ArrowRight className="w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0 group-hover/btn:translate-x-3 transition-transform duration-500" />
