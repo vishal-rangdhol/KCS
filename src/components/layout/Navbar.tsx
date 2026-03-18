@@ -60,7 +60,7 @@ export function Navbar() {
         }`}
       >
         <div 
-          className="flex items-center gap-4 group cursor-pointer"
+          className="flex items-center group cursor-pointer"
           onClick={() => {
             window.scrollTo({ top: 0, behavior: 'smooth' })
             setMobileMenuOpen(false)
@@ -77,7 +77,6 @@ export function Navbar() {
               priority
             />
           </div>
-          <span className="font-headline font-bold text-xl tracking-tight text-white">KCS</span>
         </div>
 
         {/* Desktop Menu */}
