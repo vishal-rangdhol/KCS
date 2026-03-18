@@ -65,12 +65,13 @@ export function Navbar() {
             setMobileMenuOpen(false)
           }}
         >
-          <div className="relative w-10 h-10 rounded-xl bg-white/5 group-hover:rotate-[360deg] transition-transform duration-1000 flex items-center justify-center shadow-[0_0_20px_rgba(62,128,219,0.3)] border border-white/10 overflow-hidden">
+          <div className="relative rounded-xl bg-white/5 flex items-center justify-center shadow-[0_0_20px_rgba(62,128,219,0.3)] border border-white/10 overflow-hidden p-1">
             <Image 
-              src="/logo.png" 
+              src="/kcs-logo.png" 
               alt="KCS Logo" 
-              fill 
-              className="object-contain p-1.5"
+              width={40}
+              height={40}
+              className="h-10 w-auto object-contain"
               priority
             />
           </div>
