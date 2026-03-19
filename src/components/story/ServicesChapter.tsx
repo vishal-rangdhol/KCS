@@ -63,26 +63,31 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
           transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-full p-8 rounded-[2.5rem] bg-black/5 border border-black/5 overflow-hidden"
+      className="relative h-full p-8 rounded-[2.5rem] bg-black/5 border border-black/5 overflow-hidden group hover:bg-primary transition-all duration-500 cursor-pointer"
     >
-      {/* Glass Surface */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 z-0" />
+      {/* Glass Surface - Inverts to primary color on hover */}
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 z-0 group-hover:bg-primary transition-colors duration-500" />
       
       <div className="relative z-10">
-        <div className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-black/5 w-fit mb-10 shadow-sm ${service.iconColor}`}>
+        <div className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-black/5 w-fit mb-10 shadow-sm ${service.iconColor} group-hover:bg-white/20 group-hover:text-white transition-all duration-500`}>
           <service.icon size={44} strokeWidth={1.5} />
         </div>
         
-        <h3 className="text-3xl font-bold mb-4 tracking-tighter text-foreground">
-          {service.title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed text-lg">
+        <div className="relative mb-4 inline-block">
+          <h3 className="text-3xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500">
+            {service.title}
+          </h3>
+          {/* Animated underline from left to right */}
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-500 ease-out" />
+        </div>
+        
+        <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500">
           {service.description}
         </p>
       </div>
 
-      {/* Subtle Corner Accent */}
-      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 blur-3xl rounded-full`} />
+      {/* Subtle Corner Accent - Fades out on hover to avoid clashing with bg-primary */}
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500`} />
     </motion.div>
   )
 }
