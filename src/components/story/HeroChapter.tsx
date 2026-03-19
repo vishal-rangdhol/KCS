@@ -34,6 +34,16 @@ export function HeroChapter() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
+  const scrollToContact = () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToNext = () => {
+    const el = document.getElementById('problem');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const headline = "Engineering Digital Ecosystems for the AI Era"
   const words = headline.split(" ")
 
@@ -112,14 +122,23 @@ export function HeroChapter() {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
         >
           <MagneticButton>
-            <Button size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-black/5 hover:text-foreground hover:border-black/10 transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]">
+            <Button 
+              size="lg" 
+              onClick={scrollToContact}
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-black/5 hover:text-foreground hover:border-black/10 transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]"
+            >
               Start Your Project
               <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
           </MagneticButton>
 
           <MagneticButton>
-            <Button variant="outline" size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-foreground">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              onClick={scrollToNext}
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-foreground"
+            >
               Explore Our Platforms
               <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
             </Button>
