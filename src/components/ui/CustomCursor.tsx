@@ -11,10 +11,15 @@ export function CustomCursor() {
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  // Smooth spring configuration
+  // Primary smooth spring configuration
   const springConfig = { damping: 35, stiffness: 350, mass: 0.5 }
   const x = useSpring(cursorX, springConfig)
   const y = useSpring(cursorY, springConfig)
+
+  // Secondary laggy spring configuration for the "trail" effect
+  // These hooks are now defined at the top level to ensure a consistent hook order
+  const secondaryX = useSpring(cursorX, { damping: 45, stiffness: 250 })
+  const secondaryY = useSpring(cursorY, { damping: 45, stiffness: 250 })
 
   useEffect(() => {
     // Only enable for non-touch devices
@@ -63,6 +68,7 @@ export function CustomCursor() {
     }
   }, [cursorX, cursorY])
 
+  // Hook calls must occur BEFORE any conditional returns
   if (!enabled) return null
 
   return (
@@ -100,8 +106,8 @@ export function CustomCursor() {
       <motion.div
         className="absolute w-2 h-2 rounded-full bg-secondary/20 blur-sm"
         style={{
-          x: useSpring(cursorX, { damping: 45, stiffness: 250 }),
-          y: useSpring(cursorY, { damping: 45, stiffness: 250 }),
+          x: secondaryX,
+          y: secondaryY,
           translateX: '-50%',
           translateY: '-50%',
         }}
