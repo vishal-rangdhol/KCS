@@ -74,7 +74,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       className="relative h-[520px] rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
     >
-      {/* Background Image Layer */}
+      {/* Background Image Layer - Z-0 */}
       <div className="absolute inset-0 z-0">
         <Image 
           src={service.image?.imageUrl || "https://picsum.photos/seed/kcs6/1200/800"} 
@@ -83,17 +83,17 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110 opacity-30 group-hover:opacity-100"
           data-ai-hint={service.image?.imageHint || "technology"}
         />
-        {/* Base dark overlay for initial readability */}
+        {/* Base overlay for default state readability */}
         <div className="absolute inset-0 bg-background/60 group-hover:bg-transparent transition-colors duration-700" />
       </div>
 
-      {/* Vibrant Transparent Color Overlay Layer */}
+      {/* Vibrant Semi-Transparent Color Overlay - Z-10 */}
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700",
         service.color
       )} />
 
-      {/* Content Section */}
+      {/* Content Section - Z-20 */}
       <div className="relative z-20 h-full p-10 flex flex-col justify-center text-center">
         {/* Icon: Pinned Top-Left */}
         <div className="absolute top-10 left-10 p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
