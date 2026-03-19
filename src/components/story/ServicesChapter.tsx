@@ -11,49 +11,49 @@ const services = [
     title: "Artificial Intelligence",
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
-    color: "from-orange-500/20 to-amber-600/20",
-    iconColor: "text-orange-600",
-    hoverBg: "hover:bg-orange-600"
+    color: "from-indigo-500/20 to-indigo-600/20",
+    iconColor: "text-indigo-600",
+    hoverBg: "hover:bg-indigo-600"
   },
   {
     title: "Cloud Cognitive Operations",
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
-    color: "from-amber-500/20 to-yellow-600/20",
-    iconColor: "text-amber-600",
-    hoverBg: "hover:bg-amber-600"
+    color: "from-emerald-500/20 to-emerald-600/20",
+    iconColor: "text-emerald-600",
+    hoverBg: "hover:bg-emerald-600"
   },
   {
     title: "Cybersecurity",
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
-    color: "from-red-500/20 to-orange-600/20",
-    iconColor: "text-red-600",
-    hoverBg: "hover:bg-red-600"
+    color: "from-rose-500/20 to-rose-600/20",
+    iconColor: "text-rose-600",
+    hoverBg: "hover:bg-rose-600"
   },
   {
     title: "Data & Analytics",
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
-    color: "from-yellow-500/20 to-amber-600/20",
-    iconColor: "text-yellow-600",
-    hoverBg: "hover:bg-yellow-600"
+    color: "from-sky-500/20 to-sky-600/20",
+    iconColor: "text-sky-600",
+    hoverBg: "hover:bg-sky-600"
   },
   {
     title: "Enterprise Solutions",
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
-    color: "from-orange-400/20 to-amber-500/20",
-    iconColor: "text-orange-500",
-    hoverBg: "hover:bg-orange-500"
+    color: "from-violet-500/20 to-violet-600/20",
+    iconColor: "text-violet-600",
+    hoverBg: "hover:bg-violet-600"
   },
   {
     title: "Cloud Solutions",
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
-    color: "from-amber-600/20 to-orange-700/20",
-    iconColor: "text-amber-700",
-    hoverBg: "hover:bg-amber-700"
+    color: "from-fuchsia-500/20 to-fuchsia-600/20",
+    iconColor: "text-fuchsia-600",
+    hoverBg: "hover:bg-fuchsia-600"
   }
 ]
 
