@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -15,7 +14,6 @@ export function ContactChapter() {
 
   return (
     <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
-      {/* Decorative background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
@@ -28,7 +26,7 @@ export function ContactChapter() {
             >
               Get In Touch
             </motion.span>
-            <h2 className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter text-foreground">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter text-foreground">
               Let's build <br />
               <span className="text-secondary italic">something great.</span>
             </h2>
@@ -41,7 +39,7 @@ export function ContactChapter() {
             <ContactInfoItem 
               icon={MapPin} 
               label="Location" 
-              value="3-37 RC Puram, behind SR chambers, Hyderabad, 502032, Telangana" 
+              value="3-37 RC Puram, Hyderabad, 502032" 
               delay={0.1}
             />
             <ContactInfoItem 
@@ -79,7 +77,6 @@ export function ContactChapter() {
         </div>
 
         <div className="relative w-full">
-          {/* Animated decorative element behind form */}
           <motion.div 
             animate={{ 
               rotate: [0, 360],
@@ -104,8 +101,6 @@ export function ContactChapter() {
                   label="Full Name" 
                   id="name" 
                   placeholder="Enter your name"
-                  onFocus={() => setFocusedField('name')}
-                  onBlur={() => setFocusedField(null)}
                 />
                 
                 <FloatingInput 
@@ -113,8 +108,6 @@ export function ContactChapter() {
                   id="email" 
                   type="email" 
                   placeholder="john@example.com"
-                  onFocus={() => setFocusedField('email')}
-                  onBlur={() => setFocusedField(null)}
                 />
 
                 <div className="space-y-3">
@@ -126,7 +119,7 @@ export function ContactChapter() {
                 </div>
               </div>
 
-              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(249,115,22,0.2)] hover:shadow-[0_20px_60px_rgba(249,115,22,0.4)]">
+              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(249,115,22,0.2)]">
                 Send Message
                 <Send className="ml-3 w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               </Button>
@@ -135,7 +128,7 @@ export function ContactChapter() {
         </div>
       </div>
 
-      <div className="mt-20 sm:mt-32 pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground px-4 sm:px-6">
+      <div className="mt-20 sm:mt-32 pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground px-6 max-w-7xl mx-auto">
         <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
           <p className="text-[10px] tracking-widest uppercase font-bold text-foreground/40">© 2025 KCS</p>
           <p className="text-[9px] sm:text-[10px] tracking-widest uppercase text-muted-foreground">Kandhugule Consultancy Services. All Rights Reserved.</p>
@@ -171,7 +164,7 @@ function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
   )
 }
 
-function FloatingInput({ label, id, type = "text", placeholder, onFocus, onBlur }: any) {
+function FloatingInput({ label, id, type = "text", placeholder }: any) {
   return (
     <div className="space-y-2 sm:space-y-3 group">
       <Label htmlFor={id} className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2 group-focus-within:text-primary transition-colors">
@@ -180,8 +173,6 @@ function FloatingInput({ label, id, type = "text", placeholder, onFocus, onBlur 
       <Input 
         id={id}
         type={type}
-        onFocus={onFocus}
-        onBlur={onBlur}
         className="bg-black/5 border-black/5 h-12 sm:h-16 px-4 sm:px-6 rounded-xl sm:rounded-2xl focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base backdrop-blur-md shadow-inner text-foreground"
         placeholder={placeholder}
       />

@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useRef, useEffect } from 'react'
@@ -9,30 +8,25 @@ import { Button } from '@/components/ui/button'
 export function HeroChapter() {
   const containerRef = useRef<HTMLDivElement>(null)
   
-  // Mouse coordinates for parallax/spotlight
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
-  // Spring configuration for silky smooth movement
   const springConfig = { stiffness: 60, damping: 30, mass: 0.5 }
   const smoothX = useSpring(mouseX, springConfig)
   const smoothY = useSpring(mouseY, springConfig)
 
-  // Text Parallax Layers - Primary headline moves more than the subheadline
   const textX = useTransform(smoothX, [-0.5, 0.5], [20, -20])
   const textY = useTransform(smoothY, [-0.5, 0.5], [15, -15])
   
   const subTextX = useTransform(smoothX, [-0.5, 0.5], [10, -10])
   const subTextY = useTransform(smoothY, [-0.5, 0.5], [5, -5])
 
-  // Spotlight Position - Follows mouse smoothly
   const spotlightX = useTransform(smoothX, [-0.5, 0.5], ["20%", "80%"])
   const spotlightY = useTransform(smoothY, [-0.5, 0.5], ["20%", "80%"])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window
-      // Normalize to -0.5 to 0.5 range
       mouseX.set((e.clientX / innerWidth) - 0.5)
       mouseY.set((e.clientY / innerHeight) - 0.5)
     }
@@ -47,9 +41,8 @@ export function HeroChapter() {
     <section 
       id="hero" 
       ref={containerRef}
-      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 sm:px-6 overflow-hidden pt-32 pb-40 bg-background"
+      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-6 sm:px-12 overflow-hidden pt-32 pb-40 bg-background"
     >
-      {/* Dynamic Interactive Spotlight Background */}
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"
         style={{
@@ -60,7 +53,6 @@ export function HeroChapter() {
         }}
       />
 
-      {/* Floating Interactive Protocol Nodes */}
       <FloatingNode icon={Cpu} top="20%" left="12%" delay={0} smoothX={smoothX} smoothY={smoothY} speed={-45} />
       <FloatingNode icon={Shield} top="75%" left="18%" delay={0.2} smoothX={smoothX} smoothY={smoothY} speed={35} />
       <FloatingNode icon={Network} top="25%" left="85%" delay={0.4} smoothX={smoothX} smoothY={smoothY} speed={-55} />
@@ -80,7 +72,7 @@ export function HeroChapter() {
         
         <motion.h1 
           style={{ x: textX, y: textY }}
-          className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-6 sm:mb-10 leading-[0.9] tracking-tighter text-foreground"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-10 leading-[0.9] tracking-tighter text-foreground"
         >
           {words.map((word, i) => (
             <motion.span
@@ -135,12 +127,11 @@ export function HeroChapter() {
         </motion.div>
       </div>
 
-      {/* Scroll Hint */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3, duration: 1 }}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20"
       >
         <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold">Scroll Story</span>
         <motion.div
@@ -154,7 +145,6 @@ export function HeroChapter() {
 }
 
 function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }: any) {
-  // Nodes move in response to mouse but at unique offsets and speeds
   const x = useTransform(smoothX, [-0.5, 0.5], [speed, -speed])
   const y = useTransform(smoothY, [-0.5, 0.5], [speed, -speed])
 
@@ -174,7 +164,6 @@ function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }:
 function MagneticButton({ children }: { children: React.ReactNode }) {
   const buttonRef = useRef<HTMLDivElement>(null)
   
-  // Use MotionValues and Springs for ultra-stable, smooth displacement
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 })
@@ -188,11 +177,9 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const { clientX, clientY } = e
     const { left, top, width, height } = div.getBoundingClientRect()
     
-    // Calculate relative to the static outer container's center
     const centerX = left + width / 2
     const centerY = top + height / 2
     
-    // Smaller factor to reduce jitter/drastic movement
     const moveX = clientX - centerX
     const moveY = clientY - centerY
     
