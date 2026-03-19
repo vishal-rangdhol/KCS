@@ -131,16 +131,21 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Disable magnetic effect on mobile
     if (window.innerWidth < 768) return
-    if (!buttonRef.current) return
+    const div = buttonRef.current
+    if (!div) return
+
     const { clientX, clientY } = e
-    const { left, top, width, height } = buttonRef.current.getBoundingClientRect()
+    const { left, top, width, height } = div.getBoundingClientRect()
     
-    const x = clientX - (left + width / 2)
-    const y = clientY - (top + height / 2)
+    // Calculate relative to the static outer center
+    const centerX = left + width / 2
+    const centerY = top + height / 2
     
-    const factor = 0.35
+    const x = clientX - centerX
+    const y = clientY - centerY
+    
+    const factor = 0.3
     setPosition({ x: x * factor, y: y * factor })
   }
 
@@ -149,15 +154,18 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <motion.div
+    <div
       ref={buttonRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       className="inline-block w-full sm:w-auto"
     >
-      {children}
-    </motion.div>
+      <motion.div
+        animate={{ x: position.x, y: position.y }}
+        transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      >
+        {children}
+      </motion.div>
+    </div>
   )
 }

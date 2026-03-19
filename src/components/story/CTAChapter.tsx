@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useRef, useState, ReactNode, MouseEvent } from 'react'
@@ -55,24 +56,39 @@ function MagneticWrapper({ children }: { children: ReactNode }) {
 
   const handleMouseMove = (e: MouseEvent) => {
     if (window.innerWidth < 768) return
-    if (!ref.current) return
+    const div = ref.current
+    if (!div) return
+    
     const { clientX, clientY } = e
-    const { left, top, width, height } = ref.current.getBoundingClientRect()
-    const x = clientX - (left + width / 2)
-    const y = clientY - (top + height / 2)
-    setPos({ x: x * 0.3, y: y * 0.3 })
+    const { left, top, width, height } = div.getBoundingClientRect()
+    
+    const centerX = left + width / 2
+    const centerY = top + height / 2
+    
+    const x = clientX - centerX
+    const y = clientY - centerY
+    
+    const factor = 0.3
+    setPos({ x: x * factor, y: y * factor })
+  }
+
+  const handleMouseLeave = () => {
+    setPos({ x: 0, y: 0 })
   }
 
   return (
-    <motion.div
+    <div
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setPos({ x: 0, y: 0 })}
-      animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15 }}
+      onMouseLeave={handleMouseLeave}
       className="inline-block w-full sm:w-auto"
     >
-      {children}
-    </motion.div>
+      <motion.div
+        animate={{ x: pos.x, y: pos.y }}
+        transition={{ type: "spring", stiffness: 150, damping: 15 }}
+      >
+        {children}
+      </motion.div>
+    </div>
   )
 }
