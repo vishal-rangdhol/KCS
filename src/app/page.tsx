@@ -38,11 +38,13 @@ export default function Home() {
 
       {/* Background Ambient Glows - Sunset Theme */}
       <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Central Dark Ellipse for Depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(ellipse_at_center,_black_0%,_transparent_60%)] opacity-60 blur-[120px]" />
+        
         <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/20 blur-[160px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/15 blur-[160px] rounded-full" />
         <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/10 blur-[140px] rounded-full" />
         <div className="absolute bottom-1/3 left-1/4 w-[50%] h-[50%] bg-amber-500/10 blur-[140px] rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-background/20 radial-gradient(circle, transparent 0%, var(--background) 100%)" />
       </div>
 
       {/* Chapters Wrapper with Page Transition */}

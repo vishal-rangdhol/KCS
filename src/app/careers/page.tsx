@@ -90,6 +90,9 @@ export default function CareersPage() {
       
       {/* Dynamic Background Elements - Sunset Theme */}
       <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Central Dark Ellipse for Depth */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(ellipse_at_center,_black_0%,_transparent_60%)] opacity-60 blur-[120px]" />
+        
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.08)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full opacity-40" />
       </div>
