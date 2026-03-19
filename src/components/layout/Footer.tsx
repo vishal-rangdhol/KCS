@@ -2,10 +2,9 @@
 "use client"
 
 import React from 'react'
-import Link from 'next/image'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react'
+import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react'
 import NextLink from 'next/link'
 
 const navItems = [
@@ -88,7 +87,6 @@ export function Footer() {
         <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
           <NextLink href="#" className="hover:text-primary transition-colors">Privacy Policy</NextLink>
           <NextLink href="#" className="hover:text-primary transition-colors">Terms of Service</NextLink>
-          <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-1">LinkedIn <ArrowUpRight size={12} /></a>
         </div>
       </div>
     </footer>
