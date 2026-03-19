@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -11,49 +10,49 @@ const services = [
     title: "Artificial Intelligence",
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
-    color: "from-cyan-500/40 to-blue-600/40",
-    glowColor: "rgba(6, 182, 212, 0.4)",
-    iconColor: "text-cyan-400"
+    color: "from-orange-500/40 to-amber-600/40",
+    glowColor: "rgba(249, 115, 22, 0.4)",
+    iconColor: "text-orange-400"
   },
   {
     title: "Cloud Cognitive Operations",
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
-    color: "from-purple-500/40 to-indigo-600/40",
-    glowColor: "rgba(168, 85, 247, 0.4)",
-    iconColor: "text-purple-400"
+    color: "from-amber-500/40 to-yellow-600/40",
+    glowColor: "rgba(245, 158, 11, 0.4)",
+    iconColor: "text-amber-400"
   },
   {
     title: "Cybersecurity",
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
-    color: "from-rose-500/40 to-red-600/40",
-    glowColor: "rgba(244, 63, 94, 0.4)",
-    iconColor: "text-rose-400"
+    color: "from-red-500/40 to-orange-600/40",
+    glowColor: "rgba(239, 68, 68, 0.4)",
+    iconColor: "text-red-400"
   },
   {
     title: "Data & Analytics",
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
-    color: "from-emerald-500/40 to-teal-600/40",
-    glowColor: "rgba(16, 185, 129, 0.4)",
-    iconColor: "text-emerald-400"
+    color: "from-yellow-500/40 to-amber-600/40",
+    glowColor: "rgba(234, 179, 8, 0.4)",
+    iconColor: "text-yellow-400"
   },
   {
     title: "Enterprise Solutions",
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
-    color: "from-amber-500/40 to-orange-600/40",
-    glowColor: "rgba(245, 158, 11, 0.4)",
-    iconColor: "text-amber-400"
+    color: "from-orange-400/40 to-amber-500/40",
+    glowColor: "rgba(251, 146, 60, 0.4)",
+    iconColor: "text-orange-300"
   },
   {
     title: "Cloud Solutions",
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
-    color: "from-blue-400/40 to-blue-600/40",
-    glowColor: "rgba(59, 130, 246, 0.4)",
-    iconColor: "text-blue-300"
+    color: "from-amber-600/40 to-orange-700/40",
+    glowColor: "rgba(180, 83, 9, 0.4)",
+    iconColor: "text-amber-500"
   }
 ]
 
@@ -105,7 +104,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       onMouseLeave={handleMouseLeave}
       className="group relative h-full p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-visible cursor-none"
     >
-      {/* Hyper-Vibrant Background Glow - Rounded to match card */}
+      {/* Hyper-Vibrant Background Glow - Sunset */}
       <motion.div 
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px] rounded-[2.5rem]"
         style={{
@@ -141,7 +140,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         </p>
       </div>
 
-      {/* Vibrant Corner Accent - Blurred out to avoid corners */}
+      {/* Vibrant Corner Accent */}
       <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700 rounded-full`} />
     </motion.div>
   )
@@ -163,7 +162,7 @@ export function ServicesChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-5xl md:text-9xl font-bold mb-10 tracking-tighter"
         >
-          Vibrant <br /> <span className="text-secondary italic">Innovation.</span>
+          Solar <br /> <span className="text-secondary italic">Innovation.</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0 }}

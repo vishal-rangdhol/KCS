@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Premium Violet Theme */
-    --background: 264 43% 6%;
+    /* Sunset Orange Theme */
+    --background: 20 40% 4%;
     --foreground: 0 0% 100%;
-    --card: 264 43% 9%;
+    --card: 20 40% 7%;
     --card-foreground: 0 0% 100%;
-    --popover: 264 43% 6%;
+    --popover: 20 40% 4%;
     --popover-foreground: 0 0% 100%;
-    --primary: 270 91% 68%;
+    --primary: 24 95% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 252 87% 65%;
+    --secondary: 35 92% 55%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 264 30% 15%;
+    --muted: 20 20% 12%;
     --muted-foreground: 0 0% 70%;
-    --accent: 270 91% 68%;
+    --accent: 24 95% 58%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 264 20% 20%;
-    --input: 264 20% 20%;
-    --ring: 270 91% 68%;
+    --border: 20 20% 18%;
+    --input: 20 20% 18%;
+    --ring: 24 95% 58%;
     --radius: 1rem;
   }
 }
@@ -80,10 +80,10 @@ html.lenis {
 }
 
 .glass {
-  @apply bg-white/10 backdrop-blur-2xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+  @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.5)];
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
 }

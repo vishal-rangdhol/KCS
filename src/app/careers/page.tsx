@@ -88,9 +88,9 @@ export default function CareersPage() {
       <Navbar />
       <ThreeBackground />
       
-      {/* Dynamic Background Elements */}
+      {/* Dynamic Background Elements - Sunset Theme */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(167,139,250,0.08)_0%,_transparent_50%)]" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.08)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full opacity-40" />
       </div>
 
@@ -112,7 +112,7 @@ export default function CareersPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
               <Sparkles size={12} /> Recruitment Cycle 2025
             </span>
             <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
@@ -248,7 +248,7 @@ export default function CareersPage() {
           viewport={{ once: true }}
           className="mt-32 p-12 md:p-24 rounded-[3rem] bg-white/5 border border-white/10 relative overflow-hidden text-center"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(167,139,250,0.05)_0%,_transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(249,115,22,0.05)_0%,_transparent_70%)]" />
           <div className="absolute top-0 right-0 p-12 text-primary/5 -rotate-12">
             <FileText size={240} strokeWidth={1} />
           </div>

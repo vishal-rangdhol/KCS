@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -11,33 +10,33 @@ const values = [
     title: "Innovation First",
     description: "Pushing boundaries with cutting-edge AI and neural architectures that redefine industry standards.",
     icon: Sparkles,
-    color: "from-cyan-500/30 via-blue-500/10 to-transparent",
-    border: "border-cyan-500/20",
-    glow: "rgba(6, 182, 212, 0.3)"
+    color: "from-orange-500/30 via-amber-500/10 to-transparent",
+    border: "border-orange-500/20",
+    glow: "rgba(249, 115, 22, 0.3)"
   },
   {
     title: "Military Grade",
     description: "Encryption and infrastructure reliability that satisfies the most demanding global security protocols.",
     icon: ShieldCheck,
-    color: "from-rose-500/30 via-purple-500/10 to-transparent",
-    border: "border-rose-500/20",
-    glow: "rgba(244, 63, 94, 0.3)"
+    color: "from-amber-600/30 via-orange-500/10 to-transparent",
+    border: "border-amber-600/20",
+    glow: "rgba(217, 119, 6, 0.3)"
   },
   {
     title: "Radical Impact",
     description: "We don't just build software; we architect the digital future of our partners' legacies.",
     icon: UserCircle,
-    color: "from-emerald-500/30 via-teal-500/10 to-transparent",
-    border: "border-emerald-500/20",
-    glow: "rgba(16, 185, 129, 0.3)"
+    color: "from-yellow-500/30 via-orange-400/10 to-transparent",
+    border: "border-yellow-500/20",
+    glow: "rgba(234, 179, 8, 0.3)"
   },
   {
     title: "Proven Success",
     description: "Global success stories driven by data-centric methodologies and architectural excellence.",
     icon: BarChart3,
-    color: "from-amber-500/30 via-orange-500/10 to-transparent",
-    border: "border-amber-500/20",
-    glow: "rgba(245, 158, 11, 0.3)"
+    color: "from-orange-600/30 via-amber-700/10 to-transparent",
+    border: "border-orange-600/20",
+    glow: "rgba(234, 88, 12, 0.3)"
   }
 ]
 
@@ -85,7 +84,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className={`p-10 rounded-[3rem] bg-background/40 border ${value.border} backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] group relative overflow-visible cursor-none`}
     >
-      {/* Background Energy Glow - Rounded to match card */}
+      {/* Background Energy Glow - Rounded */}
       <motion.div 
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[100px] rounded-[3rem]"
         style={{
@@ -110,7 +109,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
         </p>
       </div>
 
-      {/* Decorative gradient overlay - Rounded to match card */}
+      {/* Decorative gradient overlay */}
       <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 rounded-[3rem]`} />
     </motion.div>
   )
