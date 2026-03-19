@@ -1,20 +1,31 @@
+
 "use client"
 
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export function CustomCursor() {
+  const [enabled, setEnabled] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [isPressed, setIsPressed] = useState(false)
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  // Smooth spring configuration for movement
+  // Smooth spring configuration
   const springConfig = { damping: 35, stiffness: 350, mass: 0.5 }
   const x = useSpring(cursorX, springConfig)
   const y = useSpring(cursorY, springConfig)
 
   useEffect(() => {
+    // Only enable for non-touch devices
+    const isTouch = window.matchMedia("(pointer: coarse)").matches
+    if (isTouch) {
+      setEnabled(false)
+      return
+    }
+    
+    setEnabled(true)
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
@@ -52,9 +63,10 @@ export function CustomCursor() {
     }
   }, [cursorX, cursorY])
 
+  if (!enabled) return null
+
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
-      {/* Outer Circle - Light Mode Optimized */}
       <motion.div
         className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-multiply shadow-[0_0_20px_rgba(249,115,22,0.1)]"
         style={{
@@ -75,7 +87,6 @@ export function CustomCursor() {
           mass: 0.5
         }}
       >
-        {/* Inner Dot */}
         <motion.div 
           className="w-2.5 h-2.5 rounded-full bg-primary"
           animate={{ 
@@ -86,7 +97,6 @@ export function CustomCursor() {
         />
       </motion.div>
       
-      {/* Secondary trail */}
       <motion.div
         className="absolute w-2 h-2 rounded-full bg-secondary/20 blur-sm"
         style={{

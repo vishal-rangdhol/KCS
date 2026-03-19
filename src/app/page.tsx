@@ -1,19 +1,23 @@
+
 "use client"
 
+import dynamic from 'next/dynamic'
 import { Navbar } from '@/components/layout/Navbar'
 import { HeroChapter } from '@/components/story/HeroChapter'
 import { ProblemChapter } from '@/components/story/ProblemChapter'
-import { VisionChapter } from '@/components/story/VisionChapter'
-import { AboutChapter } from '@/components/story/AboutChapter'
-import { DifferentiationChapter } from '@/components/story/DifferentiationChapter'
-import { ServicesChapter } from '@/components/story/ServicesChapter'
-import { ProductsChapter } from '@/components/story/ProductsChapter'
-import { CultureChapter } from '@/components/story/CultureChapter'
-import { CareersChapter } from '@/components/story/CareersChapter'
-import { CTAChapter } from '@/components/story/CTAChapter'
-import { ContactChapter } from '@/components/story/ContactChapter'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { motion, useScroll, useSpring } from 'framer-motion'
+
+// Dynamic imports for below-the-fold chapters to improve initial load speed
+const VisionChapter = dynamic(() => import('@/components/story/VisionChapter').then(mod => mod.VisionChapter), { ssr: true })
+const AboutChapter = dynamic(() => import('@/components/story/AboutChapter').then(mod => mod.AboutChapter), { ssr: true })
+const DifferentiationChapter = dynamic(() => import('@/components/story/DifferentiationChapter').then(mod => mod.DifferentiationChapter), { ssr: true })
+const ServicesChapter = dynamic(() => import('@/components/story/ServicesChapter').then(mod => mod.ServicesChapter), { ssr: true })
+const ProductsChapter = dynamic(() => import('@/components/story/ProductsChapter').then(mod => mod.ProductsChapter), { ssr: true })
+const CultureChapter = dynamic(() => import('@/components/story/CultureChapter').then(mod => mod.CultureChapter), { ssr: true })
+const CareersChapter = dynamic(() => import('@/components/story/CareersChapter').then(mod => mod.CareersChapter), { ssr: true })
+const CTAChapter = dynamic(() => import('@/components/story/CTAChapter').then(mod => mod.CTAChapter), { ssr: true })
+const ContactChapter = dynamic(() => import('@/components/story/ContactChapter').then(mod => mod.ContactChapter), { ssr: true })
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -39,7 +43,6 @@ export default function Home() {
 
       {/* Background Ambient Layers - Light Version */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Soft Vibrant Glows */}
         <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/5 blur-[160px] rounded-full" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/5 blur-[160px] rounded-full" />
         <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/5 blur-[140px] rounded-full" />
@@ -49,7 +52,7 @@ export default function Home() {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10"
       >
         <HeroChapter />
@@ -66,7 +69,7 @@ export default function Home() {
       </motion.div>
 
       {/* Final Cinematic Vignette - Light Mode */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.4)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.6)_100%)]" />
     </main>
   )
 }
