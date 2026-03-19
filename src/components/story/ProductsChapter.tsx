@@ -33,7 +33,7 @@ const products = [
     icon: HeartPulse,
     color: "from-amber-600/40 via-secondary/20 to-transparent",
     hint: "healthcare platform",
-    href: "#"
+    href: "https://www.sushrth.com/"
   }
 ]
 
