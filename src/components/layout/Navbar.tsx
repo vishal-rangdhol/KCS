@@ -5,14 +5,16 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const navItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#story' },
-  { name: 'Services', href: '#services' },
-  { name: 'Products', href: '#products' },
-  { name: 'Careers', href: '#careers' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#hero' },
+  { name: 'About', href: '/#story' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Products', href: '/#products' },
+  { name: 'Careers', href: '/#careers' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 export function Navbar() {
@@ -20,12 +22,18 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const { scrollY } = useScroll()
+  const pathname = usePathname()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50)
   })
 
   useEffect(() => {
+    if (pathname !== '/') {
+      setActiveSection('')
+      return
+    }
+
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px',
@@ -43,12 +51,13 @@ export function Navbar() {
     const observer = new IntersectionObserver(handleIntersection, observerOptions)
 
     navItems.forEach((item) => {
-      const element = document.querySelector(item.href)
+      const id = item.href.split('#')[1]
+      const element = document.getElementById(id)
       if (element) observer.observe(element)
     })
 
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-4 md:p-6 pointer-events-none">
@@ -59,12 +68,10 @@ export function Navbar() {
             : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent'
         }`}
       >
-        <div 
+        <Link 
+          href="/"
           className="flex items-center group cursor-pointer"
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-            setMobileMenuOpen(false)
-          }}
+          onClick={() => setMobileMenuOpen(false)}
         >
           <div className="relative flex items-center justify-center">
             <Image 
@@ -77,15 +84,16 @@ export function Navbar() {
               priority
             />
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex flex-row gap-8 lg:gap-10 items-center">
           {navItems.map((item) => {
-            const isActive = activeSection === item.href.substring(1)
+            const id = item.href.split('#')[1]
+            const isActive = activeSection === id
             return (
               <li key={item.name} className="relative group">
-                <a 
+                <Link 
                   href={item.href}
                   className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
                     isActive ? 'text-primary' : 'text-white/60 hover:text-white'
@@ -98,7 +106,7 @@ export function Navbar() {
                     animate={{ width: isActive ? '100%' : '0%' }}
                     transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   />
-                </a>
+                </Link>
               </li>
             )
           })}
@@ -125,10 +133,11 @@ export function Navbar() {
           >
             <ul className="grid grid-cols-2 gap-3">
               {navItems.map((item) => {
-                const isActive = activeSection === item.href.substring(1)
+                const id = item.href.split('#')[1]
+                const isActive = activeSection === id
                 return (
                   <li key={item.name}>
-                    <a 
+                    <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block p-4 rounded-2xl transition-all duration-300 text-xs font-headline font-bold tracking-tight text-center border ${
@@ -138,7 +147,7 @@ export function Navbar() {
                       }`}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   </li>
                 )
               })}
