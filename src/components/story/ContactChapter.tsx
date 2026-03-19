@@ -61,18 +61,35 @@ export function ContactChapter() {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="h-48 sm:h-64 rounded-[2rem] bg-black/5 border border-black/5 relative overflow-hidden group shadow-2xl"
+            className="h-64 sm:h-80 rounded-[2rem] bg-black/5 border border-black/10 relative overflow-hidden group shadow-2xl cursor-pointer"
+            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=3-37+RC+Puram,+Hyderabad,+502032', '_blank')}
           >
-             <div className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-               <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:24px_24px]" />
-             </div>
-             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 text-center">
-                <Globe className="w-8 sm:w-12 h-8 sm:h-12 text-primary/40 mb-3 sm:mb-4 animate-pulse" />
-                <div className="bg-white/80 backdrop-blur-xl px-6 sm:px-8 py-3 sm:py-4 rounded-2xl border border-black/5 shadow-2xl">
-                  <span className="text-[10px] sm:text-sm font-bold tracking-[0.3em] uppercase text-primary">KCS Global HQ</span>
-                  <p className="text-[8px] sm:text-xs text-muted-foreground mt-1 sm:mt-2">Innovation Corridor, Hyderabad</p>
-                </div>
-             </div>
+            {/* Interactive Embedded Map */}
+            <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.3263435862214!2d78.2911111!3d17.4916667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb926678663b65%3A0x868b81628d0879e6!2sRC%20Puram%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            
+            {/* Architectural Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
+            
+            {/* Navigation Badge */}
+            <div className="absolute bottom-6 left-6 right-6 p-5 bg-white/60 backdrop-blur-xl rounded-2xl border border-black/5 shadow-2xl flex items-center justify-between group-hover:bg-primary group-hover:text-white transition-all duration-500">
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold tracking-[0.4em] uppercase font-headline">KCS HQ terminal</span>
+                <p className="text-[9px] opacity-70 mt-1 uppercase tracking-widest font-medium">Click to initiate navigation</p>
+              </div>
+              <div className="p-2 rounded-lg bg-black/5 group-hover:bg-white/20 transition-colors">
+                <ArrowUpRight size={18} />
+              </div>
+            </div>
           </motion.div>
         </div>
 
