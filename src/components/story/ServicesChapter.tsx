@@ -12,42 +12,42 @@ const services = [
     title: "Artificial Intelligence",
     description: "Machine learning models, natural language processing systems, and predictive analytics — built for practical business use, not proof-of-concept demos.",
     icon: BrainCircuit,
-    color: "from-indigo-500/20 to-indigo-600/20",
+    color: "from-indigo-500 to-indigo-600",
     hoverBg: "hover:bg-indigo-600"
   },
   {
     title: "Cloud Infrastructure",
     description: "Scalable, secure architecture deployed across AWS, Google Cloud, and Microsoft Azure, designed for global performance and high availability.",
     icon: Cloud,
-    color: "from-emerald-500/20 to-emerald-600/20",
+    color: "from-emerald-500 to-emerald-600",
     hoverBg: "hover:bg-emerald-600"
   },
   {
     title: "Data & Analytics",
     description: "From raw data pipelines to executive dashboards — we build systems that help organizations understand their data and act on it.",
     icon: BarChart3,
-    color: "from-sky-500/20 to-sky-600/20",
+    color: "from-sky-500 to-sky-600",
     hoverBg: "hover:bg-sky-600"
   },
   {
     title: "Cybersecurity",
     description: "Security-first design across every layer — from architecture decisions through deployment and ongoing monitoring.",
     icon: Shield,
-    color: "from-rose-500/20 to-rose-600/20",
+    color: "from-rose-500 to-rose-600",
     hoverBg: "hover:bg-rose-600"
   },
   {
     title: "Enterprise Platforms",
     description: "Custom ERP, CRM, and workflow systems built around how businesses actually operate, not around what generic software assumes they do.",
     icon: Building2,
-    color: "from-violet-500/20 to-violet-600/20",
+    color: "from-violet-500 to-violet-600",
     hoverBg: "hover:bg-violet-600"
   },
   {
     title: "Mobile Applications",
     description: "Cross-platform development across Flutter, React Native, Swift, and Kotlin — optimized for iOS, Android, and web.",
     icon: Smartphone,
-    color: "from-fuchsia-500/20 to-fuchsia-600/20",
+    color: "from-fuchsia-500 to-fuchsia-600",
     hoverBg: "hover:bg-fuchsia-600"
   }
 ]
@@ -65,30 +65,30 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
         }
       }}
       className={cn(
-        "relative h-full p-8 md:p-10 rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer",
+        "relative h-[520px] p-10 rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer",
         service.hoverBg
       )}
     >
-      <div className="relative z-10 h-full flex flex-col">
-        {/* Top Row: Icon and Action Button */}
-        <div className="flex items-center justify-between mb-12 sm:mb-16">
-          <div className="p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500">
+      <div className="relative z-10 h-full flex flex-col justify-center">
+        {/* Top Row: Absolute positioned to stay at the top */}
+        <div className="absolute top-10 left-10 right-10 flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm">
             <service.icon size={32} strokeWidth={1.5} />
           </div>
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-foreground group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
+          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-foreground group-hover:bg-white/20 group-hover:text-white transition-all duration-500 shadow-sm">
             <ArrowUpRight size={24} />
           </div>
         </div>
         
-        {/* Content Section */}
-        <div className="mt-auto">
+        {/* Content Section: Centered vertically */}
+        <div className="text-left mt-8">
           <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 mb-6 leading-tight">
             <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
               {service.title}
             </span>
           </h3>
           
-          <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500">
+          <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500 max-w-[90%]">
             {service.description}
           </p>
         </div>
@@ -96,7 +96,7 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
 
       {/* Subtle Corner Accent - Fades out on hover */}
       <div className={cn(
-        "absolute top-0 right-0 w-48 h-48 bg-gradient-to-br opacity-10 blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500",
+        "absolute top-0 right-0 w-64 h-64 bg-gradient-to-br opacity-[0.03] blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500",
         service.color
       )} />
     </motion.div>
