@@ -127,7 +127,7 @@ export function HeroChapter() {
           </MagneticButton>
 
           <MagneticButton>
-            <Button variant="outline" size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-black/10 transition-all w-full sm:w-auto font-bold text-foreground">
+            <Button variant="outline" size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-black/10 hover:text-primary transition-all w-full sm:w-auto font-bold text-foreground">
               Explore Our Platforms
               <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
             </Button>
