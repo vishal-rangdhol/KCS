@@ -6,14 +6,13 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 import { PlaceHolderImages } from '@/lib/placeholder-images'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Target, Zap, Shield, Cloud } from 'lucide-react'
 
 const expertise = [
-  "Artificial Intelligence",
-  "Cloud Computing",
-  "Cybersecurity",
-  "Data Analytics",
-  "Enterprise Systems"
+  { icon: Zap, label: "AI Integration" },
+  { icon: Cloud, label: "Cloud Platforms" },
+  { icon: Shield, label: "Cybersecurity" },
+  { icon: Target, label: "Data Systems" }
 ]
 
 export function AboutChapter() {
@@ -29,50 +28,64 @@ export function AboutChapter() {
   const aboutImage = PlaceHolderImages.find(img => img.id === 'consultancy-team')
 
   return (
-    <Chapter id="story" className="bg-background relative py-20 overflow-hidden">
-      <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+    <Chapter id="story" className="bg-background relative py-20 lg:py-32 overflow-hidden">
+      <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10 max-w-7xl mx-auto">
         <div className="space-y-8 sm:space-y-12 order-2 lg:order-1">
           <motion.div style={{ opacity }}>
-            <span className="text-primary font-bold tracking-[0.3em] sm:tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-3 sm:mb-4 block">Our Origin</span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold leading-tight">
-              Founded by <br /><span className="text-secondary italic">Visionaries.</span>
+            <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-4 block">Who We Are</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.9] tracking-tighter text-foreground mb-8">
+              More Than <br /><span className="text-secondary italic">Consultants.</span>
             </h2>
           </motion.div>
           
-          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-            KCS was born from a collective of experts in high-stakes digital environments. We realized that while tech evolves, the human narrative behind it needs careful stewardship.
-          </p>
+          <div className="space-y-6">
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed border-l-2 border-primary/20 pl-6">
+              Every organization today depends on digital infrastructure. AI, cloud platforms,
+              cybersecurity, and data systems have become the foundation of modern business
+              — yet most organizations struggle to integrate them effectively.
+            </p>
+            <p className="text-lg sm:text-xl text-foreground font-medium leading-relaxed">
+              <span className="text-primary font-bold">KCS Product Lab</span> was built to solve this. 
+              Unlike traditional consulting firms, we function as a full-cycle technology partner — 
+              designing, building, launching, and operating scalable digital platforms from concept to global scale.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 gap-4">
             {expertise.map((item, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-3 text-base sm:text-lg"
+                className="flex items-center gap-3 p-4 rounded-2xl bg-black/5 border border-black/5 group hover:border-primary/20 transition-all"
               >
-                <CheckCircle2 className="text-primary w-5 h-5 flex-shrink-0" />
-                <span>{item}</span>
+                <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                  <item.icon size={18} />
+                </div>
+                <span className="text-sm font-bold uppercase tracking-wider text-foreground/70 group-hover:text-foreground transition-colors">{item.label}</span>
               </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="relative aspect-[4/5] rounded-[24px] sm:rounded-[40px] overflow-hidden shadow-2xl group order-1 lg:order-2">
+        <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group order-1 lg:order-2 border border-black/5">
           <motion.div style={{ y }} className="absolute inset-0 w-full h-[110%] -top-[5%]">
              <Image 
               src={aboutImage?.imageUrl || "https://picsum.photos/seed/kcs2/1200/800"} 
               alt="Consultancy Leaders" 
               fill 
-              className="object-cover scale-110 grayscale group-hover:grayscale-0 transition-all duration-1000"
+              className="object-cover scale-110 grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
               data-ai-hint="professional consultancy team"
             />
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
-          <div className="absolute bottom-6 left-6 right-6 sm:bottom-12 sm:left-12 sm:right-12 p-6 sm:p-8 bg-card/40 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl">
-            <p className="text-base sm:text-xl italic font-light">"We don't just build tech; we architect legacies for the digital age."</p>
-            <p className="mt-3 sm:mt-4 font-bold text-[10px] sm:text-sm uppercase tracking-widest">— The KCS Founders</p>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent opacity-60" />
+          <div className="absolute bottom-8 left-8 right-8 p-8 bg-white/40 backdrop-blur-2xl border border-white/20 rounded-[2rem] shadow-2xl">
+            <p className="text-lg sm:text-2xl italic font-light text-foreground leading-tight">"We don't just build tech; we architect legacies for the digital age."</p>
+            <div className="mt-6 flex items-center gap-3">
+              <div className="h-px w-8 bg-primary" />
+              <p className="font-bold text-[10px] uppercase tracking-[0.3em] text-primary">The KCS Protocol</p>
+            </div>
           </div>
         </div>
       </div>
