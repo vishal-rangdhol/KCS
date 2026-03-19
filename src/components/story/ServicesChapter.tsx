@@ -5,6 +5,7 @@ import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Network, ArrowUpRight } from 'lucide-react'
 import React from 'react'
+import { cn } from '@/lib/utils'
 
 const services = [
   {
@@ -12,7 +13,6 @@ const services = [
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
     color: "from-indigo-500/20 to-indigo-600/20",
-    iconColor: "text-indigo-600",
     hoverBg: "hover:bg-indigo-600"
   },
   {
@@ -20,7 +20,6 @@ const services = [
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
     color: "from-emerald-500/20 to-emerald-600/20",
-    iconColor: "text-emerald-600",
     hoverBg: "hover:bg-emerald-600"
   },
   {
@@ -28,7 +27,6 @@ const services = [
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
     color: "from-rose-500/20 to-rose-600/20",
-    iconColor: "text-rose-600",
     hoverBg: "hover:bg-rose-600"
   },
   {
@@ -36,7 +34,6 @@ const services = [
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
     color: "from-sky-500/20 to-sky-600/20",
-    iconColor: "text-sky-600",
     hoverBg: "hover:bg-sky-600"
   },
   {
@@ -44,7 +41,6 @@ const services = [
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
     color: "from-violet-500/20 to-violet-600/20",
-    iconColor: "text-violet-600",
     hoverBg: "hover:bg-violet-600"
   },
   {
@@ -52,7 +48,6 @@ const services = [
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
     color: "from-fuchsia-500/20 to-fuchsia-600/20",
-    iconColor: "text-fuchsia-600",
     hoverBg: "hover:bg-fuchsia-600"
   }
 ]
@@ -69,15 +64,15 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
           transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className={`relative h-full p-8 md:p-10 rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer ${service.hoverBg}`}
+      className={cn(
+        "relative h-full p-8 md:p-10 rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer",
+        service.hoverBg
+      )}
     >
-      {/* Background Layer for Hover Color */}
-      <div className="absolute inset-0 bg-transparent group-hover:bg-current transition-colors duration-500" />
-      
       <div className="relative z-10 h-full flex flex-col">
         {/* Top Row: Icon and Action Button */}
         <div className="flex items-center justify-between mb-12 sm:mb-16">
-          <div className={`p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500`}>
+          <div className="p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500">
             <service.icon size={32} strokeWidth={1.5} />
           </div>
           <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-foreground group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
@@ -100,7 +95,10 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
       </div>
 
       {/* Subtle Corner Accent - Fades out on hover */}
-      <div className={`absolute top-0 right-0 w-48 h-48 bg-gradient-to-br ${service.color} opacity-10 blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500`} />
+      <div className={cn(
+        "absolute top-0 right-0 w-48 h-48 bg-gradient-to-br opacity-10 blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500",
+        service.color
+      )} />
     </motion.div>
   )
 }
