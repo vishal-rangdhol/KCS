@@ -43,6 +43,24 @@
       "imageHint": "cloud computing"
     },
     {
+      "id": "solution-cyber",
+      "description": "Cybersecurity digital shield",
+      "imageUrl": "https://picsum.photos/seed/kcs8/1200/800",
+      "imageHint": "cybersecurity"
+    },
+    {
+      "id": "solution-enterprise",
+      "description": "Enterprise software interface",
+      "imageUrl": "https://picsum.photos/seed/kcs9/1200/800",
+      "imageHint": "enterprise software"
+    },
+    {
+      "id": "solution-mobile",
+      "description": "Mobile application development",
+      "imageUrl": "https://picsum.photos/seed/kcs10/1200/800",
+      "imageHint": "mobile app"
+    },
+    {
       "id": "avatar-1",
       "description": "Corporate client testimonial 1",
       "imageUrl": "https://picsum.photos/seed/avatar1/400/400",
