@@ -5,13 +5,11 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, MessageSquare, Globe, ArrowUpRight } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageSquare, ArrowUpRight } from 'lucide-react'
 import { Label } from '@/components/ui/label'
 import { useState } from 'react'
 
 export function ContactChapter() {
-  const [focusedField, setFocusedField] = useState<string | null>(null)
-
   return (
     <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
@@ -64,7 +62,6 @@ export function ContactChapter() {
             className="h-64 sm:h-80 rounded-[2rem] bg-black/5 border border-black/10 relative overflow-hidden group shadow-2xl cursor-pointer"
             onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=3-37+RC+Puram,+Hyderabad,+502032', '_blank')}
           >
-            {/* Interactive Embedded Map */}
             <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.3263435862214!2d78.2911111!3d17.4916667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb926678663b65%3A0x868b81628d0879e6!2sRC%20Puram%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
@@ -77,10 +74,8 @@ export function ContactChapter() {
               />
             </div>
             
-            {/* Architectural Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
             
-            {/* Navigation Badge */}
             <div className="absolute bottom-6 left-6 right-6 p-5 bg-white/60 backdrop-blur-xl rounded-2xl border border-black/5 shadow-2xl flex items-center justify-between group-hover:bg-primary group-hover:text-white transition-all duration-500">
               <div className="flex flex-col">
                 <span className="text-[10px] font-bold tracking-[0.4em] uppercase font-headline">KCS HQ terminal</span>
@@ -95,15 +90,6 @@ export function ContactChapter() {
 
         <div className="relative w-full">
           <motion.div 
-            animate={{ 
-              rotate: [0, 360],
-              scale: [1, 1.1, 1]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-12 -right-12 w-48 sm:w-64 h-48 sm:h-64 bg-secondary/15 rounded-full blur-[80px] pointer-events-none"
-          />
-
-          <motion.div 
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] glass border border-black/5 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] relative overflow-hidden"
@@ -114,19 +100,8 @@ export function ContactChapter() {
 
             <form className="space-y-6 sm:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 gap-6 sm:gap-8">
-                <FloatingInput 
-                  label="Full Name" 
-                  id="name" 
-                  placeholder="Enter your name"
-                />
-                
-                <FloatingInput 
-                  label="Email Address" 
-                  id="email" 
-                  type="email" 
-                  placeholder="john@example.com"
-                />
-
+                <FloatingInput label="Full Name" id="name" placeholder="Enter your name" />
+                <FloatingInput label="Email Address" id="email" type="email" placeholder="john@example.com" />
                 <div className="space-y-3">
                   <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2">Your Message</Label>
                   <Textarea 
@@ -136,7 +111,7 @@ export function ContactChapter() {
                 </div>
               </div>
 
-              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(249,115,22,0.2)]">
+              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(249,115,22,0.2)] text-white">
                 Send Message
                 <Send className="ml-3 w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
               </Button>
@@ -152,7 +127,7 @@ export function ContactChapter() {
         </div>
         
         <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em]">
-           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight size={12} /></a>
+           <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight size={12} /></a>
            <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Twitter <ArrowUpRight size={12} /></a>
            <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Instagram <ArrowUpRight size={12} /></a>
         </div>

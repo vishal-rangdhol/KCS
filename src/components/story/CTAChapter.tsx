@@ -15,7 +15,6 @@ export function CTAChapter() {
   return (
     <Chapter id="cta" className="py-20 overflow-visible px-4 sm:px-6">
       <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-black/5 group bg-white shadow-2xl">
-        {/* Animated Gradient Background */}
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
