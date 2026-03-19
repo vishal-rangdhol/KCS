@@ -3,7 +3,7 @@
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Image from 'next/image'
-import { ArrowRight, MessageSquare, Database } from 'lucide-react'
+import { ArrowRight, MessageSquare, HeartPulse } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   Carousel,
@@ -18,21 +18,21 @@ const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A premium communication platform connecting people seamlessly through secure, encrypted channels, while also integrating a powerful Learning Management System (LMS) that enables organizations and institutions to deliver, manage, and track learning experiences in one unified ecosystem.",
+    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration — not engagement algorithms. Private learning circles · Integrated LMS · Secure social collaboration · Student and professional networks",
     image: "https://picsum.photos/seed/catchup/1200/800",
     icon: MessageSquare,
     color: "from-orange-600/40 via-primary/20 to-transparent",
-    hint: "communication chat",
+    hint: "social learning",
     href: "https://letscatchup-kcs.com/"
   },
   {
-    id: "sushrt",
-    name: "SUSHRT",
-    description: "Advanced data management and processing platform designed for hyper-scalable enterprise operations, ensuring integrity and speed at scale.",
-    image: "https://picsum.photos/seed/sushrt/1200/800",
-    icon: Database,
+    id: "sushrth",
+    name: "Sushrth",
+    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for the next generation of clinical infrastructure. Smart appointment automation · Secure digital health records · Intelligent clinical workflows · Scalable hospital infrastructure",
+    image: "https://picsum.photos/seed/sushrth/1200/800",
+    icon: HeartPulse,
     color: "from-amber-600/40 via-secondary/20 to-transparent",
-    hint: "data processing",
+    hint: "healthcare platform",
     href: "#"
   }
 ]
@@ -121,7 +121,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
             }
           }}
         >
-          <span className="flex-1 pr-4">Explore Product</span>
+          <span className="flex-1 pr-4">Explore Platform</span>
           <ArrowRight className="w-4 h-4 sm:w-6 sm:h-6 flex-shrink-0 group-hover/btn:translate-x-3 transition-transform duration-500" />
         </Button>
       </div>
@@ -149,7 +149,7 @@ export function ProductsChapter() {
           transition={{ delay: 0.1 }}
           className="text-3xl sm:text-6xl md:text-8xl font-bold tracking-tighter"
         >
-          Innovation Ecosystem
+          Our Platforms
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export function ProductsChapter() {
           transition={{ delay: 0.2 }}
           className="text-muted-foreground mt-6 sm:mt-8 w-full max-w-4xl mx-auto text-base sm:text-2xl leading-relaxed px-4"
         >
-          Explore our specialized solutions designed to solve complex challenges in communication and data management.
+          Explore our specialized solutions designed to solve complex challenges in communication and healthcare infrastructure.
         </motion.p>
       </div>
 
