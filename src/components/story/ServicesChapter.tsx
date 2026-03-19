@@ -3,7 +3,7 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, ArrowUpRight } from 'lucide-react'
+import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone } from 'lucide-react'
 import React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -70,27 +70,24 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
       )}
     >
       <div className="relative z-10 h-full flex flex-col justify-center">
-        {/* Top Row: Absolute positioned to stay at the top */}
-        <div className="absolute top-10 left-10 right-10 flex items-center justify-between">
-          <div className="p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm">
+        {/* Content Section: Centered vertically */}
+        <div className="space-y-8">
+          {/* Icon Section */}
+          <div className="p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
             <service.icon size={32} strokeWidth={1.5} />
           </div>
-          <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-foreground group-hover:bg-white/20 group-hover:text-white transition-all duration-500 shadow-sm">
-            <ArrowUpRight size={24} />
-          </div>
-        </div>
-        
-        {/* Content Section: Centered vertically */}
-        <div className="text-left mt-8">
-          <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 mb-6 leading-tight">
-            <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
-              {service.title}
-            </span>
-          </h3>
           
-          <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500 max-w-[90%]">
-            {service.description}
-          </p>
+          <div className="text-left">
+            <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 mb-6 leading-tight">
+              <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
+                {service.title}
+              </span>
+            </h3>
+            
+            <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500 max-w-[90%]">
+              {service.description}
+            </p>
+          </div>
         </div>
       </div>
 
