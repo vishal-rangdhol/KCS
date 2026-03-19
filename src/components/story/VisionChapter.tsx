@@ -85,9 +85,9 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className={`p-10 rounded-[3rem] bg-background/40 border ${value.border} backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] group relative overflow-visible cursor-none`}
     >
-      {/* Background Energy Glow */}
+      {/* Background Energy Glow - Rounded to match card */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[100px]"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[100px] rounded-[3rem]"
         style={{
           background: value.glow,
           transform: "translateZ(-40px)"
@@ -110,8 +110,8 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
         </p>
       </div>
 
-      {/* Decorative gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0`} />
+      {/* Decorative gradient overlay - Rounded to match card */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 rounded-[3rem]`} />
     </motion.div>
   )
 }

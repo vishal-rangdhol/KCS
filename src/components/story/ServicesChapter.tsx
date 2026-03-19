@@ -105,9 +105,9 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       onMouseLeave={handleMouseLeave}
       className="group relative h-full p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-visible cursor-none"
     >
-      {/* Hyper-Vibrant Background Glow */}
+      {/* Hyper-Vibrant Background Glow - Rounded to match card */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px] rounded-full"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px] rounded-[2.5rem]"
         style={{
           background: service.glowColor,
           transform: "translateZ(-50px)"
@@ -119,7 +119,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       
       {/* Animated Light Sweep */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0 rounded-[2.5rem]"
         style={{
           background: `radial-gradient(circle at ${glowX} ${glowY}, white, transparent 50%)`
         }}
@@ -141,8 +141,8 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
         </p>
       </div>
 
-      {/* Vibrant Corner Accent */}
-      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700`} />
+      {/* Vibrant Corner Accent - Blurred out to avoid corners */}
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700 rounded-full`} />
     </motion.div>
   )
 }
