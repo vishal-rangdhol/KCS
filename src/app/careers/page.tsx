@@ -12,6 +12,9 @@ const jobs = [
     id: "bd-intern",
     title: "Sales & Marketing Intern",
     category: "Business Development",
+    location: "Hyderabad, India",
+    duration: "3 Months",
+    conversion: "Performance Based",
     overview: "The Sales & Marketing Intern will serve as a primary catalyst for market expansion. This is a field-intensive role requiring a proactive professional capable of identifying high-value B2B opportunities and executing direct outreach strategies to drive SaaS adoption.",
     responsibilities: [
       "Lead Generation & Prospecting: Identify and qualify potential B2B clients through physical site visits.",
@@ -30,6 +33,9 @@ const jobs = [
     id: "mern-intern",
     title: "MERN Full Stack Intern",
     category: "Engineering",
+    location: "Hyderabad, India",
+    duration: "3 Months",
+    conversion: "Technical Review",
     overview: "The Full Stack Intern will be integrated into our core engineering team to assist in the development, scaling, and maintenance of high-performance web and mobile applications. This role demands a high degree of technical rigor and architectural discipline.",
     responsibilities: [
       "Interface Development: Architect responsive user interfaces using React.js (Web) and React Native (Mobile).",
@@ -48,6 +54,9 @@ const jobs = [
     id: "devops-intern",
     title: "DevOps Intern",
     category: "Infrastructure",
+    location: "Remote / Hyderabad",
+    duration: "3 Months",
+    conversion: "System Assessment",
     overview: "The DevOps Intern will support the reliability and scalability of our mobile application infrastructure. The successful candidate will work at the intersection of development and operations to automate workflows.",
     responsibilities: [
       "CI/CD Implementation: Support automated deployment pipelines for seamless app store releases.",
@@ -66,6 +75,9 @@ const jobs = [
     id: "ai-intern",
     title: "AI Engineer Intern",
     category: "Research & AI",
+    location: "Hyderabad, India",
+    duration: "3 Months",
+    conversion: "R&D Contribution",
     overview: "The AI Engineer Intern will focus on the research and development of machine learning models dedicated to automated content moderation. The objective is to leverage Computer Vision and NLP for content safety.",
     responsibilities: [
       "Computer Vision Development: Build and train models to detect and classify visual content with precision.",
@@ -106,7 +118,7 @@ export default function CareersPage() {
         </div>
 
         {/* Header Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-20 md:mb-32">
+        <div className="max-w-4xl mb-20 md:mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -122,29 +134,6 @@ export default function CareersPage() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed border-l-2 border-primary/30 pl-6">
               Kandhugule Consultancy Services (KCS) is seeking proactive, technically rigorous individuals committed to transitioning into a long-term, full-time career.
             </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-wrap gap-4 lg:justify-end"
-          >
-            <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
-              <MapPin size={24} className="text-primary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground font-headline">Location</span>
-              <p className="text-sm font-bold mt-1 text-foreground">Hyderabad, India</p>
-            </div>
-            <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
-              <Clock size={24} className="text-secondary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground font-headline">Duration</span>
-              <p className="text-sm font-bold mt-1 text-foreground">3 Months</p>
-            </div>
-            <div className="p-6 rounded-3xl bg-primary/10 border border-primary/20 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
-              <Target size={24} className="text-primary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Conversion</span>
-              <p className="text-sm font-bold mt-1 text-foreground">Performance-based</p>
-            </div>
           </motion.div>
         </div>
 
@@ -181,9 +170,41 @@ export default function CareersPage() {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 md:px-10 pb-10">
-                  <div className="max-w-6xl mx-auto space-y-16">
+                  <div className="max-w-6xl mx-auto space-y-12">
+                    
+                    {/* Job Specific Metadata Badges */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                      <div className="flex items-center gap-4 p-4 rounded-2xl bg-black/5 border border-black/5 group/meta">
+                        <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover/meta:bg-primary group-hover/meta:text-white transition-all">
+                          <MapPin size={18} />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Location</p>
+                          <p className="text-xs font-bold text-foreground">{job.location}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 p-4 rounded-2xl bg-black/5 border border-black/5 group/meta">
+                        <div className="p-2.5 rounded-xl bg-secondary/10 text-secondary group-hover/meta:bg-secondary group-hover/meta:text-white transition-all">
+                          <Clock size={18} />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Duration</p>
+                          <p className="text-xs font-bold text-foreground">{job.duration}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 p-4 rounded-2xl bg-primary/5 border border-primary/10 group/meta">
+                        <div className="p-2.5 rounded-xl bg-primary/10 text-primary group-hover/meta:bg-primary group-hover/meta:text-white transition-all">
+                          <Target size={18} />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-primary/60 font-headline">Conversion</p>
+                          <p className="text-xs font-bold text-foreground">{job.conversion}</p>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* I. Position Overview */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 pt-6 border-t border-black/5">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 pt-10 border-t border-black/5">
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary whitespace-nowrap font-headline">I. Position Overview</span>
                       </div>
