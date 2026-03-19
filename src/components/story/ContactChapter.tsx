@@ -1,174 +1,127 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Mail, Phone, MapPin, Send, MessageSquare, ArrowUpRight } from 'lucide-react'
-import { Label } from '@/components/ui/label'
-import { useState } from 'react'
+import { Mail, MapPin, Send, ArrowUpRight, Sparkles } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export function ContactChapter() {
+  const currentYear = new Date().getFullYear()
+
+  const scrollToContact = () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <Chapter id="contact" className="py-20 lg:py-32 bg-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-primary/10 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
-      
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="space-y-8 sm:space-y-12">
-          <div>
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 sm:mb-6 block font-bold"
-            >
-              Get In Touch
-            </motion.span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter text-foreground">
-              Let's build <br />
-              <span className="text-secondary italic">something great.</span>
-            </h2>
-            <p className="text-base sm:text-xl text-muted-foreground max-w-md leading-relaxed">
-              Whether you have a specific project in mind or just want to explore possibilities, our team of architects is ready to listen.
+    <Chapter id="contact" className="py-20 bg-background relative overflow-hidden flex flex-col items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center"
+        >
+          <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-10 font-headline">
+            <Sparkles size={14} className="animate-pulse" /> Final Protocol
+          </span>
+          
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-12 font-headline">
+            Let's Build <br />
+            <span className="text-primary italic">Something Great.</span>
+          </h2>
+
+          <div className="w-full py-16 border-y border-black/5 mb-16 relative">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+            <p className="text-xl md:text-3xl text-muted-foreground max-w-4xl mx-auto px-4 leading-relaxed font-medium">
+              Have a product idea, a technology challenge, or an infrastructure problem? Our team is ready to help you design, build, and scale the technology behind it.
             </p>
           </div>
 
-          <div className="space-y-6 sm:space-y-8">
-            <ContactInfoItem 
-              icon={MapPin} 
-              label="Location" 
-              value="3-37 RC Puram, Hyderabad, 502032" 
-              delay={0.1}
-            />
-            <ContactInfoItem 
-              icon={Mail} 
-              label="Email" 
-              value="info@kandhugule-kcs.com" 
-              delay={0.2}
-              href="mailto:info@kandhugule-kcs.com"
-            />
-            <ContactInfoItem 
-              icon={Phone} 
-              label="Phone" 
-              value="+91 40 1234 5678" 
-              delay={0.3}
-              href="tel:+914012345678"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl text-left mb-20">
+            <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 block mb-6 font-headline">Business Inquiries</span>
+              <h4 className="text-2xl font-bold mb-4 font-headline">Kandhugule Consultancy Services Pvt Ltd</h4>
+              <p className="text-muted-foreground mb-4">Hyderabad, India</p>
+              <a href="mailto:contact@kandhugule-kcs.com" className="text-lg font-bold text-primary hover:underline">
+                contact@kandhugule-kcs.com
+              </a>
+            </div>
+
+            <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5">
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/60 block mb-6 font-headline">Project Consultation</span>
+              <p className="text-lg text-muted-foreground mb-8 italic">
+                Planning a new digital platform or modernizing your infrastructure? Reach out to schedule a consultation with our engineering team.
+              </p>
+              <Button 
+                onClick={scrollToContact}
+                className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg group"
+              >
+                Start a Conversation
+                <Send className="ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Structured Footer */}
+      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 border-t border-black/5">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+          <div className="col-span-2 lg:col-span-2">
+            <Link href="/" className="inline-block mb-8">
+               <Image src="/kcs-logo.png" alt="KCS Logo" width={140} height={46} className="h-10 w-auto" />
+            </Link>
+            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed italic">
+              Architecting the digital infrastructure that defines the next era of global business.
+            </p>
+          </div>
+          
+          <div className="space-y-6">
+            <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Company</h5>
+            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
+              <li><Link href="/#story" className="hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
+              <li><Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link></li>
+            </ul>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="h-64 sm:h-80 rounded-[2rem] bg-black/5 border border-black/10 relative overflow-hidden group shadow-2xl cursor-pointer"
-            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=3-37+RC+Puram,+Hyderabad,+502032', '_blank')}
-          >
-            <div className="absolute inset-0 grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-1000">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.3263435862214!2d78.2911111!3d17.4916667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb926678663b65%3A0x868b81628d0879e6!2sRC%20Puram%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-            
-            <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
-            
-            <div className="absolute bottom-6 left-6 right-6 p-5 bg-white/60 backdrop-blur-xl rounded-2xl border border-black/5 shadow-2xl flex items-center justify-between group-hover:bg-primary group-hover:text-white transition-all duration-500">
-              <div className="flex flex-col">
-                <span className="text-[10px] font-bold tracking-[0.4em] uppercase font-headline">KCS HQ terminal</span>
-                <p className="text-[9px] opacity-70 mt-1 uppercase tracking-widest font-medium">Click to initiate navigation</p>
-              </div>
-              <div className="p-2 rounded-lg bg-black/5 group-hover:bg-white/20 transition-colors">
-                <ArrowUpRight size={18} />
-              </div>
-            </div>
-          </motion.div>
+          <div className="space-y-6">
+            <h5 className="text-[10px] font-bold uppercase tracking-widest text-secondary font-headline">Products</h5>
+            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
+              <li><a href="https://letscatchup-kcs.com/" target="_blank" className="hover:text-primary transition-colors">Let's Catch Up</a></li>
+              <li><a href="https://www.sushrth.com/" target="_blank" className="hover:text-primary transition-colors">Sushrth</a></li>
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Services</h5>
+            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
+              <li><Link href="/#services" className="hover:text-primary transition-colors">AI Solutions</Link></li>
+              <li><Link href="/#services" className="hover:text-primary transition-colors">Cybersecurity</Link></li>
+              <li><Link href="/#services" className="hover:text-primary transition-colors">Cloud Infrastructure</Link></li>
+              <li><Link href="/#services" className="hover:text-primary transition-colors">Enterprise Platforms</Link></li>
+              <li><Link href="/#services" className="hover:text-primary transition-colors">Mobile Development</Link></li>
+            </ul>
+          </div>
         </div>
 
-        <div className="relative w-full">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="p-6 sm:p-12 rounded-[2rem] sm:rounded-[3rem] glass border border-black/5 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 p-8 sm:p-12 text-primary/5 -rotate-12 pointer-events-none">
-              <MessageSquare size={120} className="sm:size-[160px]" strokeWidth={1} />
-            </div>
-
-            <form className="space-y-6 sm:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 gap-6 sm:gap-8">
-                <FloatingInput label="Full Name" id="name" placeholder="Enter your name" />
-                <FloatingInput label="Email Address" id="email" type="email" placeholder="john@example.com" />
-                <div className="space-y-3">
-                  <Label className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2">Your Message</Label>
-                  <Textarea 
-                    className="bg-black/5 border-black/5 min-h-[140px] sm:min-h-[160px] p-4 sm:p-6 rounded-2xl sm:rounded-3xl focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base backdrop-blur-md resize-none text-foreground"
-                    placeholder="How can we help you architect your future?"
-                  />
-                </div>
-              </div>
-
-              <Button className="w-full h-14 sm:h-18 rounded-2xl sm:rounded-3xl text-base sm:text-lg font-bold group bg-primary hover:bg-primary/90 transition-all duration-500 py-6 sm:py-8 shadow-[0_12px_40px_rgba(249,115,22,0.2)] text-white">
-                Send Message
-                <Send className="ml-3 w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-              </Button>
-            </form>
-          </motion.div>
+        <div className="py-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
+            <p className="text-[10px] tracking-widest uppercase font-bold text-foreground/80">KCS Product Lab — by Kandhugule Consultancy Services Pvt Ltd</p>
+            <p className="text-[9px] tracking-widest uppercase text-muted-foreground">© {currentYear} KCS. All Rights Reserved.</p>
+          </div>
+          
+          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
+            <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" className="hover:text-primary transition-colors flex items-center gap-1">LinkedIn <ArrowUpRight size={12} /></a>
+          </div>
         </div>
-      </div>
-
-      <div className="mt-20 sm:mt-32 pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground px-6 max-w-7xl mx-auto">
-        <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-          <p className="text-[10px] tracking-widest uppercase font-bold text-foreground/40">© 2025 KCS</p>
-          <p className="text-[9px] sm:text-[10px] tracking-widest uppercase text-muted-foreground">Kandhugule Consultancy Services. All Rights Reserved.</p>
-        </div>
-        
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-8 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em]">
-           <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">LinkedIn <ArrowUpRight size={12} /></a>
-           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Twitter <ArrowUpRight size={12} /></a>
-           <a href="#" className="hover:text-primary transition-colors flex items-center gap-2">Instagram <ArrowUpRight size={12} /></a>
-        </div>
-      </div>
+      </footer>
     </Chapter>
-  )
-}
-
-function ContactInfoItem({ icon: Icon, label, value, delay, href }: any) {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ delay }}
-      className="flex items-center gap-4 sm:gap-6 group cursor-pointer"
-      onClick={() => href && window.open(href)}
-    >
-      <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-black/5 border border-black/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
-        <Icon size={20} className="sm:size-[24px]" />
-      </div>
-      <div className="flex-1">
-        <h4 className="font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground mb-1">{label}</h4>
-        <p className="text-sm sm:text-lg font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">{value}</p>
-      </div>
-    </motion.div>
-  )
-}
-
-function FloatingInput({ label, id, type = "text", placeholder }: any) {
-  return (
-    <div className="space-y-2 sm:space-y-3 group">
-      <Label htmlFor={id} className="text-[9px] sm:text-[10px] uppercase tracking-[0.3em] font-bold text-primary/60 ml-2 group-focus-within:text-primary transition-colors">
-        {label}
-      </Label>
-      <Input 
-        id={id}
-        type={type}
-        className="bg-black/5 border-black/5 h-12 sm:h-16 px-4 sm:px-6 rounded-xl sm:rounded-2xl focus:ring-primary/50 focus:border-primary/50 transition-all text-sm sm:text-base backdrop-blur-md shadow-inner text-foreground"
-        placeholder={placeholder}
-      />
-    </div>
   )
 }

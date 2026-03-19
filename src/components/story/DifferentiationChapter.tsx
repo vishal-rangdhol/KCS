@@ -1,9 +1,8 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Zap, Cpu, RefreshCw, ArrowRight, Sparkles } from 'lucide-react'
+import { ShieldCheck, Zap, Cpu, RefreshCw, Sparkles } from 'lucide-react'
 
 const differentiators = [
   {
@@ -34,77 +33,57 @@ const differentiators = [
 
 export function DifferentiationChapter() {
   return (
-    <Chapter id="differentiation" className="bg-background py-20 lg:py-32">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-12 lg:gap-24 items-start mb-20 px-4">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <span className="flex items-center gap-2 text-primary font-bold tracking-[0.4em] uppercase text-[10px] sm:text-xs mb-6 font-bold">
-              <Sparkles size={14} className="animate-pulse" /> The Advantage
-            </span>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[0.9] tracking-tighter text-foreground">
-              What Makes <br />
-              <span className="text-secondary italic">KCS Different.</span>
-            </h2>
-          </motion.div>
+    <Chapter id="technology" className="bg-background py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center"
+        >
+          <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-10 font-headline">
+            <Sparkles size={14} className="animate-pulse" /> The Advantage
+          </span>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="flex items-end h-full"
-          >
-            <p className="text-xl text-muted-foreground leading-relaxed max-w-xl border-l-2 border-primary/20 pl-8 font-medium">
-              We don't just deliver software; we architect competitive advantages. Our methodology ensures that our partners stay ahead of the curve with zero friction and maximum scalability.
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-12 font-headline">
+            The KCS <br />
+            <span className="text-primary italic">Technology Edge.</span>
+          </h2>
+
+          <div className="w-full py-16 border-y border-black/5 mb-16 relative">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+            <p className="text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic">
+              "We don't just deliver software; we architect competitive advantages that remain entirely under your control."
             </p>
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 px-4">
-          {differentiators.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group p-8 sm:p-12 rounded-[3rem] bg-black/5 border border-black/5 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] hover:border-primary/10 transition-all duration-500 relative overflow-hidden"
-            >
-              {/* Decorative Icon Background */}
-              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.06] group-hover:scale-110 transition-all duration-700 pointer-events-none group-hover:text-primary">
-                <item.icon size={180} strokeWidth={1} />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-8 sm:mb-12">
-                  <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
-                    <item.icon size={32} strokeWidth={1.5} />
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            {differentiators.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group p-10 rounded-[3rem] bg-black/5 border border-black/5 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] hover:border-primary/10 transition-all duration-500 text-left relative overflow-hidden"
+              >
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-8">
+                    <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                      <item.icon size={28} />
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 px-3 py-1 rounded-full border border-black/5">
+                      {item.tag}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 px-4 py-1.5 rounded-full border border-black/5 bg-black/5">
-                    {item.tag}
-                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 font-headline">{item.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed italic">{item.description}</p>
                 </div>
-                
-                <h3 className="text-2xl sm:text-4xl font-bold tracking-tight text-foreground mb-6 group-hover:text-primary transition-colors duration-300">
-                  {item.title}
-                </h3>
-                
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300 max-w-sm">
-                  {item.description}
-                </p>
-
-                <div className="mt-12 flex items-center gap-3 text-primary font-bold text-xs uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all duration-500">
-                  Deep Dive <ArrowRight size={16} />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </Chapter>
   )
