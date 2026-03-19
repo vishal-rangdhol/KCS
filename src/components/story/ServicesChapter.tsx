@@ -79,13 +79,11 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
           <service.icon size={44} strokeWidth={1.5} />
         </div>
         
-        <div className="relative mb-4 inline-block">
-          <h3 className="text-3xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500">
+        <h3 className="text-3xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 mb-6 leading-tight">
+          <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-500 ease-out pb-1 inline">
             {service.title}
-          </h3>
-          {/* Animated underline from left to right */}
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500 ease-out" />
-        </div>
+          </span>
+        </h3>
         
         <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500">
           {service.description}
