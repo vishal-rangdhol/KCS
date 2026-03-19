@@ -72,7 +72,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-[520px] rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer"
+      className="relative h-[520px] rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
     >
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-0">
@@ -80,35 +80,35 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           src={service.image?.imageUrl || "https://picsum.photos/seed/kcs6/1200/800"} 
           alt={service.title} 
           fill 
-          className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110 opacity-30 group-hover:opacity-60"
+          className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110 opacity-30 group-hover:opacity-100"
           data-ai-hint={service.image?.imageHint || "technology"}
         />
-        {/* Base dark overlay for readability */}
-        <div className="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors duration-500" />
+        {/* Base dark overlay for initial readability */}
+        <div className="absolute inset-0 bg-background/60 group-hover:bg-transparent transition-colors duration-700" />
       </div>
 
-      {/* Vibrant Color Overlay Layer */}
+      {/* Vibrant Transparent Color Overlay Layer */}
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700",
         service.color
       )} />
 
       {/* Content Section */}
-      <div className="relative z-20 h-full p-10 flex flex-col">
+      <div className="relative z-20 h-full p-10 flex flex-col justify-center text-center">
         {/* Icon: Pinned Top-Left */}
         <div className="absolute top-10 left-10 p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
           <service.icon size={32} strokeWidth={1.5} />
         </div>
 
-        {/* Text: Centered Vertically */}
-        <div className="flex-1 flex flex-col justify-center space-y-6">
+        {/* Text Contents: Vertically Centered */}
+        <div className="space-y-6">
           <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 leading-tight">
-            <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
+            <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary group-hover:from-white group-hover:to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
               {service.title}
             </span>
           </h3>
           
-          <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500 max-w-[90%]">
+          <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500 max-w-sm mx-auto">
             {service.description}
           </p>
         </div>
