@@ -8,7 +8,6 @@ import { AboutChapter } from '@/components/story/AboutChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
 import { ProductsChapter } from '@/components/story/ProductsChapter'
 import { CareersChapter } from '@/components/story/CareersChapter'
-import { ImpactChapter } from '@/components/story/ImpactChapter'
 import { CTAChapter } from '@/components/story/CTAChapter'
 import { ContactChapter } from '@/components/story/ContactChapter'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -57,7 +56,6 @@ export default function Home() {
         <AboutChapter />
         <ServicesChapter />
         <ProductsChapter />
-        <ImpactChapter />
         <CareersChapter />
         <CTAChapter />
         <ContactChapter />
