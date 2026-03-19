@@ -6,56 +6,48 @@ import { motion } from 'framer-motion'
 import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone } from 'lucide-react'
 import React from 'react'
 import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import { PlaceHolderImages } from '@/lib/placeholder-images'
 
 const services = [
   {
     title: "Artificial Intelligence",
     description: "Machine learning models, natural language processing systems, and predictive analytics — built for practical business use, not proof-of-concept demos.",
     icon: BrainCircuit,
-    color: "bg-indigo-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'solution-ai'),
+    color: "bg-indigo-600",
     accent: "from-indigo-500 to-indigo-600"
   },
   {
     title: "Cloud Infrastructure",
     description: "Scalable, secure architecture deployed across AWS, Google Cloud, and Microsoft Azure, designed for global performance and high availability.",
     icon: Cloud,
-    color: "bg-emerald-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'solution-cloud'),
+    color: "bg-emerald-600",
     accent: "from-emerald-500 to-emerald-600"
   },
   {
     title: "Data & Analytics",
     description: "From raw data pipelines to executive dashboards — we build systems that help organizations understand their data and act on it.",
     icon: BarChart3,
-    color: "bg-sky-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'product-data'),
+    color: "bg-sky-600",
     accent: "from-sky-500 to-sky-600"
   },
   {
     title: "Cybersecurity",
     description: "Security-first design across every layer — from architecture decisions through deployment and ongoing monitoring.",
     icon: Shield,
-    color: "bg-rose-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'solution-cyber'),
+    color: "bg-rose-600",
     accent: "from-rose-500 to-rose-600"
   },
   {
     title: "Enterprise Platforms",
     description: "Custom ERP, CRM, and workflow systems built around how businesses actually operate, not around what generic software assumes they do.",
     icon: Building2,
-    color: "bg-violet-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'solution-enterprise'),
+    color: "bg-violet-600",
     accent: "from-violet-500 to-violet-600"
   },
   {
     title: "Mobile Applications",
     description: "Cross-platform development across Flutter, React Native, Swift, and Kotlin — optimized for iOS, Android, and web.",
     icon: Smartphone,
-    color: "bg-fuchsia-600/90",
-    image: PlaceHolderImages.find(img => img.id === 'solution-mobile'),
+    color: "bg-fuchsia-600",
     accent: "from-fuchsia-500 to-fuchsia-600"
   }
 ]
@@ -74,20 +66,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       className="relative h-[520px] rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
     >
-      {/* Background Image Layer - Z-0 */}
-      <div className="absolute inset-0 z-0">
-        <Image 
-          src={service.image?.imageUrl || "https://picsum.photos/seed/kcs6/1200/800"} 
-          alt={service.title} 
-          fill 
-          className="object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 group-hover:scale-110 opacity-30 group-hover:opacity-100"
-          data-ai-hint={service.image?.imageHint || "technology"}
-        />
-        {/* Base overlay for default state readability */}
-        <div className="absolute inset-0 bg-background/60 group-hover:bg-transparent transition-colors duration-700" />
-      </div>
-
-      {/* Vibrant Semi-Transparent Color Overlay - Z-10 */}
+      {/* Vibrant Solid Color Overlay - Activates on Hover */}
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700",
         service.color
