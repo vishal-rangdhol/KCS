@@ -48,7 +48,7 @@ export default function Home() {
         <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/5 blur-[140px] rounded-full" />
       </div>
 
-      {/* Chapters Wrapper */}
+      {/* Chapters Wrapper - Physical Order Re-aligned to match Nav Hierarchy */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -58,10 +58,13 @@ export default function Home() {
         <HeroChapter />
         <ProblemChapter />
         <VisionChapter />
-        <AboutChapter />
-        <DifferentiationChapter />
-        <ServicesChapter />
+        
+        {/* Physical order now matches: Products -> Services -> Technology -> About -> Careers -> Contact */}
         <ProductsChapter />
+        <ServicesChapter />
+        <DifferentiationChapter />
+        <AboutChapter />
+        
         <CultureChapter />
         <CareersChapter />
         <CTAChapter />

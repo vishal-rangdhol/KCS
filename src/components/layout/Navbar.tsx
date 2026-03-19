@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -36,7 +37,7 @@ export function Navbar() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -60% 0px',
+      rootMargin: '-50% 0px -50% 0px', // Spies on the center of the viewport for precise tracking
       threshold: 0,
     }
 
@@ -100,12 +101,13 @@ export function Navbar() {
                   }`}
                 >
                   {item.name}
-                  <motion.span 
-                    className="absolute bottom-0 left-0 h-[2px] bg-primary"
-                    initial={false}
-                    animate={{ width: isActive ? '100%' : '0%' }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  />
+                  {isActive && (
+                    <motion.span 
+                      layoutId="activeUnderline"
+                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary z-10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Link>
               </li>
             )
