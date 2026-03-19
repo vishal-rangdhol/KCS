@@ -1,10 +1,9 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Sparkles, ShieldCheck, UserCircle, BarChart3 } from 'lucide-react'
-import React, { useRef } from 'react'
+import React from 'react'
 
 const values = [
   {
@@ -13,7 +12,7 @@ const values = [
     icon: Sparkles,
     color: "from-orange-500/10 via-amber-500/5 to-transparent",
     border: "border-orange-500/20",
-    glow: "rgba(249, 115, 22, 0.2)"
+    hoverBorder: "hover:border-primary/40"
   },
   {
     title: "Military Grade",
@@ -21,7 +20,7 @@ const values = [
     icon: ShieldCheck,
     color: "from-amber-600/10 via-orange-500/5 to-transparent",
     border: "border-amber-600/20",
-    glow: "rgba(217, 119, 6, 0.2)"
+    hoverBorder: "hover:border-primary/40"
   },
   {
     title: "Radical Impact",
@@ -29,7 +28,7 @@ const values = [
     icon: UserCircle,
     color: "from-yellow-500/10 via-orange-400/5 to-transparent",
     border: "border-yellow-500/20",
-    glow: "rgba(234, 179, 8, 0.2)"
+    hoverBorder: "hover:border-primary/40"
   },
   {
     title: "Proven Success",
@@ -37,81 +36,48 @@ const values = [
     icon: BarChart3,
     color: "from-orange-600/10 via-amber-700/5 to-transparent",
     border: "border-orange-600/20",
-    glow: "rgba(234, 88, 12, 0.2)"
+    hoverBorder: "hover:border-primary/40"
   }
 ]
 
 function ValueCard({ value, index }: { value: typeof values[0], index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-12deg", "12deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["12deg", "-12deg"])
-  
-  const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
-  const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return
-    if (!cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
-    x.set((e.clientX - rect.left) / rect.width - 0.5)
-    y.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
   return (
     <motion.div
-      ref={cardRef}
       variants={{
-        hidden: { opacity: 0, y: 50, rotateX: 20 },
+        hidden: { opacity: 0, y: 50 },
         visible: { 
           opacity: 1, 
           y: 0, 
-          rotateX: 0,
           transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`p-10 rounded-[3rem] bg-white border ${value.border} shadow-[0_20px_50px_rgba(0,0,0,0.05)] group relative overflow-visible cursor-none`}
+      className={`p-10 rounded-[3rem] bg-white border ${value.border} ${value.hoverBorder} shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none`}
     >
-      {/* Background Energy Glow - Rounded */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[100px] rounded-[3rem]"
-        style={{
-          background: value.glow,
-          transform: "translateZ(-40px)"
-        }}
-      />
+      {/* Subtle Background Glow on Hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
-      <div style={{ transform: "translateZ(80px)" }} className="relative z-10">
-        <motion.div 
-          whileHover={{ scale: 1.3, rotate: -15 }}
-          className={`bg-black/5 p-6 rounded-[2rem] w-fit mb-10 border border-black/10 group-hover:border-primary/20 transition-all duration-500`}
+      <div className="relative z-10">
+        <div 
+          className="bg-black/5 p-6 rounded-[2rem] w-fit mb-10 border border-black/5 group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
         >
           <value.icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
-        </motion.div>
+        </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tighter text-foreground group-hover:text-primary group-hover:translate-x-2 transition-all duration-300">
-          {value.title}
+        <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tighter text-foreground leading-tight">
+          <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-500 ease-out pb-1 inline">
+            {value.title}
+          </span>
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-foreground transition-colors duration-300">
+        
+        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-foreground/80 transition-colors duration-300">
           {value.description}
         </p>
       </div>
 
-      {/* Decorative gradient overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 rounded-[3rem]`} />
+      {/* Decorative architectural grid element visible on hover */}
+      <div className="absolute -bottom-12 -right-12 w-48 h-48 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:12px_12px]" />
+      </div>
     </motion.div>
   )
 }
@@ -137,7 +103,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 relative w-full perspective-3000 px-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 relative w-full px-6"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />
