@@ -3,7 +3,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
-import { ArrowDown, Rocket } from 'lucide-react'
+import { ArrowDown, Rocket, LayoutPanelLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 export function HeroChapter() {
@@ -30,7 +30,7 @@ export function HeroChapter() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
-  const headline = "Empowering Businesses Through Intelligent Technology."
+  const headline = "Engineering Digital Ecosystems for the AI Era"
   const words = headline.split(" ")
 
   return (
@@ -56,7 +56,7 @@ export function HeroChapter() {
           Kandhugule Consultancy Services
         </motion.span>
         
-        <h1 className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-8 leading-[1.1] max-w-5xl mx-auto tracking-tight px-2">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-10 leading-[1.0] max-w-6xl mx-auto tracking-tighter px-2 text-foreground">
           {words.map((word, i) => (
             <motion.span
               key={i}
@@ -78,25 +78,31 @@ export function HeroChapter() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8, duration: 1 }}
-          className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-body mb-8 sm:mb-12 px-4"
+          className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-body mb-10 sm:mb-16 px-4 leading-relaxed"
         >
-          KCS is a premier technology consultancy architecting the future through 
-          <span className="text-foreground font-medium"> AI integration</span>, 
-          <span className="text-foreground font-medium"> cloud optimization</span>, 
-          <span className="text-foreground font-medium"> advanced cybersecurity</span>, and 
-          <span className="text-foreground font-medium"> data-driven solutions</span>.
+          KCS Product Lab designs, builds, and operates scalable technology platforms 
+          powered by <span className="text-foreground font-semibold">artificial intelligence</span>, 
+          <span className="text-foreground font-semibold"> cloud infrastructure</span>, and 
+          <span className="text-foreground font-semibold"> cybersecurity</span>.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2.2 }}
-          className="px-4"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
         >
           <MagneticButton>
-            <Button size="lg" className="h-14 sm:h-16 px-8 sm:px-12 text-base sm:text-lg rounded-full group bg-primary hover:bg-primary/90 shadow-[0_0_30px_rgba(62,128,219,0.3)] border-none w-full sm:w-auto">
-              Discover Our Story
+            <Button size="lg" className="h-14 sm:h-18 px-8 sm:px-12 text-base sm:text-lg rounded-full group bg-primary hover:bg-primary/90 shadow-[0_20px_40px_rgba(249,115,22,0.2)] border-none w-full sm:w-auto font-bold">
+              Start Your Project
               <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Button>
+          </MagneticButton>
+
+          <MagneticButton>
+            <Button variant="outline" size="lg" className="h-14 sm:h-18 px-8 sm:px-12 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-black/10 transition-all w-full sm:w-auto font-bold text-foreground">
+              Explore Our Platforms
+              <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
             </Button>
           </MagneticButton>
         </motion.div>
@@ -109,7 +115,7 @@ export function HeroChapter() {
         transition={{ delay: 3, duration: 1 }}
         className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3"
       >
-        <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60">Scroll Story</span>
+        <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold">Scroll Story</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
