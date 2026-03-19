@@ -36,18 +36,19 @@ export default function Home() {
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Background Ambient Glows - Sunset Theme */}
+      {/* Background Ambient Layers */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Central Dark Ellipse for Depth */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-[radial-gradient(ellipse_at_center,_black_0%,_transparent_60%)] opacity-60 blur-[120px]" />
+        {/* Core Black Ellipse Arc - Grounding Element */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-[radial-gradient(ellipse_at_center,_black_0%,_transparent_70%)] opacity-90 blur-[140px]" />
         
+        {/* Vibrant Sunset Glows */}
         <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/20 blur-[160px] rounded-full animate-pulse" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/15 blur-[160px] rounded-full" />
         <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/10 blur-[140px] rounded-full" />
         <div className="absolute bottom-1/3 left-1/4 w-[50%] h-[50%] bg-amber-500/10 blur-[140px] rounded-full" />
       </div>
 
-      {/* Chapters Wrapper with Page Transition */}
+      {/* Chapters Wrapper */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -66,8 +67,8 @@ export default function Home() {
         <ContactChapter />
       </motion.div>
 
-      {/* Background Vignette for cinematic feel */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.5)_100%)]" />
+      {/* Final Cinematic Vignette */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.7)_100%)]" />
     </main>
   )
 }
