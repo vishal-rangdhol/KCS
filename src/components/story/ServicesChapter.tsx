@@ -66,9 +66,9 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       className="relative h-[520px] rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
     >
-      {/* Vibrant Solid Color Overlay - Activates on Hover */}
+      {/* Vibrant Solid Color Overlay - Activates on Hover with reduced saturation */}
       <div className={cn(
-        "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700",
+        "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 saturate-[0.85]",
         service.color
       )} />
 
