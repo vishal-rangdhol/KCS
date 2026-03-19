@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Footer } from '@/components/layout/Footer'
 
 const jobs = [
   {
@@ -163,7 +164,6 @@ function AdvantageCard({ item, index }: { item: typeof whyKCS[0], index: number 
       viewport={{ once: true }}
       className="p-10 rounded-[2.5rem] bg-white border border-black/5 hover:border-primary/20 transition-all group shadow-[0_10px_30px_rgba(0,0,0,0.02)] relative overflow-hidden"
     >
-      {/* Interactive Light Sweep Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
@@ -174,7 +174,6 @@ function AdvantageCard({ item, index }: { item: typeof whyKCS[0], index: number 
         <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{item.text}</p>
       </div>
 
-      {/* Decorative background grid element on hover */}
       <div className="absolute -bottom-6 -right-6 w-24 h-24 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
       </div>
@@ -374,7 +373,7 @@ export default function CareersPage() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden"
+          className="p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden mb-20"
         >
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:32px_32px]" />
@@ -445,6 +444,8 @@ export default function CareersPage() {
           </div>
         </motion.div>
       </div>
+
+      <Footer />
     </main>
   )
 }

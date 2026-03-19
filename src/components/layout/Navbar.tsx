@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -37,7 +37,7 @@ export function Navbar() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // Spies on the center of the viewport for precise tracking
+      rootMargin: '-50% 0px -50% 0px',
       threshold: 0,
     }
 
@@ -88,10 +88,30 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex flex-row gap-6 lg:gap-8 items-center">
+        <ul className="hidden md:flex flex-row gap-4 lg:gap-6 items-center">
           {navItems.map((item) => {
             const id = item.href.split('#')[1]
             const isActive = activeSection === id
+            const isContact = item.name === 'Contact'
+
+            if (isContact) {
+              return (
+                <li key={item.name} className="ml-2">
+                  <Link 
+                    href={item.href}
+                    className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 border-2 ${
+                      isActive 
+                        ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(249,115,22,0.3)]' 
+                        : 'border-primary/40 text-primary hover:bg-primary hover:text-white hover:border-primary shadow-sm'
+                    }`}
+                  >
+                    {item.name}
+                    <ArrowUpRight size={12} className={isActive ? 'opacity-100' : 'opacity-60'} />
+                  </Link>
+                </li>
+              )
+            }
+
             return (
               <li key={item.name} className="relative group">
                 <Link 

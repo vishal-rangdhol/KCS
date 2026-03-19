@@ -4,13 +4,10 @@
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Mail, MapPin, Send, ArrowUpRight, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { Send, Sparkles } from 'lucide-react'
+import { Footer } from '@/components/layout/Footer'
 
 export function ContactChapter() {
-  const currentYear = new Date().getFullYear()
-
   const scrollToContact = () => {
     const el = document.getElementById('contact');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -59,7 +56,7 @@ export function ContactChapter() {
               </p>
               <Button 
                 onClick={scrollToContact}
-                className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg group"
+                className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg group shadow-xl"
               >
                 Start a Conversation
                 <Send className="ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -69,60 +66,7 @@ export function ContactChapter() {
         </motion.div>
       </div>
 
-      {/* Structured Footer */}
-      <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 border-t border-black/5">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
-          <div className="col-span-2 lg:col-span-2">
-            <Link href="/" className="inline-block mb-8">
-               <Image src="/kcs-logo.png" alt="KCS Logo" width={140} height={46} className="h-10 w-auto" />
-            </Link>
-            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed italic">
-              Architecting the digital infrastructure that defines the next era of global business.
-            </p>
-          </div>
-          
-          <div className="space-y-6">
-            <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Company</h5>
-            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
-              <li><Link href="/#story" className="hover:text-primary transition-colors">About</Link></li>
-              <li><Link href="/careers" className="hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h5 className="text-[10px] font-bold uppercase tracking-widest text-secondary font-headline">Products</h5>
-            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
-              <li><a href="https://letscatchup-kcs.com/" target="_blank" className="hover:text-primary transition-colors">Let's Catch Up</a></li>
-              <li><a href="https://www.sushrth.com/" target="_blank" className="hover:text-primary transition-colors">Sushrth</a></li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Services</h5>
-            <ul className="space-y-4 text-sm text-muted-foreground font-medium">
-              <li><Link href="/#services" className="hover:text-primary transition-colors">AI Solutions</Link></li>
-              <li><Link href="/#services" className="hover:text-primary transition-colors">Cybersecurity</Link></li>
-              <li><Link href="/#services" className="hover:text-primary transition-colors">Cloud Infrastructure</Link></li>
-              <li><Link href="/#services" className="hover:text-primary transition-colors">Enterprise Platforms</Link></li>
-              <li><Link href="/#services" className="hover:text-primary transition-colors">Mobile Development</Link></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="py-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-            <p className="text-[10px] tracking-widest uppercase font-bold text-foreground/80">KCS Product Lab — by Kandhugule Consultancy Services Pvt Ltd</p>
-            <p className="text-[9px] tracking-widest uppercase text-muted-foreground">© {currentYear} KCS. All Rights Reserved.</p>
-          </div>
-          
-          <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Terms of Service</Link>
-            <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" className="hover:text-primary transition-colors flex items-center gap-1">LinkedIn <ArrowUpRight size={12} /></a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </Chapter>
   )
 }
