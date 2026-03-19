@@ -52,7 +52,7 @@ const services = [
   }
 ]
 
-function ServiceCard({ service }: { service: typeof services[0], index: number }) {
+function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
   return (
     <motion.div
       variants={{
@@ -69,13 +69,13 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
         service.hoverBg
       )}
     >
-      {/* Icon: Pinned to top-10 to align with p-10 padding */}
+      {/* Icon: Pinned to top-10 left-10 for absolute alignment across all cards */}
       <div className="absolute top-10 left-10 p-4 rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit z-20">
         <service.icon size={32} strokeWidth={1.5} />
       </div>
 
       <div className="relative z-10 h-full flex flex-col justify-center">
-        {/* Content Section: Centered vertically */}
+        {/* Content Section: Centered vertically in the middle of the card */}
         <div className="text-left space-y-6">
           <h3 className="text-3xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 leading-tight">
             <span className="bg-left-bottom bg-gradient-to-r from-white to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
