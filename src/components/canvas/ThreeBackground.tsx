@@ -12,14 +12,18 @@ export function ThreeBackground() {
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+    const renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: true,
+      powerPreference: 'high-performance' 
+    })
     
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Primary Particles (Orange) - More opaque for Light Mode
-    const particlesCount = 2000
+    // Optimized Particle Counts for Performance
+    const particlesCount = 1200 // Reduced from 2000 for faster initialization
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
     
@@ -33,17 +37,17 @@ export function ThreeBackground() {
     
     const particlesMaterial = new THREE.PointsMaterial({
       size: 0.025,
-      color: 0xF97316, // Sunset Orange
+      color: 0xF97316, 
       transparent: true,
       opacity: 0.4,
-      blending: THREE.NormalBlending // Normal blending for light backgrounds
+      blending: THREE.NormalBlending 
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
-    // Secondary Particles (Amber/Gold)
-    const secondaryCount = 800
+    // Secondary Particles
+    const secondaryCount = 500 // Reduced from 800
     const secPositions = new Float32Array(secondaryCount * 3)
     for (let i = 0; i < secondaryCount * 3; i++) {
       secPositions[i] = (Math.random() - 0.5) * 15
@@ -52,7 +56,7 @@ export function ThreeBackground() {
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
       size: 0.035,
-      color: 0xFBBF24, // Amber
+      color: 0xFBBF24,
       transparent: true,
       opacity: 0.25,
       blending: THREE.NormalBlending
@@ -60,14 +64,14 @@ export function ThreeBackground() {
     const secParticles = new THREE.Points(secGeometry, secMaterial)
     scene.add(secParticles)
 
-    // Connections (Neural Network effect)
+    // Optimized Connections
     const lineMaterial = new THREE.LineBasicMaterial({
       color: 0xF97316,
       transparent: true,
       opacity: 0.05
     })
     
-    const maxConnections = 500
+    const maxConnections = 300 // Reduced from 500
     const lineGeometry = new THREE.BufferGeometry()
     const linePositions = new Float32Array(maxConnections * 2 * 3)
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3))
