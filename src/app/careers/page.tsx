@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck, Mail, ClipboardCheck, ArrowUpRight, Zap, Heart, Brain } from 'lucide-react'
+import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck, Mail, ClipboardCheck, ArrowUpRight, Zap, Heart, Brain, Search } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -121,7 +121,7 @@ const whyKCS = [
 
 export default function CareersPage() {
   return (
-    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+    <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
       <Navbar />
       <ThreeBackground />
       
@@ -142,42 +142,57 @@ export default function CareersPage() {
           </Link>
         </div>
 
-        {/* Hero Section */}
-        <div className="max-w-5xl mb-24 md:mb-40">
+        {/* Hero Section - Restructured for zero clutter */}
+        <section className="mb-32 md:mb-48">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-8 font-headline">
-              <Sparkles size={12} /> The Innovation Collective
-            </span>
-            <h1 className="text-5xl md:text-9xl font-bold tracking-tighter leading-[0.85] mb-10 text-foreground font-headline">
-              Join the <br />
-              <span className="text-secondary italic">KCS Team.</span>
-            </h1>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-12 items-start mt-12">
-              <div className="space-y-8">
-                <p className="text-xl md:text-3xl text-foreground font-medium leading-tight border-l-2 border-primary/30 pl-8">
-                  We're building the next generation of digital platforms — and we're looking for engineers, designers, and technologists who want to do the same.
-                </p>
-                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
-                  At KCS, we believe the best products come from teams that are focused, supported, and given the space to do their best work. We take engineering quality seriously, and we take the wellbeing of our people just as seriously.
-                </p>
-              </div>
+            <div className="max-w-4xl">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-10 font-headline">
+                <Sparkles size={12} className="animate-pulse" /> The Collective Protocol
+              </span>
+              <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.8] mb-12 text-foreground font-headline">
+                Join the <br />
+                <span className="text-primary italic">KCS Team.</span>
+              </h1>
+              <p className="text-xl md:text-4xl text-foreground font-medium leading-tight max-w-3xl">
+                We're building the next generation of digital platforms — and we're looking for architects who want to do the same.
+              </p>
             </div>
           </motion.div>
-        </div>
+        </section>
 
-        {/* Why KCS Section */}
-        <div className="mb-32">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary font-headline">Why KCS Protocol</h2>
+        {/* Philosophy Block - High Impact & Separated */}
+        <section className="mb-48 py-24 border-y border-black/5 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="relative z-10 max-w-5xl mx-auto text-center"
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 mb-8 block font-headline">The KCS Conviction</span>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight mb-10 text-foreground">
+              "We believe the best products come from teams that are <span className="text-primary">focused</span>, supported, and given the space to do their best work."
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed italic">
+              We take engineering quality seriously, and we take the wellbeing of our people just as seriously. No performative busyness. Just deep work.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* Why KCS Grid */}
+        <div className="mb-48">
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">The KCS Advantage</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyKCS.map((item, i) => (
               <motion.div
                 key={i}
@@ -185,12 +200,12 @@ export default function CareersPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-8 rounded-[2.5rem] bg-black/5 border border-black/5 hover:border-primary/20 transition-all group"
+                className="p-10 rounded-[2.5rem] bg-white border border-black/5 hover:border-primary/20 transition-all group shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
               >
-                <div className={`p-4 rounded-2xl bg-white shadow-sm mb-6 group-hover:scale-110 transition-transform ${item.iconColor || 'text-primary'}`}>
-                  <item.icon size={24} />
+                <div className={`p-4 rounded-2xl bg-black/5 mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 ${item.iconColor || 'text-primary'}`}>
+                  <item.icon size={28} />
                 </div>
-                <h3 className="text-xl font-bold mb-4 font-headline">{item.title}</h3>
+                <h3 className="text-xl font-bold mb-4 font-headline text-foreground">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
               </motion.div>
             ))}
@@ -198,9 +213,9 @@ export default function CareersPage() {
         </div>
 
         {/* Job Openings */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary font-headline">Open Architectures</h2>
+        <div className="space-y-6 mb-48">
+          <div className="flex items-center gap-4 mb-16">
+            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Open Architectures</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
 
@@ -309,7 +324,7 @@ export default function CareersPage() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-40 p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden"
+          className="p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden"
         >
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:32px_32px]" />
