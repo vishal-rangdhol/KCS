@@ -56,8 +56,8 @@ const jobs = [
       "Infrastructure Monitoring: Deploy monitoring tools to track system health and security vulnerabilities."
     ],
     requirements: [
-      "Systems Administration: Foundational knowledge of Linux/Unix environments and cloud protocols.",
-      "Scripting Proficiency: Experience with Bash, Python, or similar scripting languages for automation.",
+      "Systems Administration: Foundational knowledge of Linux/Unix environments and cloud networking protocols.",
+      "Scripting Proficiency: Experience with Bash, Python, or similar scripting languages for task automation.",
       "Architectural Awareness: Basic understanding of microservices architecture and server management.",
       "Detail Orientation: A meticulous approach to managing configuration files and security protocols."
     ]
@@ -88,21 +88,17 @@ export default function CareersPage() {
       <Navbar />
       <ThreeBackground />
       
-      {/* Background Ambient Layers */}
+      {/* Background Ambient Layers - Light Mode */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        {/* Core Black Ellipse Arc - Grounding Element */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[160%] h-[160%] bg-[radial-gradient(ellipse_at_center,_black_0%,_transparent_70%)] opacity-90 blur-[140px]" />
-        
-        {/* Vibrant Sunset Glows */}
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.12)_0%,_transparent_50%)]" />
-        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full opacity-40" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.05)_0%,_transparent_50%)]" />
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full opacity-40" />
       </div>
 
       <div className="relative z-10 pt-32 pb-32 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
         {/* Navigation Breadcrumb */}
         <div className="mb-12 md:mb-16">
           <Link href="/" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-all group">
-            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
+            <div className="p-2 rounded-lg bg-black/5 border border-black/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             </div>
             <span className="text-[10px] font-bold uppercase tracking-[0.3em] font-headline">Back to Story</span>
@@ -134,12 +130,12 @@ export default function CareersPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-wrap gap-4 lg:justify-end"
           >
-            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
+            <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <MapPin size={24} className="text-primary mb-3" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</span>
               <p className="text-sm font-bold mt-1">Hyderabad, India</p>
             </div>
-            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
+            <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <Clock size={24} className="text-secondary mb-3" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Duration</span>
               <p className="text-sm font-bold mt-1">3 Months</p>
@@ -164,30 +160,30 @@ export default function CareersPage() {
               <AccordionItem 
                 key={job.id} 
                 value={job.id}
-                className="border-none px-2 rounded-[2rem] bg-card/20 backdrop-blur-md border border-white/5 hover:border-white/10 transition-all group data-[state=open]:bg-white/5 data-[state=open]:border-primary/20 shadow-2xl overflow-hidden"
+                className="border-none px-2 rounded-[2rem] bg-card/40 backdrop-blur-md border border-black/5 hover:border-black/10 transition-all group data-[state=open]:bg-white data-[state=open]:border-primary/20 shadow-xl overflow-hidden"
               >
                 <AccordionTrigger className="hover:no-underline py-6 md:py-10 px-6 md:px-10">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 text-left w-full">
                     <div className="flex items-center gap-6">
-                      <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:scale-110 group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-all duration-500">
+                      <div className="p-4 rounded-2xl bg-black/5 border border-black/10 text-primary group-hover:scale-110 group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-all duration-500">
                         <Briefcase size={24} />
                       </div>
                       <div>
                         <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 mb-1 block">{job.category}</span>
-                        <h3 className="text-xl md:text-3xl font-bold tracking-tight text-white group-hover:text-primary transition-colors">
+                        <h3 className="text-xl md:text-3xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
                           {job.title}
                         </h3>
                       </div>
                     </div>
                     <div className="hidden md:flex items-center gap-3">
-                      <span className="px-4 py-2 rounded-full border border-white/5 bg-white/5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Full-Time Path</span>
+                      <span className="px-4 py-2 rounded-full border border-black/5 bg-black/5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Full-Time Path</span>
                     </div>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 md:px-10 pb-10">
                   <div className="max-w-6xl mx-auto space-y-16">
                     {/* I. Position Overview */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 pt-6 border-t border-white/5">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 pt-6 border-t border-black/5">
                       <div className="flex items-center gap-3">
                         <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary whitespace-nowrap">I. Position Overview</span>
                       </div>
@@ -204,7 +200,7 @@ export default function CareersPage() {
                         </div>
                         <ul className="space-y-4">
                           {job.responsibilities.map((resp, idx) => (
-                            <li key={idx} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-secondary/20 transition-all group/item">
+                            <li key={idx} className="flex gap-4 p-5 rounded-2xl bg-black/5 border border-black/5 hover:border-secondary/20 transition-all group/item">
                               <CheckCircle2 size={18} className="text-secondary flex-shrink-0" />
                               <span className="text-sm leading-relaxed text-muted-foreground group-hover/item:text-foreground transition-colors">{resp}</span>
                             </li>
@@ -218,7 +214,7 @@ export default function CareersPage() {
                         </div>
                         <ul className="space-y-4">
                           {job.requirements.map((req, idx) => (
-                            <li key={idx} className="flex gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/20 transition-all group/item">
+                            <li key={idx} className="flex gap-4 p-5 rounded-2xl bg-black/5 border border-black/5 hover:border-primary/20 transition-all group/item">
                               <ShieldCheck size={18} className="text-primary flex-shrink-0" />
                               <span className="text-sm leading-relaxed text-muted-foreground group-hover/item:text-foreground transition-colors">{req}</span>
                             </li>
@@ -228,7 +224,7 @@ export default function CareersPage() {
                     </div>
 
                     {/* Local Action */}
-                    <div className="pt-12 border-t border-white/10">
+                    <div className="pt-12 border-t border-black/10">
                       <div className="flex items-center gap-4 text-muted-foreground">
                         <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
                           <Sparkles size={20} />
@@ -250,7 +246,7 @@ export default function CareersPage() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-12 md:p-24 rounded-[3rem] bg-white/5 border border-white/10 relative overflow-hidden text-center"
+          className="mt-32 p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden text-center"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(249,115,22,0.05)_0%,_transparent_70%)]" />
           <div className="absolute top-0 right-0 p-12 text-primary/5 -rotate-12">
@@ -265,11 +261,11 @@ export default function CareersPage() {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-              <div className="p-8 rounded-[2rem] bg-background/50 border border-white/5 group hover:border-primary/30 transition-all">
+              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-primary/30 transition-all shadow-sm">
                 <span className="text-[9px] font-bold text-primary uppercase tracking-widest block mb-4">Submission Point</span>
                 <p className="text-xl md:text-2xl font-bold tracking-tight">HR@kandhugule-kcs.com</p>
               </div>
-              <div className="p-8 rounded-[2rem] bg-background/50 border border-white/5 group hover:border-secondary/30 transition-all">
+              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-secondary/30 transition-all shadow-sm">
                 <span className="text-[9px] font-bold text-secondary uppercase tracking-widest block mb-4">Subject Requirement</span>
                 <p className="text-sm md:text-base font-medium italic text-muted-foreground">
                   Internship Application - [Role] - [Name]
@@ -277,14 +273,14 @@ export default function CareersPage() {
               </div>
             </div>
             
-            <p className="mt-20 text-[10px] text-white/20 uppercase tracking-[0.4em] font-bold">
+            <p className="mt-20 text-[10px] text-black/20 uppercase tracking-[0.4em] font-bold">
               © 2025 Kandhugule Consultancy Services | Technical Excellence Driven
             </p>
           </div>
         </motion.div>
       </div>
 
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.6)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.6)_100%)]" />
     </main>
   )
 }

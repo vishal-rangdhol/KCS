@@ -18,7 +18,7 @@ export function ThreeBackground() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Primary Particles (Orange)
+    // Primary Particles (Orange) - More opaque for Light Mode
     const particlesCount = 2000
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
@@ -32,11 +32,11 @@ export function ThreeBackground() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.02,
+      size: 0.025,
       color: 0xF97316, // Sunset Orange
       transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending
+      opacity: 0.4,
+      blending: THREE.NormalBlending // Normal blending for light backgrounds
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
@@ -51,20 +51,20 @@ export function ThreeBackground() {
     const secGeometry = new THREE.BufferGeometry()
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
-      size: 0.03,
+      size: 0.035,
       color: 0xFBBF24, // Amber
       transparent: true,
-      opacity: 0.4,
-      blending: THREE.AdditiveBlending
+      opacity: 0.25,
+      blending: THREE.NormalBlending
     })
     const secParticles = new THREE.Points(secGeometry, secMaterial)
     scene.add(secParticles)
 
-    // Connections (Neural Network effect - Warm)
+    // Connections (Neural Network effect)
     const lineMaterial = new THREE.LineBasicMaterial({
       color: 0xF97316,
       transparent: true,
-      opacity: 0.08
+      opacity: 0.05
     })
     
     const maxConnections = 500
@@ -148,5 +148,5 @@ export function ThreeBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="canvas-container opacity-60" />
+  return <div ref={containerRef} className="canvas-container opacity-40" />
 }

@@ -54,9 +54,9 @@ export function CustomCursor() {
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
-      {/* Outer Circle - Sunset Theme */}
+      {/* Outer Circle - Light Mode Optimized */}
       <motion.div
-        className="w-12 h-12 rounded-full border-2 border-primary/60 flex items-center justify-center mix-blend-screen shadow-[0_0_20px_rgba(249,115,22,0.4)]"
+        className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-multiply shadow-[0_0_20px_rgba(249,115,22,0.1)]"
         style={{
           x,
           y,
@@ -65,8 +65,8 @@ export function CustomCursor() {
         }}
         animate={{
           scale: isPressed ? 0.7 : isHovered ? 1.6 : 1,
-          backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.25)' : 'rgba(249, 115, 22, 0.05)',
-          borderColor: isHovered ? 'rgba(249, 115, 22, 1)' : 'rgba(249, 115, 22, 0.6)',
+          backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.15)' : 'rgba(249, 115, 22, 0.02)',
+          borderColor: isHovered ? 'rgba(249, 115, 22, 1)' : 'rgba(249, 115, 22, 0.4)',
         }}
         transition={{ 
           type: 'spring', 
@@ -75,9 +75,9 @@ export function CustomCursor() {
           mass: 0.5
         }}
       >
-        {/* Inner Dot - Sunset Theme */}
+        {/* Inner Dot */}
         <motion.div 
-          className="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(249,115,22,1)]"
+          className="w-2.5 h-2.5 rounded-full bg-primary"
           animate={{ 
             scale: isHovered ? 0.5 : 1,
             opacity: isPressed ? 0.6 : 1
@@ -86,9 +86,9 @@ export function CustomCursor() {
         />
       </motion.div>
       
-      {/* Secondary trail for better tracking */}
+      {/* Secondary trail */}
       <motion.div
-        className="absolute w-2 h-2 rounded-full bg-secondary/40 blur-sm"
+        className="absolute w-2 h-2 rounded-full bg-secondary/20 blur-sm"
         style={{
           x: useSpring(cursorX, { damping: 45, stiffness: 250 }),
           y: useSpring(cursorY, { damping: 45, stiffness: 250 }),
