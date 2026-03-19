@@ -47,7 +47,7 @@ export function HeroChapter() {
     <section 
       id="hero" 
       ref={containerRef}
-      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 sm:px-6 overflow-hidden py-20 bg-background"
+      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 sm:px-6 overflow-hidden pt-32 pb-40 bg-background"
     >
       {/* Dynamic Interactive Spotlight Background */}
       <motion.div 
@@ -104,7 +104,7 @@ export function HeroChapter() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 1 }}
-            className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-body mb-12 sm:mb-16 px-4 leading-relaxed"
+            className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-body mb-8 sm:mb-12 px-4 leading-relaxed"
           >
             KCS Product Lab designs, builds, and operates scalable technology platforms 
             powered by <span className="text-foreground font-semibold">artificial intelligence</span>, 
@@ -120,14 +120,14 @@ export function HeroChapter() {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
         >
           <MagneticButton>
-            <Button size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary hover:bg-primary/90 shadow-[0_20px_40px_rgba(249,115,22,0.2)] border-none w-full sm:w-auto font-bold text-white">
+            <Button size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary hover:bg-white hover:text-primary hover:border-primary border-transparent border-2 transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]">
               Start Your Project
               <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </Button>
           </MagneticButton>
 
           <MagneticButton>
-            <Button variant="outline" size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-black/10 hover:text-primary transition-all w-full sm:w-auto font-bold text-foreground">
+            <Button variant="outline" size="lg" className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-black/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-foreground">
               Explore Our Platforms
               <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
             </Button>
@@ -140,7 +140,7 @@ export function HeroChapter() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3, duration: 1 }}
-        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 z-20"
       >
         <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold">Scroll Story</span>
         <motion.div
@@ -192,10 +192,11 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const centerX = left + width / 2
     const centerY = top + height / 2
     
+    // Smaller factor to reduce jitter/drastic movement
     const moveX = clientX - centerX
     const moveY = clientY - centerY
     
-    const factor = 0.35
+    const factor = 0.2
     x.set(moveX * factor)
     y.set(moveY * factor)
   }
