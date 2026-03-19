@@ -11,42 +11,48 @@ const services = [
     title: "Artificial Intelligence",
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
-    color: "from-blue-500/20 to-cyan-500/20",
-    iconColor: "text-blue-400"
+    color: "from-cyan-500/40 to-blue-600/40",
+    glowColor: "rgba(6, 182, 212, 0.4)",
+    iconColor: "text-cyan-400"
   },
   {
     title: "Cloud Cognitive Operations",
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
-    color: "from-purple-500/20 to-blue-500/20",
+    color: "from-purple-500/40 to-indigo-600/40",
+    glowColor: "rgba(168, 85, 247, 0.4)",
     iconColor: "text-purple-400"
   },
   {
     title: "Cybersecurity",
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
-    color: "from-red-500/20 to-orange-500/20",
-    iconColor: "text-red-400"
+    color: "from-rose-500/40 to-red-600/40",
+    glowColor: "rgba(244, 63, 94, 0.4)",
+    iconColor: "text-rose-400"
   },
   {
     title: "Data & Analytics",
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
-    color: "from-green-500/20 to-emerald-500/20",
-    iconColor: "text-green-400"
+    color: "from-emerald-500/40 to-teal-600/40",
+    glowColor: "rgba(16, 185, 129, 0.4)",
+    iconColor: "text-emerald-400"
   },
   {
     title: "Enterprise Solutions",
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
-    color: "from-yellow-500/20 to-orange-500/20",
-    iconColor: "text-yellow-400"
+    color: "from-amber-500/40 to-orange-600/40",
+    glowColor: "rgba(245, 158, 11, 0.4)",
+    iconColor: "text-amber-400"
   },
   {
     title: "Cloud Solutions",
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
-    color: "from-blue-400/20 to-indigo-500/20",
+    color: "from-blue-400/40 to-blue-600/40",
+    glowColor: "rgba(59, 130, 246, 0.4)",
     iconColor: "text-blue-300"
   }
 ]
@@ -56,29 +62,21 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  // Fast but smooth spring for the "pressed" feel
-  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
-  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
 
-  // "Press Down" logic: tilts the side under the cursor away
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-12deg", "12deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["12deg", "-12deg"])
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-15deg", "15deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["15deg", "-15deg"])
   
   const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return // Disable on mobile
+    if (window.innerWidth < 768) return
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-    const xPct = (mouseX / width) - 0.5
-    const yPct = (mouseY / height) - 0.5
-    x.set(xPct)
-    y.set(yPct)
+    x.set((e.clientX - rect.left) / rect.width - 0.5)
+    y.set((e.clientY - rect.top) / rect.height - 0.5)
   }
 
   const handleMouseLeave = () => {
@@ -90,12 +88,12 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
     <motion.div
       ref={cardRef}
       variants={{
-        hidden: { opacity: 0, y: 40, filter: 'blur(10px)' },
+        hidden: { opacity: 0, scale: 0.8, filter: 'blur(20px)' },
         visible: { 
           opacity: 1, 
-          y: 0, 
+          scale: 1,
           filter: 'blur(0px)',
-          transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
+          transition: { duration: 1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
       style={{
@@ -105,64 +103,75 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full p-6 sm:p-8 rounded-[2rem] sm:rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-primary/20 cursor-none"
+      className="group relative h-full p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-visible cursor-none"
     >
-      {/* Dynamic Radial Glow Overlay */}
+      {/* Hyper-Vibrant Background Glow */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[80px] rounded-full"
         style={{
-          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(62, 128, 219, 0.15), transparent 60%)`
+          background: service.glowColor,
+          transform: "translateZ(-50px)"
+        }}
+      />
+
+      {/* Glass Surface */}
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 group-hover:bg-white/10 transition-colors duration-500 z-0" />
+      
+      {/* Animated Light Sweep */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0"
+        style={{
+          background: `radial-gradient(circle at ${glowX} ${glowY}, white, transparent 50%)`
         }}
       />
       
-      <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(60px)" }} className="relative z-10">
         <motion.div 
-          whileHover={{ scale: 1.1, rotate: 10 }}
-          className={`p-4 sm:p-5 rounded-2xl bg-background/60 border border-white/10 w-fit mb-6 sm:mb-8 shadow-xl group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
+          whileHover={{ scale: 1.2, rotate: 12 }}
+          className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-white/20 w-fit mb-10 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 ${service.iconColor}`}
         >
-          <service.icon size={32} className="sm:size-[36px]" />
+          <service.icon size={44} strokeWidth={1.5} />
         </motion.div>
         
-        <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+        <h3 className="text-3xl font-bold mb-4 tracking-tighter text-white group-hover:text-glow transition-all duration-300">
           {service.title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-sm sm:text-base group-hover:text-foreground/80 transition-colors">
+        <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
           {service.description}
         </p>
       </div>
 
-      {/* Decorative inner light */}
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Vibrant Corner Accent */}
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-700`} />
     </motion.div>
   )
 }
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="py-20 lg:py-32">
-      <div className="text-center mb-16 lg:mb-24 w-full px-4 sm:px-6">
+    <Chapter id="services" className="py-32">
+      <div className="text-center mb-32 w-full px-6">
         <motion.span 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 block font-bold"
+          initial={{ opacity: 0, letterSpacing: "0.2em" }}
+          whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
+          className="text-primary font-headline uppercase text-xs mb-6 block font-bold"
         >
-          Our Expertise
+          Our Capabilities
         </motion.span>
         <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl md:text-8xl font-bold mb-6 sm:mb-8 tracking-tighter"
+          className="text-5xl md:text-9xl font-bold mb-10 tracking-tighter"
         >
-          Premium Solutions
+          Vibrant <br /> <span className="text-secondary italic">Innovation.</span>
         </motion.h2>
         <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-muted-foreground max-w-3xl mx-auto text-base sm:text-xl leading-relaxed"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-muted-foreground max-w-4xl mx-auto text-xl md:text-2xl leading-relaxed"
         >
-          We combine technical depth with strategic foresight to deliver architectures that power the next generation of global businesses.
+          We architect hyper-scalable digital ecosystems with precision, turning complex engineering hurdles into seamless competitive advantages.
         </motion.p>
       </div>
 
@@ -173,11 +182,11 @@ export function ServicesChapter() {
         variants={{
           visible: {
             transition: {
-              staggerChildren: 0.1,
+              staggerChildren: 0.15,
             }
           }
         }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12 perspective-2000 w-full px-4 sm:px-6"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-16 perspective-2000 w-full px-6"
       >
         {services.map((service, index) => (
           <ServiceCard key={index} service={service} index={index} />

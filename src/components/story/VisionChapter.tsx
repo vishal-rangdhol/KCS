@@ -8,28 +8,36 @@ import React, { useRef } from 'react'
 
 const values = [
   {
-    title: "Innovation at the core",
-    description: "Pushing boundaries with cutting-edge AI and cloud architectures.",
+    title: "Innovation First",
+    description: "Pushing boundaries with cutting-edge AI and neural architectures that redefine industry standards.",
     icon: Sparkles,
-    color: "from-primary/20 to-primary/5"
+    color: "from-cyan-500/30 via-blue-500/10 to-transparent",
+    border: "border-cyan-500/20",
+    glow: "rgba(6, 182, 212, 0.3)"
   },
   {
-    title: "Expertise you can trust",
-    description: "Decades of combined experience in complex digital systems.",
+    title: "Military Grade",
+    description: "Encryption and infrastructure reliability that satisfies the most demanding global security protocols.",
     icon: ShieldCheck,
-    color: "from-secondary/20 to-secondary/5"
+    color: "from-rose-500/30 via-purple-500/10 to-transparent",
+    border: "border-rose-500/20",
+    glow: "rgba(244, 63, 94, 0.3)"
   },
   {
-    title: "Customer centric solutions",
-    description: "We don't just build tech; we solve your specific business needs.",
+    title: "Radical Impact",
+    description: "We don't just build software; we architect the digital future of our partners' legacies.",
     icon: UserCircle,
-    color: "from-primary/20 to-primary/5"
+    color: "from-emerald-500/30 via-teal-500/10 to-transparent",
+    border: "border-emerald-500/20",
+    glow: "rgba(16, 185, 129, 0.3)"
   },
   {
-    title: "Proven track record",
-    description: "Success stories across diverse industries globally.",
+    title: "Proven Success",
+    description: "Global success stories driven by data-centric methodologies and architectural excellence.",
     icon: BarChart3,
-    color: "from-secondary/20 to-secondary/5"
+    color: "from-amber-500/30 via-orange-500/10 to-transparent",
+    border: "border-amber-500/20",
+    glow: "rgba(245, 158, 11, 0.3)"
   }
 ]
 
@@ -38,24 +46,21 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  const mouseXSpring = useSpring(x, { stiffness: 200, damping: 25 })
-  const mouseYSpring = useSpring(y, { stiffness: 200, damping: 25 })
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
 
-  // "Press Down" interaction
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-8deg", "8deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["8deg", "-8deg"])
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-12deg", "12deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["12deg", "-12deg"])
   
   const glowX = useTransform(mouseXSpring, [-0.5, 0.5], ["0%", "100%"])
   const glowY = useTransform(mouseYSpring, [-0.5, 0.5], ["0%", "100%"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return // Disable interaction on small screens
+    if (window.innerWidth < 768) return
     if (!cardRef.current) return
     const rect = cardRef.current.getBoundingClientRect()
-    const xPct = (e.clientX - rect.left) / rect.width - 0.5
-    const yPct = (e.clientY - rect.top) / rect.height - 0.5
-    x.set(xPct)
-    y.set(yPct)
+    x.set((e.clientX - rect.left) / rect.width - 0.5)
+    y.set((e.clientY - rect.top) / rect.height - 0.5)
   }
 
   const handleMouseLeave = () => {
@@ -67,58 +72,63 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
     <motion.div
       ref={cardRef}
       variants={{
-        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        hidden: { opacity: 0, y: 50, rotateX: 20 },
         visible: { 
           opacity: 1, 
           y: 0, 
-          scale: 1,
-          transition: { duration: 0.8, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
+          rotateX: 0,
+          transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className={`p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br ${value.color} border border-white/5 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden cursor-none`}
+      className={`p-10 rounded-[3rem] bg-background/40 border ${value.border} backdrop-blur-3xl shadow-[0_40px_100px_rgba(0,0,0,0.5)] group relative overflow-visible cursor-none`}
     >
-      {/* Dynamic glow overlay */}
+      {/* Background Energy Glow */}
       <motion.div 
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[100px]"
         style={{
-          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(255, 255, 255, 0.05), transparent 70%)`
+          background: value.glow,
+          transform: "translateZ(-40px)"
         }}
       />
       
-      <div style={{ transform: "translateZ(50px)" }} className="relative z-10">
+      <div style={{ transform: "translateZ(80px)" }} className="relative z-10">
         <motion.div 
-          whileHover={{ scale: 1.2, rotate: -5 }}
-          className="bg-background/40 p-4 sm:p-5 rounded-2xl w-fit mb-6 sm:mb-8 border border-white/10 group-hover:border-primary/30 transition-all duration-500 shadow-xl"
+          whileHover={{ scale: 1.3, rotate: -15 }}
+          className={`bg-white/5 p-6 rounded-[2rem] w-fit mb-10 border border-white/20 group-hover:border-white/40 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] transition-all duration-500`}
         >
-          <value.icon className="w-8 h-8 sm:w-10 sm:h-10 text-primary" />
+          <value.icon className="w-12 h-12 text-white" strokeWidth={1.5} />
         </motion.div>
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{value.title}</h3>
-        <p className="text-muted-foreground leading-relaxed text-base sm:text-lg md:text-xl group-hover:text-foreground/90 transition-colors">
+        
+        <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tighter text-white group-hover:translate-x-2 transition-transform duration-300">
+          {value.title}
+        </h3>
+        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-white transition-colors duration-300">
           {value.description}
         </p>
       </div>
+
+      {/* Decorative gradient overlay */}
+      <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0`} />
     </motion.div>
   )
 }
 
 export function VisionChapter() {
   return (
-    <Chapter id="vision" className="bg-card/20 py-20 lg:py-32">
-      <div className="w-full text-center mb-16 lg:mb-32 px-4 sm:px-6">
+    <Chapter id="vision" className="py-32 bg-background/50">
+      <div className="w-full text-center mb-32 px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2 }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-sm mb-4 sm:mb-6 block font-bold">The Vision</span>
-          <h2 className="text-3xl sm:text-6xl md:text-8xl font-bold mb-6 lg:mb-10 leading-[1.1] tracking-tighter">
-            KCS helps organizations <br />
-            <span className="text-secondary italic">transform complexity</span> <br />
-            into innovation.
+          <span className="text-primary font-headline uppercase tracking-[0.6em] text-xs mb-8 block font-bold">The Core Protocol</span>
+          <h2 className="text-5xl md:text-9xl font-bold mb-12 tracking-tighter leading-none">
+            Architectural <br />
+            <span className="text-secondary italic">Excellence.</span>
           </h2>
         </motion.div>
       </div>
@@ -127,7 +137,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-16 relative w-full perspective-2000 px-4 sm:px-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 relative w-full perspective-3000 px-6"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />
