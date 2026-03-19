@@ -1,8 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { MapPin, Clock, ArrowLeft, Send, Sparkles, CheckCircle2, ChevronRight, Briefcase, FileText, Target, ShieldCheck } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -84,12 +83,6 @@ const jobs = [
 ]
 
 export default function CareersPage() {
-  const handleApply = (role: string) => {
-    const email = "HR@kandhugule-kcs.com";
-    const subject = `Internship Application - ${role} - [Your Name]`;
-    window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-  }
-
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
@@ -163,7 +156,7 @@ export default function CareersPage() {
           </div>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
-            {jobs.map((job, i) => (
+            {jobs.map((job) => (
               <AccordionItem 
                 key={job.id} 
                 value={job.id}
@@ -231,7 +224,7 @@ export default function CareersPage() {
                     </div>
 
                     {/* Local Action */}
-                    <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="pt-12 border-t border-white/10">
                       <div className="flex items-center gap-4 text-muted-foreground">
                         <div className="p-3 rounded-xl bg-secondary/10 text-secondary">
                           <Sparkles size={20} />
@@ -240,13 +233,6 @@ export default function CareersPage() {
                           Evaluation period of 3 months required for performance assessment and FTE conversion readiness.
                         </p>
                       </div>
-                      <Button 
-                        onClick={() => handleApply(job.title)}
-                        className="h-16 px-12 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold group/btn shadow-[0_15px_30px_rgba(167,139,250,0.3)] w-full md:w-auto text-lg"
-                      >
-                        Initiate Application
-                        <Send className="ml-3 w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                      </Button>
                     </div>
                   </div>
                 </AccordionContent>
