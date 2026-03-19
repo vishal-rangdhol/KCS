@@ -5,6 +5,7 @@ import { HeroChapter } from '@/components/story/HeroChapter'
 import { ProblemChapter } from '@/components/story/ProblemChapter'
 import { VisionChapter } from '@/components/story/VisionChapter'
 import { AboutChapter } from '@/components/story/AboutChapter'
+import { DifferentiationChapter } from '@/components/story/DifferentiationChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
 import { ProductsChapter } from '@/components/story/ProductsChapter'
 import { CareersChapter } from '@/components/story/CareersChapter'
@@ -54,6 +55,7 @@ export default function Home() {
         <ProblemChapter />
         <VisionChapter />
         <AboutChapter />
+        <DifferentiationChapter />
         <ServicesChapter />
         <ProductsChapter />
         <CareersChapter />
