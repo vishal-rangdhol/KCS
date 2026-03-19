@@ -12,42 +12,48 @@ const services = [
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
     color: "from-orange-500/20 to-amber-600/20",
-    iconColor: "text-orange-600"
+    iconColor: "text-orange-600",
+    hoverBg: "hover:bg-orange-600"
   },
   {
     title: "Cloud Cognitive Operations",
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
     color: "from-amber-500/20 to-yellow-600/20",
-    iconColor: "text-amber-600"
+    iconColor: "text-amber-600",
+    hoverBg: "hover:bg-amber-600"
   },
   {
     title: "Cybersecurity",
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
     color: "from-red-500/20 to-orange-600/20",
-    iconColor: "text-red-600"
+    iconColor: "text-red-600",
+    hoverBg: "hover:bg-red-600"
   },
   {
     title: "Data & Analytics",
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
     color: "from-yellow-500/20 to-amber-600/20",
-    iconColor: "text-yellow-600"
+    iconColor: "text-yellow-600",
+    hoverBg: "hover:bg-yellow-600"
   },
   {
     title: "Enterprise Solutions",
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
     color: "from-orange-400/20 to-amber-500/20",
-    iconColor: "text-orange-500"
+    iconColor: "text-orange-500",
+    hoverBg: "hover:bg-orange-500"
   },
   {
     title: "Cloud Solutions",
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
     color: "from-amber-600/20 to-orange-700/20",
-    iconColor: "text-amber-700"
+    iconColor: "text-amber-700",
+    hoverBg: "hover:bg-amber-700"
   }
 ]
 
@@ -63,10 +69,10 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
           transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-full p-8 rounded-[2.5rem] bg-black/5 border border-black/5 overflow-hidden group hover:bg-primary transition-all duration-500 cursor-pointer"
+      className={`relative h-full p-8 rounded-[2.5rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer ${service.hoverBg}`}
     >
-      {/* Glass Surface - Inverts to primary color on hover */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 z-0 group-hover:bg-primary transition-colors duration-500" />
+      {/* Glass Surface - Inverts to specific color on hover */}
+      <div className={`absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 z-0 group-hover:bg-transparent transition-colors duration-500`} />
       
       <div className="relative z-10">
         <div className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-black/5 w-fit mb-10 shadow-sm ${service.iconColor} group-hover:bg-white/20 group-hover:text-white transition-all duration-500`}>
@@ -78,7 +84,7 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
             {service.title}
           </h3>
           {/* Animated underline from left to right */}
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-500 ease-out" />
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500 ease-out" />
         </div>
         
         <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white/90 transition-colors duration-500">
@@ -86,7 +92,7 @@ function ServiceCard({ service }: { service: typeof services[0], index: number }
         </p>
       </div>
 
-      {/* Subtle Corner Accent - Fades out on hover to avoid clashing with bg-primary */}
+      {/* Subtle Corner Accent - Fades out on hover */}
       <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 blur-3xl rounded-full group-hover:opacity-0 transition-opacity duration-500`} />
     </motion.div>
   )
