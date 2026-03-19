@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -49,15 +50,14 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 30, filter: 'blur(10px)' },
+        hidden: { opacity: 0, y: 20 },
         visible: { 
           opacity: 1, 
           y: 0,
-          filter: 'blur(0px)',
-          transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] } 
+          transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-[450px] md:h-[520px] rounded-[2.5rem] md:rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
+      className="relative h-[400px] md:h-[520px] rounded-[2.5rem] md:rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
     >
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 saturate-[0.85]",
@@ -90,33 +90,24 @@ export function ServicesChapter() {
     <Chapter id="services" className="py-24 md:py-32 bg-background">
       <div className="text-center mb-16 md:mb-32 w-full px-4">
         <motion.span 
-          initial={{ opacity: 0, letterSpacing: "0.2em" }}
-          whileInView={{ opacity: 1, letterSpacing: "0.4em" }}
-          className="text-primary font-headline uppercase text-[10px] md:text-xs mb-4 md:mb-6 block font-bold"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block font-bold"
         >
           Our Capabilities
         </motion.span>
-        <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-8 md:mb-10 tracking-tighter text-foreground"
-        >
+        <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-8 md:mb-10 tracking-tighter text-foreground">
           Solar <br /> <span className="text-secondary italic">Innovation.</span>
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-muted-foreground max-w-4xl mx-auto text-lg md:text-2xl leading-relaxed"
-        >
+        </h2>
+        <p className="text-muted-foreground max-w-4xl mx-auto text-lg md:text-2xl leading-relaxed">
           We architect hyper-scalable digital ecosystems with precision, turning complex engineering hurdles into seamless competitive advantages.
-        </motion.p>
+        </p>
       </div>
 
       <motion.div 
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.05 }}
         variants={{
           visible: {
             transition: {
