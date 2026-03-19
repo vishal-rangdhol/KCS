@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -13,6 +12,7 @@ const navItems = [
   { name: 'About', href: '/#story' },
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
+  { name: 'Culture', href: '/#culture' },
   { name: 'Careers', href: '/#careers' },
   { name: 'Contact', href: '/#contact' },
 ]
@@ -62,7 +62,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-4 md:p-6 pointer-events-none">
       <nav 
-        className={`glass rounded-full pointer-events-auto flex items-center justify-between w-full max-w-5xl transition-all duration-500 border ${
+        className={`glass rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border ${
           isScrolled 
             ? 'px-6 py-3 md:px-8 bg-white/40 backdrop-blur-2xl shadow-2xl scale-95 md:scale-100 border-black/5' 
             : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent'
@@ -87,7 +87,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex flex-row gap-8 lg:gap-10 items-center">
+        <ul className="hidden md:flex flex-row gap-6 lg:gap-8 items-center">
           {navItems.map((item) => {
             const id = item.href.split('#')[1]
             const isActive = activeSection === id
@@ -95,7 +95,7 @@ export function Navbar() {
               <li key={item.name} className="relative group">
                 <Link 
                   href={item.href}
-                  className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
+                  className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
                     isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                   }`}
                 >
@@ -140,7 +140,7 @@ export function Navbar() {
                     <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block p-4 rounded-2xl transition-all duration-300 text-xs font-headline font-bold tracking-tight text-center border ${
+                      className={`block p-4 rounded-2xl transition-all duration-300 text-[10px] font-headline font-bold tracking-tight text-center border ${
                         isActive 
                           ? 'bg-primary/20 border-primary/40 text-primary shadow-[0_0_20px_rgba(249,115,22,0.1)]' 
                           : 'bg-black/5 border-black/5 hover:bg-black/10 text-foreground/70'

@@ -8,6 +8,7 @@ import { AboutChapter } from '@/components/story/AboutChapter'
 import { DifferentiationChapter } from '@/components/story/DifferentiationChapter'
 import { ServicesChapter } from '@/components/story/ServicesChapter'
 import { ProductsChapter } from '@/components/story/ProductsChapter'
+import { CultureChapter } from '@/components/story/CultureChapter'
 import { CareersChapter } from '@/components/story/CareersChapter'
 import { CTAChapter } from '@/components/story/CTAChapter'
 import { ContactChapter } from '@/components/story/ContactChapter'
@@ -58,6 +59,7 @@ export default function Home() {
         <DifferentiationChapter />
         <ServicesChapter />
         <ProductsChapter />
+        <CultureChapter />
         <CareersChapter />
         <CTAChapter />
         <ContactChapter />
