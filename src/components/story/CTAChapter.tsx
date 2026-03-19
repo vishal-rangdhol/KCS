@@ -41,9 +41,10 @@ export function CTAChapter() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <MagneticWrapper>
               <Button 
+                variant="outline"
                 size="lg" 
                 onClick={scrollToContact}
-                className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-primary text-white hover:bg-transparent hover:text-primary shadow-[0_12px_40px_rgba(249,115,22,0.05)] group w-full sm:w-auto font-bold transition-all duration-300"
+                className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-[0_12px_40px_rgba(249,115,22,0.05)] group w-full sm:w-auto font-bold transition-all duration-300"
               >
                 Start Your Project
                 <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

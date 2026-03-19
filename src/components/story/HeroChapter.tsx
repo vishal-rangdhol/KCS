@@ -123,9 +123,10 @@ export function HeroChapter() {
         >
           <MagneticButton>
             <Button 
+              variant="outline"
               size="lg" 
               onClick={scrollToContact}
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]"
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_12px_30px_rgba(249,115,22,0.1)]"
             >
               Start Your Project
               <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -134,10 +135,9 @@ export function HeroChapter() {
 
           <MagneticButton>
             <Button 
-              variant="outline" 
               size="lg" 
               onClick={scrollToNext}
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-black/10 bg-transparent hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-foreground"
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]"
             >
               Explore Our Platforms
               <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
