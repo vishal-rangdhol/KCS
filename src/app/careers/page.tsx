@@ -1,8 +1,7 @@
-
 "use client"
 
 import { motion } from 'framer-motion'
-import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck } from 'lucide-react'
+import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck, Mail, ClipboardCheck, ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -89,7 +88,7 @@ export default function CareersPage() {
       <Navbar />
       <ThreeBackground />
       
-      {/* Background Ambient Layers - Light Mode */}
+      {/* Background Ambient Layers */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.05)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full opacity-40" />
@@ -113,10 +112,10 @@ export default function CareersPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6 font-headline">
               <Sparkles size={12} /> Recruitment Cycle 2025
             </span>
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-foreground">
+            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-foreground font-headline">
               Architect <br />
               <span className="text-secondary italic">Your Career.</span>
             </h1>
@@ -133,17 +132,17 @@ export default function CareersPage() {
           >
             <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <MapPin size={24} className="text-primary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground font-headline">Location</span>
               <p className="text-sm font-bold mt-1 text-foreground">Hyderabad, India</p>
             </div>
             <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <Clock size={24} className="text-secondary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Duration</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground font-headline">Duration</span>
               <p className="text-sm font-bold mt-1 text-foreground">3 Months</p>
             </div>
             <div className="p-6 rounded-3xl bg-primary/10 border border-primary/20 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <Target size={24} className="text-primary mb-3" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Conversion</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Conversion</span>
               <p className="text-sm font-bold mt-1 text-foreground">Performance-based</p>
             </div>
           </motion.div>
@@ -152,7 +151,7 @@ export default function CareersPage() {
         {/* Collapsible Jobs Architecture */}
         <div className="space-y-6">
           <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary">Open Protocols</h2>
+            <h2 className="text-xs font-bold uppercase tracking-[0.4em] text-primary font-headline">Open Protocols</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
 
@@ -170,14 +169,14 @@ export default function CareersPage() {
                         <Briefcase size={24} />
                       </div>
                       <div>
-                        <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 mb-1 block">{job.category}</span>
-                        <h3 className="text-xl md:text-3xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                        <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 mb-1 block font-headline">{job.category}</span>
+                        <h3 className="text-xl md:text-3xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors font-headline">
                           {job.title}
                         </h3>
                       </div>
                     </div>
                     <div className="hidden md:flex items-center gap-3">
-                      <span className="px-4 py-2 rounded-full border border-black/5 bg-black/5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground">Full-Time Path</span>
+                      <span className="px-4 py-2 rounded-full border border-black/5 bg-black/5 text-[9px] font-bold uppercase tracking-widest text-muted-foreground font-headline">Full-Time Path</span>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -186,7 +185,7 @@ export default function CareersPage() {
                     {/* I. Position Overview */}
                     <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 pt-6 border-t border-black/5">
                       <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary whitespace-nowrap">I. Position Overview</span>
+                        <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary whitespace-nowrap font-headline">I. Position Overview</span>
                       </div>
                       <p className="text-lg text-muted-foreground leading-relaxed">
                         {job.overview}
@@ -197,7 +196,7 @@ export default function CareersPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                       <div className="space-y-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-secondary">II. Key Responsibilities</span>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-secondary font-headline">II. Key Responsibilities</span>
                         </div>
                         <ul className="space-y-4">
                           {job.responsibilities.map((resp, idx) => (
@@ -211,7 +210,7 @@ export default function CareersPage() {
 
                       <div className="space-y-6">
                         <div className="flex items-center gap-3 mb-4">
-                          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">III. Candidate Requirements</span>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">III. Candidate Requirements</span>
                         </div>
                         <ul className="space-y-4">
                           {job.requirements.map((req, idx) => (
@@ -242,40 +241,86 @@ export default function CareersPage() {
           </Accordion>
         </div>
 
-        {/* Formal Application Protocol Footer */}
+        {/* Enhanced Application Protocol */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden text-center"
+          className="mt-32 p-12 md:p-24 rounded-[3rem] bg-black/5 border border-black/10 relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(249,115,22,0.05)_0%,_transparent_70%)]" />
-          <div className="absolute top-0 right-0 p-12 text-primary/5 -rotate-12">
-            <FileText size={240} strokeWidth={1} />
+          {/* Architectural Background Grid */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+            <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:32px_32px]" />
           </div>
-          
-          <div className="relative z-10 max-w-3xl mx-auto">
-            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-6 block">Final Submission</span>
-            <h2 className="text-3xl md:text-6xl font-bold tracking-tighter mb-8 leading-none text-foreground">Application Protocol</h2>
-            <p className="text-muted-foreground text-lg mb-16 leading-relaxed">
-              To maintain the integrity of our selection process, candidates must adhere to the following formal submission standards.
-            </p>
+
+          <div className="relative z-10 max-w-5xl mx-auto">
+            <div className="text-center mb-16 md:mb-24">
+              <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-6 block font-headline">Submission Standards</span>
+              <h2 className="text-4xl md:text-7xl font-bold tracking-tighter mb-8 leading-none text-foreground font-headline">Application Protocol.</h2>
+              <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-body">
+                To maintain the integrity of our selection lifecycle, all candidates must adhere to the following formal submission framework.
+              </p>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-primary/30 transition-all shadow-sm">
-                <span className="text-[9px] font-bold text-primary uppercase tracking-widest block mb-4">Submission Point</span>
-                <p className="text-xl md:text-2xl font-bold tracking-tight text-foreground">HR@kandhugule-kcs.com</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              {/* Step 01: Preparation */}
+              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-primary/20 transition-all shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <FileText size={24} />
+                </div>
+                <span className="text-[9px] font-bold text-primary/60 uppercase tracking-[0.2em] font-headline block mb-2">Step 01</span>
+                <h4 className="text-xl font-bold mb-4 font-headline">Document Assembly</h4>
+                <ul className="text-sm text-muted-foreground space-y-2">
+                  <li className="flex items-center gap-2"><CheckCircle2 size={12} className="text-primary" /> Comprehensive Resume</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 size={12} className="text-primary" /> Portfolio/GitHub Link</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 size={12} className="text-primary" /> Academic Transcripts</li>
+                </ul>
               </div>
-              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-secondary/30 transition-all shadow-sm">
-                <span className="text-[9px] font-bold text-secondary uppercase tracking-widest block mb-4">Subject Requirement</span>
-                <p className="text-sm md:text-base font-medium italic text-muted-foreground">
-                  Internship Application - [Role] - [Name]
-                </p>
+
+              {/* Step 02: Submission */}
+              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-secondary/20 transition-all shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <Mail size={24} />
+                </div>
+                <span className="text-[9px] font-bold text-secondary/60 uppercase tracking-[0.2em] font-headline block mb-2">Step 02</span>
+                <h4 className="text-xl font-bold mb-4 font-headline">Electronic Delivery</h4>
+                <p className="text-sm text-muted-foreground mb-4">Send your compiled documentation package to our central recruitment terminal.</p>
+                <div className="pt-4 border-t border-black/5">
+                  <p className="text-xs font-bold text-foreground">HR@kandhugule-kcs.com</p>
+                </div>
+              </div>
+
+              {/* Step 03: Validation */}
+              <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-primary/20 transition-all shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                  <ClipboardCheck size={24} />
+                </div>
+                <span className="text-[9px] font-bold text-primary/60 uppercase tracking-[0.2em] font-headline block mb-2">Step 03</span>
+                <h4 className="text-xl font-bold mb-4 font-headline">Validation Phase</h4>
+                <p className="text-sm text-muted-foreground">Our engineering leads review all submissions within 5-7 business days. Selected candidates move to technical interview protocols.</p>
+              </div>
+            </div>
+
+            <div className="p-8 md:p-12 rounded-[2.5rem] bg-primary text-white relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-700">
+                <ShieldCheck size={160} strokeWidth={1} />
+              </div>
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold font-headline mb-2">Ready to initiate?</h3>
+                  <p className="text-white/80 text-sm">Ensure your subject line exactly follows the protocol format below to avoid filtering.</p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-white/60 block mb-2 font-headline">Subject Protocol</span>
+                  <p className="text-sm md:text-base font-medium italic">
+                    Internship Application - [Role] - [Name]
+                  </p>
+                </div>
               </div>
             </div>
             
-            <p className="mt-20 text-[10px] text-black/20 uppercase tracking-[0.4em] font-bold">
-              © 2025 Kandhugule Consultancy Services | Technical Excellence Driven
+            <p className="mt-16 text-[10px] text-black/20 uppercase tracking-[0.4em] font-bold text-center font-headline">
+              © 2025 Kandhugule Consultancy Services | Engineering Excellence Driven
             </p>
           </div>
         </motion.div>
