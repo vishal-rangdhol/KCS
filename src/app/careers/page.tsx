@@ -202,8 +202,8 @@ export default function CareersPage() {
                 viewport={{ once: true }}
                 className="p-10 rounded-[2.5rem] bg-white border border-black/5 hover:border-primary/20 transition-all group shadow-[0_10px_30px_rgba(0,0,0,0.02)]"
               >
-                <div className={`p-4 rounded-2xl bg-black/5 mb-8 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 ${item.iconColor || 'text-primary'}`}>
-                  <item.icon size={28} />
+                <div className={`w-12 h-12 rounded-xl bg-black/5 mb-8 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 ${item.iconColor || 'text-primary'}`}>
+                  <item.icon size={22} />
                 </div>
                 <h3 className="text-xl font-bold mb-4 font-headline text-foreground">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
