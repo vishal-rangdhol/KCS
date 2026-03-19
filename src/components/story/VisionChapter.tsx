@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -64,7 +65,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
         </div>
         
         <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tighter text-foreground leading-tight">
-          <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-500 ease-out pb-1 inline">
+          <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
             {value.title}
           </span>
         </h3>
