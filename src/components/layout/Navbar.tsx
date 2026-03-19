@@ -64,7 +64,7 @@ export function Navbar() {
       <nav 
         className={`glass rounded-full pointer-events-auto flex items-center justify-between w-full max-w-5xl transition-all duration-500 border ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 bg-white/10 backdrop-blur-2xl shadow-2xl scale-95 md:scale-100 border-white/20' 
+            ? 'px-6 py-3 md:px-8 bg-white/40 backdrop-blur-2xl shadow-2xl scale-95 md:scale-100 border-black/5' 
             : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent'
         }`}
       >
@@ -96,7 +96,7 @@ export function Navbar() {
                 <Link 
                   href={item.href}
                   className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
-                    isActive ? 'text-primary' : 'text-white/60 hover:text-white'
+                    isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                   }`}
                 >
                   {item.name}
@@ -114,7 +114,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-white hover:text-primary transition-colors focus:outline-none"
+          className="md:hidden p-2 text-foreground hover:text-primary transition-colors focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -129,7 +129,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 glass rounded-[2rem] p-6 md:hidden border border-white/20 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 glass rounded-[2rem] p-6 md:hidden border border-black/10 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-3">
               {navItems.map((item) => {
@@ -142,8 +142,8 @@ export function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block p-4 rounded-2xl transition-all duration-300 text-xs font-headline font-bold tracking-tight text-center border ${
                         isActive 
-                          ? 'bg-primary/20 border-primary/40 text-primary shadow-[0_0_20px_rgba(62,128,219,0.2)]' 
-                          : 'bg-white/5 border-white/5 hover:bg-white/10 text-white/70'
+                          ? 'bg-primary/20 border-primary/40 text-primary shadow-[0_0_20px_rgba(249,115,22,0.1)]' 
+                          : 'bg-black/5 border-black/5 hover:bg-black/10 text-foreground/70'
                       }`}
                     >
                       {item.name}

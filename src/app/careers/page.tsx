@@ -1,3 +1,4 @@
+
 "use client"
 
 import { motion } from 'framer-motion'
@@ -115,7 +116,7 @@ export default function CareersPage() {
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
               <Sparkles size={12} /> Recruitment Cycle 2025
             </span>
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8">
+            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-foreground">
               Architect <br />
               <span className="text-secondary italic">Your Career.</span>
             </h1>
@@ -133,17 +134,17 @@ export default function CareersPage() {
             <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <MapPin size={24} className="text-primary mb-3" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Location</span>
-              <p className="text-sm font-bold mt-1">Hyderabad, India</p>
+              <p className="text-sm font-bold mt-1 text-foreground">Hyderabad, India</p>
             </div>
             <div className="p-6 rounded-3xl bg-black/5 border border-black/10 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <Clock size={24} className="text-secondary mb-3" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Duration</span>
-              <p className="text-sm font-bold mt-1">3 Months</p>
+              <p className="text-sm font-bold mt-1 text-foreground">3 Months</p>
             </div>
             <div className="p-6 rounded-3xl bg-primary/10 border border-primary/20 backdrop-blur-xl flex flex-col items-center justify-center text-center min-w-[160px]">
               <Target size={24} className="text-primary mb-3" />
               <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Conversion</span>
-              <p className="text-sm font-bold mt-1">Performance-based</p>
+              <p className="text-sm font-bold mt-1 text-foreground">Performance-based</p>
             </div>
           </motion.div>
         </div>
@@ -255,7 +256,7 @@ export default function CareersPage() {
           
           <div className="relative z-10 max-w-3xl mx-auto">
             <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-6 block">Final Submission</span>
-            <h2 className="text-3xl md:text-6xl font-bold tracking-tighter mb-8 leading-none">Application Protocol</h2>
+            <h2 className="text-3xl md:text-6xl font-bold tracking-tighter mb-8 leading-none text-foreground">Application Protocol</h2>
             <p className="text-muted-foreground text-lg mb-16 leading-relaxed">
               To maintain the integrity of our selection process, candidates must adhere to the following formal submission standards.
             </p>
@@ -263,7 +264,7 @@ export default function CareersPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-primary/30 transition-all shadow-sm">
                 <span className="text-[9px] font-bold text-primary uppercase tracking-widest block mb-4">Submission Point</span>
-                <p className="text-xl md:text-2xl font-bold tracking-tight">HR@kandhugule-kcs.com</p>
+                <p className="text-xl md:text-2xl font-bold tracking-tight text-foreground">HR@kandhugule-kcs.com</p>
               </div>
               <div className="p-8 rounded-[2rem] bg-white border border-black/5 group hover:border-secondary/30 transition-all shadow-sm">
                 <span className="text-[9px] font-bold text-secondary uppercase tracking-widest block mb-4">Subject Requirement</span>

@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -10,49 +11,49 @@ const services = [
     title: "Artificial Intelligence",
     description: "Harnessing generative AI and machine learning to automate complex decision-making.",
     icon: BrainCircuit,
-    color: "from-orange-500/40 to-amber-600/40",
-    glowColor: "rgba(249, 115, 22, 0.4)",
-    iconColor: "text-orange-400"
+    color: "from-orange-500/20 to-amber-600/20",
+    glowColor: "rgba(249, 115, 22, 0.2)",
+    iconColor: "text-orange-600"
   },
   {
     title: "Cloud Cognitive Operations",
     description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
     icon: Network,
-    color: "from-amber-500/40 to-yellow-600/40",
-    glowColor: "rgba(245, 158, 11, 0.4)",
-    iconColor: "text-amber-400"
+    color: "from-amber-500/20 to-yellow-600/20",
+    glowColor: "rgba(245, 158, 11, 0.2)",
+    iconColor: "text-amber-600"
   },
   {
     title: "Cybersecurity",
     description: "Military-grade protection for your digital assets and sensitive user data.",
     icon: Shield,
-    color: "from-red-500/40 to-orange-600/40",
-    glowColor: "rgba(239, 68, 68, 0.4)",
-    iconColor: "text-red-400"
+    color: "from-red-500/20 to-orange-600/20",
+    glowColor: "rgba(239, 68, 68, 0.2)",
+    iconColor: "text-red-600"
   },
   {
     title: "Data & Analytics",
     description: "Turning raw data into actionable insights with advanced visualization.",
     icon: BarChart3,
-    color: "from-yellow-500/40 to-amber-600/40",
-    glowColor: "rgba(234, 179, 8, 0.4)",
-    iconColor: "text-yellow-400"
+    color: "from-yellow-500/20 to-amber-600/20",
+    glowColor: "rgba(234, 179, 8, 0.2)",
+    iconColor: "text-yellow-600"
   },
   {
     title: "Enterprise Solutions",
     description: "Scalable ERP and CRM architectures tailored for global business demands.",
     icon: Building2,
-    color: "from-orange-400/40 to-amber-500/40",
-    glowColor: "rgba(251, 146, 60, 0.4)",
-    iconColor: "text-orange-300"
+    color: "from-orange-400/20 to-amber-500/20",
+    glowColor: "rgba(251, 146, 60, 0.2)",
+    iconColor: "text-orange-500"
   },
   {
     title: "Cloud Solutions",
     description: "Seamless migration and management of hybrid cloud infrastructures.",
     icon: Cloud,
-    color: "from-amber-600/40 to-orange-700/40",
-    glowColor: "rgba(180, 83, 9, 0.4)",
-    iconColor: "text-amber-500"
+    color: "from-amber-600/20 to-orange-700/20",
+    glowColor: "rgba(180, 83, 9, 0.2)",
+    iconColor: "text-amber-700"
   }
 ]
 
@@ -102,7 +103,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full p-8 rounded-[2.5rem] bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-500 overflow-visible cursor-none"
+      className="group relative h-full p-8 rounded-[2.5rem] bg-black/5 border border-black/5 hover:border-primary/20 transition-all duration-500 overflow-visible cursor-none"
     >
       {/* Hyper-Vibrant Background Glow - Sunset */}
       <motion.div 
@@ -114,28 +115,28 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       />
 
       {/* Glass Surface */}
-      <div className="absolute inset-0 bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 group-hover:bg-white/10 transition-colors duration-500 z-0" />
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl rounded-[2.5rem] border border-black/5 group-hover:bg-white/60 transition-colors duration-500 z-0" />
       
       {/* Animated Light Sweep */}
       <motion.div 
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-40 transition-opacity duration-500 z-0 rounded-[2.5rem]"
         style={{
-          background: `radial-gradient(circle at ${glowX} ${glowY}, white, transparent 50%)`
+          background: `radial-gradient(circle at ${glowX} ${glowY}, rgba(255,255,255,0.8), transparent 50%)`
         }}
       />
       
       <div style={{ transform: "translateZ(60px)" }} className="relative z-10">
         <motion.div 
           whileHover={{ scale: 1.2, rotate: 12 }}
-          className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-white/20 w-fit mb-10 shadow-[0_0_30px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 ${service.iconColor}`}
+          className={`p-6 rounded-3xl bg-gradient-to-br ${service.color} border border-black/5 w-fit mb-10 shadow-lg group-hover:shadow-primary/20 transition-all duration-500 ${service.iconColor}`}
         >
           <service.icon size={44} strokeWidth={1.5} />
         </motion.div>
         
-        <h3 className="text-3xl font-bold mb-4 tracking-tighter text-white group-hover:text-glow transition-all duration-300">
+        <h3 className="text-3xl font-bold mb-4 tracking-tighter text-foreground group-hover:text-primary transition-all duration-300">
           {service.title}
         </h3>
-        <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-white transition-colors duration-300">
+        <p className="text-muted-foreground leading-relaxed text-lg group-hover:text-foreground transition-colors duration-300">
           {service.description}
         </p>
       </div>
@@ -148,7 +149,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="py-32">
+    <Chapter id="services" className="py-32 bg-background">
       <div className="text-center mb-32 w-full px-6">
         <motion.span 
           initial={{ opacity: 0, letterSpacing: "0.2em" }}
@@ -160,7 +161,7 @@ export function ServicesChapter() {
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-9xl font-bold mb-10 tracking-tighter"
+          className="text-5xl md:text-9xl font-bold mb-10 tracking-tighter text-foreground"
         >
           Solar <br /> <span className="text-secondary italic">Innovation.</span>
         </motion.h2>
