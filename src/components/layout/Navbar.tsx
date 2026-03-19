@@ -65,8 +65,8 @@ export function Navbar() {
       <nav 
         className={`glass rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 bg-white/40 backdrop-blur-2xl shadow-2xl scale-95 md:scale-100 border-black/5' 
-            : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent'
+            ? 'px-6 py-3 md:px-8 bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] scale-95 md:scale-100 border-primary/20 bg-gradient-to-r from-white/80 via-primary/[0.03] to-white/80' 
+            : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent shadow-none'
         }`}
       >
         <Link 
@@ -151,7 +151,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 glass rounded-[2rem] p-6 md:hidden border border-black/10 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 glass rounded-[2rem] p-6 md:hidden border border-primary/20 shadow-2xl pointer-events-auto bg-white/95 backdrop-blur-xl"
           >
             <ul className="grid grid-cols-2 gap-3">
               {navItems.map((item) => {
