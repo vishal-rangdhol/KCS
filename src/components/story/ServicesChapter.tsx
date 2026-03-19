@@ -3,50 +3,50 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Network, ArrowUpRight } from 'lucide-react'
+import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, ArrowUpRight } from 'lucide-react'
 import React from 'react'
 import { cn } from '@/lib/utils'
 
 const services = [
   {
     title: "Artificial Intelligence",
-    description: "Harnessing generative AI and machine learning to automate complex decision-making.",
+    description: "Machine learning models, natural language processing systems, and predictive analytics — built for practical business use, not proof-of-concept demos.",
     icon: BrainCircuit,
     color: "from-indigo-500/20 to-indigo-600/20",
     hoverBg: "hover:bg-indigo-600"
   },
   {
-    title: "Cloud Cognitive Operations",
-    description: "Optimizing cloud environments with cognitive automation and self-healing systems.",
-    icon: Network,
+    title: "Cloud Infrastructure",
+    description: "Scalable, secure architecture deployed across AWS, Google Cloud, and Microsoft Azure, designed for global performance and high availability.",
+    icon: Cloud,
     color: "from-emerald-500/20 to-emerald-600/20",
     hoverBg: "hover:bg-emerald-600"
   },
   {
-    title: "Cybersecurity",
-    description: "Military-grade protection for your digital assets and sensitive user data.",
-    icon: Shield,
-    color: "from-rose-500/20 to-rose-600/20",
-    hoverBg: "hover:bg-rose-600"
-  },
-  {
     title: "Data & Analytics",
-    description: "Turning raw data into actionable insights with advanced visualization.",
+    description: "From raw data pipelines to executive dashboards — we build systems that help organizations understand their data and act on it.",
     icon: BarChart3,
     color: "from-sky-500/20 to-sky-600/20",
     hoverBg: "hover:bg-sky-600"
   },
   {
-    title: "Enterprise Solutions",
-    description: "Scalable ERP and CRM architectures tailored for global business demands.",
+    title: "Cybersecurity",
+    description: "Security-first design across every layer — from architecture decisions through deployment and ongoing monitoring.",
+    icon: Shield,
+    color: "from-rose-500/20 to-rose-600/20",
+    hoverBg: "hover:bg-rose-600"
+  },
+  {
+    title: "Enterprise Platforms",
+    description: "Custom ERP, CRM, and workflow systems built around how businesses actually operate, not around what generic software assumes they do.",
     icon: Building2,
     color: "from-violet-500/20 to-violet-600/20",
     hoverBg: "hover:bg-violet-600"
   },
   {
-    title: "Cloud Solutions",
-    description: "Seamless migration and management of hybrid cloud infrastructures.",
-    icon: Cloud,
+    title: "Mobile Applications",
+    description: "Cross-platform development across Flutter, React Native, Swift, and Kotlin — optimized for iOS, Android, and web.",
+    icon: Smartphone,
     color: "from-fuchsia-500/20 to-fuchsia-600/20",
     hoverBg: "hover:bg-fuchsia-600"
   }
