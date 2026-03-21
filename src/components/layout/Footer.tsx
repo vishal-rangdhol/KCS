@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react'
@@ -20,19 +19,25 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 border-t border-black/5">
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+    <footer className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-32 pb-20 border-t border-white/5">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-16 mb-32">
         <div className="col-span-2 lg:col-span-2">
-          <NextLink href="/" className="inline-block mb-8">
-            <Image src="/kcs-logo.png" alt="KCS Logo" width={140} height={46} className="h-10 w-auto" />
+          <NextLink href="/" className="inline-block mb-10 group">
+            <Image 
+              src="/kcs-logo.png" 
+              alt="KCS Logo" 
+              width={140} 
+              height={46} 
+              className="h-10 w-auto brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" 
+            />
           </NextLink>
-          <p className="text-muted-foreground text-sm max-w-xs leading-relaxed italic">
+          <p className="text-muted-foreground text-base max-w-xs leading-relaxed italic font-medium">
             Architecting the digital infrastructure that defines the next era of global business.
           </p>
         </div>
         
-        <div className="space-y-6">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Company</h5>
+        <div className="space-y-8">
+          <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Company</h5>
           <ul className="space-y-4 text-sm text-muted-foreground font-medium">
             <li><NextLink href="/#story" className="hover:text-primary transition-colors">About</NextLink></li>
             <li><NextLink href="/#careers" className="hover:text-primary transition-colors">Careers</NextLink></li>
@@ -40,48 +45,48 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="space-y-6">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-secondary font-headline">Products</h5>
+        <div className="space-y-8">
+          <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Products</h5>
           <ul className="space-y-4 text-sm text-muted-foreground font-medium">
             <li><a href="https://letscatchup-kcs.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Let's Catch Up</a></li>
             <li><a href="https://www.sushrth.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Sushrth</a></li>
           </ul>
         </div>
 
-        <div className="space-y-6">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Connect</h5>
-          <ul className="space-y-4 text-sm text-muted-foreground font-medium">
+        <div className="space-y-8">
+          <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Connect</h5>
+          <ul className="space-y-6 text-sm text-muted-foreground font-medium">
             <li>
-              <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Linkedin size={14} /> LinkedIn
+              <a href="https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Linkedin size={16} /> LinkedIn
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Twitter size={14} /> X
+              <a href="#" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Twitter size={16} /> X
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Instagram size={14} /> Instagram
+              <a href="#" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Instagram size={16} /> Instagram
               </a>
             </li>
             <li>
-              <a href="#" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Facebook size={14} /> Facebook
+              <a href="#" className="flex items-center gap-3 hover:text-primary transition-colors">
+                <Facebook size={16} /> Facebook
               </a>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="py-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-          <p className="text-[10px] tracking-widest uppercase font-bold text-foreground/80">KCS Product Lab — by Kandhugule Consultancy Services Pvt Ltd</p>
-          <p className="text-[9px] tracking-widest uppercase text-muted-foreground">© {currentYear} KCS. All Rights Reserved.</p>
+      <div className="py-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="flex flex-col gap-3 items-center md:items-start text-center md:text-left">
+          <p className="text-[10px] tracking-[0.4em] uppercase font-bold text-foreground/60 font-headline">KCS Product Lab — by Kandhugule Consultancy Services Pvt Ltd</p>
+          <p className="text-[9px] tracking-[0.4em] uppercase text-muted-foreground/40 font-headline">© {currentYear} KCS. All Rights Reserved.</p>
         </div>
         
-        <div className="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+        <div className="flex gap-12 text-[9px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40 font-headline">
           <NextLink href="#" className="hover:text-primary transition-colors">Privacy Policy</NextLink>
           <NextLink href="#" className="hover:text-primary transition-colors">Terms of Service</NextLink>
         </div>

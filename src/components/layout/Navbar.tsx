@@ -65,10 +65,10 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-4 md:p-6 pointer-events-none">
       <nav 
-        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border bg-white ${
+        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-700 border ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)] scale-95 md:scale-100 border-primary/20' 
-            : 'px-8 py-4 md:px-10 md:py-5 border-black/5 shadow-sm'
+            ? 'px-6 py-3 md:px-8 bg-background/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] scale-95 md:scale-100 border-white/10' 
+            : 'px-8 py-4 md:px-10 md:py-5 border-white/5 bg-transparent'
         }`}
       >
         <Link 
@@ -80,16 +80,16 @@ export function Navbar() {
             <Image 
               src="/kcs-logo.png" 
               alt="KCS Logo" 
-              width={120}
-              height={40}
-              className="h-10 w-auto object-contain antialiased"
+              width={110}
+              height={36}
+              className="h-9 w-auto object-contain antialiased brightness-0 invert"
               priority
             />
           </div>
         </Link>
 
-        {/* Desktop Menu - White navbar with themed highlights */}
-        <ul className="hidden md:flex flex-row gap-4 lg:gap-6 items-center">
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex flex-row gap-4 lg:gap-8 items-center">
           {navItems.map((item) => {
             const isContact = item.name === 'Contact'
             const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
@@ -100,14 +100,14 @@ export function Navbar() {
                 <li key={item.name} className="ml-2">
                   <Link 
                     href={item.href}
-                    className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 border-2 ${
+                    className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
                       isActive 
-                        ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
-                        : 'border-primary/40 text-primary hover:bg-primary hover:text-white hover:border-primary shadow-sm'
+                        ? 'bg-primary text-white border-primary shadow-[0_0_25px_rgba(168,85,247,0.4)]' 
+                        : 'border-white/20 text-white hover:bg-primary hover:text-white hover:border-primary shadow-sm'
                     }`}
                   >
                     {item.name}
-                    <ArrowUpRight size={12} className={isActive ? 'opacity-100' : 'opacity-60'} />
+                    <ArrowUpRight size={10} className={isActive ? 'opacity-100' : 'opacity-60'} />
                   </Link>
                 </li>
               )
@@ -117,15 +117,15 @@ export function Navbar() {
               <li key={item.name} className="relative group">
                 <Link 
                   href={item.href}
-                  className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
-                    isActive ? 'text-primary' : 'text-slate-600 hover:text-slate-900'
+                  className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 ${
+                    isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                   }`}
                 >
                   {item.name}
                   {isActive && (
                     <motion.span 
                       layoutId="activeUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary z-10"
+                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary z-10"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -137,24 +137,24 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-slate-900 hover:text-primary transition-colors focus:outline-none"
+          className="md:hidden p-2 text-foreground/80 hover:text-primary transition-colors focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
-      {/* Mobile Menu Overlay - Solid White */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 bg-white rounded-[2rem] p-6 md:hidden border border-primary/20 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 bg-background/95 backdrop-blur-2xl rounded-[2.5rem] p-6 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
           >
-            <ul className="grid grid-cols-2 gap-3">
+            <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => {
                 const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
                 const isActive = activeSection === id || (pathname === item.href)
@@ -163,10 +163,10 @@ export function Navbar() {
                     <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block p-4 rounded-2xl transition-all duration-300 text-[10px] font-headline font-bold tracking-tight text-center border ${
+                      className={`block p-5 rounded-2xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
                         isActive 
                           ? 'bg-primary/20 border-primary/40 text-primary' 
-                          : 'bg-slate-50 border-slate-100 hover:bg-slate-100 text-slate-600'
+                          : 'bg-white/5 border-white/5 hover:bg-white/10 text-foreground/70'
                       }`}
                     >
                       {item.name}

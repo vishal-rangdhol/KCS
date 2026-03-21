@@ -15,39 +15,39 @@ export function ThreeBackground() {
     
     const renderer = new THREE.WebGLRenderer({ 
       alpha: true, 
-      antialias: false,
+      antialias: true,
       powerPreference: 'high-performance' 
     })
     
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     containerRef.current.appendChild(renderer.domElement)
 
     const isMobile = window.innerWidth < 768
-    const particlesCount = isMobile ? 400 : 800
+    const particlesCount = isMobile ? 300 : 600
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
     
     for (let i = 0; i < particlesCount * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 12
-      velocities[i] = (Math.random() - 0.5) * 0.005
+      velocities[i] = (Math.random() - 0.5) * 0.003
     }
 
     const particlesGeometry = new THREE.BufferGeometry()
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: isMobile ? 0.04 : 0.025,
+      size: isMobile ? 0.03 : 0.02,
       color: 0xA855F7, // Royal Violet
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.25,
       blending: THREE.AdditiveBlending 
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
-    const secondaryCount = isMobile ? 100 : 300
+    const secondaryCount = isMobile ? 80 : 200
     const secPositions = new Float32Array(secondaryCount * 3)
     for (let i = 0; i < secondaryCount * 3; i++) {
       secPositions[i] = (Math.random() - 0.5) * 15
@@ -55,10 +55,10 @@ export function ThreeBackground() {
     const secGeometry = new THREE.BufferGeometry()
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
-      size: 0.035,
+      size: 0.025,
       color: 0xEC4899, // Bright Magenta
       transparent: true,
-      opacity: 0.2,
+      opacity: 0.15,
       blending: THREE.AdditiveBlending
     })
     const secParticles = new THREE.Points(secGeometry, secMaterial)
@@ -96,12 +96,12 @@ export function ThreeBackground() {
 
       positionsAttr.needsUpdate = true
 
-      camera.position.x += (mouse.current.x * 2 - camera.position.x) * 0.02
-      camera.position.y += (-mouse.current.y * 2 - camera.position.y) * 0.02
+      camera.position.x += (mouse.current.x * 1.5 - camera.position.x) * 0.015
+      camera.position.y += (-mouse.current.y * 1.5 - camera.position.y) * 0.015
       camera.lookAt(scene.position)
 
-      particles.rotation.y += 0.0002
-      secParticles.rotation.y -= 0.0001
+      particles.rotation.y += 0.00015
+      secParticles.rotation.y -= 0.00008
 
       renderer.render(scene, camera)
     }
@@ -127,5 +127,5 @@ export function ThreeBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="canvas-container opacity-50" />
+  return <div ref={containerRef} className="canvas-container opacity-40" />
 }

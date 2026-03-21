@@ -16,14 +16,14 @@ export function HeroChapter() {
   const smoothX = useSpring(mouseX, springConfig)
   const smoothY = useSpring(mouseY, springConfig)
 
-  const textX = useTransform(smoothX, [-0.5, 0.5], [20, -20])
-  const textY = useTransform(smoothY, [-0.5, 0.5], [15, -15])
+  const textX = useTransform(smoothX, [-0.5, 0.5], [15, -15])
+  const textY = useTransform(smoothY, [-0.5, 0.5], [10, -10])
   
-  const subTextX = useTransform(smoothX, [-0.5, 0.5], [10, -10])
-  const subTextY = useTransform(smoothY, [-0.5, 0.5], [5, -5])
+  const subTextX = useTransform(smoothX, [-0.5, 0.5], [8, -8])
+  const subTextY = useTransform(smoothY, [-0.5, 0.5], [4, -4])
 
-  const spotlightX = useTransform(smoothX, [-0.5, 0.5], ["20%", "80%"])
-  const spotlightY = useTransform(smoothY, [-0.5, 0.5], ["20%", "80%"])
+  const spotlightX = useTransform(smoothX, [-0.5, 0.5], ["30%", "70%"])
+  const spotlightY = useTransform(smoothY, [-0.5, 0.5], ["30%", "70%"])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -54,23 +54,23 @@ export function HeroChapter() {
         style={{
           background: useTransform(
             [spotlightX, spotlightY],
-            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(168, 85, 247, 0.12) 0%, transparent 50%)`
+            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(168, 85, 247, 0.08) 0%, transparent 60%)`
           )
         }}
       />
 
-      <FloatingNode icon={Cpu} top="20%" left="12%" delay={0} smoothX={smoothX} smoothY={smoothY} speed={-45} />
-      <FloatingNode icon={Shield} top="75%" left="18%" delay={0.2} smoothX={smoothX} smoothY={smoothY} speed={35} />
-      <FloatingNode icon={Network} top="25%" left="85%" delay={0.4} smoothX={smoothX} smoothY={smoothY} speed={-55} />
-      <FloatingNode icon={Zap} top="68%" left="78%" delay={0.6} smoothX={smoothX} smoothY={smoothY} speed={45} />
+      <FloatingNode icon={Cpu} top="15%" left="10%" delay={0} smoothX={smoothX} smoothY={smoothY} speed={-35} />
+      <FloatingNode icon={Shield} top="70%" left="15%" delay={0.2} smoothX={smoothX} smoothY={smoothY} speed={25} />
+      <FloatingNode icon={Network} top="20%" left="82%" delay={0.4} smoothX={smoothX} smoothY={smoothY} speed={-45} />
+      <FloatingNode icon={Zap} top="75%" left="85%" delay={0.6} smoothX={smoothX} smoothY={smoothY} speed={35} />
 
-      <div className="z-10 w-full max-w-6xl mx-auto">
+      <div className="z-10 w-full max-w-7xl mx-auto">
         <motion.div style={{ x: subTextX, y: subTextY }}>
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-6 block font-bold"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-primary font-headline uppercase tracking-[0.6em] text-[10px] sm:text-[11px] mb-8 block font-bold"
           >
             Kandhugule Consultancy Services
           </motion.span>
@@ -78,16 +78,16 @@ export function HeroChapter() {
         
         <motion.h1 
           style={{ x: textX, y: textY }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 sm:mb-10 leading-[0.9] tracking-tighter text-foreground"
+          className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[11rem] font-bold mb-8 sm:mb-12 leading-[0.8] tracking-tighter text-foreground font-headline"
         >
           {words.map((word, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(15px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ 
-                duration: 0.8, 
-                delay: 0.5 + (i * 0.1),
+                duration: 1, 
+                delay: 0.4 + (i * 0.08),
                 ease: [0.2, 0.65, 0.3, 0.9]
               }}
               className="inline-block mr-[0.2em] sm:mr-[0.25em]"
@@ -101,32 +101,32 @@ export function HeroChapter() {
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 1 }}
-            className="text-muted-foreground text-base sm:text-lg md:text-xl max-w-3xl mx-auto font-body mb-8 sm:mb-12 px-4 leading-relaxed"
+            transition={{ delay: 1.6, duration: 1.2 }}
+            className="text-muted-foreground text-base sm:text-lg md:text-2xl max-w-4xl mx-auto font-body mb-12 sm:mb-20 px-4 leading-relaxed font-medium italic"
           >
             KCS Product Lab designs, builds, and operates scalable technology platforms 
-            powered by <span className="text-foreground font-semibold">artificial intelligence</span>, 
-            <span className="text-foreground font-semibold"> cloud infrastructure</span>, and 
-            <span className="text-foreground font-semibold"> cybersecurity</span>.
+            powered by <span className="text-foreground">artificial intelligence</span>, 
+            <span className="text-foreground"> cloud infrastructure</span>, and 
+            <span className="text-foreground"> cybersecurity</span>.
           </motion.p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.2 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
+          transition={{ delay: 2, duration: 1 }}
+          className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center px-4"
         >
           <MagneticButton>
             <Button 
               variant="outline"
               size="lg" 
               asChild
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_12px_30px_rgba(168,85,247,0.1)]"
+              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-2xl backdrop-blur-md"
             >
               <Link href="/contact">
                 Start Your Project
-                <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Rocket className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Link>
             </Button>
           </MagneticButton>
@@ -135,10 +135,10 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(168,85,247,0.2)]"
+              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(168,85,247,0.3)]"
             >
               Explore Our Platforms
-              <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
+              <LayoutPanelLeft className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
             </Button>
           </MagneticButton>
         </motion.div>
@@ -147,14 +147,14 @@ export function HeroChapter() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-20"
+        transition={{ delay: 2.8, duration: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20"
       >
-        <span className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold">Scroll Story</span>
+        <span className="text-[9px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-8 sm:h-12 bg-gradient-to-b from-primary to-transparent"
+          animate={{ y: [0, 12, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          className="w-[1.5px] h-16 bg-gradient-to-b from-primary/60 to-transparent"
         />
       </motion.div>
     </section>
@@ -167,13 +167,13 @@ function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }:
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 0.15, scale: 1 }}
-      transition={{ delay, duration: 1, type: "spring" }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 0.12, scale: 1 }}
+      transition={{ delay, duration: 1.5, type: "spring" }}
       style={{ top, left, x, y }}
-      className="absolute p-5 rounded-3xl bg-primary/5 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-sm"
+      className="absolute p-6 rounded-[2.5rem] bg-white/5 text-primary border border-white/5 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
     >
-      <Icon size={28} strokeWidth={1.5} />
+      <Icon size={32} strokeWidth={1} />
     </motion.div>
   )
 }
@@ -200,7 +200,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const moveX = clientX - centerX
     const moveY = clientY - centerY
     
-    const factor = 0.2
+    const factor = 0.15
     x.set(moveX * factor)
     y.set(moveY * factor)
   }

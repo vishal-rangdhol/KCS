@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    /* Premium Dark Theme - Violet & Magenta Protocol */
-    --background: 240 10% 4%;
+    /* Modern Premium Black Theme - Violet Protocol */
+    --background: 240 10% 2%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 6%;
+    --card: 240 10% 4%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 6%;
+    --popover: 240 10% 4%;
     --popover-foreground: 0 0% 98%;
     --primary: 270 95% 60%;
     --primary-foreground: 0 0% 100%;
     --secondary: 320 100% 50%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 240 10% 12%;
+    --muted: 240 10% 8%;
     --muted-foreground: 240 5% 65%;
     --accent: 270 95% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
+    --border: 240 10% 10%;
+    --input: 240 10% 10%;
     --ring: 270 95% 60%;
-    --radius: 1rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -33,7 +33,6 @@
     @apply border-border;
   }
   
-  /* Only hide native cursor on devices that support a mouse/fine pointer */
   @media (pointer: fine) {
     * {
       cursor: none !important;
@@ -49,9 +48,8 @@
   }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   @apply bg-background;
@@ -68,14 +66,6 @@ html.lenis {
   scroll-behavior: auto;
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
 .canvas-container {
   position: fixed;
   top: 0;
@@ -87,9 +77,9 @@ html.lenis {
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.2)];
+  @apply bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)];
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  text-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
 }
