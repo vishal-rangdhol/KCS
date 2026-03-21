@@ -78,7 +78,7 @@ export function HeroChapter() {
         
         <motion.h1 
           style={{ x: textX, y: textY }}
-          className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[11rem] font-bold mb-8 sm:mb-12 leading-[0.8] tracking-tighter text-foreground font-headline"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold mb-8 sm:mb-10 leading-[0.85] tracking-tighter text-foreground font-headline"
         >
           {words.map((word, i) => (
             <motion.span
@@ -102,7 +102,7 @@ export function HeroChapter() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 1.2 }}
-            className="text-muted-foreground text-base sm:text-lg md:text-2xl max-w-4xl mx-auto font-body mb-12 sm:mb-20 px-4 leading-relaxed font-medium italic"
+            className="text-muted-foreground text-sm sm:text-base md:text-xl max-w-3xl mx-auto font-body mb-10 sm:mb-16 px-4 leading-relaxed font-medium italic"
           >
             KCS Product Lab designs, builds, and operates scalable technology platforms 
             powered by <span className="text-foreground">artificial intelligence</span>, 
@@ -115,18 +115,18 @@ export function HeroChapter() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center items-center px-4"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
         >
           <MagneticButton>
             <Button 
               variant="outline"
               size="lg" 
               asChild
-              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
+              className="h-14 sm:h-20 px-8 sm:px-12 text-sm sm:text-lg rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
             >
               <Link href="/contact">
                 Start Your Project
-                <Rocket className="ml-3 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Rocket className="ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Link>
             </Button>
           </MagneticButton>
@@ -135,10 +135,10 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(249,115,22,0.3)]"
+              className="h-14 sm:h-20 px-8 sm:px-12 text-sm sm:text-lg rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(249,115,22,0.3)]"
             >
               Explore Our Platforms
-              <LayoutPanelLeft className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
+              <LayoutPanelLeft className="ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
             </Button>
           </MagneticButton>
         </motion.div>
