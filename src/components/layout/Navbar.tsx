@@ -65,7 +65,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-4 md:p-6 pointer-events-none">
       <nav 
-        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-700 border ${
+        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[95%] transition-all duration-700 border ${
           isScrolled 
             ? 'px-6 py-3 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-95 md:scale-100' 
             : 'px-8 py-4 md:px-10 md:py-5 border-border/10 bg-background shadow-sm'
@@ -100,7 +100,7 @@ export function Navbar() {
                 <li key={item.name} className="ml-2">
                   <Link 
                     href={item.href}
-                    className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
+                    className={`px-5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
                       isActive 
                         ? 'bg-primary text-white border-primary shadow-xl' 
                         : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
