@@ -58,25 +58,25 @@ export default function ContactPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl text-left mb-20">
-              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-primary/20 transition-all duration-500">
+              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-primary/20 transition-all duration-500 shadow-sm">
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 block mb-6 font-headline">Business Inquiries</span>
                 <h4 className="text-2xl font-bold mb-4 font-headline text-foreground">Kandhugule Consultancy Services Pvt Ltd</h4>
-                <p className="text-muted-foreground mb-4">Hyderabad, India</p>
-                <a href="mailto:contact@kandhugule-kcs.com" className="text-lg font-bold text-primary hover:underline transition-all">
-                  contact@kandhugule-kcs.com
+                <p className="text-muted-foreground mb-4 text-sm font-medium">Hyderabad, India</p>
+                <a href="mailto:info@kandhugule-kcs.com" className="text-lg font-bold text-primary hover:underline transition-all">
+                  info@kandhugule-kcs.com
                 </a>
               </div>
 
-              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-secondary/20 transition-all duration-500">
+              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm">
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/60 block mb-6 font-headline">Project Consultation</span>
                 <p className="text-lg text-muted-foreground mb-8 italic">
                   Planning a new digital platform or modernizing your infrastructure? Reach out to schedule a consultation with our engineering team.
                 </p>
                 <Button 
-                  className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg group shadow-xl border-none"
+                  className="w-full h-16 rounded-2xl bg-primary hover:bg-primary/90 text-white font-bold text-lg group shadow-xl border-none transition-all duration-300"
                   asChild
                 >
-                  <a href="mailto:contact@kandhugule-kcs.com?subject=Project Inquiry - KCS Product Lab">
+                  <a href="mailto:info@kandhugule-kcs.com?subject=Project Inquiry - KCS Product Lab">
                     Start a Conversation
                     <Send className="ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
