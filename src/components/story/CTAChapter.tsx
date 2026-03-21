@@ -9,8 +9,8 @@ import Link from 'next/link'
 
 export function CTAChapter() {
   return (
-    <Chapter id="cta" className="py-20 overflow-visible px-4 sm:px-6">
-      <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-white/5 group bg-card/40 shadow-2xl backdrop-blur-md">
+    <Chapter id="cta" className="py-12 overflow-visible px-4 sm:px-6">
+      <div className="w-full relative rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[40px] p-8 sm:p-12 md:p-20 text-center overflow-hidden border border-white/5 group bg-card/40 shadow-2xl backdrop-blur-md">
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
@@ -24,27 +24,27 @@ export function CTAChapter() {
           <motion.h2 
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-10 leading-tight tracking-tighter text-foreground"
+            className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight tracking-tighter text-foreground"
           >
             Let's Build <br />
             <span className="text-primary italic">Something Great.</span>
           </motion.h2>
           
-          <p className="text-lg sm:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto px-4 leading-relaxed">
             Whether you're launching a new platform or modernizing your infrastructure, KCS Product Lab can help you design and scale the technology behind your vision.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
             <MagneticWrapper>
               <Button 
                 variant="outline"
                 size="lg" 
                 asChild
-                className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-2xl group w-full sm:w-auto font-bold transition-all duration-300"
+                className="h-12 sm:h-14 px-8 sm:px-12 text-sm sm:text-base rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-2xl group w-full sm:w-auto font-bold transition-all duration-300"
               >
                 <Link href="/contact">
                   Start Your Project
-                  <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <Rocket className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Link>
               </Button>
             </MagneticWrapper>

@@ -54,7 +54,7 @@ export function HeroChapter() {
         style={{
           background: useTransform(
             [spotlightX, spotlightY],
-            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(249, 115, 22, 0.08) 0%, transparent 60%)`
+            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(251, 146, 60, 0.08) 0%, transparent 60%)`
           )
         }}
       />
@@ -78,7 +78,7 @@ export function HeroChapter() {
         
         <motion.h1 
           style={{ x: textX, y: textY }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold mb-8 sm:mb-10 leading-[0.85] tracking-tighter text-foreground font-headline"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[7rem] font-bold mb-8 sm:mb-10 leading-[0.85] tracking-tighter text-foreground font-headline"
         >
           {words.map((word, i) => (
             <motion.span
@@ -102,7 +102,7 @@ export function HeroChapter() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 1.2 }}
-            className="text-muted-foreground text-sm sm:text-base md:text-xl max-w-3xl mx-auto font-body mb-10 sm:mb-16 px-4 leading-relaxed font-medium italic"
+            className="text-muted-foreground text-[10px] sm:text-xs md:text-base max-w-2xl mx-auto font-body mb-10 sm:mb-12 px-4 leading-relaxed font-medium italic"
           >
             KCS Product Lab designs, builds, and operates scalable technology platforms 
             powered by <span className="text-foreground">artificial intelligence</span>, 
@@ -115,18 +115,18 @@ export function HeroChapter() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
         >
           <MagneticButton>
             <Button 
               variant="outline"
               size="lg" 
               asChild
-              className="h-14 sm:h-20 px-8 sm:px-12 text-sm sm:text-lg rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
+              className="h-10 sm:h-12 px-6 sm:px-8 text-[10px] sm:text-xs rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
             >
               <Link href="/contact">
                 Start Your Project
-                <Rocket className="ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Rocket className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Link>
             </Button>
           </MagneticButton>
@@ -135,10 +135,10 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-14 sm:h-20 px-8 sm:px-12 text-sm sm:text-lg rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(249,115,22,0.3)]"
+              className="h-10 sm:h-12 px-6 sm:px-8 text-[10px] sm:text-xs rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
             >
               Explore Our Platforms
-              <LayoutPanelLeft className="ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />
+              <LayoutPanelLeft className="ml-2 w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
             </Button>
           </MagneticButton>
         </motion.div>
@@ -150,11 +150,11 @@ export function HeroChapter() {
         transition={{ delay: 2.8, duration: 1.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20"
       >
-        <span className="text-[9px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
+        <span className="text-[8px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
         <motion.div
-          animate={{ y: [0, 12, 0] }}
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1.5px] h-16 bg-gradient-to-b from-primary/60 to-transparent"
+          className="w-[1px] h-12 bg-gradient-to-b from-primary/60 to-transparent"
         />
       </motion.div>
     </section>
@@ -171,9 +171,9 @@ function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }:
       animate={{ opacity: 0.2, scale: 1 }}
       transition={{ delay, duration: 1.5, type: "spring" }}
       style={{ top, left, x, y }}
-      className="absolute p-6 rounded-[2.5rem] bg-white/40 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
+      className="absolute p-4 rounded-[1.5rem] bg-white/40 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
     >
-      <Icon size={32} strokeWidth={1} />
+      <Icon size={24} strokeWidth={1} />
     </motion.div>
   )
 }
