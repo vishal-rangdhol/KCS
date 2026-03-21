@@ -34,10 +34,10 @@ export function CultureChapter() {
   const [expandedId, setExpandedId] = useState<string | null>("focus")
 
   return (
-    <Chapter id="culture" className="bg-background py-32 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-20 md:mb-24">
+        <div className="text-center mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,8 +54,8 @@ export function CultureChapter() {
           </motion.div>
         </div>
 
-        {/* Unique Tiles Structure */}
-        <div className="flex flex-col md:flex-row gap-4 h-[700px] md:h-[550px] w-full items-stretch">
+        {/* Unique Tiles Structure - Reduced Height */}
+        <div className="flex flex-col md:flex-row gap-4 h-[600px] md:h-[450px] w-full items-stretch">
           {pillars.map((pillar, i) => {
             const isExpanded = expandedId === pillar.id;
             return (
@@ -63,7 +63,7 @@ export function CultureChapter() {
                 key={pillar.id}
                 onMouseEnter={() => setExpandedId(pillar.id)}
                 className={cn(
-                  "relative group overflow-hidden cursor-pointer rounded-[2.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
+                  "relative group overflow-hidden cursor-pointer rounded-[2rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
                   isExpanded ? "flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
                 )}
                 layout
@@ -74,18 +74,18 @@ export function CultureChapter() {
                   isExpanded && "opacity-100"
                 )} />
 
-                {/* Content Container */}
-                <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+                {/* Content Container - Refined Padding */}
+                <div className="relative z-10 p-6 md:p-10 h-full flex flex-col">
                   {/* Top Bar: Icon and Protocol ID */}
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-6">
                     <div className={cn(
-                      "p-5 rounded-2xl transition-all duration-500",
+                      "p-4 rounded-xl transition-all duration-500",
                       isExpanded ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20" : "bg-primary/10 text-primary"
                     )}>
-                      <pillar.icon size={28} />
+                      <pillar.icon size={24} />
                     </div>
                     <span className={cn(
-                      "text-[10px] font-bold uppercase tracking-[0.3em] font-headline transition-colors duration-500",
+                      "text-[9px] font-bold uppercase tracking-[0.3em] font-headline transition-colors duration-500",
                       isExpanded ? "text-primary/60" : "text-muted-foreground/30"
                     )}>
                       {pillar.tag}
@@ -95,7 +95,7 @@ export function CultureChapter() {
                   {/* Narrative Block */}
                   <div className="mt-auto">
                     <h3 className={cn(
-                      "text-3xl md:text-5xl font-bold tracking-tighter mb-6 transition-all duration-500 font-headline",
+                      "text-2xl md:text-4xl font-bold tracking-tighter mb-4 transition-all duration-500 font-headline",
                       isExpanded ? "text-foreground" : "text-foreground/40"
                     )}>
                       {pillar.title}
@@ -109,12 +109,12 @@ export function CultureChapter() {
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.5, ease: "easeOut" }}
                         >
-                          <p className="text-lg md:text-2xl text-muted-foreground leading-relaxed italic max-w-3xl font-medium">
+                          <p className="text-base md:text-xl text-muted-foreground leading-relaxed italic max-w-2xl font-medium">
                             {pillar.text}
                           </p>
-                          <div className="mt-8 flex gap-2">
-                            <div className="w-12 h-1 bg-primary rounded-full" />
-                            <div className="w-4 h-1 bg-primary/20 rounded-full" />
+                          <div className="mt-6 flex gap-2">
+                            <div className="w-10 h-1 bg-primary rounded-full" />
+                            <div className="w-3 h-1 bg-primary/20 rounded-full" />
                           </div>
                         </motion.div>
                       )}
@@ -124,10 +124,10 @@ export function CultureChapter() {
 
                 {/* Decorative Architectural Element */}
                 <div className={cn(
-                  "absolute -bottom-12 -right-12 w-48 h-48 opacity-0 transition-opacity duration-1000",
+                  "absolute -bottom-8 -right-8 w-32 h-32 opacity-0 transition-opacity duration-1000",
                   isExpanded && "opacity-[0.08]"
                 )}>
-                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:16px_16px]" />
+                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:12px_12px]" />
                 </div>
 
                 {/* Vertical Text when collapsed */}
@@ -137,7 +137,7 @@ export function CultureChapter() {
                     animate={{ opacity: 1 }}
                     className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex"
                   >
-                    <span className="rotate-90 text-[10px] font-bold uppercase tracking-[0.5em] text-foreground/10 whitespace-nowrap">
+                    <span className="rotate-90 text-[9px] font-bold uppercase tracking-[0.5em] text-foreground/10 whitespace-nowrap">
                       Expand Protocol
                     </span>
                   </motion.div>
