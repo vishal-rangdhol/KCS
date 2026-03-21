@@ -18,14 +18,14 @@ const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration — not engagement algorithms. Private learning circles · Integrated LMS · Secure social collaboration · Student and professional networks",
+    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration — not engagement algorithms.",
     color: "from-orange-600/5 via-primary/5 to-transparent",
     href: "https://letscatchup-kcs.com/"
   },
   {
     id: "sushrth",
     name: "Sushrth",
-    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for the next generation of clinical infrastructure. Smart appointment automation · Secure digital health records · Intelligent clinical workflows · Scalable hospital infrastructure",
+    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for the next generation of clinical infrastructure.",
     color: "from-amber-600/5 via-secondary/5 to-transparent",
     href: "https://www.sushrth.com/"
   }
@@ -75,7 +75,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         ease: [0.23, 1, 0.32, 1] 
       }}
       viewport={{ once: true }}
-      className="group relative h-[450px] sm:h-[550px] lg:h-[600px] w-full rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-white border border-black/5 hover:border-primary/20 transition-all duration-700 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)]"
+      className="group relative h-[320px] sm:h-[380px] lg:h-[420px] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white border border-black/5 hover:border-primary/20 transition-all duration-700 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.05)]"
     >
       <div className="absolute inset-0 z-0">
         <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 opacity-40 group-hover:opacity-100 transition-opacity duration-700`} />
@@ -85,18 +85,18 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         </div>
       </div>
 
-      <div style={{ transform: "translateZ(40px)" }} className="absolute inset-0 z-20 p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-center items-center">
-        <h3 className="text-3xl sm:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline">
+      <div style={{ transform: "translateZ(40px)" }} className="absolute inset-0 z-20 p-6 sm:p-10 lg:p-12 flex flex-col justify-center text-center items-center">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline">
           {product.name}
         </h3>
         
-        <p className="text-sm sm:text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8 sm:mb-12 group-hover:text-foreground/80 transition-colors duration-500 max-w-xl italic">
+        <p className="text-xs sm:text-base lg:text-lg text-muted-foreground leading-relaxed mb-6 sm:mb-10 group-hover:text-foreground/80 transition-colors duration-500 max-w-md italic">
           {product.description}
         </p>
         
         <Button 
           variant="outline" 
-          className="w-full sm:w-auto h-12 sm:h-16 px-8 sm:px-12 rounded-full border-2 border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-sm sm:text-lg font-bold group/btn shadow-sm"
+          className="w-full sm:w-auto h-10 sm:h-12 lg:h-14 px-6 sm:px-10 rounded-full border-2 border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-xs sm:text-sm font-bold group/btn shadow-sm"
           onClick={() => {
             if (product.href && product.href !== "#") {
               window.open(product.href, '_blank', 'noopener,noreferrer');
@@ -104,25 +104,25 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           }}
         >
           Explore Platform
-          <ArrowRight className="ml-3 w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-2 transition-transform duration-500" />
+          <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-500" />
         </Button>
       </div>
       
       {/* Decorative corner accents */}
-      <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-tl-[2rem]" />
-      <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-br-[2rem]" />
+      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-tl-[1.5rem]" />
+      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-br-[1.5rem]" />
     </motion.div>
   )
 }
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-16 lg:py-32 overflow-visible">
-      <div className="text-center mb-12 lg:mb-32 w-full px-4 sm:px-6">
+    <Chapter id="products" className="bg-background py-12 lg:py-24 overflow-visible">
+      <div className="text-center mb-10 lg:mb-20 w-full px-4 sm:px-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-4 block font-bold"
+          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] sm:text-xs mb-3 block font-bold"
         >
           Proprietary Tech
         </motion.span>
@@ -130,7 +130,7 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none font-headline"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none font-headline"
         >
           Our Platforms.
         </motion.h2>
@@ -138,7 +138,7 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-muted-foreground mt-8 w-full max-w-4xl mx-auto text-lg sm:text-2xl leading-relaxed px-4 italic"
+          className="text-muted-foreground mt-6 w-full max-w-3xl mx-auto text-base sm:text-xl leading-relaxed px-4 italic"
         >
           Explore our specialized solutions designed to solve complex challenges in communication and healthcare infrastructure.
         </motion.p>
@@ -150,7 +150,7 @@ export function ProductsChapter() {
             align: "start",
             loop: false,
           }}
-          className="w-full max-w-7xl mx-auto"
+          className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-6">
             {products.map((product, index) => (
@@ -160,9 +160,9 @@ export function ProductsChapter() {
             ))}
           </CarouselContent>
           
-          <div className="flex justify-center md:justify-end gap-4 sm:gap-6 mt-12 sm:mt-20">
-            <CarouselPrevious className="static translate-y-0 h-12 w-12 sm:h-16 sm:w-16 rounded-2xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
-            <CarouselNext className="static translate-y-0 h-12 w-12 sm:h-16 sm:w-16 rounded-2xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
+          <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-8 sm:mt-16">
+            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
+            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
           </div>
         </Carousel>
       </div>
