@@ -4,7 +4,6 @@ import React from 'react'
 import Image from 'next/image'
 import { Linkedin, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
 import NextLink from 'next/link'
-import { motion } from 'framer-motion'
 
 // Custom X (formerly Twitter) Icon Component
 const XIcon = ({ size = 14 }: { size?: number }) => (
@@ -19,11 +18,14 @@ const XIcon = ({ size = 14 }: { size?: number }) => (
   </svg>
 )
 
-const navItems = [
+const digitalJourney = [
   { id: '01', name: 'Home', href: '/#hero' },
   { id: '02', name: 'Products', href: '/#products' },
   { id: '03', name: 'Services', href: '/#services' },
   { id: '04', name: 'Technology', href: '/#technology' },
+]
+
+const corporateProtocol = [
   { id: '05', name: 'About', href: '/#story' },
   { id: '06', name: 'Careers', href: '/careers' },
   { id: '07', name: 'Contact', href: '/contact' },
@@ -72,6 +74,7 @@ const socialItems = [
 export function Footer() {
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-black/5">
+      {/* Background Architectural Mark */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.03] select-none text-primary">
         <span className="text-[20rem] font-bold font-headline leading-none tracking-tighter">KCS</span>
       </div>
@@ -100,14 +103,15 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 flex-1">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-20 flex-1">
             
+            {/* Nav Group 01 */}
             <div className="space-y-8">
               <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
-                <span className="w-4 h-px bg-primary/30" /> Navigation
+                <span className="w-4 h-px bg-primary/30" /> Journey
               </h5>
               <ul className="space-y-4">
-                {navItems.map((item) => (
+                {digitalJourney.map((item) => (
                   <li key={item.name}>
                     <NextLink href={item.href} className="group flex items-center gap-3 text-xs text-muted-foreground hover:text-primary transition-colors font-medium">
                       <span className="text-[8px] font-bold text-primary/40 group-hover:text-primary transition-colors">{item.id}</span>
@@ -118,6 +122,24 @@ export function Footer() {
               </ul>
             </div>
 
+            {/* Nav Group 02 */}
+            <div className="space-y-8">
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
+                <span className="w-4 h-px bg-primary/30" /> Protocol
+              </h5>
+              <ul className="space-y-4">
+                {corporateProtocol.map((item) => (
+                  <li key={item.name}>
+                    <NextLink href={item.href} className="group flex items-center gap-3 text-xs text-muted-foreground hover:text-primary transition-colors font-medium">
+                      <span className="text-[8px] font-bold text-primary/40 group-hover:text-primary transition-colors">{item.id}</span>
+                      {item.name}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Platforms Group */}
             <div className="space-y-8">
               <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Platforms
@@ -135,7 +157,8 @@ export function Footer() {
               </ul>
             </div>
 
-            <div className="space-y-8 col-span-2 md:col-span-1">
+            {/* Connection Group */}
+            <div className="space-y-8">
               <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Connection
               </h5>
@@ -147,9 +170,10 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group transition-all"
+                    aria-label={item.name}
                   >
-                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 text-muted-foreground group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
-                      <item.icon size={14} />
+                    <div className={`p-2.5 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 text-muted-foreground group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
+                      <item.icon size={16} />
                     </div>
                   </a>
                 ))}
@@ -161,7 +185,9 @@ export function Footer() {
 
         <div className="pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <p className="text-[8px] tracking-[0.3em] uppercase text-foreground/40 font-headline">2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED</p>
+            <p className="text-[9px] tracking-[0.3em] uppercase text-foreground/60 font-headline font-bold">
+              2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED
+            </p>
           </div>
           
           <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
