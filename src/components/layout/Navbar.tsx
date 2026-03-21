@@ -63,10 +63,10 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-4 md:p-6 pointer-events-none">
       <nav 
-        className={`glass rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border ${
+        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border bg-white ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 bg-white/80 backdrop-blur-2xl shadow-[0_8px_32px_rgba(249,115,22,0.15)] scale-95 md:scale-100 border-primary/20 bg-gradient-to-r from-white/80 via-primary/[0.03] to-white/80' 
-            : 'px-8 py-4 md:px-10 md:py-5 bg-transparent border-transparent shadow-none'
+            ? 'px-6 py-3 md:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.08)] scale-95 md:scale-100 border-primary/20' 
+            : 'px-8 py-4 md:px-10 md:py-5 border-black/5 shadow-sm'
         }`}
       >
         <Link 
@@ -151,7 +151,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 glass rounded-[2rem] p-6 md:hidden border border-primary/20 shadow-2xl pointer-events-auto bg-white/95 backdrop-blur-xl"
+            className="absolute top-[90px] left-4 right-4 bg-white rounded-[2rem] p-6 md:hidden border border-primary/20 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-3">
               {navItems.map((item) => {
