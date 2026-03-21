@@ -20,10 +20,13 @@ const XIcon = ({ size = 14 }: { size?: number }) => (
 )
 
 const navItems = [
-  { id: '01', name: 'Story', href: '/#story' },
+  { id: '01', name: 'Home', href: '/#hero' },
   { id: '02', name: 'Products', href: '/#products' },
   { id: '03', name: 'Services', href: '/#services' },
-  { id: '04', name: 'Careers', href: '/careers' },
+  { id: '04', name: 'Technology', href: '/#technology' },
+  { id: '05', name: 'About', href: '/#story' },
+  { id: '06', name: 'Careers', href: '/careers' },
+  { id: '07', name: 'Contact', href: '/contact' },
 ]
 
 const productItems = [
@@ -69,7 +72,6 @@ const socialItems = [
 export function Footer() {
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-black/5">
-      {/* Architectural Background Decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.03] select-none text-primary">
         <span className="text-[20rem] font-bold font-headline leading-none tracking-tighter">KCS</span>
       </div>
@@ -77,7 +79,6 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20">
           
-          {/* Brand Anchor */}
           <div className="lg:max-w-sm">
             <NextLink href="/" className="inline-block mb-8 group">
               <Image 
@@ -99,7 +100,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Asymmetrical Link Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 flex-1">
             
             <div className="space-y-8">
@@ -159,16 +159,15 @@ export function Footer() {
           </div>
         </div>
 
-        {/* System Metadata Line */}
         <div className="pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <p className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground/40 font-headline">2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED</p>
+            <p className="text-[8px] tracking-[0.3em] uppercase text-foreground/40 font-headline">2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED</p>
           </div>
           
           <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
-            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Privacy_Protocol</NextLink>
-            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Usage_Terms</NextLink>
-            <NextLink href="/contact" className="text-primary hover:text-white transition-colors duration-300">Support_Terminal</NextLink>
+            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Usage_Terms</NextLink>
+            <NextLink href="/contact" className="text-primary hover:text-foreground transition-colors duration-300">Support_Terminal</NextLink>
           </div>
         </div>
       </div>

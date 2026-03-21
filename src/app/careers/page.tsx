@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { MapPin, ArrowLeft, Sparkles, Briefcase, Send } from 'lucide-react'
+import { MapPin, ArrowLeft, Sparkles, Briefcase, Clock, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -102,14 +102,12 @@ export default function CareersPage() {
       <Navbar />
       <ThreeBackground />
       
-      {/* Cinematic Ambient Background - Violet Mode */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(168,85,247,0.05)_0%,_transparent_50%)]" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(251,146,60,0.05)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-primary/10 blur-[120px] rounded-full opacity-20" />
       </div>
 
       <div className="relative z-10 pt-32 pb-32 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
-        {/* Navigation Breadcrumb */}
         <div className="mb-12 md:mb-16">
           <Link href="/" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-all group">
             <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
@@ -119,7 +117,6 @@ export default function CareersPage() {
           </Link>
         </div>
 
-        {/* Hero Section */}
         <section className="mb-32 md:mb-48">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -130,18 +127,17 @@ export default function CareersPage() {
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-10 font-headline">
                 <Sparkles size={12} className="animate-pulse" /> The Collective Protocol
               </span>
-              <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-[0.8] mb-12 text-foreground font-headline">
+              <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.8] mb-12 text-foreground font-headline">
                 Join the <br />
                 <span className="text-primary italic">KCS Team.</span>
               </h1>
-              <p className="text-xl md:text-4xl text-foreground font-medium leading-tight max-w-3xl">
+              <p className="text-lg md:text-3xl text-foreground font-medium leading-tight max-w-3xl">
                 We're building the next generation of digital platforms — and we're looking for architects who want to do the same.
               </p>
             </div>
           </motion.div>
         </section>
 
-        {/* Job Openings */}
         <div className="space-y-6 mb-48">
           <div className="flex items-center gap-4 mb-16">
             <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Open Architectures</h2>
@@ -163,7 +159,7 @@ export default function CareersPage() {
                       </div>
                       <div>
                         <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 mb-1 block font-headline">{job.category}</span>
-                        <h3 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors font-headline">
+                        <h3 className="text-xl md:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors font-headline">
                           {job.title}
                         </h3>
                       </div>
@@ -171,9 +167,10 @@ export default function CareersPage() {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 md:px-12 pb-12">
-                  <div className="max-w-6xl mx-auto space-y-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5">
+                  <div className="max-w-6xl mx-auto space-y-12 pt-8 border-t border-black/5">
+                    {/* Meta Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
                         <div className="p-3 rounded-xl bg-primary/10 text-primary">
                           <MapPin size={20} />
                         </div>
@@ -182,8 +179,66 @@ export default function CareersPage() {
                           <p className="text-xs font-bold text-foreground">{job.location}</p>
                         </div>
                       </div>
+                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
+                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                          <Clock size={20} />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Duration</p>
+                          <p className="text-xs font-bold text-foreground">{job.duration}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
+                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                          <Zap size={20} />
+                        </div>
+                        <div>
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Path</p>
+                          <p className="text-xs font-bold text-foreground">{job.conversion}</p>
+                        </div>
+                      </div>
                     </div>
-                    {/* Position description and requirements would go here */}
+
+                    {/* Description Sections */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                      <div className="space-y-8">
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Role Overview</h4>
+                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed italic">
+                            {job.overview}
+                          </p>
+                        </div>
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Key Responsibilities</h4>
+                          <ul className="space-y-3">
+                            {job.responsibilities.map((resp, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-foreground">
+                                <span className="text-primary font-bold">/</span>
+                                {resp}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                      <div className="space-y-8">
+                        <div>
+                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Requirements</h4>
+                          <ul className="space-y-3">
+                            {job.requirements.map((req, i) => (
+                              <li key={i} className="flex gap-3 text-sm text-foreground">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                {req}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="pt-8">
+                          <button className="w-full h-12 rounded-xl bg-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl">
+                            Apply for Architecture
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
