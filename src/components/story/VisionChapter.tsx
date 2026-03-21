@@ -51,14 +51,14 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className={`p-10 rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-sm`}
+      className={`p-10 rounded-[3rem] bg-white/60 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-sm`}
     >
       {/* Subtle Background Glow on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div className="relative z-10">
         <div 
-          className="bg-white/5 p-6 rounded-[2rem] w-fit mb-10 border border-white/10 group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
+          className="bg-primary/5 p-6 rounded-[2rem] w-fit mb-10 border border-primary/10 group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
         >
           <value.icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
         </div>
@@ -69,7 +69,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           </span>
         </h3>
         
-        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-foreground/80 transition-colors duration-300">
+        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-foreground transition-colors duration-300">
           {value.description}
         </p>
       </div>
@@ -94,7 +94,7 @@ export function VisionChapter() {
           <span className="text-primary font-headline uppercase tracking-[0.6em] text-xs mb-8 block font-bold">The Core Protocol</span>
           <h2 className="text-5xl md:text-9xl font-bold mb-12 tracking-tighter leading-none text-foreground">
             Architectural <br />
-            <span className="text-secondary italic">Excellence.</span>
+            <span className="text-primary italic">Excellence.</span>
           </h2>
         </motion.div>
       </div>

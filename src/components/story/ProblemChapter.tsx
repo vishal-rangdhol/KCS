@@ -45,8 +45,8 @@ export function ProblemChapter() {
 
   return (
     <section ref={sectionRef} id="problem" className="relative h-screen w-full bg-background overflow-hidden">
-      {/* Background Gradient Effect - Dark Mode */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-10 pointer-events-none" />
+      {/* Background Gradient Effect - Solar Mode */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-5 pointer-events-none" />
       
       <div ref={containerRef} className="relative h-full w-full flex items-center justify-center px-6 sm:px-12">
         <div className="max-w-5xl w-full text-center space-y-0 relative">
@@ -62,7 +62,7 @@ export function ProblemChapter() {
           <div ref={text2Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none">
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-4 text-foreground">
               Data is everywhere, <br className="hidden sm:block" />
-              but <span className="text-secondary">insights are rare.</span>
+              but <span className="text-primary">insights are rare.</span>
             </h2>
           </div>
 

@@ -54,7 +54,7 @@ export function HeroChapter() {
         style={{
           background: useTransform(
             [spotlightX, spotlightY],
-            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(168, 85, 247, 0.08) 0%, transparent 60%)`
+            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(249, 115, 22, 0.08) 0%, transparent 60%)`
           )
         }}
       />
@@ -122,7 +122,7 @@ export function HeroChapter() {
               variant="outline"
               size="lg" 
               asChild
-              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group border border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-2xl backdrop-blur-md"
+              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
             >
               <Link href="/contact">
                 Start Your Project
@@ -135,7 +135,7 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(168,85,247,0.3)]"
+              className="h-16 sm:h-24 px-10 sm:px-16 text-base sm:text-xl rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_20px_50px_rgba(249,115,22,0.3)]"
             >
               Explore Our Platforms
               <LayoutPanelLeft className="ml-3 w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -168,10 +168,10 @@ function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }:
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 0.12, scale: 1 }}
+      animate={{ opacity: 0.2, scale: 1 }}
       transition={{ delay, duration: 1.5, type: "spring" }}
       style={{ top, left, x, y }}
-      className="absolute p-6 rounded-[2.5rem] bg-white/5 text-primary border border-white/5 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
+      className="absolute p-6 rounded-[2.5rem] bg-white/40 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
     >
       <Icon size={32} strokeWidth={1} />
     </motion.div>

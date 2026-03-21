@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Modern Premium Black Theme - Violet Protocol */
-    --background: 240 10% 2%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 4%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 270 95% 60%;
+    /* Solar Premium Light Theme */
+    --background: 40 100% 99%; /* #FFFDF9 */
+    --foreground: 215 25% 17%; /* #1F2937 */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 17%;
+    --primary: 25 95% 53%; /* #F97316 */
     --primary-foreground: 0 0% 100%;
-    --secondary: 320 100% 50%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 240 10% 8%;
-    --muted-foreground: 240 5% 65%;
-    --accent: 270 95% 60%;
-    --accent-foreground: 0 0% 100%;
+    --secondary: 33 100% 92%; /* #FFEDD5 */
+    --secondary-foreground: 25 95% 53%;
+    --muted: 214 32% 91%;
+    --muted-foreground: 215 16% 47%; /* #6B7280 */
+    --accent: 33 100% 92%;
+    --accent-foreground: 25 95% 53%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 10%;
-    --input: 240 10% 10%;
-    --ring: 270 95% 60%;
+    --border: 214 32% 91%; /* #E5E7EB */
+    --input: 214 32% 91%;
+    --ring: 25 95% 53%;
     --radius: 1.5rem;
   }
 }
@@ -77,9 +77,9 @@ html.lenis {
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-3xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.4)];
+  @apply bg-white/60 backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(249,115,22,0.1)];
 }
 
 .text-glow {
-  text-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+  text-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
 }

@@ -68,7 +68,7 @@ export function CustomCursor() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
       <motion.div
-        className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-screen shadow-[0_0_20px_rgba(59,130,246,0.2)]"
+        className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-multiply shadow-[0_0_20px_rgba(249,115,22,0.2)]"
         style={{
           x,
           y,
@@ -77,8 +77,8 @@ export function CustomCursor() {
         }}
         animate={{
           scale: isPressed ? 0.7 : isHovered ? 1.6 : 1,
-          backgroundColor: isHovered ? 'rgba(59, 130, 246, 0.15)' : 'rgba(59, 130, 246, 0.02)',
-          borderColor: isHovered ? 'rgba(59, 130, 246, 1)' : 'rgba(59, 130, 246, 0.4)',
+          backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.15)' : 'rgba(249, 115, 22, 0.02)',
+          borderColor: isHovered ? 'rgba(249, 115, 22, 1)' : 'rgba(249, 115, 22, 0.4)',
         }}
         transition={{ 
           type: 'spring', 
@@ -98,7 +98,7 @@ export function CustomCursor() {
       </motion.div>
       
       <motion.div
-        className="absolute w-2 h-2 rounded-full bg-secondary/20 blur-sm"
+        className="absolute w-2 h-2 rounded-full bg-primary/20 blur-sm"
         style={{
           x: secondaryX,
           y: secondaryY,

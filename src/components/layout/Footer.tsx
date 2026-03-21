@@ -27,9 +27,9 @@ const socialItems = [
 
 export function Footer() {
   return (
-    <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-white/5">
+    <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-black/5">
       {/* Architectural Background Decoration */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.02] select-none">
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.03] select-none text-primary">
         <span className="text-[20rem] font-bold font-headline leading-none tracking-tighter">KCS</span>
       </div>
 
@@ -53,7 +53,7 @@ export function Footer() {
                 Architecting the digital infrastructure that defines the next era of global business through AI and cloud precision.
               </p>
             </div>
-            <div className="mt-10 pt-10 border-t border-white/5">
+            <div className="mt-10 pt-10 border-t border-black/5">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/40 font-headline">Headquarters: Hyderabad, India</p>
             </div>
           </div>
@@ -62,7 +62,7 @@ export function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 flex-1">
             
             <div className="space-y-8">
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline flex items-center gap-2">
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Navigation
               </h5>
               <ul className="space-y-4">
@@ -78,7 +78,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-8">
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline flex items-center gap-2">
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Platforms
               </h5>
               <ul className="space-y-4">
@@ -95,7 +95,7 @@ export function Footer() {
             </div>
 
             <div className="space-y-8 col-span-2 md:col-span-1">
-              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline flex items-center gap-2">
+              <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Connection
               </h5>
               <div className="flex md:flex-col gap-6 md:gap-4">
@@ -107,7 +107,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-xs text-muted-foreground hover:text-primary transition-all group font-medium"
                   >
-                    <div className="p-2 rounded-lg bg-white/5 border border-white/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-all">
+                    <div className="p-2 rounded-lg bg-black/5 border border-black/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-all">
                       <item.icon size={14} />
                     </div>
                     <span className="hidden md:inline">{item.name}</span>
@@ -120,15 +120,15 @@ export function Footer() {
         </div>
 
         {/* System Metadata Line */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
             <p className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground/40 font-headline">2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED</p>
           </div>
           
           <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
-            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Privacy_Protocol</NextLink>
-            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Usage_Terms</NextLink>
-            <NextLink href="/contact" className="text-primary hover:text-white transition-colors duration-300">Support_Terminal</NextLink>
+            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Usage_Terms</NextLink>
+            <NextLink href="/contact" className="text-primary hover:text-foreground transition-colors duration-300">Support_Terminal</NextLink>
           </div>
         </div>
       </div>
