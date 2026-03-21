@@ -19,10 +19,34 @@ const productItems = [
 ]
 
 const socialItems = [
-  { name: 'LinkedIn', href: 'https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/', icon: Linkedin },
-  { name: 'X', href: '#', icon: Twitter },
-  { name: 'Instagram', href: '#', icon: Instagram },
-  { name: 'Facebook', href: 'https://www.facebook.com/people/Kandhugule-Consultancy-Services/61563863545091/#', icon: Facebook },
+  { 
+    name: 'LinkedIn', 
+    href: 'https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/', 
+    icon: Linkedin,
+    color: 'group-hover:text-[#0077B5]',
+    glow: 'group-hover:shadow-[0_0_20px_rgba(0,119,181,0.3)] group-hover:border-[#0077B5]/40'
+  },
+  { 
+    name: 'X', 
+    href: '#', 
+    icon: Twitter,
+    color: 'group-hover:text-[#1DA1F2]',
+    glow: 'group-hover:shadow-[0_0_20px_rgba(29,161,242,0.3)] group-hover:border-[#1DA1F2]/40'
+  },
+  { 
+    name: 'Instagram', 
+    href: '#', 
+    icon: Instagram,
+    color: 'group-hover:text-[#E4405F]',
+    glow: 'group-hover:shadow-[0_0_20px_rgba(228,64,95,0.3)] group-hover:border-[#E4405F]/40'
+  },
+  { 
+    name: 'Facebook', 
+    href: 'https://www.facebook.com/people/Kandhugule-Consultancy-Services/61563863545091/#', 
+    icon: Facebook,
+    color: 'group-hover:text-[#1877F2]',
+    glow: 'group-hover:shadow-[0_0_20px_rgba(24,119,242,0.3)] group-hover:border-[#1877F2]/40'
+  },
 ]
 
 export function Footer() {
@@ -105,9 +129,9 @@ export function Footer() {
                     href={item.href} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-xs text-muted-foreground hover:text-primary transition-all group font-medium"
+                    className={`flex items-center gap-3 text-xs text-muted-foreground transition-all group font-medium ${item.color}`}
                   >
-                    <div className="p-2 rounded-lg bg-black/5 border border-black/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-all">
+                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 ${item.glow}`}>
                       <item.icon size={14} />
                     </div>
                     <span className="hidden md:inline">{item.name}</span>
@@ -126,9 +150,9 @@ export function Footer() {
           </div>
           
           <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
-            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
-            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Usage_Terms</NextLink>
-            <NextLink href="/contact" className="text-primary hover:text-foreground transition-colors duration-300">Support_Terminal</NextLink>
+            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Usage_Terms</NextLink>
+            <NextLink href="/contact" className="text-primary hover:text-white transition-colors duration-300">Support_Terminal</NextLink>
           </div>
         </div>
       </div>
