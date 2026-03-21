@@ -67,8 +67,8 @@ export function Navbar() {
       <nav 
         className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-700 border ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(249,115,22,0.1)] scale-95 md:scale-100 border-primary/10' 
-            : 'px-8 py-4 md:px-10 md:py-5 border-black/5 bg-white shadow-sm'
+            ? 'px-6 py-3 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-95 md:scale-100' 
+            : 'px-8 py-4 md:px-10 md:py-5 border-border/10 bg-background shadow-sm'
         }`}
       >
         <Link 
@@ -102,7 +102,7 @@ export function Navbar() {
                     href={item.href}
                     className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
                       isActive 
-                        ? 'bg-primary text-white border-primary shadow-[0_0_25px_rgba(249,115,22,0.3)]' 
+                        ? 'bg-primary text-white border-primary shadow-xl' 
                         : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
                     }`}
                   >
@@ -152,7 +152,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 bg-white rounded-[2.5rem] p-6 md:hidden border border-black/5 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 bg-background rounded-[2.5rem] p-6 md:hidden border border-border/10 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => {
@@ -166,7 +166,7 @@ export function Navbar() {
                       className={`block p-5 rounded-2xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
                         isActive 
                           ? 'bg-primary/10 border-primary/40 text-primary' 
-                          : 'bg-black/5 border-black/5 hover:bg-black/10 text-foreground/70'
+                          : 'bg-card/40 border-border/10 hover:bg-card text-foreground/70'
                       }`}
                     >
                       {item.name}

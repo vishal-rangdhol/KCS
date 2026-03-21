@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Solar Premium Light Theme */
-    --background: 40 100% 99%; /* #FFFDF9 */
-    --foreground: 215 25% 17%; /* #1F2937 */
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 17%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 25% 17%;
-    --primary: 25 95% 53%; /* #F97316 */
+    /* Slate Navy Protocol */
+    --background: 214 32% 91%; /* #E2E8F0 */
+    --foreground: 222 48% 8%; /* #0B1120 */
+    --card: 212 33% 84%; /* #CBD5E1 */
+    --card-foreground: 222 48% 8%;
+    --popover: 212 33% 84%;
+    --popover-foreground: 222 48% 8%;
+    --primary: 28 95% 61%; /* #FB923C */
     --primary-foreground: 0 0% 100%;
-    --secondary: 33 100% 92%; /* #FFEDD5 */
-    --secondary-foreground: 25 95% 53%;
-    --muted: 214 32% 91%;
-    --muted-foreground: 215 16% 47%; /* #6B7280 */
-    --accent: 33 100% 92%;
-    --accent-foreground: 25 95% 53%;
+    --secondary: 222 38% 15%; /* #172033 Soft Navy */
+    --secondary-foreground: 214 32% 91%;
+    --muted: 215 16% 35%; /* #475569 */
+    --muted-foreground: 215 16% 35%;
+    --accent: 212 33% 84%;
+    --accent-foreground: 28 95% 61%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 214 32% 91%; /* #E5E7EB */
-    --input: 214 32% 91%;
-    --ring: 25 95% 53%;
+    --border: 215 14% 64%; /* #94A3B8 */
+    --input: 215 14% 64%;
+    --ring: 28 95% 61%;
     --radius: 1.5rem;
   }
 }
@@ -77,9 +77,9 @@ html.lenis {
 }
 
 .glass {
-  @apply bg-white/60 backdrop-blur-3xl border border-white/20 shadow-[0_8px_32px_0_rgba(249,115,22,0.1)];
+  @apply bg-white/20 backdrop-blur-xl border border-white/10 shadow-xl;
 }
 
 .text-glow {
-  text-shadow: 0 0 30px rgba(249, 115, 22, 0.2);
+  text-shadow: 0 0 30px rgba(251, 146, 60, 0.2);
 }

@@ -17,7 +17,7 @@ const CultureChapter = dynamic(() => import('@/components/story/CultureChapter')
 const CareersChapter = dynamic(() => import('@/components/story/CareersChapter').then(mod => mod.CareersChapter), { ssr: true })
 const CTAChapter = dynamic(() => import('@/components/story/CTAChapter').then(mod => mod.CTAChapter), { ssr: true })
 
-export default function Home() {
+export function Home() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -32,17 +32,17 @@ export default function Home() {
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(249,115,22,0.4)]"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(251,146,60,0.4)]"
         style={{ scaleX }}
       />
 
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Background Ambient Layers - Solar Spectrum */}
+      {/* Background Ambient Layers - Slate Navy Spectrum */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/5 blur-[160px] rounded-full opacity-40" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/20 blur-[160px] rounded-full opacity-40" />
+        <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/5 blur-[160px] rounded-full opacity-30" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/10 blur-[160px] rounded-full opacity-40" />
       </div>
 
       {/* Chapters Wrapper */}
@@ -66,7 +66,9 @@ export default function Home() {
       </motion.div>
 
       {/* Final Cinematic Vignette */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,253,249,0.6)_100%)]" />
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(11,17,32,0.05)_100%)]" />
     </main>
   )
 }
+
+export default Home;
