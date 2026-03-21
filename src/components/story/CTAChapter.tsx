@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useRef, useState, ReactNode, MouseEvent } from 'react'
@@ -11,14 +10,14 @@ import Link from 'next/link'
 export function CTAChapter() {
   return (
     <Chapter id="cta" className="py-20 overflow-visible px-4 sm:px-6">
-      <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-black/5 group bg-white shadow-2xl">
+      <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-white/5 group bg-card/40 shadow-2xl backdrop-blur-md">
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_rgba(249,115,22,0.05)_0%,_rgba(251,191,36,0.05)_50%,_rgba(249,115,22,0.05)_100%)] opacity-20 blur-[60px] sm:blur-[120px]"
+          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_rgba(249,115,22,0.1)_0%,_rgba(251,191,36,0.1)_50%,_rgba(249,115,22,0.1)_100%)] opacity-30 blur-[60px] sm:blur-[120px]"
         />
         
         <div className="relative z-10 max-w-4xl mx-auto">
@@ -41,7 +40,7 @@ export function CTAChapter() {
                 variant="outline"
                 size="lg" 
                 asChild
-                className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-[0_12px_40px_rgba(249,115,22,0.05)] group w-full sm:w-auto font-bold transition-all duration-300"
+                className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-2xl group w-full sm:w-auto font-bold transition-all duration-300"
               >
                 <Link href="/contact">
                   Start Your Project

@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -19,14 +18,14 @@ const products = [
     id: "letscatchup",
     name: "Let’s Catch Up",
     description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration — not engagement algorithms.",
-    color: "from-orange-600/5 via-primary/5 to-transparent",
+    color: "from-orange-600/10 via-primary/10 to-transparent",
     href: "https://letscatchup-kcs.com/"
   },
   {
     id: "sushrth",
     name: "Sushrth",
     description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for the next generation of clinical infrastructure.",
-    color: "from-amber-600/5 via-secondary/5 to-transparent",
+    color: "from-amber-600/10 via-secondary/10 to-transparent",
     href: "https://www.sushrth.com/"
   }
 ]
@@ -75,12 +74,12 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         ease: [0.23, 1, 0.32, 1] 
       }}
       viewport={{ once: true }}
-      className="group relative h-[320px] sm:h-[380px] lg:h-[420px] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white border border-black/5 hover:border-primary/20 transition-all duration-700 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.05)]"
+      className="group relative h-[280px] sm:h-[320px] lg:h-[350px] w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl"
     >
       <div className="absolute inset-0 z-0">
-        <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 opacity-40 group-hover:opacity-100 transition-opacity duration-700`} />
+        <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700`} />
         {/* Architectural grid element */}
-        <div className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-700">
+        <div className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity duration-700">
           <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:24px_24px]" />
         </div>
       </div>
@@ -107,10 +106,6 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-2 transition-transform duration-500" />
         </Button>
       </div>
-      
-      {/* Decorative corner accents */}
-      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-tl-[1.5rem]" />
-      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-primary/0 group-hover:border-primary/20 transition-all duration-700 rounded-br-[1.5rem]" />
     </motion.div>
   )
 }
@@ -161,8 +156,8 @@ export function ProductsChapter() {
           </CarouselContent>
           
           <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-8 sm:mt-16">
-            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
-            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-black/5 bg-black/5 hover:bg-primary hover:text-white transition-all duration-500" />
+            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
+            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-xl border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
           </div>
         </Carousel>
       </div>

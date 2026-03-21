@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -31,7 +30,8 @@ export function Navbar() {
 
   useEffect(() => {
     if (pathname !== '/') {
-      setActiveSection(pathname.replace('/', '') || 'hero')
+      const id = pathname.replace('/', '') || 'hero'
+      setActiveSection(id)
       return
     }
 
@@ -67,7 +67,7 @@ export function Navbar() {
       <nav 
         className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-500 border bg-white ${
           isScrolled 
-            ? 'px-6 py-3 md:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.08)] scale-95 md:scale-100 border-primary/20' 
+            ? 'px-6 py-3 md:px-8 shadow-[0_8px_32px_rgba(0,0,0,0.2)] scale-95 md:scale-100 border-primary/20' 
             : 'px-8 py-4 md:px-10 md:py-5 border-black/5 shadow-sm'
         }`}
       >
@@ -88,7 +88,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Desktop Menu - Hardcoded colors for light navbar */}
         <ul className="hidden md:flex flex-row gap-4 lg:gap-6 items-center">
           {navItems.map((item) => {
             const isContact = item.name === 'Contact'
@@ -118,7 +118,7 @@ export function Navbar() {
                 <Link 
                   href={item.href}
                   className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 ${
-                    isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
+                    isActive ? 'text-primary' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {item.name}
@@ -137,7 +137,7 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden p-2 text-foreground hover:text-primary transition-colors focus:outline-none"
+          className="md:hidden p-2 text-slate-900 hover:text-primary transition-colors focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -165,8 +165,8 @@ export function Navbar() {
                       onClick={() => setMobileMenuOpen(false)}
                       className={`block p-4 rounded-2xl transition-all duration-300 text-[10px] font-headline font-bold tracking-tight text-center border ${
                         isActive 
-                          ? 'bg-primary/20 border-primary/40 text-primary shadow-[0_0_20px_rgba(249,115,22,0.1)]' 
-                          : 'bg-black/5 border-black/5 hover:bg-black/10 text-foreground/70'
+                          ? 'bg-primary/20 border-primary/40 text-primary' 
+                          : 'bg-slate-50 border-slate-100 hover:bg-slate-100 text-slate-600'
                       }`}
                     >
                       {item.name}

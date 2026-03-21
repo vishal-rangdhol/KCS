@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -57,7 +56,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-[400px] md:h-[520px] rounded-[2.5rem] md:rounded-[3rem] bg-black/5 border border-black/5 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl"
+      className="relative h-[400px] md:h-[520px] rounded-[2.5rem] md:rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-sm"
     >
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 saturate-[0.85]",
@@ -65,7 +64,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       )} />
 
       <div className="relative z-20 h-full p-8 md:p-10 flex flex-col justify-center text-center">
-        <div className="absolute top-8 md:top-10 left-8 md:left-10 p-3 md:p-4 rounded-xl md:rounded-2xl bg-white border border-black/5 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
+        <div className="absolute top-8 md:top-10 left-8 md:left-10 p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
           <service.icon size={24} className="md:size-[32px]" strokeWidth={1.5} />
         </div>
 

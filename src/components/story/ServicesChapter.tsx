@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -52,8 +51,8 @@ export function ServicesChapter() {
             <span className="text-primary italic">Technology Edge.</span>
           </h2>
 
-          <div className="w-full py-16 border-y border-black/5 mb-16 relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+          <div className="w-full py-16 border-y border-white/10 mb-16 relative">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
             <p className="text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic">
               "We don't just deliver software; we architect competitive advantages that remain entirely under your control."
             </p>
@@ -67,18 +66,18 @@ export function ServicesChapter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="group p-10 rounded-[3rem] bg-black/5 border border-black/5 hover:bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] hover:border-primary/10 transition-all duration-500 text-left relative overflow-hidden"
+                className="group p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:bg-card/60 hover:shadow-2xl hover:border-primary/20 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm"
               >
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-8">
                     <div className="p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
                       <item.icon size={28} />
                     </div>
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 px-3 py-1 rounded-full border border-black/5">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60 px-3 py-1 rounded-full border border-white/10">
                       {item.tag}
                     </span>
                   </div>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 font-headline">{item.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 font-headline text-foreground">{item.title}</h3>
                   <p className="text-muted-foreground leading-relaxed italic">{item.description}</p>
                 </div>
               </motion.div>

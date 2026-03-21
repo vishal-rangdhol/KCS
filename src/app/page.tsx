@@ -1,4 +1,3 @@
-
 "use client"
 
 import dynamic from 'next/dynamic'
@@ -34,18 +33,17 @@ export default function Home() {
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(249,115,22,0.4)]"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(249,115,22,0.6)]"
         style={{ scaleX }}
       />
 
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Background Ambient Layers - Light Version */}
+      {/* Background Ambient Layers - Dark Mode */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/5 blur-[160px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/5 blur-[160px] rounded-full" />
-        <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/5 blur-[140px] rounded-full" />
+        <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/10 blur-[160px] rounded-full opacity-30" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/10 blur-[160px] rounded-full opacity-30" />
       </div>
 
       {/* Chapters Wrapper */}
@@ -68,8 +66,8 @@ export default function Home() {
         <Footer />
       </motion.div>
 
-      {/* Final Cinematic Vignette */}
-      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.6)_100%)]" />
+      {/* Final Cinematic Vignette - Dark Mode */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.8)_100%)]" />
     </main>
   )
 }

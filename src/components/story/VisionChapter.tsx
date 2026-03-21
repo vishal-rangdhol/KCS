@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -52,14 +51,14 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className={`p-10 rounded-[3rem] bg-white border ${value.border} ${value.hoverBorder} shadow-[0_20px_50px_rgba(0,0,0,0.03)] hover:shadow-[0_40px_80px_rgba(0,0,0,0.08)] group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none`}
+      className={`p-10 rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-sm`}
     >
       {/* Subtle Background Glow on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div className="relative z-10">
         <div 
-          className="bg-black/5 p-6 rounded-[2rem] w-fit mb-10 border border-black/5 group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
+          className="bg-white/5 p-6 rounded-[2rem] w-fit mb-10 border border-white/10 group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
         >
           <value.icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
         </div>
@@ -76,7 +75,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
       </div>
 
       {/* Decorative architectural grid element visible on hover */}
-      <div className="absolute -bottom-12 -right-12 w-48 h-48 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
+      <div className="absolute -bottom-12 -right-12 w-48 h-48 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:12px_12px]" />
       </div>
     </motion.div>
