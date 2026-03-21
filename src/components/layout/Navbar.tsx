@@ -68,7 +68,7 @@ export function Navbar() {
         className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-6xl transition-all duration-700 border ${
           isScrolled 
             ? 'px-6 py-3 md:px-8 bg-background/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.5)] scale-95 md:scale-100 border-white/10' 
-            : 'px-8 py-4 md:px-10 md:py-5 border-white/5 bg-transparent'
+            : 'px-8 py-4 md:px-10 md:py-5 border-white/5 bg-background'
         }`}
       >
         <Link 
@@ -82,7 +82,7 @@ export function Navbar() {
               alt="KCS Logo" 
               width={110}
               height={36}
-              className="h-9 w-auto object-contain antialiased brightness-0 invert"
+              className="h-9 w-auto object-contain antialiased"
               priority
             />
           </div>
@@ -152,7 +152,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 bg-background/95 backdrop-blur-2xl rounded-[2.5rem] p-6 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 bg-background rounded-[2.5rem] p-6 md:hidden border border-white/10 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => {

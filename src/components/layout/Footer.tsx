@@ -27,7 +27,7 @@ const socialItems = [
 
 export function Footer() {
   return (
-    <footer className="w-full relative overflow-hidden bg-background pt-24 pb-12 border-t border-white/5">
+    <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-white/5">
       {/* Architectural Background Decoration */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.02] select-none">
         <span className="text-[20rem] font-bold font-headline leading-none tracking-tighter">KCS</span>
@@ -44,7 +44,7 @@ export function Footer() {
                 alt="KCS Logo" 
                 width={120} 
                 height={40} 
-                className="h-8 w-auto brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity" 
+                className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity" 
               />
             </NextLink>
             <div className="relative">
