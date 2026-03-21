@@ -1,113 +1,150 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Focus, Heart, Sparkles, ShieldCheck } from 'lucide-react'
-import React, { useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Focus, Heart, ShieldCheck, Sparkles } from 'lucide-react'
+import React, { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 const pillars = [
-  { icon: Focus, title: "Deep Focus", text: "We prioritize deep work over constant distraction." },
-  { icon: Heart, title: "Sustainable", text: "Balance is the fuel for long-term technical excellence." },
-  { icon: ShieldCheck, title: "Reliability", text: "Teams that thrive build products that last." }
+  { 
+    id: "focus",
+    icon: Focus, 
+    title: "Deep Focus", 
+    text: "We prioritize deep work over constant distraction. Our environment is engineered for flow, allowing for the architectural precision that high-end digital products demand.",
+    tag: "Protocol 01"
+  },
+  { 
+    id: "sustainable",
+    icon: Heart, 
+    title: "Sustainable", 
+    text: "Balance is the fuel for long-term technical excellence. We reject the industry standard of burnout, choosing instead a pace that preserves creativity and rigor.",
+    tag: "Protocol 02"
+  },
+  { 
+    id: "reliability",
+    icon: ShieldCheck, 
+    title: "Reliability", 
+    text: "Teams that thrive build products that last. By investing in our people's stability, we ensure the platforms we build remain robust and future-proof.",
+    tag: "Protocol 03"
+  }
 ]
 
-function PillarCard({ item, index }: { item: typeof pillars[0], index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return
-    const rect = e.currentTarget.getBoundingClientRect()
-    const xPct = (e.clientX - rect.left) / rect.width - 0.5
-    const yPct = (e.clientY - rect.top) / rect.height - 0.5
-    x.set(xPct)
-    y.set(yPct)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      viewport={{ once: true }}
-      className="p-10 rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/20 transition-all group shadow-2xl relative overflow-hidden h-full backdrop-blur-sm"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-      
-      <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
-        <div className="w-12 h-12 rounded-xl bg-white/5 mb-8 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm text-primary">
-          <item.icon size={22} />
-        </div>
-        <h3 className="text-xl font-bold mb-4 font-headline text-foreground group-hover:text-primary transition-colors duration-300">{item.title}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{item.text}</p>
-      </div>
-
-      <div className="absolute -bottom-6 -right-6 w-24 h-24 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
-      </div>
-    </motion.div>
-  )
-}
-
 export function CultureChapter() {
+  const [expandedId, setExpandedId] = useState<string | null>("focus")
+
   return (
     <Chapter id="culture" className="bg-background py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-24 md:mb-32">
+        <div className="text-center mb-20 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-10 font-headline">
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
               <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
             </span>
             <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-12 font-headline">
               Built on <br />
               <span className="text-primary italic">Focus, Not Burnout.</span>
             </h2>
-            
-            <div className="py-16 border-y border-white/10 mb-16 relative">
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
-               <p className="text-2xl md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic">
-                "Great technology is built by balanced, inspired teams."
-              </p>
-            </div>
-
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed italic">
-              The tech industry runs on burnout. We run on focus. At KCS, we believe sustainable engineering environments produce cleaner architecture, stronger products, and more reliable platforms for the people who depend on them.
-            </p>
           </motion.div>
         </div>
 
-        {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {pillars.map((pillar, i) => (
-            <PillarCard key={i} item={pillar} index={i} />
-          ))}
+        {/* Unique Tiles Structure */}
+        <div className="flex flex-col md:flex-row gap-4 h-[700px] md:h-[550px] w-full items-stretch">
+          {pillars.map((pillar, i) => {
+            const isExpanded = expandedId === pillar.id;
+            return (
+              <motion.div
+                key={pillar.id}
+                onMouseEnter={() => setExpandedId(pillar.id)}
+                className={cn(
+                  "relative group overflow-hidden cursor-pointer rounded-[2.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
+                  isExpanded ? "flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
+                )}
+                layout
+              >
+                {/* Background Accent Gradient */}
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-700",
+                  isExpanded && "opacity-100"
+                )} />
+
+                {/* Content Container */}
+                <div className="relative z-10 p-8 md:p-12 h-full flex flex-col">
+                  {/* Top Bar: Icon and Protocol ID */}
+                  <div className="flex items-center justify-between mb-8">
+                    <div className={cn(
+                      "p-5 rounded-2xl transition-all duration-500",
+                      isExpanded ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20" : "bg-primary/10 text-primary"
+                    )}>
+                      <pillar.icon size={28} />
+                    </div>
+                    <span className={cn(
+                      "text-[10px] font-bold uppercase tracking-[0.3em] font-headline transition-colors duration-500",
+                      isExpanded ? "text-primary/60" : "text-muted-foreground/30"
+                    )}>
+                      {pillar.tag}
+                    </span>
+                  </div>
+
+                  {/* Narrative Block */}
+                  <div className="mt-auto">
+                    <h3 className={cn(
+                      "text-3xl md:text-5xl font-bold tracking-tighter mb-6 transition-all duration-500 font-headline",
+                      isExpanded ? "text-foreground" : "text-foreground/40"
+                    )}>
+                      {pillar.title}
+                    </h3>
+
+                    <AnimatePresence mode="wait">
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.5, ease: "easeOut" }}
+                        >
+                          <p className="text-lg md:text-2xl text-muted-foreground leading-relaxed italic max-w-3xl font-medium">
+                            {pillar.text}
+                          </p>
+                          <div className="mt-8 flex gap-2">
+                            <div className="w-12 h-1 bg-primary rounded-full" />
+                            <div className="w-4 h-1 bg-primary/20 rounded-full" />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                {/* Decorative Architectural Element */}
+                <div className={cn(
+                  "absolute -bottom-12 -right-12 w-48 h-48 opacity-0 transition-opacity duration-1000",
+                  isExpanded && "opacity-[0.08]"
+                )}>
+                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:16px_16px]" />
+                </div>
+
+                {/* Vertical Text when collapsed */}
+                {!isExpanded && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex"
+                  >
+                    <span className="rotate-90 text-[10px] font-bold uppercase tracking-[0.5em] text-foreground/10 whitespace-nowrap">
+                      Expand Protocol
+                    </span>
+                  </motion.div>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </Chapter>
