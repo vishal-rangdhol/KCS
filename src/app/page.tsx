@@ -7,6 +7,7 @@ import { HeroChapter } from '@/components/story/HeroChapter'
 import { ProblemChapter } from '@/components/story/ProblemChapter'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { motion, useScroll, useSpring } from 'framer-motion'
+import { Footer } from '@/components/layout/Footer'
 
 // Dynamic imports for below-the-fold chapters to improve initial load speed
 const VisionChapter = dynamic(() => import('@/components/story/VisionChapter').then(mod => mod.VisionChapter), { ssr: true })
@@ -17,7 +18,6 @@ const ProductsChapter = dynamic(() => import('@/components/story/ProductsChapter
 const CultureChapter = dynamic(() => import('@/components/story/CultureChapter').then(mod => mod.CultureChapter), { ssr: true })
 const CareersChapter = dynamic(() => import('@/components/story/CareersChapter').then(mod => mod.CareersChapter), { ssr: true })
 const CTAChapter = dynamic(() => import('@/components/story/CTAChapter').then(mod => mod.CTAChapter), { ssr: true })
-const ContactChapter = dynamic(() => import('@/components/story/ContactChapter').then(mod => mod.ContactChapter), { ssr: true })
 
 export default function Home() {
   const { scrollYProgress } = useScroll()
@@ -48,7 +48,7 @@ export default function Home() {
         <div className="absolute top-1/3 right-1/4 w-[50%] h-[50%] bg-orange-600/5 blur-[140px] rounded-full" />
       </div>
 
-      {/* Chapters Wrapper - Physical Order Re-aligned to match Nav Hierarchy */}
+      {/* Chapters Wrapper */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -58,20 +58,17 @@ export default function Home() {
         <HeroChapter />
         <ProblemChapter />
         <VisionChapter />
-        
-        {/* Physical order now matches: Products -> Services -> Technology -> About -> Careers -> Contact */}
         <ProductsChapter />
         <ServicesChapter />
         <DifferentiationChapter />
         <AboutChapter />
-        
         <CultureChapter />
         <CareersChapter />
         <CTAChapter />
-        <ContactChapter />
+        <Footer />
       </motion.div>
 
-      {/* Final Cinematic Vignette - Light Mode */}
+      {/* Final Cinematic Vignette */}
       <div className="fixed inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.6)_100%)]" />
     </main>
   )

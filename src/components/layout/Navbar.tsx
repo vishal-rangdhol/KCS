@@ -15,7 +15,7 @@ const navItems = [
   { name: 'Technology', href: '/#technology' },
   { name: 'About', href: '/#story' },
   { name: 'Careers', href: '/#careers' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export function Navbar() {
@@ -31,7 +31,7 @@ export function Navbar() {
 
   useEffect(() => {
     if (pathname !== '/') {
-      setActiveSection('')
+      setActiveSection(pathname.replace('/', '') || 'hero')
       return
     }
 
@@ -52,9 +52,11 @@ export function Navbar() {
     const observer = new IntersectionObserver(handleIntersection, observerOptions)
 
     navItems.forEach((item) => {
-      const id = item.href.split('#')[1]
-      const element = document.getElementById(id)
-      if (element) observer.observe(element)
+      if (item.href.startsWith('/#')) {
+        const id = item.href.split('#')[1]
+        const element = document.getElementById(id)
+        if (element) observer.observe(element)
+      }
     })
 
     return () => observer.disconnect()
@@ -81,7 +83,6 @@ export function Navbar() {
               width={120}
               height={40}
               className="h-10 w-auto object-contain antialiased"
-              style={{ imageRendering: 'auto' }}
               priority
             />
           </div>
@@ -90,9 +91,9 @@ export function Navbar() {
         {/* Desktop Menu */}
         <ul className="hidden md:flex flex-row gap-4 lg:gap-6 items-center">
           {navItems.map((item) => {
-            const id = item.href.split('#')[1]
-            const isActive = activeSection === id
             const isContact = item.name === 'Contact'
+            const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
+            const isActive = activeSection === id || (pathname === item.href)
 
             if (isContact) {
               return (
@@ -155,8 +156,8 @@ export function Navbar() {
           >
             <ul className="grid grid-cols-2 gap-3">
               {navItems.map((item) => {
-                const id = item.href.split('#')[1]
-                const isActive = activeSection === id
+                const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
+                const isActive = activeSection === id || (pathname === item.href)
                 return (
                   <li key={item.name}>
                     <Link 

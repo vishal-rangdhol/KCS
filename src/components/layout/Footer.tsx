@@ -3,7 +3,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react'
 import NextLink from 'next/link'
 
@@ -14,7 +13,7 @@ const navItems = [
   { name: 'Technology', href: '/#technology' },
   { name: 'About', href: '/#story' },
   { name: 'Careers', href: '/#careers' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Contact', href: '/contact' },
 ]
 
 export function Footer() {
@@ -33,18 +32,16 @@ export function Footer() {
         </div>
         
         <div className="space-y-6">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Navigation</h5>
+          <h5 className="text-[10px] font-bold uppercase tracking-widest text-primary font-headline">Company</h5>
           <ul className="space-y-4 text-sm text-muted-foreground font-medium">
-            {navItems.map((item) => (
-              <li key={item.name}>
-                <NextLink href={item.href} className="hover:text-primary transition-colors">{item.name}</NextLink>
-              </li>
-            ))}
+            <li><NextLink href="/#story" className="hover:text-primary transition-colors">About</NextLink></li>
+            <li><NextLink href="/#careers" className="hover:text-primary transition-colors">Careers</NextLink></li>
+            <li><NextLink href="/contact" className="hover:text-primary transition-colors">Contact</NextLink></li>
           </ul>
         </div>
 
         <div className="space-y-6">
-          <h5 className="text-[10px] font-bold uppercase tracking-widest text-secondary font-headline">Platforms</h5>
+          <h5 className="text-[10px] font-bold uppercase tracking-widest text-secondary font-headline">Products</h5>
           <ul className="space-y-4 text-sm text-muted-foreground font-medium">
             <li><a href="https://letscatchup-kcs.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Let's Catch Up</a></li>
             <li><a href="https://www.sushrth.com/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Sushrth</a></li>

@@ -5,6 +5,7 @@ import { useRef, useEffect } from 'react'
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
 import { Rocket, LayoutPanelLeft, Cpu, Shield, Network, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 
 export function HeroChapter() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -35,13 +36,8 @@ export function HeroChapter() {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   const scrollToNext = () => {
-    const el = document.getElementById('problem');
+    const el = document.getElementById('products');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -126,11 +122,13 @@ export function HeroChapter() {
             <Button 
               variant="outline"
               size="lg" 
-              onClick={scrollToContact}
+              asChild
               className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_12px_30px_rgba(249,115,22,0.1)]"
             >
-              Start Your Project
-              <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <Link href="/contact">
+                Start Your Project
+                <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </Link>
             </Button>
           </MagneticButton>
 

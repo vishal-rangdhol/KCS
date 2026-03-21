@@ -6,13 +6,9 @@ import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Rocket } from 'lucide-react'
+import Link from 'next/link'
 
 export function CTAChapter() {
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <Chapter id="cta" className="py-20 overflow-visible px-4 sm:px-6">
       <div className="w-full relative rounded-[2rem] sm:rounded-[3rem] md:rounded-[80px] p-8 sm:p-12 md:p-32 text-center overflow-hidden border border-black/5 group bg-white shadow-2xl">
@@ -44,11 +40,13 @@ export function CTAChapter() {
               <Button 
                 variant="outline"
                 size="lg" 
-                onClick={scrollToContact}
+                asChild
                 className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white shadow-[0_12px_40px_rgba(249,115,22,0.05)] group w-full sm:w-auto font-bold transition-all duration-300"
               >
-                Start Your Project
-                <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Link href="/contact">
+                  Start Your Project
+                  <Rocket className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </Link>
               </Button>
             </MagneticWrapper>
           </div>
