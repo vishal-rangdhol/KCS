@@ -23,29 +23,33 @@ const socialItems = [
     name: 'LinkedIn', 
     href: 'https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/', 
     icon: Linkedin,
-    color: 'group-hover:text-[#0077B5]',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(0,119,181,0.3)] group-hover:border-[#0077B5]/40'
+    hoverBg: 'group-hover:bg-[#0077B5]',
+    glow: 'group-hover:shadow-[0_0_25px_rgba(0,119,181,0.5)]',
+    hoverBorder: 'group-hover:border-[#0077B5]'
   },
   { 
     name: 'X', 
     href: '#', 
     icon: Twitter,
-    color: 'group-hover:text-[#1DA1F2]',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(29,161,242,0.3)] group-hover:border-[#1DA1F2]/40'
+    hoverBg: 'group-hover:bg-[#1DA1F2]',
+    glow: 'group-hover:shadow-[0_0_25px_rgba(29,161,242,0.5)]',
+    hoverBorder: 'group-hover:border-[#1DA1F2]'
   },
   { 
     name: 'Instagram', 
     href: '#', 
     icon: Instagram,
-    color: 'group-hover:text-[#E4405F]',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(228,64,95,0.3)] group-hover:border-[#E4405F]/40'
+    hoverBg: 'group-hover:bg-[#E4405F]',
+    glow: 'group-hover:shadow-[0_0_25px_rgba(228,64,95,0.5)]',
+    hoverBorder: 'group-hover:border-[#E4405F]'
   },
   { 
     name: 'Facebook', 
     href: 'https://www.facebook.com/people/Kandhugule-Consultancy-Services/61563863545091/#', 
     icon: Facebook,
-    color: 'group-hover:text-[#1877F2]',
-    glow: 'group-hover:shadow-[0_0_20px_rgba(24,119,242,0.3)] group-hover:border-[#1877F2]/40'
+    hoverBg: 'group-hover:bg-[#1877F2]',
+    glow: 'group-hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]',
+    hoverBorder: 'group-hover:border-[#1877F2]'
   },
 ]
 
@@ -68,7 +72,7 @@ export function Footer() {
                 alt="KCS Logo" 
                 width={120} 
                 height={40} 
-                className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity" 
+                className="h-8 w-auto opacity-100 group-hover:opacity-80 transition-opacity" 
               />
             </NextLink>
             <div className="relative">
@@ -129,12 +133,12 @@ export function Footer() {
                     href={item.href} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 text-xs text-muted-foreground transition-all group font-medium ${item.color}`}
+                    className="flex items-center gap-3 text-xs text-muted-foreground transition-all group font-medium"
                   >
-                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 ${item.glow}`}>
+                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
                       <item.icon size={14} />
                     </div>
-                    <span className="hidden md:inline">{item.name}</span>
+                    <span className="hidden md:inline group-hover:text-foreground">{item.name}</span>
                   </a>
                 ))}
               </div>
