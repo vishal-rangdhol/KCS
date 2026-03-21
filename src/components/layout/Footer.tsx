@@ -22,6 +22,7 @@ const socialItems = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/', icon: Linkedin },
   { name: 'X', href: '#', icon: Twitter },
   { name: 'Instagram', href: '#', icon: Instagram },
+  { name: 'Facebook', href: 'https://www.facebook.com/people/Kandhugule-Consultancy-Services/61563863545091/#', icon: Facebook },
 ]
 
 export function Footer() {
@@ -104,6 +105,8 @@ export function Footer() {
                   <a 
                     key={item.name} 
                     href={item.href} 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 text-xs text-muted-foreground hover:text-primary transition-all group font-medium"
                   >
                     <div className="p-2 rounded-lg bg-white/5 border border-white/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-all">
@@ -121,17 +124,13 @@ export function Footer() {
         {/* System Metadata Line */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_var(--primary)]" />
-              <p className="text-[9px] tracking-[0.4em] uppercase font-bold text-foreground/80 font-headline">System Status: Operational</p>
-            </div>
             <p className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground/40 font-headline">© {currentYear} KCS PRODUCT LAB. ALL RIGHTS RESERVED.</p>
           </div>
           
-          <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] text-muted-foreground/40 font-headline">
-            <NextLink href="#" className="hover:text-primary transition-colors">Privacy_Protocol</NextLink>
-            <NextLink href="#" className="hover:text-primary transition-colors">Usage_Terms</NextLink>
-            <NextLink href="/contact" className="text-primary hover:underline">Support_Terminal</NextLink>
+          <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
+            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="#" className="text-primary hover:text-white transition-colors duration-300">Usage_Terms</NextLink>
+            <NextLink href="/contact" className="text-primary hover:text-white transition-colors duration-300">Support_Terminal</NextLink>
           </div>
         </div>
       </div>
