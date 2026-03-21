@@ -26,8 +26,6 @@ const socialItems = [
 ]
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-24 pb-12 border-t border-white/5">
       {/* Architectural Background Decoration */}
@@ -124,7 +122,7 @@ export function Footer() {
         {/* System Metadata Line */}
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <p className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground/40 font-headline">© {currentYear} KCS PRODUCT LAB. ALL RIGHTS RESERVED.</p>
+            <p className="text-[8px] tracking-[0.3em] uppercase text-muted-foreground/40 font-headline">2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED</p>
           </div>
           
           <div className="flex gap-10 text-[8px] font-bold uppercase tracking-[0.4em] font-headline">
