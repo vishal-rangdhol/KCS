@@ -32,14 +32,14 @@ export default function Home() {
 
       {/* Scroll Progress Bar */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+        className="fixed top-0 left-0 right-0 h-1 bg-primary origin-left z-[110] shadow-[0_0_15px_rgba(168,85,247,0.6)]"
         style={{ scaleX }}
       />
 
       {/* Persistent 3D Background */}
       <ThreeBackground />
 
-      {/* Background Ambient Layers - Dark Navy Mode */}
+      {/* Background Ambient Layers - Violet/Magenta Spectrum */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[80%] h-[80%] bg-primary/10 blur-[160px] rounded-full opacity-30" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[80%] h-[80%] bg-secondary/10 blur-[160px] rounded-full opacity-30" />

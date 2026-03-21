@@ -17,7 +17,7 @@ export function CTAChapter() {
             rotate: [0, 90, 0],
           }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_rgba(249,115,22,0.1)_0%,_rgba(251,191,36,0.1)_50%,_rgba(249,115,22,0.1)_100%)] opacity-30 blur-[60px] sm:blur-[120px]"
+          className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,_rgba(168,85,247,0.1)_0%,_rgba(236,72,153,0.1)_50%,_rgba(168,85,247,0.1)_100%)] opacity-30 blur-[60px] sm:blur-[120px]"
         />
         
         <div className="relative z-10 max-w-4xl mx-auto">

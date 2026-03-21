@@ -38,10 +38,10 @@ export function ThreeBackground() {
     
     const particlesMaterial = new THREE.PointsMaterial({
       size: isMobile ? 0.04 : 0.025,
-      color: 0x3B82F6, // Cyber Blue
+      color: 0xA855F7, // Royal Violet
       transparent: true,
       opacity: 0.3,
-      blending: THREE.NormalBlending 
+      blending: THREE.AdditiveBlending 
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
@@ -56,10 +56,10 @@ export function ThreeBackground() {
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
       size: 0.035,
-      color: 0x818CF8, // Indigo
+      color: 0xEC4899, // Bright Magenta
       transparent: true,
       opacity: 0.2,
-      blending: THREE.NormalBlending
+      blending: THREE.AdditiveBlending
     })
     const secParticles = new THREE.Points(secGeometry, secMaterial)
     scene.add(secParticles)
@@ -127,5 +127,5 @@ export function ThreeBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="canvas-container opacity-40" />
+  return <div ref={containerRef} className="canvas-container opacity-50" />
 }

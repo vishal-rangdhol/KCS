@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { MapPin, Clock, ArrowLeft, Sparkles, CheckCircle2, Briefcase, FileText, Target, ShieldCheck, Mail, ClipboardCheck, ArrowUpRight, Zap, Heart, Brain, Search } from 'lucide-react'
+import { MapPin, ArrowLeft, Sparkles, Briefcase, Send } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -96,99 +96,15 @@ const jobs = [
   }
 ]
 
-const whyKCS = [
-  {
-    icon: Sparkles,
-    title: "Innovative Platforms",
-    text: "Work on innovative platforms used by real people across healthcare, education, and enterprise."
-  },
-  {
-    icon: Zap,
-    title: "Modern Stack",
-    iconColor: "text-secondary",
-    text: "Collaborate with experienced engineers across a high-performance modern technology stack."
-  },
-  {
-    icon: Brain,
-    title: "Meaningful Impact",
-    text: "Contribute to meaningful digital transformation that solves complex societal and enterprise challenges."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Focused Culture",
-    iconColor: "text-primary",
-    text: "Operate in a culture that values focused work over performative busyness."
-  }
-]
-
-function AdvantageCard({ item, index }: { item: typeof whyKCS[0], index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
-  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"])
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return
-    const rect = e.currentTarget.getBoundingClientRect()
-    const xPct = (e.clientX - rect.left) / rect.width - 0.5
-    const yPct = (e.clientY - rect.top) / rect.height - 0.5
-    x.set(xPct)
-    y.set(yPct)
-  }
-
-  const handleMouseLeave = () => {
-    x.set(0)
-    y.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        rotateX,
-        rotateY,
-        transformStyle: "preserve-3d",
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-      viewport={{ once: true }}
-      className="p-10 rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/20 transition-all group shadow-2xl relative overflow-hidden backdrop-blur-sm"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-      
-      <div style={{ transform: "translateZ(40px)" }} className="relative z-10">
-        <div className={`w-12 h-12 rounded-xl bg-white/5 mb-8 flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm ${item.iconColor || 'text-primary'}`}>
-          <item.icon size={22} />
-        </div>
-        <h3 className="text-xl font-bold mb-4 font-headline text-foreground group-hover:text-primary transition-colors duration-300">{item.title}</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors duration-300">{item.text}</p>
-      </div>
-
-      <div className="absolute -bottom-6 -right-6 w-24 h-24 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
-      </div>
-    </motion.div>
-  )
-}
-
 export default function CareersPage() {
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-white">
       <Navbar />
       <ThreeBackground />
       
-      {/* Cinematic Ambient Background */}
+      {/* Cinematic Ambient Background - Violet Mode */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.05)_0%,_transparent_50%)]" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(168,85,247,0.05)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-primary/10 blur-[120px] rounded-full opacity-20" />
       </div>
 
@@ -225,27 +141,6 @@ export default function CareersPage() {
           </motion.div>
         </section>
 
-        {/* Philosophy Block */}
-        <section className="mb-48 py-24 border-y border-white/10 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="relative z-10 max-w-5xl mx-auto text-center"
-          >
-            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 mb-8 block font-headline">The KCS Conviction</span>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight mb-10 text-foreground">
-              "We believe the best products come from teams that are <span className="text-primary">focused</span>, supported, and given the space to do their best work."
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed italic">
-              We take engineering quality seriously, and we take the wellbeing of our people just as seriously. No performative busyness. Just deep work.
-            </p>
-          </motion.div>
-        </section>
-
         {/* Job Openings */}
         <div className="space-y-6 mb-48">
           <div className="flex items-center gap-4 mb-16">
@@ -277,7 +172,6 @@ export default function CareersPage() {
                 </AccordionTrigger>
                 <AccordionContent className="px-6 md:px-12 pb-12">
                   <div className="max-w-6xl mx-auto space-y-12">
-                    {/* Position details */}
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
                       <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5">
                         <div className="p-3 rounded-xl bg-primary/10 text-primary">
@@ -288,8 +182,8 @@ export default function CareersPage() {
                           <p className="text-xs font-bold text-foreground">{job.location}</p>
                         </div>
                       </div>
-                      {/* Add other job details here similarly with updated colors */}
                     </div>
+                    {/* Position description and requirements would go here */}
                   </div>
                 </AccordionContent>
               </AccordionItem>

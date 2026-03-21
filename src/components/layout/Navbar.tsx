@@ -88,7 +88,7 @@ export function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Menu - Hardcoded colors for light navbar */}
+        {/* Desktop Menu - White navbar with themed highlights */}
         <ul className="hidden md:flex flex-row gap-4 lg:gap-6 items-center">
           {navItems.map((item) => {
             const isContact = item.name === 'Contact'
@@ -102,7 +102,7 @@ export function Navbar() {
                     href={item.href}
                     className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 border-2 ${
                       isActive 
-                        ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(249,115,22,0.3)]' 
+                        ? 'bg-primary text-white border-primary shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
                         : 'border-primary/40 text-primary hover:bg-primary hover:text-white hover:border-primary shadow-sm'
                     }`}
                   >
@@ -145,7 +145,7 @@ export function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Solid White */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

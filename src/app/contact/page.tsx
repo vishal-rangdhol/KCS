@@ -1,4 +1,3 @@
-
 "use client"
 
 import React from 'react'
@@ -16,9 +15,9 @@ export default function ContactPage() {
       <Navbar />
       <ThreeBackground />
       
-      {/* Cinematic Ambient Background */}
+      {/* Cinematic Ambient Background - Violet Mode */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(249,115,22,0.03)_0%,_transparent_50%)]" />
+        <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_30%,_rgba(168,85,247,0.03)_0%,_transparent_50%)]" />
         <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-primary/5 blur-[120px] rounded-full opacity-40" />
       </div>
 
@@ -50,7 +49,7 @@ export default function ContactPage() {
               <span className="text-primary italic">Something Great.</span>
             </h1>
 
-            <div className="w-full py-16 border-y border-black/5 mb-16 relative">
+            <div className="w-full py-16 border-y border-white/5 mb-16 relative">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
               <p className="text-xl md:text-3xl text-muted-foreground max-w-4xl mx-auto px-4 leading-relaxed font-medium italic">
                 Have a product idea, a technology challenge, or an infrastructure problem? Our team is ready to help you design, build, and scale the technology behind it.
@@ -58,7 +57,7 @@ export default function ContactPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-5xl text-left mb-20">
-              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-primary/20 transition-all duration-500 shadow-sm">
+              <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-primary/20 transition-all duration-500 shadow-sm">
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 block mb-6 font-headline">Business Inquiries</span>
                 <h4 className="text-2xl font-bold mb-4 font-headline text-foreground">Kandhugule Consultancy Services Pvt Ltd</h4>
                 <p className="text-muted-foreground mb-4 text-sm font-medium">Hyderabad, India</p>
@@ -67,7 +66,7 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <div className="p-10 rounded-[2.5rem] bg-black/5 border border-black/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm">
+              <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm">
                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/60 block mb-6 font-headline">Project Consultation</span>
                 <p className="text-lg text-muted-foreground mb-8 italic">
                   Planning a new digital platform or modernizing your infrastructure? Reach out to schedule a consultation with our engineering team.
