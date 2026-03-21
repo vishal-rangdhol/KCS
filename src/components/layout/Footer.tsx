@@ -42,7 +42,7 @@ const socialItems = [
   },
   { 
     name: 'X', 
-    href: '#', 
+    href: 'https://x.com/KCS_Pvt_Ltd', 
     icon: XIcon,
     hoverBg: 'group-hover:bg-black',
     glow: 'group-hover:shadow-[0_0_25px_rgba(0,0,0,0.5)]',
@@ -50,7 +50,7 @@ const socialItems = [
   },
   { 
     name: 'Instagram', 
-    href: '#', 
+    href: 'https://www.instagram.com/kandhugule_kcs/', 
     icon: Instagram,
     hoverBg: 'group-hover:bg-[#E4405F]',
     glow: 'group-hover:shadow-[0_0_25px_rgba(228,64,95,0.5)]',
@@ -139,19 +139,18 @@ export function Footer() {
               <h5 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Connection
               </h5>
-              <div className="flex md:flex-col gap-6 md:gap-4">
+              <div className="flex gap-4">
                 {socialItems.map((item) => (
                   <a 
                     key={item.name} 
                     href={item.href} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-xs text-muted-foreground transition-all group font-medium"
+                    className="group transition-all"
                   >
-                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
+                    <div className={`p-2 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 text-muted-foreground group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
                       <item.icon size={14} />
                     </div>
-                    <span className="hidden md:inline group-hover:text-foreground">{item.name}</span>
                   </a>
                 ))}
               </div>
