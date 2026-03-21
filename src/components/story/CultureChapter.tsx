@@ -37,25 +37,25 @@ export function CultureChapter() {
     <Chapter id="culture" className="bg-background py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-12 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-6 font-headline">
               <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-12 font-headline">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-8 font-headline">
               Built on <br />
               <span className="text-primary italic">Focus, Not Burnout.</span>
             </h2>
           </motion.div>
         </div>
 
-        {/* Unique Tiles Structure - Reduced Height */}
-        <div className="flex flex-col md:flex-row gap-4 h-[600px] md:h-[450px] w-full items-stretch">
+        {/* Unique Tiles Structure - Significantly Reduced Height */}
+        <div className="flex flex-col md:flex-row gap-4 h-[400px] md:h-[300px] w-full items-stretch">
           {pillars.map((pillar, i) => {
             const isExpanded = expandedId === pillar.id;
             return (
@@ -63,7 +63,7 @@ export function CultureChapter() {
                 key={pillar.id}
                 onMouseEnter={() => setExpandedId(pillar.id)}
                 className={cn(
-                  "relative group overflow-hidden cursor-pointer rounded-[2rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
+                  "relative group overflow-hidden cursor-pointer rounded-[1.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
                   isExpanded ? "flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
                 )}
                 layout
@@ -74,18 +74,18 @@ export function CultureChapter() {
                   isExpanded && "opacity-100"
                 )} />
 
-                {/* Content Container - Refined Padding */}
-                <div className="relative z-10 p-6 md:p-10 h-full flex flex-col">
+                {/* Content Container - Reduced Padding */}
+                <div className="relative z-10 p-4 md:p-6 h-full flex flex-col">
                   {/* Top Bar: Icon and Protocol ID */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-between mb-4">
                     <div className={cn(
-                      "p-4 rounded-xl transition-all duration-500",
-                      isExpanded ? "bg-primary text-white scale-110 shadow-lg shadow-primary/20" : "bg-primary/10 text-primary"
+                      "p-3 rounded-lg transition-all duration-500",
+                      isExpanded ? "bg-primary text-white scale-105 shadow-md shadow-primary/20" : "bg-primary/10 text-primary"
                     )}>
-                      <pillar.icon size={24} />
+                      <pillar.icon size={20} />
                     </div>
                     <span className={cn(
-                      "text-[9px] font-bold uppercase tracking-[0.3em] font-headline transition-colors duration-500",
+                      "text-[8px] font-bold uppercase tracking-[0.2em] font-headline transition-colors duration-500",
                       isExpanded ? "text-primary/60" : "text-muted-foreground/30"
                     )}>
                       {pillar.tag}
@@ -95,7 +95,7 @@ export function CultureChapter() {
                   {/* Narrative Block */}
                   <div className="mt-auto">
                     <h3 className={cn(
-                      "text-2xl md:text-4xl font-bold tracking-tighter mb-4 transition-all duration-500 font-headline",
+                      "text-lg md:text-2xl font-bold tracking-tighter mb-2 transition-all duration-500 font-headline",
                       isExpanded ? "text-foreground" : "text-foreground/40"
                     )}>
                       {pillar.title}
@@ -104,17 +104,17 @@ export function CultureChapter() {
                     <AnimatePresence mode="wait">
                       {isExpanded && (
                         <motion.div
-                          initial={{ opacity: 0, y: 20 }}
+                          initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.5, ease: "easeOut" }}
+                          exit={{ opacity: 0, y: 5 }}
+                          transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                          <p className="text-base md:text-xl text-muted-foreground leading-relaxed italic max-w-2xl font-medium">
+                          <p className="text-sm md:text-base text-muted-foreground leading-snug italic max-w-2xl font-medium">
                             {pillar.text}
                           </p>
-                          <div className="mt-6 flex gap-2">
-                            <div className="w-10 h-1 bg-primary rounded-full" />
-                            <div className="w-3 h-1 bg-primary/20 rounded-full" />
+                          <div className="mt-4 flex gap-1.5">
+                            <div className="w-8 h-1 bg-primary rounded-full" />
+                            <div className="w-2 h-1 bg-primary/20 rounded-full" />
                           </div>
                         </motion.div>
                       )}
@@ -124,10 +124,10 @@ export function CultureChapter() {
 
                 {/* Decorative Architectural Element */}
                 <div className={cn(
-                  "absolute -bottom-8 -right-8 w-32 h-32 opacity-0 transition-opacity duration-1000",
-                  isExpanded && "opacity-[0.08]"
+                  "absolute -bottom-6 -right-6 w-24 h-24 opacity-0 transition-opacity duration-1000",
+                  isExpanded && "opacity-[0.05]"
                 )}>
-                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:12px_12px]" />
+                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:10px_10px]" />
                 </div>
 
                 {/* Vertical Text when collapsed */}
@@ -137,7 +137,7 @@ export function CultureChapter() {
                     animate={{ opacity: 1 }}
                     className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex"
                   >
-                    <span className="rotate-90 text-[9px] font-bold uppercase tracking-[0.5em] text-foreground/10 whitespace-nowrap">
+                    <span className="rotate-90 text-[8px] font-bold uppercase tracking-[0.4em] text-foreground/10 whitespace-nowrap">
                       Expand Protocol
                     </span>
                   </motion.div>
