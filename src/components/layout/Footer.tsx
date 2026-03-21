@@ -2,9 +2,22 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { Linkedin, Twitter, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
+import { Linkedin, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
 import NextLink from 'next/link'
 import { motion } from 'framer-motion'
+
+// Custom X (formerly Twitter) Icon Component
+const XIcon = ({ size = 14 }: { size?: number }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+  </svg>
+)
 
 const navItems = [
   { id: '01', name: 'Story', href: '/#story' },
@@ -30,10 +43,10 @@ const socialItems = [
   { 
     name: 'X', 
     href: '#', 
-    icon: Twitter,
-    hoverBg: 'group-hover:bg-[#1DA1F2]',
-    glow: 'group-hover:shadow-[0_0_25px_rgba(29,161,242,0.5)]',
-    hoverBorder: 'group-hover:border-[#1DA1F2]'
+    icon: XIcon,
+    hoverBg: 'group-hover:bg-black',
+    glow: 'group-hover:shadow-[0_0_25px_rgba(0,0,0,0.5)]',
+    hoverBorder: 'group-hover:border-black'
   },
   { 
     name: 'Instagram', 
