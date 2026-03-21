@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useRef, useEffect } from 'react'
@@ -55,7 +54,7 @@ export function HeroChapter() {
         style={{
           background: useTransform(
             [spotlightX, spotlightY],
-            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(249, 115, 22, 0.12) 0%, transparent 50%)`
+            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(59, 130, 246, 0.12) 0%, transparent 50%)`
           )
         }}
       />
@@ -123,7 +122,7 @@ export function HeroChapter() {
               variant="outline"
               size="lg" 
               asChild
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_12px_30px_rgba(249,115,22,0.1)]"
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-white transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_12px_30px_rgba(59,130,246,0.1)]"
             >
               <Link href="/contact">
                 Start Your Project
@@ -136,7 +135,7 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(249,115,22,0.2)]"
+              className="h-14 sm:h-20 px-8 sm:px-14 text-base sm:text-lg rounded-full group bg-primary border-2 border-transparent hover:bg-transparent hover:text-primary hover:border-primary transition-all duration-300 w-full sm:w-auto font-bold text-white shadow-[0_20px_40px_rgba(59,130,246,0.2)]"
             >
               Explore Our Platforms
               <LayoutPanelLeft className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-12 transition-transform" />

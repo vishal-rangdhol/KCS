@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useEffect, useRef } from 'react'
@@ -16,16 +15,14 @@ export function ThreeBackground() {
     
     const renderer = new THREE.WebGLRenderer({ 
       alpha: true, 
-      antialias: false, // Disabled for performance gain
+      antialias: false,
       powerPreference: 'high-performance' 
     })
     
     renderer.setSize(window.innerWidth, window.innerHeight)
-    // Capping pixel ratio to 1.5 to save mobile GPU cycles
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     containerRef.current.appendChild(renderer.domElement)
 
-    // Further reduced particle count for initial hydration speed
     const isMobile = window.innerWidth < 768
     const particlesCount = isMobile ? 400 : 800
     const positions = new Float32Array(particlesCount * 3)
@@ -41,7 +38,7 @@ export function ThreeBackground() {
     
     const particlesMaterial = new THREE.PointsMaterial({
       size: isMobile ? 0.04 : 0.025,
-      color: 0xF97316, 
+      color: 0x3B82F6, // Cyber Blue
       transparent: true,
       opacity: 0.3,
       blending: THREE.NormalBlending 
@@ -50,7 +47,6 @@ export function ThreeBackground() {
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
-    // Secondary particles for depth without complexity
     const secondaryCount = isMobile ? 100 : 300
     const secPositions = new Float32Array(secondaryCount * 3)
     for (let i = 0; i < secondaryCount * 3; i++) {
@@ -60,7 +56,7 @@ export function ThreeBackground() {
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
       size: 0.035,
-      color: 0xFBBF24,
+      color: 0x818CF8, // Indigo
       transparent: true,
       opacity: 0.2,
       blending: THREE.NormalBlending
@@ -100,7 +96,6 @@ export function ThreeBackground() {
 
       positionsAttr.needsUpdate = true
 
-      // Smooth camera movement
       camera.position.x += (mouse.current.x * 2 - camera.position.x) * 0.02
       camera.position.y += (-mouse.current.y * 2 - camera.position.y) * 0.02
       camera.lookAt(scene.position)

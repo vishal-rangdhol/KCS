@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    /* Premium Dark Theme - Sunset Orange Accents */
-    --background: 20 40% 4%;
-    --foreground: 20 20% 98%;
-    --card: 20 40% 6%;
-    --card-foreground: 20 20% 98%;
-    --popover: 20 40% 6%;
-    --popover-foreground: 20 20% 98%;
-    --primary: 24 95% 55%;
+    /* Premium Dark Theme - Cyber Blue Accents */
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 35 92% 55%;
+    --secondary: 262 83% 58%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 20 30% 15%;
-    --muted-foreground: 20 10% 60%;
-    --accent: 24 95% 55%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 91% 60%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 20 30% 20%;
-    --input: 20 30% 20%;
-    --ring: 24 95% 55%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
     --radius: 1rem;
   }
 }
@@ -91,5 +91,5 @@ html.lenis {
 }
 
 .text-glow {
-  text-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
