@@ -13,7 +13,7 @@ const navItems = [
   { name: 'Services', href: '/#services' },
   { name: 'Technology', href: '/#technology' },
   { name: 'About', href: '/#story' },
-  { name: 'Careers', href: '/careers' },
+  { name: 'Careers', href: '/#careers' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -115,6 +115,8 @@ export function Navbar() {
                     {isActive && (
                       <motion.span 
                         layoutId="activeUnderline"
+                        initial={{ scaleX: 0, originX: 0 }}
+                        animate={{ scaleX: 1, originX: 0 }}
                         className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.4)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />

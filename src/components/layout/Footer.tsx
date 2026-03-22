@@ -27,7 +27,7 @@ const digitalJourney = [
 
 const corporateProtocol = [
   { id: '05', name: 'About', href: '/#story' },
-  { id: '06', name: 'Careers', href: '/careers' },
+  { id: '06', name: 'Careers', href: '/#careers' },
   { id: '07', name: 'Contact', href: '/contact' },
 ]
 
