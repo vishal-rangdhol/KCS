@@ -24,6 +24,9 @@ export function Navbar() {
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
+  const mainNavItems = navItems.filter(item => item.name !== 'Contact')
+  const contactItem = navItems.find(item => item.name === 'Contact')
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50)
   })
@@ -71,78 +74,82 @@ export function Navbar() {
             : 'px-8 py-4 md:px-10 md:py-5 border-border/10 bg-background shadow-sm'
         }`}
       >
-        <Link 
-          href="/"
-          className="flex items-center group cursor-pointer"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          <div className="relative flex items-center justify-center">
-            <Image 
-              src="/kcs-logo.png" 
-              alt="KCS Logo" 
-              width={110}
-              height={36}
-              className="h-9 w-auto object-contain antialiased"
-              priority
-            />
-          </div>
-        </Link>
+        {/* Left: Logo */}
+        <div className="flex-shrink-0">
+          <Link 
+            href="/"
+            className="flex items-center group cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <div className="relative flex items-center justify-center">
+              <Image 
+                src="/kcs-logo.png" 
+                alt="KCS Logo" 
+                width={110}
+                height={36}
+                className="h-9 w-auto object-contain antialiased"
+                priority
+              />
+            </div>
+          </Link>
+        </div>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex flex-row gap-4 lg:gap-8 items-center">
-          {navItems.map((item) => {
-            const isContact = item.name === 'Contact'
-            const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
-            const isActive = activeSection === id || (pathname === item.href)
+        {/* Center: Main Nav */}
+        <div className="hidden md:flex flex-1 justify-center px-4">
+          <ul className="flex flex-row gap-4 lg:gap-10 items-center">
+            {mainNavItems.map((item) => {
+              const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
+              const isActive = activeSection === id || (pathname === item.href)
 
-            if (isContact) {
               return (
-                <li key={item.name} className="ml-2">
+                <li key={item.name} className="relative group">
                   <Link 
                     href={item.href}
-                    className={`px-5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
-                      isActive 
-                        ? 'bg-primary text-white border-primary shadow-xl' 
-                        : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
+                    className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 ${
+                      isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
                     }`}
                   >
                     {item.name}
-                    <ArrowUpRight size={10} className={isActive ? 'opacity-100' : 'opacity-60'} />
+                    {isActive && (
+                      <motion.span 
+                        layoutId="activeUnderline"
+                        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary z-10"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
                   </Link>
                 </li>
               )
-            }
+            })}
+          </ul>
+        </div>
 
-            return (
-              <li key={item.name} className="relative group">
-                <Link 
-                  href={item.href}
-                  className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 ${
-                    isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
-                  }`}
-                >
-                  {item.name}
-                  {isActive && (
-                    <motion.span 
-                      layoutId="activeUnderline"
-                      className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary z-10"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+        {/* Right: Contact & Mobile Toggle */}
+        <div className="flex items-center gap-4 flex-shrink-0">
+          {contactItem && (
+            <div className="hidden md:block">
+              <Link 
+                href={contactItem.href}
+                className={`px-5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
+                  activeSection === 'contact' || pathname === contactItem.href
+                    ? 'bg-primary text-white border-primary shadow-xl' 
+                    : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
+                }`}
+              >
+                {contactItem.name}
+                <ArrowUpRight size={10} className="opacity-60 group-hover:opacity-100" />
+              </Link>
+            </div>
+          )}
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden p-2 text-foreground/80 hover:text-primary transition-colors focus:outline-none"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+          <button 
+            className="md:hidden p-2 text-foreground/80 hover:text-primary transition-colors focus:outline-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
