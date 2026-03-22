@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -94,7 +95,7 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Main Nav */}
+        {/* Center: Main Nav - High-Fidelity Active State */}
         <div className="hidden md:flex flex-1 justify-center px-4">
           <ul className="flex flex-row gap-4 lg:gap-10 items-center">
             {mainNavItems.map((item) => {
@@ -102,18 +103,20 @@ export function Navbar() {
               const isActive = activeSection === id || (pathname === item.href)
 
               return (
-                <li key={item.name} className="relative group">
+                <li key={item.name} className="relative group flex items-center">
                   <Link 
                     href={item.href}
-                    className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 ${
-                      isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground'
+                    className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 relative origin-center ${
+                      isActive 
+                        ? 'text-primary scale-105' 
+                        : 'text-foreground/60 hover:text-foreground'
                     }`}
                   >
                     {item.name}
                     {isActive && (
                       <motion.span 
                         layoutId="activeUnderline"
-                        className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-primary z-10"
+                        className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.4)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -130,7 +133,7 @@ export function Navbar() {
             <div className="hidden md:block">
               <Link 
                 href={contactItem.href}
-                className={`px-5 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
+                className={`px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
                   activeSection === 'contact' || pathname === contactItem.href
                     ? 'bg-primary text-white border-primary shadow-xl' 
                     : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
@@ -159,7 +162,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            className="absolute top-[90px] left-4 right-4 bg-background rounded-[2.5rem] p-6 md:hidden border border-border/10 shadow-2xl pointer-events-auto"
+            className="absolute top-[90px] left-4 right-4 bg-background rounded-[2rem] p-6 md:hidden border border-border/10 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-4">
               {navItems.map((item) => {
@@ -170,9 +173,9 @@ export function Navbar() {
                     <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block p-5 rounded-2xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
+                      className={`block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
                         isActive 
-                          ? 'bg-primary/10 border-primary/40 text-primary' 
+                          ? 'bg-primary/10 border-primary/40 text-primary scale-105' 
                           : 'bg-card/40 border-border/10 hover:bg-card text-foreground/70'
                       }`}
                     >
