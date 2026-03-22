@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -108,7 +107,7 @@ export function Navbar() {
                     href={item.href}
                     className={`text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 block py-2 relative origin-center ${
                       isActive 
-                        ? 'text-primary scale-105' 
+                        ? 'text-primary scale-110' 
                         : 'text-foreground/60 hover:text-foreground'
                     }`}
                   >
