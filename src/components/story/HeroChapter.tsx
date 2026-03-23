@@ -15,7 +15,6 @@ if (typeof window !== "undefined") {
 export function HeroChapter() {
   const containerRef = useRef<HTMLDivElement>(null)
   
-  // Hero Parallax Refs
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const springConfig = { stiffness: 60, damping: 30, mass: 0.5 }
@@ -28,7 +27,6 @@ export function HeroChapter() {
   const spotlightX = useTransform(smoothX, [-0.5, 0.5], ["30%", "70%"])
   const spotlightY = useTransform(smoothY, [-0.5, 0.5], ["30%", "70%"])
 
-  // Problem Sequence Refs
   const problemSectionRef = useRef<HTMLDivElement>(null)
   const problemContainerRef = useRef<HTMLDivElement>(null)
   const text1Ref = useRef<HTMLDivElement>(null)
@@ -36,7 +34,6 @@ export function HeroChapter() {
   const text3Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Parallax Effect
     const handleMouseMove = (e: MouseEvent) => {
       const { innerWidth, innerHeight } = window
       mouseX.set((e.clientX / innerWidth) - 0.5)
@@ -44,7 +41,6 @@ export function HeroChapter() {
     }
     window.addEventListener('mousemove', handleMouseMove)
 
-    // GSAP Problem Sequence
     const section = problemSectionRef.current
     const container = problemContainerRef.current
     if (section && container) {
@@ -87,7 +83,7 @@ export function HeroChapter() {
     <>
       <section 
         id="hero" 
-        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-32 pb-40 bg-background"
+        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-24 pb-32 md:pt-32 md:pb-40 bg-background"
       >
         <motion.div 
           className="absolute inset-0 pointer-events-none z-0"
@@ -104,13 +100,13 @@ export function HeroChapter() {
         <FloatingNode icon={Network} top="20%" left="82%" delay={0.4} smoothX={smoothX} smoothY={smoothY} speed={-45} />
         <FloatingNode icon={Zap} top="75%" left="85%" delay={0.6} smoothX={smoothX} smoothY={smoothY} speed={35} />
 
-        <div className="z-10 w-full max-w-7xl mx-auto px-4">
+        <div className="z-10 w-full max-w-7xl mx-auto px-2 md:px-4">
           <motion.div style={{ x: subTextX, y: subTextY }}>
             <motion.span 
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-primary font-headline uppercase tracking-[0.4em] md:tracking-[0.6em] text-[8px] sm:text-[11px] mb-6 md:mb-8 block font-bold"
+              className="text-primary font-headline uppercase tracking-[0.3em] md:tracking-[0.6em] text-[9px] sm:text-[11px] mb-4 md:mb-8 block font-bold"
             >
               Kandhugule Consultancy Services
             </motion.span>
@@ -118,7 +114,7 @@ export function HeroChapter() {
           
           <motion.h1 
             style={{ x: textX, y: textY }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7rem] font-bold mb-8 md:mb-10 leading-[1] md:leading-[0.85] tracking-tighter text-foreground font-headline"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7rem] font-bold mb-6 md:mb-10 leading-[1.1] md:leading-[0.85] tracking-tighter text-foreground font-headline"
           >
             {words.map((word, i) => (
               <motion.span
@@ -142,7 +138,7 @@ export function HeroChapter() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6, duration: 1.2 }}
-              className="text-muted-foreground text-[12px] sm:text-sm md:text-base max-w-2xl mx-auto font-body mb-10 md:mb-12 px-2 md:px-4 leading-relaxed font-medium italic"
+              className="text-muted-foreground text-[11px] sm:text-sm md:text-base max-w-2xl mx-auto font-body mb-8 md:mb-12 px-2 md:px-4 leading-relaxed font-medium italic"
             >
               KCS Product Lab designs, builds, and operates scalable technology platforms 
               powered by <span className="text-foreground">artificial intelligence</span>, 
@@ -162,7 +158,7 @@ export function HeroChapter() {
                 variant="outline"
                 size="lg" 
                 asChild
-                className="h-12 px-8 text-xs sm:text-sm rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
+                className="h-10 md:h-12 px-6 md:px-8 text-xs sm:text-sm rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
               >
                 <Link href="/contact">
                   Start Your Project
@@ -175,7 +171,7 @@ export function HeroChapter() {
               <Button 
                 size="lg" 
                 onClick={scrollToNext}
-                className="h-12 px-8 text-xs sm:text-sm rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
+                className="h-10 md:h-12 px-6 md:px-8 text-xs sm:text-sm rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
               >
                 Explore Services
                 <LayoutPanelLeft className="ml-2 w-4 h-4 group-hover:rotate-12 transition-transform" />
@@ -188,18 +184,17 @@ export function HeroChapter() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.8, duration: 1.5 }}
-          className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4 z-20"
+          className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-20"
         >
-          <span className="text-[7px] md:text-[8px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
+          <span className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] md:tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-primary/60 to-transparent"
+            className="w-[1px] h-6 md:h-12 bg-gradient-to-b from-primary/60 to-transparent"
           />
         </motion.div>
       </section>
 
-      {/* Integrated Problem Sequence */}
       <section ref={problemSectionRef} id="problem" className="relative h-screen w-full bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-5 pointer-events-none" />
         
@@ -207,7 +202,7 @@ export function HeroChapter() {
           <div className="max-w-7xl w-full text-center space-y-0 relative h-full flex items-center justify-center">
             
             <div ref={text1Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none px-4">
-              <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
+              <h2 className="text-2xl sm:text-4xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
                 Technology is evolving <br className="hidden md:block" />
                 <span className="text-primary italic">faster than businesses</span> <br className="hidden md:block" />
                 can adapt.
@@ -215,14 +210,14 @@ export function HeroChapter() {
             </div>
 
             <div ref={text2Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none px-4">
-              <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
+              <h2 className="text-2xl sm:text-4xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
                 Data is everywhere, <br className="hidden md:block" />
                 but <span className="text-primary">insights are rare.</span>
               </h2>
             </div>
 
             <div ref={text3Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none px-4">
-              <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
+              <h2 className="text-2xl sm:text-4xl md:text-7xl lg:text-[7rem] font-bold leading-tight tracking-tighter text-foreground font-headline">
                 Security threats <br className="hidden md:block" />
                 <span className="text-destructive">grow every second.</span>
               </h2>

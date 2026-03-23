@@ -74,10 +74,10 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       onMouseMove={handleMouseMove}
-      className="relative p-8 rounded-[2rem] bg-gray-950 border border-white/5 overflow-hidden group cursor-default shadow-xl card-glass"
+      className="relative p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-gray-950 border border-white/5 overflow-hidden group cursor-default shadow-xl card-glass"
     >
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-[1.5rem] md:rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -92,14 +92,14 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
       <div className="relative z-10">
         <motion.div 
           whileHover={{ rotate: 15, scale: 1.1 }}
-          className="p-3 rounded-xl bg-primary/10 text-primary w-fit mb-6 shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-transform duration-500"
+          className="p-2.5 md:p-3 rounded-xl bg-primary/10 text-primary w-fit mb-4 md:mb-6 shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-transform duration-500"
         >
-          <adv.icon size={24} />
+          <adv.icon size={20} className="md:size-[24px]" />
         </motion.div>
-        <h4 className="text-lg font-bold mb-3 font-headline uppercase tracking-tight group-hover:text-primary transition-colors">
+        <h4 className="text-base md:text-lg font-bold mb-2 md:mb-3 font-headline uppercase tracking-tight group-hover:text-primary transition-colors">
           <ScrambleText text={adv.title} />
         </h4>
-        <p className="text-sm text-muted-foreground italic leading-relaxed font-medium">{adv.text}</p>
+        <p className="text-[11px] md:text-sm text-muted-foreground italic leading-relaxed font-medium">{adv.text}</p>
       </div>
     </motion.div>
   );
@@ -139,14 +139,12 @@ export function CareersChapter() {
     offset: ["start end", "end start"]
   })
 
-  // Magnetic Headline logic
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   const springConfig = { stiffness: 150, damping: 15, mass: 0.1 }
   const headlineX = useSpring(useTransform(mouseX, [-400, 400], [-10, 10]), springConfig)
   const headlineY = useSpring(useTransform(mouseY, [-400, 400], [-5, 5]), springConfig)
 
-  // Scroll dimming/thickening
   const headlineOpacity = useTransform(scrollYProgress, [0.1, 0.3], [1, 0.3])
   const headlineScale = useTransform(scrollYProgress, [0.1, 0.3], [1, 0.95])
 
@@ -156,14 +154,14 @@ export function CareersChapter() {
     if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
     mouseX.set(e.clientX - (rect.left + rect.width / 2))
-    mouseY.set(e.clientY - (rect.top + 200)) // Focus on the top part
+    mouseY.set(e.clientY - (rect.top + 200))
   }
 
   return (
-    <Chapter id="careers" className="bg-background py-24 md:py-48 overflow-visible">
+    <Chapter id="careers" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
       <div ref={containerRef} onMouseMove={handleMouseMove} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Hero Section */}
-        <div className="text-center mb-24 md:mb-40 relative">
+        <div className="text-center mb-16 md:mb-24 lg:mb-40 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -172,8 +170,7 @@ export function CareersChapter() {
             style={{ opacity: headlineOpacity, scale: headlineScale }}
             className="flex flex-col items-center"
           >
-            {/* The Protocol Label with pulsing glow */}
-            <div className="relative mb-8 group">
+            <div className="relative mb-6 md:mb-8 group">
                <motion.div 
                 animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.2, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
@@ -182,16 +179,16 @@ export function CareersChapter() {
                <span 
                 onMouseEnter={() => setIsIndicatorHovered(true)}
                 onMouseLeave={() => setIsIndicatorHovered(false)}
-                className="relative flex items-center justify-center gap-3 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs font-headline cursor-crosshair px-6 py-2 rounded-full border border-primary/10 bg-black/40 backdrop-blur-sm"
+                className="relative flex items-center justify-center gap-2 md:gap-3 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[8px] sm:text-[10px] md:text-xs font-headline cursor-crosshair px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-primary/10 bg-black/40 backdrop-blur-sm"
                >
-                <Sparkles size={12} className="animate-pulse" /> The Talent Protocol
+                <Sparkles size={10} className="animate-pulse md:size-[12px]" /> The Talent Protocol
                 <motion.div
                   initial={false}
                   animate={{ 
-                    width: isIndicatorHovered ? 200 : 0,
+                    width: isIndicatorHovered ? 150 : 0,
                     opacity: isIndicatorHovered ? 1 : 0
                   }}
-                  className="absolute left-full ml-4 whitespace-nowrap overflow-hidden text-primary/60 font-bold tracking-widest text-[8px]"
+                  className="absolute left-full ml-4 whitespace-nowrap overflow-hidden text-primary/60 font-bold tracking-widest text-[7px] hidden md:block"
                 >
                   PRECISION ENGINEERING. HUMAN CULTURE.
                 </motion.div>
@@ -203,34 +200,32 @@ export function CareersChapter() {
               className="relative"
             >
               <h2 
-                className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-[-0.04em] text-foreground mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
+                className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[1] md:leading-[0.95] tracking-tight md:tracking-[-0.04em] text-foreground mb-8 md:mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
               >
-                Architect the <br />
+                Architect the <br className="hidden md:block" />
                 <span className="italic text-primary">future with us.</span>
               </h2>
             </motion.div>
 
-            <div className="max-w-4xl mx-auto space-y-16">
+            <div className="max-w-4xl mx-auto space-y-8 md:space-y-16">
               <motion.p 
                 initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
                 whileInView={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
-                className="text-lg md:text-3xl font-bold tracking-tight text-foreground/80 leading-tight italic"
+                className="text-base md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground/80 leading-tight italic"
               >
                 Building the Next Generation of Digital Platforms.
               </motion.p>
               
-              {/* Split Narrative / Status Board */}
-              <div className="flex flex-col lg:flex-row gap-12 items-center text-left border-t border-white/5 pt-12">
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center text-left border-t border-white/5 pt-8 md:pt-12">
                 <div className="flex-1">
                   <p className="text-sm md:text-xl text-muted-foreground leading-relaxed italic font-medium">
                     We’re looking for engineers, designers, and technologists who don’t just want a job—they want to build products that matter. At KCS, we believe the best work happens when high-level engineering meets a culture of genuine support.
                   </p>
                 </div>
                 
-                {/* Status Board UI */}
-                <div className="w-full lg:w-[350px] p-6 rounded-2xl bg-white/5 border border-white/10 font-mono text-[9px] md:text-[10px] space-y-3 shadow-2xl backdrop-blur-xl group/status hover:border-primary/40 transition-colors">
-                  <div className="flex justify-between border-b border-white/5 pb-2">
+                <div className="w-full lg:w-[350px] p-5 md:p-6 rounded-2xl bg-white/5 border border-white/10 font-mono text-[8px] md:text-[10px] space-y-2 md:space-y-3 shadow-2xl backdrop-blur-xl group/status hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between border-b border-white/5 pb-1.5 md:pb-2">
                     <span className="text-primary/60">SYSTEM_ID:</span>
                     <span className="text-foreground">KCS_TALENT_LAB_01</span>
                   </div>
@@ -246,7 +241,7 @@ export function CareersChapter() {
                     <span className="text-primary/60">CULTURE:</span>
                     <span className="text-primary group-hover/status:animate-pulse">ANTI_BURNOUT_V3</span>
                   </div>
-                  <div className="pt-2 flex gap-1">
+                  <div className="pt-1 md:pt-2 flex gap-1">
                     <div className="h-1 flex-1 bg-primary/20 rounded-full overflow-hidden">
                       <motion.div 
                         initial={{ width: 0 }}
@@ -263,36 +258,35 @@ export function CareersChapter() {
         </div>
 
         {/* Advantage Grid */}
-        <div className="mb-32">
-          <div className="flex items-center gap-4 mb-12">
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">The KCS Advantage</h3>
+        <div className="mb-16 md:mb-32">
+          <div className="flex items-center gap-3 md:gap-4 mb-8 md:mb-12">
+            <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">The KCS Advantage</h3>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {advantages.map((adv, i) => (
               <AdvantageCard key={i} adv={adv} i={i} />
             ))}
           </div>
         </div>
 
-        {/* Data Bus Line */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-24 relative">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-16 md:my-24 relative">
           <motion.div 
             animate={{ left: ["0%", "100%"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 -translate-y-1/2 w-8 h-px bg-primary shadow-[0_0_10px_#F97316]"
+            className="absolute top-1/2 -translate-y-1/2 w-6 md:w-8 h-px bg-primary shadow-[0_0_10px_#F97316]"
           />
         </div>
 
         {/* Cultural Pillars - Bento Box Grid */}
-        <div className="mb-32">
-          <div className="flex items-center gap-4 mb-12">
+        <div className="mb-16 md:mb-32">
+          <div className="flex items-center gap-3 md:gap-4 mb-8 md:mb-12">
             <div className="h-px flex-1 bg-gradient-to-l from-primary/30 to-transparent" />
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Our Cultural Pillars</h3>
+            <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">Our Cultural Pillars</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
             {pillars.map((pillar, i) => (
               <motion.div
                 key={i}
@@ -301,33 +295,33 @@ export function CareersChapter() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                 className={cn(
-                  "flex flex-col p-8 rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass",
+                  "flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass",
                   pillar.bg,
                   pillar.size === "large" ? "md:col-span-7" : "md:col-span-5"
                 )}
               >
                 {pillar.badge && (
-                  <div className="absolute top-6 right-8 px-3 py-1 rounded-full bg-primary text-white text-[8px] font-bold uppercase tracking-widest z-20 shadow-[0_0_15px_rgba(249,115,22,0.6)]">
+                  <div className="absolute top-4 right-6 md:top-6 md:right-8 px-2 md:px-3 py-1 rounded-full bg-primary text-white text-[7px] md:text-[8px] font-bold uppercase tracking-widest z-20 shadow-[0_0_15px_rgba(249,115,22,0.6)]">
                     {pillar.badge}
                   </div>
                 )}
                 
-                <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
-                  <pillar.icon size={120} strokeWidth={0.5} />
+                <div className="absolute top-0 right-0 p-6 md:p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
+                  <pillar.icon size={80} className="md:size-[120px]" strokeWidth={0.5} />
                 </div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: -5 }}
-                    className="p-4 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0 h-fit w-fit mb-8 shadow-sm"
+                    className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0 h-fit w-fit mb-4 md:mb-8 shadow-sm"
                   >
-                    <pillar.icon size={28} />
+                    <pillar.icon size={24} className="md:size-[28px]" />
                   </motion.div>
                   <div>
-                    <h4 className="text-xl md:text-2xl font-bold mb-4 font-headline tracking-tighter group-hover:text-primary transition-colors">
+                    <h4 className="text-base md:text-xl lg:text-2xl font-bold mb-2 md:mb-4 font-headline tracking-tighter group-hover:text-primary transition-colors">
                       <ScrambleText text={pillar.title} />
                     </h4>
-                    <p className="text-sm md:text-base text-muted-foreground italic leading-relaxed font-medium max-w-sm">{pillar.text}</p>
+                    <p className="text-[11px] md:text-sm lg:text-base text-muted-foreground italic leading-relaxed font-medium max-w-sm">{pillar.text}</p>
                   </div>
                 </div>
               </motion.div>
@@ -336,7 +330,7 @@ export function CareersChapter() {
         </div>
 
         {/* Final CTA Impact Section */}
-        <div className="relative w-full py-24 px-4 overflow-hidden rounded-[3rem] bg-[radial-gradient(circle_at_center,_#1a0b00_0%,_#090e1a_100%)] border border-white/5">
+        <div className="relative w-full py-16 md:py-24 px-4 overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[radial-gradient(circle_at_center,_#1a0b00_0%,_#090e1a_100%)] border border-white/5">
           <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/tech-mesh/1920/1080')] opacity-5 mix-blend-overlay" />
           
           <motion.div
@@ -344,13 +338,13 @@ export function CareersChapter() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="text-center relative z-10"
           >
-            <h3 className="text-2xl md:text-5xl font-bold tracking-tighter mb-10 font-headline">Ready to make an impact?</h3>
+            <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tighter mb-6 md:mb-10 font-headline">Ready to make an impact?</h3>
             <MagneticButton>
               <Link href="/careers">
-                <Button size="lg" className="rounded-full h-16 px-14 text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_40px_rgba(249,115,22,0.4)] border-none text-white transition-all duration-500">
+                <Button size="lg" className="rounded-full h-12 md:h-16 px-8 md:px-14 text-[10px] md:text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_40px_rgba(249,115,22,0.4)] border-none text-white transition-all duration-500">
                   <span className="flex items-center gap-2">
                     View Open Roles 
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform duration-300" />
                   </span>
                 </Button>
               </Link>
@@ -370,7 +364,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
   const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 })
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return
+    if (!ref.current || window.innerWidth < 768) return
     const { clientX, clientY } = e
     const { left, top, width, height } = ref.current.getBoundingClientRect()
     const centerX = left + width / 2
@@ -400,7 +394,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="inline-block relative"
+      className="inline-block relative w-full sm:w-auto"
     >
       <motion.div style={{ x: springX, y: springY }}>
         {children}

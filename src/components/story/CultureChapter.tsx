@@ -38,29 +38,29 @@ export function CultureChapter() {
   const activeProtocol = protocols.find(p => p.slug === activeSlug) || protocols[0]
 
   return (
-    <Chapter id="culture" className="bg-background py-24 md:py-48 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-16 md:py-24 lg:py-48 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-16 md:mb-32">
+        <div className="text-center mb-12 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
-              <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] sm:text-xs mb-6 md:mb-8 font-headline">
+              <Sparkles size={14} className="animate-pulse md:size-[16px]" /> The KCS Conviction
             </span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-6 font-headline">
+            <h2 className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-6 font-headline">
               Built on Focus, Not Burnout.
             </h2>
           </motion.div>
         </div>
 
         {/* The Protocol Switcher Architecture */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-stretch min-h-[400px]">
-          {/* Left: Vertical Timeline Navigation */}
-          <div className="lg:w-1/4 flex flex-row lg:flex-col justify-center lg:justify-start gap-4 md:gap-8 relative">
+        <div className="flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-24 items-stretch min-h-[400px]">
+          {/* Left: Vertical Timeline Navigation (Horizontal on Mobile) */}
+          <div className="lg:w-1/4 flex flex-row lg:flex-col justify-start lg:justify-start gap-3 md:gap-4 lg:gap-8 relative overflow-x-auto pb-4 lg:pb-0 scrollbar-hide lg:overflow-visible">
             <div className="absolute left-[23px] top-0 bottom-0 w-px bg-white/5 hidden lg:block" />
             
             {protocols.map((protocol) => {
@@ -69,10 +69,10 @@ export function CultureChapter() {
                 <button
                   key={protocol.slug}
                   onClick={() => setActiveSlug(protocol.slug)}
-                  className="group relative flex items-center gap-6 text-left outline-none"
+                  className="group relative flex items-center gap-3 md:gap-6 text-left outline-none shrink-0"
                 >
                   <div className={cn(
-                    "relative z-10 w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 font-headline font-bold text-xs",
+                    "relative z-10 w-10 h-10 md:w-12 md:h-12 rounded-full border flex items-center justify-center transition-all duration-500 font-headline font-bold text-[10px] md:text-xs",
                     isActive 
                       ? "bg-primary border-primary text-white shadow-[0_0_20px_rgba(249,115,22,0.4)]" 
                       : "bg-background border-white/10 text-muted-foreground group-hover:border-primary/40 group-hover:text-primary"
@@ -90,7 +90,7 @@ export function CultureChapter() {
                   {isActive && (
                     <motion.div 
                       layoutId="activeIndicator"
-                      className="absolute -left-1 w-14 h-14 bg-primary/10 rounded-full -z-10 blur-xl"
+                      className="absolute -left-1 w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-full -z-10 blur-xl"
                     />
                   )}
                 </button>
@@ -132,10 +132,10 @@ function ProtocolDisplay({ protocol }: { protocol: typeof protocols[0] }) {
         transition: { duration: 0.2 }
       }}
       onMouseMove={handleMouseMove}
-      className="group bg-black border border-primary/40 p-10 md:p-20 rounded-[2.5rem] relative overflow-hidden backdrop-blur-md shadow-[0_0_50px_rgba(249,115,22,0.15)] w-full"
+      className="group bg-black border border-primary/40 p-6 md:p-12 lg:p-20 rounded-[1.5rem] md:rounded-[2.5rem] relative overflow-hidden backdrop-blur-md shadow-[0_0_50px_rgba(249,115,22,0.15)] w-full"
     >
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-[1.5rem] md:rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
@@ -147,28 +147,28 @@ function ProtocolDisplay({ protocol }: { protocol: typeof protocols[0] }) {
         }}
       />
       
-      <div className="relative z-10 space-y-8">
-        <div className="flex items-center gap-4">
-          <div className="p-4 rounded-2xl bg-primary/10 text-primary">
-            <protocol.icon size={32} />
+      <div className="relative z-10 space-y-4 md:space-y-8">
+        <div className="flex items-center gap-3 md:gap-4">
+          <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-primary/10 text-primary">
+            <protocol.icon size={24} className="md:size-[32px]" />
           </div>
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 font-headline block mb-1">
+            <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline block mb-0.5 md:mb-1">
               {protocol.tag}
             </span>
-            <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-white font-headline">
+            <h3 className="text-lg md:text-3xl lg:text-4xl font-bold tracking-tighter text-white font-headline">
               {protocol.title}
             </h3>
           </div>
         </div>
         
-        <p className="text-base md:text-2xl text-muted-foreground leading-relaxed italic font-medium max-w-2xl">
+        <p className="text-xs md:text-lg lg:text-2xl text-muted-foreground leading-relaxed italic font-medium max-w-2xl">
           {protocol.text}
         </p>
 
-        <div className="pt-8 flex gap-4">
-          <div className="w-12 h-1 bg-primary rounded-full shadow-[0_0_15px_rgba(249,115,22,0.8)]" />
-          <div className="w-2 h-1 bg-white/5 rounded-full" />
+        <div className="pt-4 md:pt-8 flex gap-3 md:gap-4">
+          <div className="w-8 md:w-12 h-1 bg-primary rounded-full shadow-[0_0_15px_rgba(249,115,22,0.8)]" />
+          <div className="w-1.5 md:w-2 h-1 bg-white/5 rounded-full" />
         </div>
       </div>
     </motion.div>
