@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -94,7 +94,7 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Main Nav - High-Fidelity Active State */}
+        {/* Center: Main Nav - 10% Scale Active State */}
         <div className="hidden md:flex flex-1 justify-center px-4">
           <ul className="flex flex-row gap-4 lg:gap-10 items-center">
             {mainNavItems.map((item) => {
@@ -128,21 +128,25 @@ export function Navbar() {
           </ul>
         </div>
 
-        {/* Right: Contact & Mobile Toggle */}
+        {/* Right: Contact with Magnetic Hover & Color Shift */}
         <div className="flex items-center gap-4 flex-shrink-0">
           {contactItem && (
             <div className="hidden md:block">
-              <Link 
-                href={contactItem.href}
-                className={`px-4 py-1 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-2 ${
-                  activeSection === 'contact' || pathname === contactItem.href
-                    ? 'bg-primary text-white border-primary shadow-xl' 
-                    : 'border-primary/20 text-foreground hover:bg-primary hover:text-white hover:border-primary shadow-sm'
-                }`}
-              >
-                {contactItem.name}
-                <ArrowUpRight size={10} className="opacity-60 group-hover:opacity-100" />
-              </Link>
+              <MagneticButton>
+                <Link 
+                  href={contactItem.href}
+                  className={`px-6 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.3em] transition-all duration-500 flex items-center gap-2 border-none shadow-lg bg-primary text-white hover:bg-secondary group relative overflow-hidden`}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    {contactItem.name}
+                    <ArrowUpRight size={10} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </span>
+                  <motion.div 
+                    className="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    initial={false}
+                  />
+                </Link>
+              </MagneticButton>
             </div>
           )}
 
@@ -190,5 +194,56 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </header>
+  )
+}
+
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const buttonRef = useRef<HTMLDivElement>(null)
+  
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 })
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 768) return
+    const div = buttonRef.current
+    if (!div) return
+
+    const { clientX, clientY } = e
+    const { left, top, width, height } = div.getBoundingClientRect()
+    
+    const centerX = left + width / 2
+    const centerY = top + height / 2
+    
+    const moveX = clientX - centerX
+    const moveY = clientY - centerY
+    
+    const factor = 0.2
+    x.set(moveX * factor)
+    y.set(moveY * factor)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <div
+      ref={buttonRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="inline-block relative"
+    >
+      <motion.div
+        style={{ x: springX, y: springY }}
+        className="relative z-10"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {children}
+      </motion.div>
+    </div>
   )
 }
