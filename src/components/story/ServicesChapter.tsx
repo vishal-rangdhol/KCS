@@ -202,7 +202,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
             layout="position"
             className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/trigger"
           >
-            {isExpanded ? "Contract Protocol" : "Learn More"}
+            {isExpanded ? "Close" : "Learn More"}
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
@@ -236,11 +236,11 @@ export function ServicesChapter() {
             className="flex flex-col items-center"
           >
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-6 font-headline">
-              <Sparkles size={14} className="animate-pulse" /> Operational Precision
+              <point size={14} className="animate-pulse" /> Operational Precision
             </span>
             
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-8 font-headline">
-              Core <span className="text-primary italic">Services.</span>
+              Core Services.
             </h2>
 
             <div className="w-full max-w-4xl py-8 border-y border-white/5 mb-16 relative overflow-hidden group">
