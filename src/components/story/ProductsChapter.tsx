@@ -2,8 +2,9 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 import {
   Carousel,
   CarouselContent,
@@ -12,21 +13,28 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import React, { useRef } from 'react'
+import { PlaceHolderImages } from '@/lib/placeholder-images'
 
 const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration — not engagement algorithms.",
-    color: "from-orange-600/10 via-primary/10 to-transparent",
-    href: "https://letscatchup-kcs.com/"
+    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration.",
+    color: "from-orange-600/20 via-primary/10 to-transparent",
+    href: "https://letscatchup-kcs.com/",
+    tag: "Social Ecosystem",
+    image: PlaceHolderImages.find(img => img.id === 'product-chat')?.imageUrl || "https://picsum.photos/seed/kcs-chat/800/600",
+    hint: "communication app"
   },
   {
     id: "sushrth",
     name: "Sushrth",
-    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for the next generation of clinical infrastructure.",
-    color: "from-amber-600/10 via-secondary/10 to-transparent",
-    href: "https://www.sushrth.com/"
+    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for next-gen clinical infrastructure.",
+    color: "from-amber-600/20 via-primary/10 to-transparent",
+    href: "https://www.sushrth.com/",
+    tag: "AI Healthcare",
+    image: PlaceHolderImages.find(img => img.id === 'product-data')?.imageUrl || "https://picsum.photos/seed/kcs-health/800/600",
+    hint: "healthcare dashboard"
   }
 ]
 
@@ -74,37 +82,53 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         ease: [0.23, 1, 0.32, 1] 
       }}
       viewport={{ once: true }}
-      className="group relative h-[300px] sm:h-[350px] lg:h-[400px] w-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl"
+      className="group relative h-[450px] sm:h-[500px] lg:h-[550px] w-full rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl"
     >
+      {/* Product Image Layer */}
       <div className="absolute inset-0 z-0">
-        <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700`} />
-        {/* Architectural grid element */}
-        <div className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity duration-700">
-          <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:24px_24px]" />
-        </div>
+        <Image 
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000 group-hover:scale-110"
+          data-ai-hint={product.hint}
+        />
+        <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10`} />
       </div>
 
-      <div style={{ transform: "translateZ(30px)" }} className="absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-center text-center items-center">
-        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline">
+      <div style={{ transform: "translateZ(50px)" }} className="absolute inset-0 z-20 p-8 sm:p-12 flex flex-col justify-end text-left items-start">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-widest font-headline">
+            {product.tag}
+          </span>
+          <div className="h-px w-8 bg-primary/30" />
+        </div>
+
+        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none">
           {product.name}
         </h3>
         
-        <p className="text-[12px] sm:text-sm lg:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 group-hover:text-foreground/80 transition-colors duration-500 max-w-sm italic">
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8 group-hover:text-foreground transition-colors duration-500 max-w-md italic font-medium">
           {product.description}
         </p>
         
         <Button 
           variant="outline" 
-          className="w-full sm:w-auto h-12 px-8 rounded-full border-2 border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-xs sm:text-sm font-bold group/btn shadow-sm"
+          className="h-12 px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-xs sm:text-sm font-bold group/btn shadow-xl"
           onClick={() => {
             if (product.href && product.href !== "#") {
               window.open(product.href, '_blank', 'noopener,noreferrer');
             }
           }}
         >
-          Explore Platform
+          View Platform Preview
           <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
         </Button>
+      </div>
+
+      {/* Architectural Element */}
+      <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-30 transition-opacity duration-700">
+         <Sparkles size={48} className="text-primary" />
       </div>
     </motion.div>
   )
@@ -112,31 +136,28 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-20 overflow-visible">
-      <div className="text-center mb-12 lg:mb-20 w-full px-4 sm:px-6">
-        <motion.span 
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block font-bold"
-        >
-          Proprietary Tech
-        </motion.span>
-        <motion.h2 
+    <Chapter id="products" className="bg-background py-24 overflow-visible">
+      <div className="text-center mb-16 lg:mb-24 w-full px-4 sm:px-6">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none font-headline"
+          transition={{ duration: 1 }}
         >
-          Our Platforms.
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-muted-foreground mt-6 w-full max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed px-4 italic"
-        >
-          Explore our specialized solutions designed to solve complex challenges in communication and healthcare infrastructure.
-        </motion.p>
+          <span className="text-primary font-headline uppercase tracking-[0.5em] text-[10px] md:text-xs mb-6 block font-bold">
+            <Sparkles size={12} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
+          </span>
+          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none font-headline uppercase">
+            Our Platforms.
+          </h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-muted-foreground mt-8 w-full max-w-3xl mx-auto text-base sm:text-xl leading-relaxed px-4 italic font-medium"
+          >
+            Engineered solutions architected to bridge the gap between communication silos and healthcare infrastructure.
+          </motion.p>
+        </motion.div>
       </div>
 
       <div className="w-full relative px-4 sm:px-12">
@@ -145,19 +166,19 @@ export function ProductsChapter() {
             align: "start",
             loop: false,
           }}
-          className="w-full max-w-6xl mx-auto"
+          className="w-full max-w-7xl mx-auto"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-6">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 perspective-2000">
+              <CarouselItem key={index} className="pl-6 basis-full md:basis-1/2 perspective-2000">
                 <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
           </CarouselContent>
           
-          <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-8 sm:mt-16">
-            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-xl" />
-            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-xl" />
+          <div className="flex justify-center md:justify-end gap-4 mt-12 sm:mt-20">
+            <CarouselPrevious className="static translate-y-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl" />
+            <CarouselNext className="static translate-y-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl" />
           </div>
         </Carousel>
       </div>
