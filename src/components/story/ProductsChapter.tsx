@@ -195,7 +195,7 @@ export function ProductsChapter() {
         >
           <CarouselContent className="-ml-4 md:-ml-8">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-8 basis-full lg:basis-full perspective-2000">
+              <CarouselItem key={index} className="pl-4 md:pl-8 basis-full lg:basis-1/2 perspective-2000">
                 <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
