@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, RefreshCw, CheckCircle2, ChevronDown, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
@@ -22,7 +22,7 @@ const services = [
     id: "cyber",
     title: "Cybersecurity",
     description: "Security isn't a feature we bolt on at the end. It's built into every system we design.",
-    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies.",
+    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product meets modern standards.",
     icon: Shield,
     color: "from-rose-600/20 to-rose-600/5",
     accent: "bg-rose-500",
@@ -33,7 +33,7 @@ const services = [
     id: "cloud",
     title: "Cloud & Infrastructure",
     description: "Modern businesses require infrastructure that scales without breaking.",
-    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability across AWS, Google Cloud, and Azure.",
+    extraContent: "We design cloud-native architectures built for global performance and long-term reliability. Services include scalable infrastructure and cloud security across AWS, GCP, and Azure.",
     icon: Cloud,
     color: "from-emerald-600/20 to-emerald-600/5",
     accent: "bg-emerald-500",
@@ -44,7 +44,7 @@ const services = [
     id: "data",
     title: "Data & Analytics",
     description: "Data is only valuable when it drives decisions.",
-    extraContent: "We help organizations transform raw data into strategic clarity — building architectures, BI systems, and real-time dashboards for strategic vision.",
+    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, BI systems, predictive models, and real-time analytics dashboards.",
     icon: BarChart3,
     color: "from-sky-600/20 to-sky-600/5",
     accent: "bg-sky-500",
@@ -55,7 +55,7 @@ const services = [
     id: "enterprise",
     title: "Enterprise Software (ERP / CRM)",
     description: "Your business has unique workflows. Your software should fit them.",
-    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, and workflow automation tools tailored to your actual operations.",
+    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, and workflow automation tools tailored to the way your organization actually operates.",
     icon: Building2,
     color: "from-violet-600/20 to-violet-600/5",
     accent: "bg-violet-500",
@@ -65,8 +65,8 @@ const services = [
   {
     id: "mobile",
     title: "Mobile Development",
-    description: "We build high-performance applications across iOS, Android, and web.",
-    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform.",
+    description: "We build high-performance applications across all modern platforms.",
+    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
     icon: Smartphone,
     color: "from-fuchsia-600/20 to-fuchsia-600/5",
     accent: "bg-fuchsia-500",
@@ -78,9 +78,9 @@ const services = [
     title: "Product Lifecycle Support",
     description: "Build. Run. Maintain. Comprehensive support across the entire digital lifecycle.",
     points: [
-      { label: "Product Development", text: "architecture design and backend infrastructure." },
-      { label: "Operational Support", text: "post-launch technical operations and strategy." },
-      { label: "Continuous Maintenance", text: "adaptive maintenance for OS and security standards." },
+      { label: "Product Development", text: "Architecture design and backend infrastructure." },
+      { label: "Operational Support", text: "Post-launch technical operations and strategy." },
+      { label: "Continuous Maintenance", text: "Adaptive maintenance for security standards." },
       { label: "24/7 Global Support", text: "AI-assisted and human technical assistance." }
     ],
     icon: RefreshCw,
@@ -103,23 +103,22 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative flex flex-col rounded-[1.5rem] md:rounded-[2rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl",
+        "group relative flex flex-col rounded-[1.5rem] md:rounded-[2rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit",
         item.borderColor,
-        item.isHero ? "md:col-span-2 lg:col-span-3 lg:max-w-5xl lg:mx-auto w-full" : "",
+        item.isHero ? "lg:col-span-3 lg:max-w-2xl lg:mx-auto w-full" : "w-full",
         isExpanded ? "ring-2 ring-white/10" : ""
       )}
       onClick={() => setIsExpanded(!isExpanded)}
     >
       {/* Background Chromatic Gradient */}
       <motion.div 
-        layout
         className={cn(
           "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-gradient-to-br",
           item.color
         )} 
       />
 
-      <div className="relative z-10 p-5 md:p-8 flex flex-col h-full">
+      <div className="relative z-10 p-5 md:p-8 flex flex-col min-h-[180px] md:min-h-[250px]">
         <div className="flex items-start justify-between mb-4">
           <motion.div 
             layout="position"
@@ -196,13 +195,6 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           </AnimatePresence>
         </div>
       </div>
-
-      {/* Collapsed Hint */}
-      {!isExpanded && (
-        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-40 transition-opacity">
-          <span className="text-[8px] font-bold uppercase tracking-widest text-primary">Click to Expand</span>
-        </div>
-      )}
     </motion.div>
   )
 }
@@ -241,13 +233,11 @@ export function ServicesChapter() {
           </motion.div>
         </div>
 
-        <LayoutGroup>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full relative">
-            {services.map((item, i) => (
-              <ServiceCard key={item.id} item={item} index={i} />
-            ))}
-          </div>
-        </LayoutGroup>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full relative items-start">
+          {services.map((item, i) => (
+            <ServiceCard key={item.id} item={item} index={i} />
+          ))}
+        </div>
       </div>
     </Chapter>
   )
