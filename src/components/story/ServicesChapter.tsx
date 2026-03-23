@@ -117,7 +117,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
-      <div className="relative z-10 p-5 md:p-6 flex flex-col min-h-[180px] md:min-h-[250px]">
+      <div className="relative z-10 p-5 md:p-6 flex flex-col min-h-[180px] md:min-h-[220px]">
         <div className="flex items-start justify-between mb-4">
           <motion.div 
             layout="position"
@@ -232,7 +232,7 @@ export function ServicesChapter() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full relative items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl mx-auto relative items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
           ))}
