@@ -25,10 +25,10 @@ export function AboutChapter() {
           className="flex flex-col items-center"
         >
           <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-12 font-headline">
-            <Sparkles size={14} className="animate-pulse" /> The KCS Origin
+            <iparkles size={14} className="animate-pulse" /> The KCS Origin
           </span>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[7rem] font-bold leading-[0.8] tracking-tighter text-foreground mb-16 font-headline">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold leading-[0.85] tracking-tighter text-foreground mb-16 font-headline">
             Architecting <br />
             <span className="text-primary italic">Meaningful Impact.</span>
           </h2>

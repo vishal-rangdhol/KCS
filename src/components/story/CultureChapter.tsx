@@ -54,8 +54,8 @@ export function CultureChapter() {
           </motion.div>
         </div>
 
-        {/* Unique Tiles Structure - Significantly Reduced Height */}
-        <div className="flex flex-col md:flex-row gap-4 h-[400px] md:h-[300px] w-full items-stretch">
+        {/* Unique Tiles Structure - Reduced Height to Half */}
+        <div className="flex flex-col md:flex-row gap-4 h-[350px] md:h-[250px] w-full items-stretch">
           {pillars.map((pillar, i) => {
             const isExpanded = expandedId === pillar.id;
             return (
@@ -74,7 +74,7 @@ export function CultureChapter() {
                   isExpanded && "opacity-100"
                 )} />
 
-                {/* Content Container - Reduced Padding */}
+                {/* Content Container - Compact Padding */}
                 <div className="relative z-10 p-4 md:p-6 h-full flex flex-col">
                   {/* Top Bar: Icon and Protocol ID */}
                   <div className="flex items-center justify-between mb-4">
@@ -82,7 +82,7 @@ export function CultureChapter() {
                       "p-3 rounded-lg transition-all duration-500",
                       isExpanded ? "bg-primary text-white scale-105 shadow-md shadow-primary/20" : "bg-primary/10 text-primary"
                     )}>
-                      <pillar.icon size={20} />
+                      <pillar.icon size={18} />
                     </div>
                     <span className={cn(
                       "text-[8px] font-bold uppercase tracking-[0.2em] font-headline transition-colors duration-500",
@@ -95,7 +95,7 @@ export function CultureChapter() {
                   {/* Narrative Block */}
                   <div className="mt-auto">
                     <h3 className={cn(
-                      "text-lg md:text-2xl font-bold tracking-tighter mb-2 transition-all duration-500 font-headline",
+                      "text-lg md:text-xl font-bold tracking-tighter mb-2 transition-all duration-500 font-headline",
                       isExpanded ? "text-foreground" : "text-foreground/40"
                     )}>
                       {pillar.title}
@@ -109,10 +109,10 @@ export function CultureChapter() {
                           exit={{ opacity: 0, y: 5 }}
                           transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                          <p className="text-sm md:text-base text-muted-foreground leading-snug italic max-w-2xl font-medium">
+                          <p className="text-xs md:text-sm text-muted-foreground leading-snug italic max-w-2xl font-medium">
                             {pillar.text}
                           </p>
-                          <div className="mt-4 flex gap-1.5">
+                          <div className="mt-3 flex gap-1.5">
                             <div className="w-8 h-1 bg-primary rounded-full" />
                             <div className="w-2 h-1 bg-primary/20 rounded-full" />
                           </div>
