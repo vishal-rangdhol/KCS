@@ -1,10 +1,9 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Sparkles, Zap, Cpu, Heart, Focus, ShieldCheck, RefreshCw, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Sparkles, Zap, Cpu, Heart, Focus, ShieldCheck, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
 
 const advantages = [
@@ -46,14 +45,6 @@ const pillars = [
     text: "We take the health and balance of our people as seriously as our system uptime.",
     icon: Heart
   }
-]
-
-const opportunities = [
-  { category: "Full-Stack Development", tech: "MERN, .NET, Java" },
-  { category: "Mobile Engineering", tech: "Flutter, React Native, Swift, Kotlin" },
-  { category: "AI & Data Science", tech: "Machine Learning, Predictive Analytics" },
-  { category: "Cloud & DevOps", tech: "AWS, Azure, Google Cloud" },
-  { category: "Product Design", tech: "UX/UI, Design Systems" }
 ]
 
 export function CareersChapter() {
@@ -139,29 +130,6 @@ export function CareersChapter() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* Opportunities Terminal */}
-        <div className="mb-32">
-          <div className="bg-card/40 border border-white/5 rounded-[3rem] p-10 md:p-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
-            
-            <h3 className="text-2xl md:text-5xl font-bold tracking-tighter mb-12 font-headline uppercase">
-              Current <span className="text-primary italic">Opportunities</span>
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {opportunities.map((opt, i) => (
-                <div key={i} className="flex flex-col p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-all">
-                  <div className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 size={14} className="text-primary" />
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-primary font-headline">{opt.category}</span>
-                  </div>
-                  <span className="text-sm text-foreground/80 font-medium italic">{opt.tech}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
