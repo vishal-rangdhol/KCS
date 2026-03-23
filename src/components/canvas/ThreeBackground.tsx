@@ -38,7 +38,7 @@ export function ThreeBackground() {
     
     const particlesMaterial = new THREE.PointsMaterial({
       size: isMobile ? 0.025 : 0.015,
-      color: 0xFB923C, // Solar Orange Primary
+      color: 0xF97316, // Brand Orange
       transparent: true,
       opacity: 0.4,
       blending: THREE.AdditiveBlending 
@@ -56,7 +56,7 @@ export function ThreeBackground() {
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
       size: 0.02,
-      color: 0x334155, // Slate Slate for subtle contrast on dark bg
+      color: 0x334155, // Subtle Slate
       transparent: true,
       opacity: 0.3,
       blending: THREE.AdditiveBlending

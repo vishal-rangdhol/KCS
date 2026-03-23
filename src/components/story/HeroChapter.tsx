@@ -54,7 +54,7 @@ export function HeroChapter() {
         style={{
           background: useTransform(
             [spotlightX, spotlightY],
-            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(251, 146, 60, 0.08) 0%, transparent 60%)`
+            ([x, y]) => `radial-gradient(circle at ${x} ${y}, rgba(249, 115, 22, 0.08) 0%, transparent 60%)`
           )
         }}
       />

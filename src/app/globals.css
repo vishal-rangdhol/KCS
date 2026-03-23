@@ -11,19 +11,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 222 47% 10%;
     --popover-foreground: 210 40% 98%;
-    --primary: 28 95% 61%; /* #FB923C Solar Orange */
+    --primary: 24 95% 53%; /* Refined Brand Orange - #F97316 */
     --primary-foreground: 0 0% 100%;
     --secondary: 222 38% 18%; /* Mid Navy */
     --secondary-foreground: 210 40% 98%;
     --muted: 217 32% 17%; /* Muted slate navy */
     --muted-foreground: 215 20% 65%;
     --accent: 222 38% 18%;
-    --accent-foreground: 28 95% 61%;
+    --accent-foreground: 24 95% 53%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 217 32% 17%;
     --input: 217 32% 17%;
-    --ring: 28 95% 61%;
+    --ring: 24 95% 53%;
     --radius: 1.5rem;
   }
 }
@@ -81,5 +81,5 @@ html.lenis {
 }
 
 .text-glow {
-  text-shadow: 0 0 30px rgba(251, 146, 60, 0.4);
+  text-shadow: 0 0 30px rgba(249, 115, 22, 0.4);
 }
