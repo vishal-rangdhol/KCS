@@ -10,8 +10,8 @@ import { usePathname } from 'next/navigation'
 const navItems = [
   { name: 'Home', href: '/#hero' },
   { name: 'Products', href: '/#products' },
-  { name: 'Technology', href: '/#technology' },
   { name: 'Services', href: '/#services' },
+  { name: 'Technology', href: '/#technology' },
   { name: 'About', href: '/#story' },
   { name: 'Careers', href: '/#careers' },
   { name: 'Contact', href: '/contact' },
@@ -73,7 +73,6 @@ export function Navbar() {
             : 'px-4 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
         }`}
       >
-        {/* Left: Logo - Original Coloring Preserved */}
         <div className="flex-shrink-0">
           <Link 
             href="/"
@@ -93,7 +92,6 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Main Nav - Sliding Underline Protocol */}
         <div className="hidden md:flex flex-1 justify-center px-4">
           <ul className="flex flex-row gap-4 lg:gap-8 items-center">
             {mainNavItems.map((item) => {
@@ -129,7 +127,6 @@ export function Navbar() {
           </ul>
         </div>
 
-        {/* Right: Contact Action Node - Solar Innovation Profile */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           {contactItem && (
             <div className="hidden md:block">
@@ -161,7 +158,6 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
