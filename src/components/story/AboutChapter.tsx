@@ -4,7 +4,7 @@ import { Chapter } from './Chapter'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const values = [
   {
@@ -45,6 +45,11 @@ export function AboutChapter() {
   });
 
   const [isLabHovered, setIsLabHovered] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Vision highlights based on scroll
   const highlight1 = useTransform(scrollYProgress, [0.4, 0.45, 0.5, 0.55], [0.3, 1, 1, 0.3]);
@@ -72,7 +77,7 @@ export function AboutChapter() {
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter text-foreground font-headline">
                 The <span className="text-primary italic">KCS Story.</span>
               </h2>
-              <div className="space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed italic font-medium relative z-10">
+              <div className="space-y-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium relative z-10">
                 <p>
                   Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
                   on a single conviction: technology should empower businesses to create
@@ -89,7 +94,7 @@ export function AboutChapter() {
 
             {/* 2. The Problem & Solution (Right Side - 60%) */}
             <div className="w-full lg:w-[60%] space-y-12">
-              <div className="space-y-8 text-base md:text-xl text-muted-foreground leading-relaxed font-medium">
+              <div className="space-y-8 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed font-medium">
                 <p>
                   As digital transformation accelerates, organizations face growing complexity in
                   building and maintaining modern technology. Artificial intelligence, cloud
@@ -128,7 +133,7 @@ export function AboutChapter() {
              {/* Left: Headline and First Paragraph */}
              <div className="flex-1 p-8 md:p-20 flex flex-col justify-center relative z-20 bg-background/20 lg:border-r border-white/5">
                 <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground mb-12 font-headline">
-                  A Product Lab for <br /><span className="text-primary italic">the Modern Era.</span>
+                  A Product Lab for the Modern Era.
                 </h3>
                 <p className="text-sm md:text-lg text-muted-foreground leading-relaxed italic font-medium max-w-xl">
                   Rather than functioning as a traditional consulting firm, KCS operates as a
@@ -144,33 +149,35 @@ export function AboutChapter() {
                 {/* Node Wireframe Animation */}
                 <div className="absolute inset-0 z-10 opacity-40">
                   <svg className="w-full h-full" viewBox="0 0 400 400">
-                    <motion.g
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-                    >
-                      {[...Array(6)].map((_, i) => (
-                        <circle
-                          key={i}
-                          cx={200 + 100 * Math.cos((i * Math.PI) / 3)}
-                          cy={200 + 100 * Math.sin((i * Math.PI) / 3)}
-                          r="4"
-                          fill="var(--primary)"
-                          className="animate-pulse"
-                        />
-                      ))}
-                      {[...Array(6)].map((_, i) => (
-                        <line
-                          key={i}
-                          x1={200 + 100 * Math.cos((i * Math.PI) / 3)}
-                          y1={200 + 100 * Math.sin((i * Math.PI) / 3)}
-                          x2={200 + 100 * Math.cos(((i + 1) * Math.PI) / 3)}
-                          y2={200 + 100 * Math.sin(((i + 1) * Math.PI) / 3)}
-                          stroke="var(--primary)"
-                          strokeWidth="1"
-                          strokeDasharray="4 4"
-                        />
-                      ))}
-                    </motion.g>
+                    {isMounted && (
+                      <motion.g
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                      >
+                        {[...Array(6)].map((_, i) => (
+                          <circle
+                            key={i}
+                            cx={200 + 100 * Math.cos((i * Math.PI) / 3)}
+                            cy={200 + 100 * Math.sin((i * Math.PI) / 3)}
+                            r="4"
+                            fill="var(--primary)"
+                            className="animate-pulse"
+                          />
+                        ))}
+                        {[...Array(6)].map((_, i) => (
+                          <line
+                            key={i}
+                            x1={200 + 100 * Math.cos((i * Math.PI) / 3)}
+                            y1={200 + 100 * Math.sin((i * Math.PI) / 3)}
+                            x2={200 + 100 * Math.cos(((i + 1) * Math.PI) / 3)}
+                            y2={200 + 100 * Math.sin(((i + 1) * Math.PI) / 3)}
+                            stroke="var(--primary)"
+                            strokeWidth="1"
+                            strokeDasharray="4 4"
+                          />
+                        ))}
+                      </motion.g>
+                    )}
                     <motion.circle 
                       cx="200" cy="200" r="120" 
                       fill="none" 
@@ -274,7 +281,7 @@ export function AboutChapter() {
             </p>
             
             <div className="text-lg md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight">
-              From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI-powered healthcare infrastructure</motion.span>, we are focused on building <motion.span style={{ opacity: highlight3, color: useTransform(highlight3, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">digital infrastructure</motion.span> that improves how people learn, connect, and access services.
+              From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">Social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI-powered healthcare infrastructure</motion.span>, we are focused on building <motion.span style={{ opacity: highlight3, color: useTransform(highlight3, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">digital infrastructure</motion.span> that improves how people learn, connect, and access services.
             </div>
           </div>
         </motion.div>
