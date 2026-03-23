@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -80,8 +81,8 @@ const services = [
     points: [
       { label: "Product Development", text: "Architecture design, user experience, and backend infrastructure built from the ground up." },
       { label: "Operational Support", text: "Post-launch technical operations so your team can focus on growth, marketing, and strategy." },
-      { label: "Continuous Maintenance", text: "Adaptive maintenance ensuring your platforms remain compatible with new operating systems, security standards, and performance requirements." },
-      { label: "24/7 Global Support", text: "AI-assisted and human support teams handling technical queries, user assistance, and troubleshooting." }
+      { label: "Continuous Maintenance", text: "Adaptive maintenance ensuring your platforms remain compatible with new operating systems and security standards." },
+      { label: "24/7 Global Support", text: "AI-assisted and human support teams handling technical queries and product troubleshooting." }
     ],
     icon: RefreshCw,
     color: "from-primary/20 to-primary/5",
@@ -99,7 +100,6 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -15, scale: 1.02 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
@@ -132,7 +132,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         <div className="flex-1 space-y-6">
           <motion.h3 
             layout="position"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
+            className="text-3xl md:text-5xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
           >
             {item.title}
           </motion.h3>
@@ -140,7 +140,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           <motion.p 
             layout="position"
             className={cn(
-              "text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
+              "text-xl md:text-3xl lg:text-4xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
               isExpanded ? "text-foreground/90" : "line-clamp-2"
             )}
           >
@@ -157,7 +157,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                 className="pt-8 space-y-8"
               >
                 {item.extraContent && (
-                  <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground/80 leading-relaxed border-l-4 border-primary/30 pl-8 py-2">
+                  <p className="text-lg md:text-2xl text-muted-foreground/80 leading-relaxed border-l-4 border-primary/30 pl-8 py-2">
                     {item.extraContent}
                   </p>
                 )}
@@ -168,7 +168,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                         <CheckCircle2 size={20} className="text-primary mt-1 shrink-0" />
                         <div>
                           <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-primary block mb-1">{point.label}</span>
-                          <span className="text-base md:text-lg lg:text-xl text-muted-foreground italic leading-tight">{point.text}</span>
+                          <span className="text-base md:text-xl text-muted-foreground italic leading-tight">{point.text}</span>
                         </div>
                       </div>
                     ))}
@@ -182,20 +182,15 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
           <motion.button
             layout="position"
-            className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-3 group/trigger"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsExpanded(!isExpanded);
-            }}
+            className="text-sm md:text-lg font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-3 group/trigger"
           >
-            {isExpanded ? "Hide Spec" : "Learn More"}
+            Learn More
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
             >
-              <ChevronDown size={16} />
+              <ChevronDown size={20} />
             </motion.div>
-            {!isExpanded && <Sparkles size={14} className="animate-pulse opacity-40" />}
           </motion.button>
           
           <motion.span 
@@ -226,9 +221,8 @@ export function ServicesChapter() {
               <Sparkles size={14} className="animate-pulse" /> Operational Precision
             </span>
             
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.85] tracking-tighter text-foreground mb-12 font-headline">
-              Core <br />
-              <span className="text-primary italic">Services.</span>
+            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.85] tracking-tighter text-foreground mb-12 font-headline whitespace-nowrap">
+              Core <span className="text-primary italic">Services.</span>
             </h2>
 
             <div className="w-full max-w-4xl py-10 border-y border-white/5 mb-20 relative overflow-hidden group">
