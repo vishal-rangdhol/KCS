@@ -117,7 +117,11 @@ export function Navbar() {
                       <motion.span 
                         layoutId="activeUnderline"
                         className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.6)]"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        transition={{ 
+                          type: "spring", 
+                          stiffness: 380, 
+                          damping: 30
+                        }}
                       />
                     )}
                   </Link>
@@ -134,7 +138,7 @@ export function Navbar() {
               <MagneticButton>
                 <Link 
                   href={contactItem.href}
-                  className={`px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border-none shadow-[0_0_20px_rgba(251,146,60,0.3)] bg-primary text-white hover:text-white group relative overflow-hidden`}
+                  className={`px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border border-transparent hover:border-primary shadow-[0_0_20px_rgba(251,146,60,0.3)] bg-primary text-white hover:text-white group relative overflow-hidden`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
