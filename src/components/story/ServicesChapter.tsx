@@ -99,13 +99,13 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5, scale: 1.01 }}
+      whileHover={{ y: -10, scale: 1.01 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
         "group relative flex flex-col rounded-[1.5rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit w-full",
         item.borderColor,
-        isExpanded ? "ring-1 ring-white/10" : ""
+        isExpanded ? "ring-1 ring-primary/30" : ""
       )}
       onClick={() => setIsExpanded(!isExpanded)}
     >
@@ -117,7 +117,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
-      <div className="relative z-10 p-5 md:p-6 flex flex-col min-h-[180px] md:min-h-[220px]">
+      <div className="relative z-10 p-5 md:p-6 flex flex-col h-full">
         <div className="flex items-start justify-between mb-4">
           <motion.div 
             layout="position"
@@ -185,13 +185,37 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                     ))}
                   </div>
                 )}
-                <div className="flex items-center gap-2 pt-2">
-                   <div className={cn("w-8 h-1 rounded-full", item.accent)} />
-                   <span className="text-[8px] font-bold uppercase tracking-widest text-primary/40">Technical Spec Reveal</span>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
+        </div>
+
+        {/* Tactical Trigger Node */}
+        <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
+          <motion.button
+            layout="position"
+            className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/trigger"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(!isExpanded);
+            }}
+          >
+            {isExpanded ? "Close Protocol" : "Learn More"}
+            <motion.div
+              animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
+              className="transition-transform duration-300"
+            >
+              <ChevronDown size={10} />
+            </motion.div>
+            {!isExpanded && <Sparkles size={8} className="animate-pulse opacity-40" />}
+          </motion.button>
+          
+          <motion.span 
+            layout="position"
+            className="text-[8px] font-bold text-white/5 uppercase tracking-[0.3em] font-headline"
+          >
+            KCS_PROTOCOL_0{index + 1}
+          </motion.span>
         </div>
       </div>
     </motion.div>
@@ -232,6 +256,7 @@ export function ServicesChapter() {
           </motion.div>
         </div>
 
+        {/* 2x2 Grid Arrangement - Independent Atomic Interaction */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 w-full max-w-5xl mx-auto relative items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
