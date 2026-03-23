@@ -29,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="font-body antialiased bg-background text-foreground selection:bg-primary selection:text-white">
+        <div className="kcs-overlay" aria-hidden="true" />
         <SmoothScrollProvider>
           <CustomCursor />
           {children}
