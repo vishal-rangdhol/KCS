@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react'
@@ -89,7 +90,7 @@ export function Footer() {
                 alt="KCS Logo" 
                 width={120} 
                 height={40} 
-                className="h-8 w-auto brightness-200 contrast-150 group-hover:opacity-80 transition-opacity" 
+                className="h-8 w-auto group-hover:opacity-80 transition-opacity" 
               />
             </NextLink>
             <div className="relative">

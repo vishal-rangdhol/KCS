@@ -88,7 +88,7 @@ export function Navbar() {
                 alt="KCS Logo" 
                 width={100}
                 height={32}
-                className="h-7 md:h-9 w-auto object-contain antialiased brightness-200 contrast-150"
+                className="h-7 md:h-9 w-auto object-contain antialiased"
                 priority
               />
             </div>
