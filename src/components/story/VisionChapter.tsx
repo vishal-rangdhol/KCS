@@ -51,9 +51,9 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className={`p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-md`}
+      whileHover={{ y: -15, scale: 1.01 }}
+      className={`p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-500 cursor-none backdrop-blur-md`}
     >
-      {/* Subtle Background Glow on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div className="relative z-10">
@@ -74,7 +74,6 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
         </p>
       </div>
 
-      {/* Decorative architectural grid element visible on hover */}
       <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-48 md:h-48 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:10px_10px]" />
       </div>

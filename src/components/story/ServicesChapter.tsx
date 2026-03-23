@@ -64,6 +64,7 @@ export function ServicesChapter() {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -10, scale: 1.01 }}
                 transition={{ duration: 0.8, delay: i * 0.1 }}
                 viewport={{ once: true }}
                 className="group p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-white/5 border border-white/10 hover:bg-card/60 hover:shadow-2xl hover:border-primary/20 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm"

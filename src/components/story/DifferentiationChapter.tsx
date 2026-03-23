@@ -56,6 +56,7 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
+      whileHover={{ y: -15, scale: 1.02 }}
       className="relative h-[320px] md:h-[520px] rounded-[2rem] md:rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-sm"
     >
       <div className={cn(

@@ -88,11 +88,11 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -10 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
       className="group relative min-h-[350px] md:min-h-[700px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
-      {/* Background Architectural Layer */}
       <div className="absolute inset-0 z-0">
         <Image 
           src={product.image}
@@ -104,9 +104,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/90 to-background z-10" />
       </div>
 
-      {/* Content Layer - Recalibrated for mobile density and proper alignment */}
       <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 flex-1 flex flex-col">
-        {/* Header Terminal */}
         <div className="mb-3 md:mb-8">
           <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline mb-2">
             {product.tag}
@@ -119,7 +117,6 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           </p>
         </div>
 
-        {/* Features Protocol - Tightened Grid for Alignment */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 mb-4 md:mb-8">
           {product.features.map((feature, i) => (
             <div key={i} className="flex items-center gap-2 md:gap-3 p-1.5 md:p-3 rounded-lg md:rounded-xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
@@ -129,10 +126,8 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           ))}
         </div>
 
-        {/* Spacer to push content correctly */}
         <div className="flex-1" />
 
-        {/* Vision Node - Compressed Footer Terminal */}
         <div className="pt-3 md:pt-8 border-t border-white/5 mb-4 md:mb-8">
           <div className="flex items-center gap-1.5 mb-1 md:mb-2">
             <Sparkles size={10} className="text-primary animate-pulse" />

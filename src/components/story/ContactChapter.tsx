@@ -34,16 +34,22 @@ export function ContactChapter() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 w-full max-w-5xl text-left mb-16 md:mb-20">
-            <div className="p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-primary/20 transition-all duration-500 shadow-sm">
+            <motion.div 
+              whileHover={{ y: -10, scale: 1.01 }}
+              className="p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-primary/20 transition-all duration-500 shadow-sm"
+            >
               <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 block mb-4 md:mb-6 font-headline">Business Inquiries</span>
               <h4 className="text-lg md:text-2xl font-bold mb-3 md:mb-4 font-headline">Kandhugule Consultancy Services Pvt Ltd</h4>
               <p className="text-muted-foreground mb-3 text-xs md:text-sm font-medium">Hyderabad, India</p>
               <a href="mailto:info@kandhugule-kcs.com" className="text-sm md:text-lg font-bold text-primary hover:underline transition-all break-words">
                 info@kandhugule-kcs.com
               </a>
-            </div>
+            </motion.div>
 
-            <div className="p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm">
+            <motion.div 
+              whileHover={{ y: -10, scale: 1.01 }}
+              className="p-6 md:p-10 rounded-[1.5rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm"
+            >
               <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-secondary/60 block mb-4 md:mb-6 font-headline">Project Consultation</span>
               <p className="text-xs md:text-lg text-muted-foreground mb-6 md:mb-8 italic">
                 Planning a new digital platform or modernizing your infrastructure? Reach out to schedule a consultation with our engineering team.
@@ -57,7 +63,7 @@ export function ContactChapter() {
                   <Send className="ml-2 md:ml-3 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
               </Button>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
