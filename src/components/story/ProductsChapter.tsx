@@ -146,7 +146,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
               }
             }}
           >
-            Preview
+            Learn More
             <ArrowRight className="ml-1 w-2.5 h-2.5 md:w-4 md:h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
           </Button>
         </div>
