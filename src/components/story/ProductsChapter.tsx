@@ -113,7 +113,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
               {product.tag}
             </span>
           </div>
-          <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none mb-4 md:mb-6">
+          <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline leading-none mb-4 md:mb-6">
             {product.name}
           </h3>
           <p className="text-xs md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
@@ -171,7 +171,7 @@ export function ProductsChapter() {
           <span className="text-primary font-headline uppercase tracking-[0.4em] text-[9px] md:text-xs mb-6 md:mb-8 block font-bold">
             <Sparkles size={14} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
           </span>
-          <h2 className="text-4xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline uppercase">
+          <h2 className="text-4xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline">
             Our Platforms.
           </h2>
           <motion.p 
