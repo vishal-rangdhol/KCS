@@ -2,32 +2,32 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { ShieldCheck, Zap, Cpu, RefreshCw, Sparkles } from 'lucide-react'
+import { Globe, Rocket, Users, ShieldCheck, Sparkles } from 'lucide-react'
 
-const differentiators = [
+const performanceNodes = [
   {
-    title: "Technology Ownership",
-    description: "Clients retain full control of every system we build. No lock-in. No dependency.",
+    title: "Global Scalability",
+    description: "Our infrastructure is architected to handle millions of concurrent requests across multi-region clusters.",
+    icon: Globe,
+    tag: "Deployment"
+  },
+  {
+    title: "Rapid Execution",
+    description: "From concept to market-ready platform in record time through our proprietary development sprint protocol.",
+    icon: Rocket,
+    tag: "Velocity"
+  },
+  {
+    title: "Strategic Advisory",
+    description: "Deep technical consulting to align your technology roadmap with long-term business objectives.",
+    icon: Users,
+    tag: "Consultancy"
+  },
+  {
+    title: "Zero-Trust Security",
+    description: "Military-grade encryption and security-first design principles embedded in every layer.",
     icon: ShieldCheck,
-    tag: "Autonomy"
-  },
-  {
-    title: "Product-First Engineering",
-    description: "We treat every project as a long-term platform, not a short-term contract.",
-    icon: Zap,
-    tag: "Sustainability"
-  },
-  {
-    title: "AI-Ready Architecture",
-    description: "Every system we design is built for future AI integration and intelligent automation.",
-    icon: Cpu,
-    tag: "Intelligence"
-  },
-  {
-    title: "End-to-End Lifecycle",
-    description: "Build → Launch → Operate → Maintain → Scale",
-    icon: RefreshCw,
-    tag: "Scalability"
+    tag: "Defense"
   }
 ]
 
@@ -43,23 +43,23 @@ export function ServicesChapter() {
           className="flex flex-col items-center"
         >
           <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 md:mb-10 font-headline">
-            <Sparkles size={14} className="animate-pulse" /> Our Edge
+            <Sparkles size={14} className="animate-pulse" /> Operational Excellence
           </span>
           
           <h2 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-10 md:mb-12 font-headline">
-            The KCS <br />
-            <span className="text-primary italic">Technology Edge.</span>
+            Operational <br />
+            <span className="text-primary italic">Precision.</span>
           </h2>
 
           <div className="w-full py-12 md:py-16 border-y border-white/10 mb-12 md:mb-16 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[300px] h-[250px] md:h-[300px] bg-primary/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
             <p className="text-lg md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic">
-              "We don't just deliver software; we architect competitive advantages that remain entirely under your control."
+              "We provide the technical discipline required to scale global businesses with absolute predictability."
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
-            {differentiators.map((item, i) => (
+            {performanceNodes.map((item, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
@@ -79,7 +79,7 @@ export function ServicesChapter() {
                     </span>
                   </div>
                   <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-headline text-foreground">{item.title}</h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed italic">{item.description}</p>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed italic font-medium">{item.description}</p>
                 </div>
               </motion.div>
             ))}

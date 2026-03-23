@@ -2,38 +2,38 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { Sparkles, ShieldCheck, UserCircle, BarChart3 } from 'lucide-react'
+import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
 import React from 'react'
 
 const values = [
   {
-    title: "Innovation First",
-    description: "Pushing boundaries with cutting-edge AI and neural architectures that redefine industry standards.",
-    icon: Sparkles,
+    title: "Technology Ownership",
+    description: "Clients retain full control of every system we build. No lock-in. No dependency.",
+    icon: ShieldCheck,
     color: "from-orange-500/10 via-amber-500/5 to-transparent",
     border: "border-orange-500/20",
     hoverBorder: "hover:border-primary/40"
   },
   {
-    title: "Military Grade",
-    description: "Encryption and infrastructure reliability that satisfies the most demanding global security protocols.",
-    icon: ShieldCheck,
+    title: "Product-First Engineering",
+    description: "We treat every project as a long-term platform, not a short-term contract.",
+    icon: Zap,
     color: "from-amber-600/10 via-orange-500/5 to-transparent",
     border: "border-amber-600/20",
     hoverBorder: "hover:border-primary/40"
   },
   {
-    title: "Radical Impact",
-    description: "We don't just build software; we architect the digital future of our partners' legacies.",
-    icon: UserCircle,
+    title: "AI-Ready Architecture",
+    description: "Every system we design is built for future AI integration and intelligent automation.",
+    icon: Cpu,
     color: "from-yellow-500/10 via-orange-400/5 to-transparent",
     border: "border-yellow-500/20",
     hoverBorder: "hover:border-primary/40"
   },
   {
-    title: "Proven Success",
-    description: "Global success stories driven by data-centric methodologies and architectural excellence.",
-    icon: BarChart3,
+    title: "End-to-End Lifecycle",
+    description: "Build → Launch → Operate → Maintain → Scale",
+    icon: RefreshCw,
     color: "from-orange-600/10 via-amber-700/5 to-transparent",
     border: "border-orange-600/20",
     hoverBorder: "hover:border-primary/40"
@@ -69,7 +69,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           </span>
         </h3>
         
-        <p className="text-sm md:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
+        <p className="text-sm md:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300 font-medium italic">
           {value.description}
         </p>
       </div>
@@ -90,10 +90,10 @@ export function VisionChapter() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.6em] text-[10px] md:text-xs mb-6 md:mb-8 block font-bold">The Core Protocol</span>
-          <h2 className="text-3xl md:text-9xl font-bold mb-8 md:mb-12 tracking-tighter leading-none text-foreground">
-            Architectural <br />
-            <span className="text-primary italic">Excellence.</span>
+          <span className="text-primary font-headline uppercase tracking-[0.6em] text-[10px] md:text-xs mb-6 md:mb-8 block font-bold">The KCS Edge</span>
+          <h2 className="text-3xl md:text-9xl font-bold mb-8 md:mb-12 tracking-tighter leading-none text-foreground font-headline">
+            What Makes <br />
+            <span className="text-primary italic">KCS Different.</span>
           </h2>
         </motion.div>
       </div>
