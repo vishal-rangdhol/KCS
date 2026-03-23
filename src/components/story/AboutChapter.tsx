@@ -38,37 +38,38 @@ export function AboutChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-32 md:mb-64"
+          className="mb-32 md:mb-64 text-center md:text-left"
         >
-          <span className="flex items-center gap-2 text-primary font-bold tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
+          <span className="flex items-center justify-center md:justify-start gap-2 text-primary font-bold tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
             <Sparkles size={14} className="animate-pulse" /> The Narrative
           </span>
           
-          <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tighter text-foreground mb-12 font-headline">
-            The <br />
-            <span className="text-primary italic">KCS Story.</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter text-foreground mb-12 font-headline">
+            The <span className="text-primary italic">KCS Story.</span>
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-start">
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
-              <p>
-                Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
-                on a single conviction: technology should empower businesses to create
-                meaningful impact — without locking them into systems they don't control.
-              </p>
-              <p>
-                As digital transformation accelerates, organizations face growing complexity in
-                building and maintaining modern technology. Artificial intelligence, cloud
-                infrastructure, cybersecurity, and data platforms must work together seamlessly.
-              </p>
-            </div>
-            <div className="space-y-8 text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
-              <p>
-                Most organizations struggle to make that happen. 
-                <span className="text-foreground block mt-8 not-italic font-bold text-2xl md:text-4xl lg:text-5xl tracking-tighter">
-                  KCS was created to close that gap.
-                </span>
-              </p>
+          <div className="max-w-5xl mx-auto md:mx-0 space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+              <div className="space-y-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
+                <p>
+                  Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
+                  on a single conviction: technology should empower businesses to create
+                  meaningful impact — without locking them into systems they don't control.
+                </p>
+                <p>
+                  As digital transformation accelerates, organizations face growing complexity in
+                  building and maintaining modern technology. Artificial intelligence, cloud
+                  infrastructure, cybersecurity, and data platforms must work together seamlessly.
+                </p>
+              </div>
+              <div className="space-y-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
+                <p>
+                  Most organizations struggle to make that happen. KCS was created to close that gap by providing a bridge between high-level engineering and practical business application.
+                </p>
+                <p className="text-foreground not-italic font-bold text-lg md:text-2xl lg:text-3xl tracking-tighter">
+                  We exist to ensure technology remains a competitive advantage, not an operational burden.
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -85,11 +86,10 @@ export function AboutChapter() {
              <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
              
              <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground mb-12 font-headline">
-               A Product Lab <br />
-               <span className="text-primary">for the Modern Era.</span>
+               A Product Lab <span className="text-primary">for the Modern Era.</span>
              </h3>
              
-             <div className="max-w-4xl space-y-8 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
+             <div className="max-w-4xl space-y-8 text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed italic font-medium">
                 <p>
                   Rather than functioning as a traditional consulting firm, KCS operates as a
                   technology product lab. We don't just deliver software — we build complete digital
@@ -113,9 +113,8 @@ export function AboutChapter() {
           className="mb-32 md:mb-64"
         >
           <div className="text-center mb-16 md:mb-24">
-            <h3 className="text-2xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-headline">
-              What Makes <br />
-              <span className="text-primary italic">KCS Different.</span>
+            <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter font-headline">
+              What Makes <span className="text-primary italic">KCS Different.</span>
             </h3>
           </div>
 
@@ -130,10 +129,10 @@ export function AboutChapter() {
                 className="p-8 md:p-12 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 group"
               >
                 <div className="bg-primary/10 p-4 rounded-2xl w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                  <value.icon size={24} className="md:size-8" />
+                  <value.icon size={24} />
                 </div>
-                <h4 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
-                <p className="text-sm md:text-base lg:text-lg text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
+                <h4 className="text-lg md:text-xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
+                <p className="text-sm md:text-base text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -147,16 +146,16 @@ export function AboutChapter() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h3 className="text-2xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-12 font-headline">
+          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-12 font-headline">
             Our <span className="text-primary">Vision.</span>
           </h3>
-          <div className="max-w-4xl mx-auto space-y-8 text-base md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
+          <div className="max-w-4xl mx-auto space-y-8 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
             <p>
               KCS aims to become a global product lab for digital infrastructure — supporting
               founders, enterprises, and institutions in building the platforms that define the next
               era of business.
             </p>
-            <p className="text-foreground font-bold not-italic tracking-tighter text-xl md:text-3xl lg:text-4xl">
+            <p className="text-foreground font-bold not-italic tracking-tighter text-lg md:text-2xl lg:text-3xl">
               From social learning ecosystems to AI-powered healthcare infrastructure, we are
               focused on building systems that improve how people learn, connect, and access
               services.

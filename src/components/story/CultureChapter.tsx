@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -47,9 +48,8 @@ export function CultureChapter() {
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-4 font-headline">
               <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
             </span>
-            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[0.9] md:leading-[0.8] tracking-tighter text-foreground mb-6 font-headline">
-              Built on <br />
-              <span className="text-primary italic">Focus, Not Burnout.</span>
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-6 font-headline">
+              Built on <span className="text-primary italic">Focus, Not Burnout.</span>
             </h2>
           </motion.div>
         </div>
