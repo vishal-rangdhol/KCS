@@ -25,7 +25,7 @@ export default function ContactPage() {
         {/* Navigation Breadcrumb */}
         <div className="mb-8 md:mb-12 px-2">
           <Link href="/" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-all group">
-            <div className="p-2 rounded-lg bg-black/5 border border-black/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
+            <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
             </div>
             <span className="text-[9px] font-bold uppercase tracking-[0.3em] font-headline">Back to Story</span>
@@ -44,14 +44,14 @@ export default function ContactPage() {
               <Sparkles size={12} className="animate-pulse" /> Final Protocol
             </span>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1] md:leading-[0.8] tracking-tighter text-foreground mb-8 md:mb-10 font-headline">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] md:leading-[0.8] tracking-tighter text-foreground mb-8 md:mb-10 font-headline">
               Let's Build <br />
               <span className="text-primary italic">Something Great.</span>
             </h1>
 
             <div className="w-full py-8 md:py-12 border-y border-white/5 mb-10 md:mb-12 relative px-4">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[250px] h-[200px] md:h-[250px] bg-primary/5 blur-[80px] md:blur-[100px] rounded-full pointer-events-none" />
-              <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium italic">
+              <p className="text-base md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium italic">
                 Have a product idea, a technology challenge, or an infrastructure problem? Our team is ready to help you design, build, and scale the technology behind it.
               </p>
             </div>
@@ -61,14 +61,14 @@ export default function ContactPage() {
                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 block mb-4 font-headline">Business Inquiries</span>
                 <h4 className="text-lg md:text-xl font-bold mb-3 font-headline text-foreground">Kandhugule Consultancy Services Pvt Ltd</h4>
                 <p className="text-muted-foreground mb-3 text-xs font-medium">Hyderabad, India</p>
-                <a href="mailto:info@kandhugule-kcs.com" className="text-base md:text-lg font-bold text-primary hover:underline transition-all break-words">
+                <a href="mailto:info@kandhugule-kcs.com" className="text-sm md:text-lg font-bold text-primary hover:underline transition-all break-words">
                   info@kandhugule-kcs.com
                 </a>
               </div>
 
               <div className="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/5 group hover:border-secondary/20 transition-all duration-500 shadow-sm">
                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-secondary/60 block mb-4 font-headline">Project Consultation</span>
-                <p className="text-sm md:text-base text-muted-foreground mb-6 italic">
+                <p className="text-xs md:text-base text-muted-foreground mb-6 italic">
                   Planning a new digital platform or modernizing your infrastructure? Reach out to schedule a consultation with our engineering team.
                 </p>
                 <Button 

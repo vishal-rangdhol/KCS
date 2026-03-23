@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -91,7 +90,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative min-h-[700px] w-full rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
+      className="group relative min-h-[600px] md:min-h-[700px] w-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
       {/* Background Architectural Layer */}
       <div className="absolute inset-0 z-0">
@@ -106,46 +105,46 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       </div>
 
       {/* Content Layer */}
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-8 sm:p-12 flex-1 flex flex-col">
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-6 sm:p-12 flex-1 flex flex-col">
         {/* Header Terminal */}
-        <div className="mb-8">
+        <div className="mb-6 md:mb-8">
           <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest font-headline">
+            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] md:text-[10px] font-bold uppercase tracking-widest font-headline">
               {product.tag}
             </span>
           </div>
-          <h3 className="text-4xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none mb-6">
+          <h3 className="text-3xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none mb-4 md:mb-6">
             {product.name}
           </h3>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
+          <p className="text-xs md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
             {product.description}
           </p>
         </div>
 
         {/* Features Protocol */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-8 md:mb-10">
           {product.features.map((feature, i) => (
-            <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
-              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-              <span className="text-xs md:text-sm font-medium text-foreground/80">{feature}</span>
+            <div key={i} className="flex items-start gap-3 p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
+              <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5 text-primary shrink-0 mt-0.5" />
+              <span className="text-[11px] md:text-sm font-medium text-foreground/80">{feature}</span>
             </div>
           ))}
         </div>
 
         {/* Vision Node */}
-        <div className="mt-auto pt-8 border-t border-white/5 mb-8">
-          <div className="flex items-center gap-2 mb-3">
+        <div className="mt-auto pt-6 md:pt-8 border-t border-white/5 mb-6 md:mb-8">
+          <div className="flex items-center gap-2 mb-2 md:mb-3">
             <Sparkles size={14} className="text-primary animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">The Vision</span>
+            <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">The Vision</span>
           </div>
-          <p className="text-base md:text-lg font-bold text-foreground leading-tight italic tracking-tight">
+          <p className="text-sm md:text-lg font-bold text-foreground leading-tight italic tracking-tight">
             "{product.vision}"
           </p>
         </div>
 
         <Button 
           variant="outline" 
-          className="h-14 px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
+          className="h-12 md:h-14 px-6 md:px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-[11px] md:text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
           onClick={() => {
             if (product.href && product.href !== "#") {
               window.open(product.href, '_blank', 'noopener,noreferrer');
@@ -156,35 +155,30 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
         </Button>
       </div>
-
-      {/* Decorative Branding */}
-      <div className="absolute top-12 right-12 opacity-5 group-hover:opacity-20 transition-opacity duration-1000 hidden lg:block">
-         <Sparkles size={120} className="text-primary" />
-      </div>
     </motion.div>
   )
 }
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-32 overflow-visible">
-      <div className="text-center mb-16 lg:mb-24 w-full px-6">
+    <Chapter id="products" className="bg-background py-20 md:py-32 overflow-visible">
+      <div className="text-center mb-12 md:mb-24 w-full px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.5em] text-[10px] md:text-xs mb-8 block font-bold">
+          <span className="text-primary font-headline uppercase tracking-[0.4em] text-[9px] md:text-xs mb-6 md:mb-8 block font-bold">
             <Sparkles size={14} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
           </span>
-          <h2 className="text-5xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline uppercase">
+          <h2 className="text-4xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline uppercase">
             Our Platforms.
           </h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground mt-10 w-full max-w-3xl mx-auto text-lg md:text-2xl leading-relaxed italic font-medium"
+            className="text-muted-foreground mt-8 md:mt-10 w-full max-w-3xl mx-auto text-base md:text-2xl leading-relaxed italic font-medium"
           >
             Engineered solutions architected to bridge the gap between communication silos and healthcare infrastructure.
           </motion.p>
@@ -199,17 +193,17 @@ export function ProductsChapter() {
           }}
           className="w-full max-w-7xl mx-auto"
         >
-          <CarouselContent className="-ml-8">
+          <CarouselContent className="-ml-4 md:-ml-8">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-8 basis-full lg:basis-full perspective-2000">
+              <CarouselItem key={index} className="pl-4 md:pl-8 basis-full lg:basis-full perspective-2000">
                 <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
           </CarouselContent>
           
-          <div className="flex justify-center md:justify-end gap-6 mt-16 sm:mt-24">
-            <CarouselPrevious className="static translate-y-0 h-14 w-14 sm:h-16 sm:w-16 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
-            <CarouselNext className="static translate-y-0 h-14 w-14 sm:h-16 sm:w-16 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
+          <div className="flex justify-center md:justify-end gap-4 md:gap-6 mt-12 md:mt-24">
+            <CarouselPrevious className="static translate-y-0 h-12 w-12 md:h-16 md:w-16 rounded-xl md:rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
+            <CarouselNext className="static translate-y-0 h-12 w-12 md:h-16 md:w-16 rounded-xl md:rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
           </div>
         </Carousel>
       </div>

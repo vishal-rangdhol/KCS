@@ -67,10 +67,10 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-2 md:p-6 pointer-events-none">
       <nav 
-        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[95%] transition-all duration-700 border ${
+        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[98%] md:max-w-[95%] transition-all duration-700 border ${
           isScrolled 
             ? 'px-4 py-2 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-[0.98] md:scale-100' 
-            : 'px-6 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
+            : 'px-4 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
         }`}
       >
         {/* Left: Logo */}
@@ -86,7 +86,7 @@ export function Navbar() {
                 alt="KCS Logo" 
                 width={100}
                 height={32}
-                className="h-7 md:h-9 w-auto object-contain antialiased"
+                className="h-6 md:h-9 w-auto object-contain antialiased"
                 priority
               />
             </div>

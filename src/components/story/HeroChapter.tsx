@@ -47,7 +47,7 @@ export function HeroChapter() {
     <section 
       id="hero" 
       ref={containerRef}
-      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 sm:px-12 overflow-hidden pt-32 pb-40 bg-background"
+      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-32 pb-40 bg-background"
     >
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"

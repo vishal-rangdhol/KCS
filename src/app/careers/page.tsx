@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useRef } from 'react'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import React from 'react'
+import { motion } from 'framer-motion'
 import { MapPin, ArrowLeft, Sparkles, Briefcase, Clock, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
@@ -107,40 +107,40 @@ export default function CareersPage() {
         <div className="absolute -top-[10%] -left-[10%] w-[60%] h-[60%] bg-primary/10 blur-[120px] rounded-full opacity-20" />
       </div>
 
-      <div className="relative z-10 pt-32 pb-32 px-6 md:px-12 lg:px-20 max-w-7xl mx-auto">
-        <div className="mb-12 md:mb-16">
+      <div className="relative z-10 pt-24 md:pt-32 pb-20 px-4 md:px-12 lg:px-20 max-w-7xl mx-auto">
+        <div className="mb-8 md:mb-16">
           <Link href="/" className="inline-flex items-center gap-2 text-primary/60 hover:text-primary transition-all group">
             <div className="p-2 rounded-lg bg-white/5 border border-white/10 group-hover:border-primary/40 group-hover:bg-primary/10 transition-all">
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             </div>
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] font-headline">Back to Story</span>
+            <span className="text-[9px] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] font-headline">Back to Story</span>
           </Link>
         </div>
 
-        <section className="mb-32 md:mb-48">
+        <section className="mb-20 md:mb-48">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
           >
-            <div className="max-w-4xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest mb-10 font-headline">
+            <div className="max-w-4xl text-center md:text-left">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-6 md:mb-10 font-headline">
                 <Sparkles size={12} className="animate-pulse" /> The Collective Protocol
               </span>
-              <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[0.8] mb-12 text-foreground font-headline">
+              <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[1.1] md:leading-[0.8] mb-8 md:mb-12 text-foreground font-headline">
                 Join the <br />
                 <span className="text-primary italic">KCS Team.</span>
               </h1>
-              <p className="text-lg md:text-3xl text-foreground font-medium leading-tight max-w-3xl">
+              <p className="text-base md:text-3xl text-foreground font-medium leading-tight max-w-3xl italic">
                 We're building the next generation of digital platforms — and we're looking for architects who want to do the same.
               </p>
             </div>
           </motion.div>
         </section>
 
-        <div className="space-y-6 mb-48">
-          <div className="flex items-center gap-4 mb-16">
-            <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline">Open Architectures</h2>
+        <div className="space-y-6 mb-32 md:mb-48">
+          <div className="flex items-center gap-4 mb-10 md:mb-16">
+            <h2 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">Open Architectures</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
 
@@ -149,70 +149,70 @@ export default function CareersPage() {
               <AccordionItem 
                 key={job.id} 
                 value={job.id}
-                className="border-none px-2 rounded-[2rem] bg-card/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-all group data-[state=open]:bg-card shadow-2xl overflow-hidden"
+                className="border-none rounded-[1.5rem] md:rounded-[2rem] bg-card/40 backdrop-blur-md border border-white/5 hover:border-white/10 transition-all group data-[state=open]:bg-card shadow-2xl overflow-hidden"
               >
-                <AccordionTrigger className="hover:no-underline py-8 md:py-12 px-6 md:px-12">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 text-left w-full">
-                    <div className="flex items-center gap-8">
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:scale-110 group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-all duration-500">
-                        <Briefcase size={28} />
+                <AccordionTrigger className="hover:no-underline py-6 md:py-12 px-5 md:px-12">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-left w-full">
+                    <div className="flex items-center gap-4 md:gap-8">
+                      <div className="p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:scale-110 group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-all duration-500">
+                        <Briefcase size={20} className="md:size-[28px]" />
                       </div>
                       <div>
-                        <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 mb-1 block font-headline">{job.category}</span>
-                        <h3 className="text-xl md:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors font-headline">
+                        <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary/60 mb-1 block font-headline">{job.category}</span>
+                        <h3 className="text-lg md:text-4xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors font-headline">
                           {job.title}
                         </h3>
                       </div>
                     </div>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="px-6 md:px-12 pb-12">
-                  <div className="max-w-6xl mx-auto space-y-12 pt-8 border-t border-black/5">
+                <AccordionContent className="px-5 md:px-12 pb-10 md:pb-12">
+                  <div className="max-w-6xl mx-auto space-y-8 md:space-y-12 pt-6 md:pt-8 border-t border-white/5">
                     {/* Meta Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                          <MapPin size={20} />
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+                      <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
+                        <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
+                          <MapPin size={16} md:size={20} />
                         </div>
                         <div>
-                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Location</p>
-                          <p className="text-xs font-bold text-foreground">{job.location}</p>
+                          <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Location</p>
+                          <p className="text-[10px] md:text-xs font-bold text-foreground">{job.location}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                          <Clock size={20} />
+                      <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
+                        <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
+                          <Clock size={16} md:size={20} />
                         </div>
                         <div>
-                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Duration</p>
-                          <p className="text-xs font-bold text-foreground">{job.duration}</p>
+                          <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Duration</p>
+                          <p className="text-[10px] md:text-xs font-bold text-foreground">{job.duration}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/10 border border-white/5">
-                        <div className="p-3 rounded-xl bg-primary/10 text-primary">
-                          <Zap size={20} />
+                      <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
+                        <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
+                          <Zap size={16} md:size={20} />
                         </div>
                         <div>
-                          <p className="text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Path</p>
-                          <p className="text-xs font-bold text-foreground">{job.conversion}</p>
+                          <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Path</p>
+                          <p className="text-[10px] md:text-xs font-bold text-foreground">{job.conversion}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Description Sections */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                      <div className="space-y-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                      <div className="space-y-6 md:space-y-8">
                         <div>
-                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Role Overview</h4>
-                          <p className="text-sm md:text-base text-muted-foreground leading-relaxed italic">
+                          <h4 className="text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary mb-3 md:mb-4 font-headline">Role Overview</h4>
+                          <p className="text-xs md:text-base text-muted-foreground leading-relaxed italic">
                             {job.overview}
                           </p>
                         </div>
                         <div>
-                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Key Responsibilities</h4>
-                          <ul className="space-y-3">
+                          <h4 className="text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary mb-3 md:mb-4 font-headline">Key Responsibilities</h4>
+                          <ul className="space-y-2 md:space-y-3">
                             {job.responsibilities.map((resp, i) => (
-                              <li key={i} className="flex gap-3 text-sm text-foreground">
+                              <li key={i} className="flex gap-2 md:gap-3 text-xs md:text-sm text-foreground">
                                 <span className="text-primary font-bold">/</span>
                                 {resp}
                               </li>
@@ -220,20 +220,20 @@ export default function CareersPage() {
                           </ul>
                         </div>
                       </div>
-                      <div className="space-y-8">
+                      <div className="space-y-6 md:space-y-8">
                         <div>
-                          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4 font-headline">Requirements</h4>
-                          <ul className="space-y-3">
+                          <h4 className="text-[9px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary mb-3 md:mb-4 font-headline">Requirements</h4>
+                          <ul className="space-y-2 md:space-y-3">
                             {job.requirements.map((req, i) => (
-                              <li key={i} className="flex gap-3 text-sm text-foreground">
+                              <li key={i} className="flex gap-2 md:gap-3 text-xs md:text-sm text-foreground">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                                 {req}
                               </li>
                             ))}
                           </ul>
                         </div>
-                        <div className="pt-8">
-                          <button className="w-full h-12 rounded-xl bg-primary text-white font-bold text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl">
+                        <div className="pt-4 md:pt-8">
+                          <button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white font-bold text-[11px] md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl">
                             Apply for Architecture
                           </button>
                         </div>

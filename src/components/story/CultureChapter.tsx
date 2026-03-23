@@ -34,10 +34,10 @@ export function CultureChapter() {
   const [expandedId, setExpandedId] = useState<string | null>("focus")
 
   return (
-    <Chapter id="culture" className="bg-background py-24 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-24 md:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-12 md:mb-16">
+        <div className="text-center mb-12 md:mb-16 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,13 +55,14 @@ export function CultureChapter() {
         </div>
 
         {/* Unique Tiles Structure - Responsive Height */}
-        <div className="flex flex-col md:flex-row gap-4 h-[450px] md:h-[250px] w-full items-stretch px-2 md:px-0">
+        <div className="flex flex-col md:flex-row gap-4 h-[500px] md:h-[250px] w-full items-stretch px-2 md:px-0">
           {pillars.map((pillar, i) => {
             const isExpanded = expandedId === pillar.id;
             return (
               <motion.div
                 key={pillar.id}
                 onMouseEnter={() => setExpandedId(pillar.id)}
+                onClick={() => setExpandedId(pillar.id)}
                 className={cn(
                   "relative group overflow-hidden cursor-pointer rounded-[1.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
                   isExpanded ? "flex-[5] md:flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
@@ -79,7 +80,7 @@ export function CultureChapter() {
                   {/* Top Bar: Icon and Protocol ID */}
                   <div className="flex items-center justify-between mb-4">
                     <div className={cn(
-                      "p-2.5 md:p-3 rounded-lg transition-all duration-500",
+                      "p-2 md:p-3 rounded-lg transition-all duration-500",
                       isExpanded ? "bg-primary text-white scale-105 shadow-md shadow-primary/20" : "bg-primary/10 text-primary"
                     )}>
                       <pillar.icon size={18} />
