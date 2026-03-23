@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useMotionValue, useMotionTemplate, useSpring } from 'framer-motion'
+import { motion, useMotionValue, useMotionTemplate, useSpring, useTransform, useScroll } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles, Zap, Cpu, Heart, Focus, ShieldCheck, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
@@ -133,34 +133,134 @@ function ScrambleText({ text }: { text: string }) {
 }
 
 export function CareersChapter() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+
+  // Magnetic Headline logic
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 }
+  const headlineX = useSpring(useTransform(mouseX, [-400, 400], [-10, 10]), springConfig)
+  const headlineY = useSpring(useTransform(mouseY, [-400, 400], [-5, 5]), springConfig)
+
+  // Scroll dimming/thickening
+  const headlineOpacity = useTransform(scrollYProgress, [0.1, 0.3], [1, 0.3])
+  const headlineScale = useTransform(scrollYProgress, [0.1, 0.3], [1, 0.95])
+
+  const [isIndicatorHovered, setIsIndicatorHovered] = useState(false)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    mouseX.set(e.clientX - (rect.left + rect.width / 2))
+    mouseY.set(e.clientY - (rect.top + 200)) // Focus on the top part
+  }
+
   return (
     <Chapter id="careers" className="bg-background py-24 md:py-48 overflow-visible">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div ref={containerRef} onMouseMove={handleMouseMove} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="text-center mb-24 md:mb-32"
-        >
-          <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
-            <Sparkles size={12} className="animate-pulse" /> The Talent Protocol
-          </span>
-          
-          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-10 font-headline">
-            Architect the future with us.
-          </h2>
+        <div className="text-center mb-24 md:mb-40 relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            style={{ opacity: headlineOpacity, scale: headlineScale }}
+            className="flex flex-col items-center"
+          >
+            {/* The Protocol Label with pulsing glow */}
+            <div className="relative mb-8 group">
+               <motion.div 
+                animate={{ opacity: [0.2, 0.5, 0.2], scale: [1, 1.2, 1] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -inset-2 bg-primary/20 blur-xl rounded-full"
+               />
+               <span 
+                onMouseEnter={() => setIsIndicatorHovered(true)}
+                onMouseLeave={() => setIsIndicatorHovered(false)}
+                className="relative flex items-center justify-center gap-3 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs font-headline cursor-crosshair px-6 py-2 rounded-full border border-primary/10 bg-black/40 backdrop-blur-sm"
+               >
+                <Sparkles size={12} className="animate-pulse" /> The Talent Protocol
+                <motion.div
+                  initial={false}
+                  animate={{ 
+                    width: isIndicatorHovered ? 200 : 0,
+                    opacity: isIndicatorHovered ? 1 : 0
+                  }}
+                  className="absolute left-full ml-4 whitespace-nowrap overflow-hidden text-primary/60 font-bold tracking-widest text-[8px]"
+                >
+                  PRECISION ENGINEERING. HUMAN CULTURE.
+                </motion.div>
+              </span>
+            </div>
+            
+            <motion.div
+              style={{ x: headlineX, y: headlineY }}
+              className="relative"
+            >
+              <h2 
+                className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.95] tracking-[-0.04em] text-foreground mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
+              >
+                Architect the <br />
+                <span className="italic text-primary">future with us.</span>
+              </h2>
+            </motion.div>
 
-          <div className="max-w-4xl mx-auto space-y-8">
-            <p className="text-lg md:text-3xl font-bold tracking-tight text-foreground leading-tight italic">
-              Building the Next Generation of Digital Platforms.
-            </p>
-            <p className="text-sm md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto italic font-medium">
-              We’re looking for engineers, designers, and technologists who don’t just want a job—they want to build products that matter. At KCS, we believe the best work happens when high-level engineering meets a culture of genuine support.
-            </p>
-          </div>
-        </motion.div>
+            <div className="max-w-4xl mx-auto space-y-16">
+              <motion.p 
+                initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+                whileInView={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                className="text-lg md:text-3xl font-bold tracking-tight text-foreground/80 leading-tight italic"
+              >
+                Building the Next Generation of Digital Platforms.
+              </motion.p>
+              
+              {/* Split Narrative / Status Board */}
+              <div className="flex flex-col lg:flex-row gap-12 items-center text-left border-t border-white/5 pt-12">
+                <div className="flex-1">
+                  <p className="text-sm md:text-xl text-muted-foreground leading-relaxed italic font-medium">
+                    We’re looking for engineers, designers, and technologists who don’t just want a job—they want to build products that matter. At KCS, we believe the best work happens when high-level engineering meets a culture of genuine support.
+                  </p>
+                </div>
+                
+                {/* Status Board UI */}
+                <div className="w-full lg:w-[350px] p-6 rounded-2xl bg-white/5 border border-white/10 font-mono text-[9px] md:text-[10px] space-y-3 shadow-2xl backdrop-blur-xl group/status hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between border-b border-white/5 pb-2">
+                    <span className="text-primary/60">SYSTEM_ID:</span>
+                    <span className="text-foreground">KCS_TALENT_LAB_01</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-primary/60">EST_ORIGIN:</span>
+                    <span className="text-foreground">HYDERABAD // 2026</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-primary/60">LATENCY:</span>
+                    <span className="text-foreground">OPTIMIZED</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-primary/60">CULTURE:</span>
+                    <span className="text-primary group-hover/status:animate-pulse">ANTI_BURNOUT_V3</span>
+                  </div>
+                  <div className="pt-2 flex gap-1">
+                    <div className="h-1 flex-1 bg-primary/20 rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        transition={{ duration: 2, ease: "easeInOut" }}
+                        className="h-full bg-primary"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Advantage Grid */}
         <div className="mb-32">
@@ -276,7 +376,6 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const centerX = left + width / 2
     const centerY = top + height / 2
     
-    // 30px magnetic threshold
     const distanceX = clientX - centerX
     const distanceY = clientY - centerY
     const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
