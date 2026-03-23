@@ -44,7 +44,7 @@ const products = [
       "AI-ready clinical workflows"
     ],
     vision: "Deliver efficient, accessible, and intelligent healthcare technology for modern hospitals and clinics.",
-    image: PlaceHolderImages.find(img => img.id === 'product-data')?.imageUrl || "https://picsum.photos/seed/kcs-health/800/600",
+    image: "", // Image removed per request
     hint: "healthcare platform",
     href: "https://www.sushrth.com/"
   }
@@ -88,23 +88,25 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -10 }}
+      whileHover={{ y: -15, scale: 1.02 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative min-h-[350px] md:min-h-[700px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
+      className="group relative h-[550px] md:h-[750px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
       <div className="absolute inset-0 z-0">
-        <Image 
-          src={product.image}
-          alt={product.name}
-          fill
-          className="object-cover opacity-15 group-hover:opacity-30 transition-all duration-1000 group-hover:scale-105"
-          data-ai-hint={product.hint}
-        />
+        {product.image && (
+          <Image 
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover opacity-15 group-hover:opacity-30 transition-all duration-1000 group-hover:scale-105"
+            data-ai-hint={product.hint}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/90 to-background z-10" />
       </div>
 
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 flex-1 flex flex-col">
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 h-full flex flex-col">
         <div className="mb-3 md:mb-8">
           <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline mb-2">
             {product.tag}
