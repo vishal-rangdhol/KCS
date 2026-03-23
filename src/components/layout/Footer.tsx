@@ -21,14 +21,13 @@ const XIcon = ({ size = 14 }: { size?: number }) => (
 const digitalJourney = [
   { id: '01', name: 'Home', href: '/#hero' },
   { id: '02', name: 'Products', href: '/#products' },
-  { id: '03', name: 'Technology', href: '/#technology' },
-  { id: '04', name: 'Services', href: '/#services' },
+  { id: '03', name: 'Services', href: '/#services' },
 ]
 
 const corporateProtocol = [
-  { id: '05', name: 'About', href: '/#story' },
-  { id: '06', name: 'Careers', href: '/#careers' },
-  { id: '07', name: 'Contact', href: '/contact' },
+  { id: '04', name: 'About', href: '/#story' },
+  { id: '05', name: 'Careers', href: '/#careers' },
+  { id: '06', name: 'Contact', href: '/contact' },
 ]
 
 const productItems = [

@@ -10,7 +10,6 @@ import { Footer } from '@/components/layout/Footer'
 
 const VisionChapter = dynamic(() => import('@/components/story/VisionChapter').then(mod => mod.VisionChapter), { ssr: true })
 const AboutChapter = dynamic(() => import('@/components/story/AboutChapter').then(mod => mod.AboutChapter), { ssr: true })
-const DifferentiationChapter = dynamic(() => import('@/components/story/DifferentiationChapter').then(mod => mod.DifferentiationChapter), { ssr: true })
 const ServicesChapter = dynamic(() => import('@/components/story/ServicesChapter').then(mod => mod.ServicesChapter), { ssr: true })
 const ProductsChapter = dynamic(() => import('@/components/story/ProductsChapter').then(mod => mod.ProductsChapter), { ssr: true })
 const CultureChapter = dynamic(() => import('@/components/story/CultureChapter').then(mod => mod.CultureChapter), { ssr: true })
@@ -52,7 +51,6 @@ export function Home() {
         <VisionChapter />
         <ProductsChapter />
         <ServicesChapter />
-        <DifferentiationChapter />
         <AboutChapter />
         <CultureChapter />
         <CareersChapter />
