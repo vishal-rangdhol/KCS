@@ -128,7 +128,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative flex flex-col rounded-[2.5rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit w-full",
+        "group relative flex flex-col rounded-[1.5rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-xl h-fit w-full",
         item.borderColor,
         isExpanded ? "ring-2 ring-primary/30" : ""
       )}
@@ -141,23 +141,23 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
-      <div className="relative z-10 p-10 md:p-14 flex flex-col h-full">
-        <div className="flex items-start justify-between mb-10">
+      <div className="relative z-10 p-6 md:p-8 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-6">
           <motion.div 
             layout="position"
             className={cn(
-              "p-5 rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
+              "p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
               item.iconColor
             )}
           >
-            <item.icon size={36} />
+            <item.icon size={24} />
           </motion.div>
         </div>
 
-        <div className="flex-1 space-y-8">
+        <div className="flex-1 space-y-4">
           <motion.h3 
             layout="position"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
+            className="text-lg md:text-xl lg:text-2xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
           >
             {item.title}
           </motion.h3>
@@ -165,7 +165,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           <motion.p 
             layout="position"
             className={cn(
-              "text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
+              "text-xs md:text-sm lg:text-base text-muted-foreground leading-relaxed italic font-medium transition-all duration-500",
               isExpanded ? "text-foreground/90" : "line-clamp-2"
             )}
           >
@@ -179,15 +179,15 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
                 transition={{ duration: 0.3 }}
-                className="pt-10 space-y-8"
+                className="pt-6 space-y-4"
               >
-                <div className="grid grid-cols-1 gap-6 pt-6">
+                <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/5">
                   {item.points.map((point, idx) => (
-                    <div key={idx} className="flex gap-5 items-start border-l-2 border-primary/20 pl-6 py-2">
-                      <CheckCircle2 size={18} className="text-primary mt-1.5 shrink-0" />
+                    <div key={idx} className="flex gap-3 items-start">
+                      <CheckCircle2 size={14} className="text-primary mt-1 shrink-0" />
                       <div>
-                        <span className="text-[11px] md:text-xs font-bold uppercase tracking-wider text-primary block mb-1">{point.label}</span>
-                        <span className="text-base md:text-xl text-muted-foreground italic leading-tight">{point.text}</span>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-0.5">{point.label}</span>
+                        <span className="text-xs md:text-sm text-muted-foreground italic leading-tight">{point.text}</span>
                       </div>
                     </div>
                   ))}
@@ -197,23 +197,23 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           </AnimatePresence>
         </div>
 
-        <div className="mt-14 pt-10 border-t border-white/5 flex items-center justify-between">
+        <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
           <motion.button
             layout="position"
-            className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-4 group/trigger"
+            className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/trigger"
           >
-            Learn More
+            {isExpanded ? "Contract Protocol" : "Learn More"}
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
             >
-              <ChevronDown size={18} />
+              <ChevronDown size={14} />
             </motion.div>
           </motion.button>
           
           <motion.span 
             layout="position"
-            className="text-[8px] md:text-[10px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
+            className="text-[6px] md:text-[8px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
           >
             KCS_PROTOCOL_0{index + 1}
           </motion.span>
@@ -225,9 +225,9 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="bg-background py-24 md:py-32 lg:py-48 overflow-visible">
+    <Chapter id="services" className="bg-background py-16 md:py-24 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center mb-16 md:mb-32">
+        <div className="text-center mb-12 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -235,28 +235,28 @@ export function ServicesChapter() {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-6 font-headline">
               <Sparkles size={14} className="animate-pulse" /> Operational Precision
             </span>
             
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-tight tracking-tighter text-foreground mb-12 font-headline">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-8 font-headline">
               Core <span className="text-primary italic">Services.</span>
             </h2>
 
-            <div className="w-full max-w-5xl py-12 border-y border-white/5 mb-24 relative overflow-hidden group">
+            <div className="w-full max-w-4xl py-8 border-y border-white/5 mb-16 relative overflow-hidden group">
               <motion.div 
                 className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"
                 animate={{ x: ['-100%', '100%'] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
-              <p className="text-xl md:text-4xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
+              <p className="text-lg md:text-2xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
                 "Technical discipline required to scale global businesses with absolute predictability."
               </p>
             </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 w-full max-w-7xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full max-w-7xl mx-auto items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
           ))}
