@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Linkedin, Instagram, Facebook, ArrowUpRight, Cpu } from 'lucide-react'
+import { Linkedin, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
 import NextLink from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 // Custom X (formerly Twitter) Icon Component
 const XIcon = ({ size = 14 }: { size?: number }) => (
@@ -89,7 +89,7 @@ export function Footer() {
           <div className="space-y-8">
             <button 
               onClick={scrollToTop}
-              className="inline-block group relative"
+              className="inline-block group relative text-left"
             >
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
               <Image 
@@ -173,7 +173,7 @@ export function Footer() {
                       </div>
                     </a>
                   ))}
-                  {/* Visual Connection Line Effect simulated on hover of the container */}
+                  {/* Visual Connection Line Effect */}
                   <div className="absolute -bottom-4 left-0 h-[1px] w-0 bg-primary/20 group-hover:w-full transition-all duration-1000" />
                 </div>
               </div>
