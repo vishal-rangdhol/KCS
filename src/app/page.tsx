@@ -56,8 +56,8 @@ export function Home() {
         <ProblemChapter />
         <VisionChapter />
         <ProductsChapter />
-        <ServicesChapter />
         <DifferentiationChapter />
+        <ServicesChapter />
         <AboutChapter />
         <CultureChapter />
         <CareersChapter />

@@ -21,8 +21,8 @@ const XIcon = ({ size = 14 }: { size?: number }) => (
 const digitalJourney = [
   { id: '01', name: 'Home', href: '/#hero' },
   { id: '02', name: 'Products', href: '/#products' },
-  { id: '03', name: 'Services', href: '/#services' },
-  { id: '04', name: 'Technology', href: '/#technology' },
+  { id: '03', name: 'Technology', href: '/#technology' },
+  { id: '04', name: 'Services', href: '/#services' },
 ]
 
 const corporateProtocol = [
