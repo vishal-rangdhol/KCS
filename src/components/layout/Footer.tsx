@@ -1,9 +1,11 @@
+
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { Linkedin, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
 import NextLink from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // Custom X (formerly Twitter) Icon Component
 const XIcon = ({ size = 14 }: { size?: number }) => (
@@ -31,8 +33,8 @@ const corporateProtocol = [
 ]
 
 const productItems = [
-  { id: '01', name: 'Let\'s Catch Up', href: 'https://letscatchup-kcs.com/' },
-  { id: '02', name: 'Sushrth', href: 'https://www.sushrth.com/' },
+  { id: '07', name: 'Let\'s Catch Up', href: 'https://letscatchup-kcs.com/' },
+  { id: '08', name: 'Sushrth', href: 'https://www.sushrth.com/' },
 ]
 
 const socialItems = [
@@ -70,7 +72,35 @@ const socialItems = [
   },
 ]
 
+function OdometerNumber({ num }: { num: string }) {
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <div 
+      onMouseEnter={() => setIsHovered(true)} 
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative h-4 w-4 overflow-hidden"
+    >
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={isHovered ? 'hover' : 'base'}
+          initial={{ y: 20 }}
+          animate={{ y: 0 }}
+          exit={{ y: -20 }}
+          className="absolute inset-0 text-[8px] font-bold text-primary flex items-center justify-center"
+        >
+          {isHovered ? (Math.floor(Math.random() * 90) + 10) : num}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  )
+}
+
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-16 md:pt-20 pb-12 border-t border-white/5">
       {/* Background Architectural Mark */}
@@ -82,15 +112,20 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row justify-between gap-12 md:gap-24 mb-16 md:mb-20">
           
           <div className="lg:max-w-sm">
-            <NextLink href="/" className="inline-block mb-6 md:mb-8 group">
+            <button 
+              onClick={scrollToTop}
+              className="inline-block mb-6 md:mb-8 group relative"
+            >
+              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
               <Image 
                 src="/kcs-logo.png" 
                 alt="KCS Logo" 
                 width={120} 
                 height={40} 
-                className="h-7 md:h-8 w-auto group-hover:opacity-80 transition-opacity" 
+                className="h-7 md:h-8 w-auto relative z-10 group-hover:opacity-80 transition-opacity" 
               />
-            </NextLink>
+              <span className="absolute -bottom-4 left-0 text-[6px] font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">Reset System</span>
+            </button>
             <div className="relative">
               <h4 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-primary mb-4 font-headline">The Collective Protocol</h4>
               <p className="text-muted-foreground text-xs md:text-sm leading-relaxed italic font-medium max-w-xs">
@@ -113,7 +148,7 @@ export function Footer() {
                 {digitalJourney.map((item) => (
                   <li key={item.name}>
                     <NextLink href={item.href} className="group flex items-center gap-3 text-[10px] md:text-xs text-muted-foreground hover:text-primary transition-colors font-medium">
-                      <span className="text-[8px] font-bold text-primary/40 group-hover:text-primary transition-colors">{item.id}</span>
+                      <OdometerNumber num={item.id} />
                       {item.name}
                     </NextLink>
                   </li>
@@ -130,7 +165,7 @@ export function Footer() {
                 {corporateProtocol.map((item) => (
                   <li key={item.name}>
                     <NextLink href={item.href} className="group flex items-center gap-3 text-[10px] md:text-xs text-muted-foreground hover:text-primary transition-colors font-medium">
-                      <span className="text-[8px] font-bold text-primary/40 group-hover:text-primary transition-colors">{item.id}</span>
+                      <OdometerNumber num={item.id} />
                       {item.name}
                     </NextLink>
                   </li>
@@ -147,7 +182,7 @@ export function Footer() {
                 {productItems.map((item) => (
                   <li key={item.name}>
                     <a href={item.href} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-[10px] md:text-xs text-muted-foreground hover:text-primary transition-colors font-medium">
-                      <span className="text-[8px] font-bold text-primary/40 group-hover:text-primary transition-colors">{item.id}</span>
+                      <OdometerNumber num={item.id} />
                       {item.name}
                       <ArrowUpRight size={10} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
                     </a>
@@ -161,7 +196,10 @@ export function Footer() {
               <h5 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-primary font-headline flex items-center gap-2">
                 <span className="w-4 h-px bg-primary/30" /> Connection
               </h5>
-              <div className="flex gap-3 md:gap-4">
+              <div className="flex gap-3 md:gap-4 relative group/socials">
+                {/* Connection Line effect simulated with a subtle border animation on group hover */}
+                <div className="absolute -top-4 left-0 h-px w-0 bg-primary/20 group-hover/socials:w-full transition-all duration-1000" />
+                
                 {socialItems.map((item) => (
                   <a 
                     key={item.name} 

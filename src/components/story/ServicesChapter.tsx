@@ -2,10 +2,10 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, AnimatePresence } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, RefreshCw, ChevronDown, Sparkles, CheckCircle2 } from 'lucide-react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, RefreshCw, ChevronDown, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const services = [
   {
@@ -13,10 +13,10 @@ const services = [
     title: "Artificial Intelligence Solutions",
     description: "Turning AI from a buzzword into a genuine operational advantage.",
     points: [
-      { label: "Predictive Analytics", text: "Forecasting trends to drive proactive strategy." },
-      { label: "Machine Learning", text: "Custom models engineered for complex data environments." },
-      { label: "Intelligent Automation", text: "Streamlining workflows via AI-driven process optimization." },
-      { label: "Seamless Integration", text: "Solutions designed to plug directly into your existing infrastructure." }
+      { label: "Predictive Analytics", text: "Forecasting trends to drive strategy." },
+      { label: "Machine Learning", text: "Custom models for complex data." },
+      { label: "Intelligent Automation", text: "AI-driven process optimization." },
+      { label: "Seamless Integration", text: "Plugs into existing infrastructure." }
     ],
     icon: BrainCircuit,
     color: "from-indigo-600/20 to-indigo-600/5",
@@ -27,11 +27,11 @@ const services = [
   {
     id: "cyber",
     title: "Cybersecurity & Compliance",
-    description: "Security isn't an afterthought—it’s the foundation of every system we design.",
+    description: "Security isn't an afterthought—it’s the foundation of every system.",
     points: [
-      { label: "Security Architecture", text: "End-to-end design focused on 'Secure by Default' principles." },
-      { label: "Risk & Threat Management", text: "Comprehensive assessments, detection systems, and incident response." },
-      { label: "Modern Compliance", text: "Ensuring every product meets global security and regulatory standards." }
+      { label: "Security Architecture", text: "End-to-end 'Secure by Default'." },
+      { label: "Threat Management", text: "Detection and incident response." },
+      { label: "Modern Compliance", text: "Meeting global regulatory standards." }
     ],
     icon: Shield,
     color: "from-rose-600/20 to-rose-600/5",
@@ -44,9 +44,9 @@ const services = [
     title: "Cloud & Infrastructure",
     description: "Scalable architectures built for global performance and high availability.",
     points: [
-      { label: "Cloud-Native Development", text: "Purpose-built applications for the modern web." },
-      { label: "Multi-Cloud Expertise", text: "Architecture and implementation across AWS, Google Cloud, and Azure." },
-      { label: "Scalable Frameworks", text: "Infrastructure designed to grow alongside your business without friction." }
+      { label: "Cloud-Native", text: "Purpose-built for the modern web." },
+      { label: "Multi-Cloud", text: "AWS, Google Cloud, and Azure." },
+      { label: "Scalable Frameworks", text: "Frictionless growth architecture." }
     ],
     icon: Cloud,
     color: "from-emerald-600/20 to-emerald-600/5",
@@ -57,11 +57,11 @@ const services = [
   {
     id: "data",
     title: "Data & Strategic Analytics",
-    description: "Transforming raw data into strategic clarity and actionable leadership insights.",
+    description: "Transforming raw data into strategic clarity and actionable insights.",
     points: [
-      { label: "Business Intelligence", text: "Custom BI systems and real-time analytics dashboards." },
-      { label: "Data Architecture", text: "Robust foundations for managing complex data sets." },
-      { label: "Predictive Modeling", text: "Moving beyond historical data to anticipate 'what’s coming next'." }
+      { label: "Business Intelligence", text: "Custom BI and real-time dashboards." },
+      { label: "Data Architecture", text: "Foundations for complex data sets." },
+      { label: "Predictive Modeling", text: "Anticipating 'what’s coming next'." }
     ],
     icon: BarChart3,
     color: "from-sky-600/20 to-sky-600/5",
@@ -74,9 +74,9 @@ const services = [
     title: "Custom Enterprise Software",
     description: "Software that fits your unique workflows—not the other way around.",
     points: [
-      { label: "Custom ERP & CRM", text: "Tailored platforms built for the way your organization actually operates." },
-      { label: "Workflow Automation", text: "Removing manual bottlenecks with integrated digital tools." },
-      { label: "Unified Dashboards", text: "Centralized views of your entire business ecosystem." }
+      { label: "Custom ERP & CRM", text: "Tailored for your organization." },
+      { label: "Workflow Automation", text: "Removing manual bottlenecks." },
+      { label: "Unified Dashboards", text: "Centralized business ecosystem." }
     ],
     icon: Building2,
     color: "from-violet-600/20 to-violet-600/5",
@@ -85,29 +85,14 @@ const services = [
     iconColor: "text-violet-400"
   },
   {
-    id: "mobile",
-    title: "Mobile & Cross-Platform Development",
-    description: "High-performance applications delivering seamless experiences across every device.",
-    points: [
-      { label: "Cross-Platform Mastery", text: "Expert development in Flutter and React Native." },
-      { label: "Native Precision", text: "Specialized builds using Swift, Kotlin, and .NET." },
-      { label: "Performance-First", text: "Optimized for speed, reliability, and intuitive user experiences." }
-    ],
-    icon: Smartphone,
-    color: "from-fuchsia-600/20 to-fuchsia-600/5",
-    accent: "bg-fuchsia-500",
-    borderColor: "group-hover:border-fuchsia-500/50",
-    iconColor: "text-fuchsia-400"
-  },
-  {
     id: "lifecycle",
     title: "Full Product Lifecycle Support",
     description: "From initial architecture to 24/7 global operations.",
     points: [
-      { label: "End-to-End Build", text: "UX design, backend infrastructure, and scalable development." },
-      { label: "Operational Support", text: "Post-launch technical management so you can focus on growth." },
-      { label: "Adaptive Maintenance", text: "Continuous updates to prevent legacy debt and ensure compatibility." },
-      { label: "24/7 Global Support", text: "Hybrid AI and human teams for troubleshooting and feedback analysis." }
+      { label: "End-to-End Build", text: "UX, backend, and development." },
+      { label: "Operational Support", text: "Post-launch technical management." },
+      { label: "Adaptive Maintenance", text: "Preventing technical debt." },
+      { label: "24/7 Support", text: "Hybrid AI and human teams." }
     ],
     icon: RefreshCw,
     color: "from-primary/20 to-primary/5",
@@ -116,6 +101,35 @@ const services = [
     iconColor: "text-primary"
   }
 ]
+
+function TypewriterQuote({ text }: { text: string }) {
+  const [displayText, setDisplayText] = useState("")
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, amount: 0.5 })
+
+  useEffect(() => {
+    if (isInView) {
+      let i = 0
+      const interval = setInterval(() => {
+        setDisplayText(text.slice(0, i))
+        i++
+        if (i > text.length) clearInterval(interval)
+      }, 30)
+      return () => clearInterval(interval)
+    }
+  }, [isInView, text])
+
+  return (
+    <p ref={ref} className="text-lg md:text-2xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
+      "{displayText}"
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity }}
+        className="inline-block w-[2px] h-[1em] bg-primary ml-1 align-middle"
+      />
+    </p>
+  )
+}
 
 function ServiceCard({ item, index }: { item: typeof services[0], index: number }) {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -141,13 +155,26 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
+      {/* System Scan Line */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ top: "-100%" }}
+            animate={{ top: "200%" }}
+            transition={{ duration: 1.5, ease: "linear" }}
+            className="absolute left-0 right-0 h-1 bg-primary/40 blur-sm z-30 pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
+
       <div className="relative z-10 p-6 md:p-8 flex flex-col h-full">
         <div className="flex items-start justify-between mb-6">
           <motion.div 
-            layout="position"
+            layout
             className={cn(
               "p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
-              item.iconColor
+              item.iconColor,
+              isExpanded ? "scale-125 mb-4" : ""
             )}
           >
             <item.icon size={24} />
@@ -156,14 +183,14 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
 
         <div className="flex-1 space-y-4">
           <motion.h3 
-            layout="position"
+            layout
             className="text-lg md:text-xl lg:text-2xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
           >
             {item.title}
           </motion.h3>
           
           <motion.p 
-            layout="position"
+            layout
             className={cn(
               "text-xs md:text-sm lg:text-base text-muted-foreground leading-relaxed italic font-medium transition-all duration-500",
               isExpanded ? "text-foreground/90" : "line-clamp-2"
@@ -175,21 +202,26 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           <AnimatePresence mode="popLayout">
             {isExpanded && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 5 }}
-                transition={{ duration: 0.3 }}
-                className="pt-6 space-y-4"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="pt-6 space-y-6 overflow-hidden"
               >
-                <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 pt-4 border-t border-white/5">
                   {item.points.map((point, idx) => (
-                    <div key={idx} className="flex gap-3 items-start">
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="flex gap-3 items-start"
+                    >
                       <CheckCircle2 size={14} className="text-primary mt-1 shrink-0" />
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-primary block mb-0.5">{point.label}</span>
                         <span className="text-xs md:text-sm text-muted-foreground italic leading-tight">{point.text}</span>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
@@ -199,10 +231,10 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
 
         <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
           <motion.button
-            layout="position"
+            layout
             className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/trigger"
           >
-            {isExpanded ? "Close" : "Learn More"}
+            {isExpanded ? "Collapse Protocol" : "Access Dossier"}
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
@@ -212,7 +244,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           </motion.button>
           
           <motion.span 
-            layout="position"
+            layout
             className="text-[6px] md:text-[8px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
           >
             KCS_PROTOCOL_0{index + 1}
@@ -236,7 +268,7 @@ export function ServicesChapter() {
             className="flex flex-col items-center"
           >
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-6 font-headline">
-              <point size={14} className="animate-pulse" /> Operational Precision
+              Operational Precision
             </span>
             
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-8 font-headline">
@@ -249,9 +281,7 @@ export function ServicesChapter() {
                 animate={{ x: ['-100%', '100%'] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
-              <p className="text-lg md:text-2xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
-                "Technical discipline required to scale global businesses with absolute predictability."
-              </p>
+              <TypewriterQuote text="Technical discipline required to scale global businesses with absolute predictability." />
             </div>
           </motion.div>
         </div>

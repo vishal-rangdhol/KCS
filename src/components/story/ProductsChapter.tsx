@@ -1,8 +1,9 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react'
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Sparkles, CheckCircle2, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import {
@@ -12,7 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { PlaceHolderImages } from '@/lib/placeholder-images'
 
 const products = [
@@ -30,7 +31,8 @@ const products = [
     vision: "Healthy education communities.",
     image: PlaceHolderImages.find(img => img.id === 'product-chat')?.imageUrl || "https://picsum.photos/seed/kcs-chat/800/600",
     hint: "social learning",
-    href: "https://letscatchup-kcs.com/"
+    href: "https://letscatchup-kcs.com/",
+    cta: "Join Ecosystem"
   },
   {
     id: "sushrth",
@@ -44,22 +46,24 @@ const products = [
       "AI clinical workflows"
     ],
     vision: "Intelligent healthcare scaling.",
-    image: "", 
+    image: PlaceHolderImages.find(img => img.id === 'product-data')?.imageUrl || "https://picsum.photos/seed/kcs-med/800/600",
     hint: "healthcare platform",
-    href: "https://www.sushrth.com/"
+    href: "https://www.sushrth.com/",
+    cta: "Request Architecture"
   }
 ]
 
 function ProductCard({ product, index }: { product: typeof products[0], index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-2deg", "2deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["2deg", "-2deg"])
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-3deg", "3deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["3deg", "-3deg"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth < 768) return
@@ -71,7 +75,9 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
     y.set(yPct)
   }
 
+  const handleMouseEnter = () => setIsHovered(true)
   const handleMouseLeave = () => {
+    setIsHovered(false)
     x.set(0)
     y.set(0)
   }
@@ -80,6 +86,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
     <motion.div 
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
         rotateX,
@@ -93,24 +100,47 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       viewport={{ once: true }}
       className="group relative h-[380px] md:h-[700px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
+      {/* Blueprint Hover Background */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.15 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{ 
+              backgroundImage: 'radial-gradient(var(--primary) 0.5px, transparent 0.5px), linear-gradient(to right, rgba(251,146,60,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(251,146,60,0.05) 1px, transparent 1px)',
+              backgroundSize: '20px 20px, 40px 40px, 40px 40px'
+            }}
+          />
+        )}
+      </AnimatePresence>
+
       <div className="absolute inset-0 z-0">
         {product.image && (
           <Image 
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover opacity-10 group-hover:opacity-20 transition-all duration-1000 group-hover:scale-105"
+            className="object-cover opacity-10 group-hover:opacity-5 transition-all duration-1000 group-hover:scale-110"
             data-ai-hint={product.hint}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/80 to-background z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background z-10" />
       </div>
 
       <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 h-full flex flex-col justify-between">
         <div className="space-y-2 md:space-y-6">
-          <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline">
-            {product.tag}
-          </span>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline">
+              <motion.span 
+                animate={{ opacity: [1, 0.4, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_#F97316]"
+              />
+              {product.tag}
+            </span>
+          </div>
           <h3 className="text-lg sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline leading-tight">
             {product.name}
           </h3>
@@ -119,37 +149,64 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           </p>
         </div>
 
+        {/* Feature Tags with Staggered Pop */}
         <div className="grid grid-cols-2 gap-1.5 md:gap-4 my-2 md:my-8">
           {product.features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-3 p-1 md:p-3 rounded-lg md:rounded-xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 + (i * 0.1), type: "spring" }}
+              className="flex items-center gap-1.5 md:gap-3 p-1 md:p-3 rounded-lg md:rounded-xl bg-white/5 border border-white/5 group-hover:border-primary/20 group-hover:bg-primary/5 transition-all"
+            >
               <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-primary shrink-0" />
               <span className="text-[7px] md:text-sm font-medium text-foreground/80 leading-none truncate">{feature}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         <div className="pt-2 md:pt-8 border-t border-white/5">
           <div className="flex items-center gap-1 md:gap-2 mb-0.5 md:mb-2">
             <Sparkles size={8} className="text-primary animate-pulse md:w-3 md:h-3" />
-            <span className="text-[6px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Vision</span>
+            <span className="text-[6px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Vision Protocol</span>
           </div>
           <p className="text-[10px] md:text-xl font-bold text-foreground leading-tight italic tracking-tight mb-3 md:mb-6">
             "{product.vision}"
           </p>
 
-          <Button 
-            variant="outline" 
-            className="h-7 md:h-12 px-4 md:px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-[8px] md:text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
-            onClick={() => {
-              if (product.href && product.href !== "#") {
-                window.open(product.href, '_blank', 'noopener,noreferrer');
-              }
-            }}
-          >
-            Learn More
-            <ArrowRight className="ml-1 w-2.5 h-2.5 md:w-4 md:h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
-          </Button>
+          <div className="flex gap-4">
+            <Button 
+              variant="outline" 
+              className="h-7 md:h-12 px-4 md:px-8 rounded-full border-2 border-primary text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white transition-all duration-500 text-[8px] md:text-sm font-bold group/btn shadow-xl flex-1 md:flex-none"
+              onClick={() => {
+                if (product.href && product.href !== "#") {
+                  window.open(product.href, '_blank', 'noopener,noreferrer');
+                }
+              }}
+            >
+              {product.cta}
+              <ArrowRight className="ml-1 w-2.5 h-2.5 md:w-4 md:h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
+            </Button>
+            
+            <Button 
+              variant="ghost" 
+              className="h-7 md:h-12 px-4 md:px-8 rounded-full text-foreground/40 hover:text-primary transition-all text-[8px] md:text-sm font-bold hidden md:flex items-center gap-2"
+            >
+              <Zap size={14} />
+              Technical Specs
+            </Button>
+          </div>
         </div>
+      </div>
+
+      {/* Blueprint Corners */}
+      <div className="absolute top-0 right-0 w-16 h-16 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity">
+        <div className="absolute top-4 right-4 w-4 h-px bg-primary" />
+        <div className="absolute top-4 right-4 h-4 w-px bg-primary" />
+      </div>
+      <div className="absolute bottom-0 left-0 w-16 h-16 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity">
+        <div className="absolute bottom-4 left-4 w-4 h-px bg-primary" />
+        <div className="absolute bottom-4 left-4 h-4 w-px bg-primary" />
       </div>
     </motion.div>
   )
