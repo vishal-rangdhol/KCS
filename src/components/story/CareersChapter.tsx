@@ -1,11 +1,11 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useMotionTemplate, useSpring } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles, Zap, Cpu, Heart, Focus, ShieldCheck, RefreshCw } from 'lucide-react'
 import Link from 'next/link'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 
 const advantages = [
@@ -31,59 +31,61 @@ const pillars = [
     title: "Focused Work > Performative Busyness",
     text: "We value deep work and outcomes over long hours and 'busy work.'",
     icon: Focus,
-    size: "large"
+    size: "large",
+    bg: "bg-gradient-to-br from-primary/20 to-primary/5"
   },
   {
     title: "Quality-First Engineering",
     text: "We don't just ship code; we take pride in the architectural integrity of everything we build.",
     icon: ShieldCheck,
-    size: "small"
+    size: "small",
+    bg: "bg-card/40"
   },
   {
     title: "Supported Growth",
-    text: "We provide the space, tools, and mentorship needed for you to do your best work and level up.",
+    text: "We provide the space, tools, and mentorship needed for you to do your best work and level up your skills.",
     icon: RefreshCw,
-    size: "small"
+    size: "small",
+    bg: "bg-card/20 backdrop-blur-md"
   },
   {
     title: "Wellbeing as a Priority",
     text: "We take the health and balance of our people as seriously as our system uptime.",
     icon: Heart,
-    size: "large"
+    size: "large",
+    bg: "bg-card/60",
+    badge: "Protocol 01"
   }
 ]
 
 function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
   return (
     <motion.div
-      ref={cardRef}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.1, ease: [0.17, 0.67, 0.83, 0.67] }}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative p-8 rounded-[2rem] bg-card/40 border border-white/5 overflow-hidden group cursor-default shadow-xl"
+      className="relative p-8 rounded-[2rem] bg-gray-950 border border-white/5 overflow-hidden group cursor-default shadow-xl"
     >
-      {/* Spotlight Effect */}
-      <div 
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(249,115,22,0.06), transparent 40%)`
+          background: useMotionTemplate`
+            radial-gradient(
+              450px circle at ${mouseX}px ${mouseY}px,
+              rgba(249, 115, 22, 0.1),
+              transparent 80%
+            )
+          `,
         }}
       />
       
@@ -114,7 +116,7 @@ export function CareersChapter() {
             <Sparkles size={12} className="animate-pulse" /> The Talent Protocol
           </span>
           
-          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-foreground mb-10 font-headline">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-10 font-headline">
             Architect the future with us.
           </h2>
 
@@ -157,10 +159,17 @@ export function CareersChapter() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: i * 0.1, ease: [0.17, 0.67, 0.83, 0.67] }}
                 className={cn(
-                  "flex flex-col p-8 rounded-[2.5rem] bg-card/40 border border-white/5 group hover:bg-card hover:border-primary/20 transition-all duration-500 shadow-2xl overflow-hidden relative",
+                  "flex flex-col p-8 rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative",
+                  pillar.bg,
                   pillar.size === "large" ? "md:col-span-7" : "md:col-span-5"
                 )}
               >
+                {pillar.badge && (
+                  <div className="absolute top-6 right-8 px-3 py-1 rounded-full bg-primary text-white text-[8px] font-bold uppercase tracking-widest z-20 shadow-[0_0_15px_rgba(249,115,22,0.6)]">
+                    {pillar.badge}
+                  </div>
+                )}
+                
                 <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
                   <pillar.icon size={120} strokeWidth={0.5} />
                 </div>
@@ -186,14 +195,55 @@ export function CareersChapter() {
           className="text-center"
         >
           <h3 className="text-2xl md:text-4xl font-bold tracking-tighter mb-10 font-headline">Ready to make an impact?</h3>
-          <Link href="/careers">
-            <Button size="lg" className="rounded-full h-14 px-12 text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_30px_rgba(249,115,22,0.2)] border-none text-white transition-all duration-500">
-              View Open Roles 
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
-            </Button>
-          </Link>
+          <MagneticButton>
+            <Link href="/careers">
+              <Button size="lg" className="rounded-full h-14 px-12 text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_30px_rgba(249,115,22,0.2)] border-none text-white transition-all duration-500">
+                View Open Roles 
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+              </Button>
+            </Link>
+          </MagneticButton>
         </motion.div>
       </div>
     </Chapter>
+  )
+}
+
+function MagneticButton({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 })
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 })
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    const { clientX, clientY } = e
+    const { left, top, width, height } = ref.current.getBoundingClientRect()
+    const centerX = left + width / 2
+    const centerY = top + height / 2
+    const moveX = clientX - centerX
+    const moveY = clientY - centerY
+    const factor = 0.2
+    x.set(moveX * factor)
+    y.set(moveY * factor)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="inline-block relative"
+    >
+      <motion.div style={{ x: springX, y: springY }}>
+        {children}
+      </motion.div>
+    </div>
   )
 }

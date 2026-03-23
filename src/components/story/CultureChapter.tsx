@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useMotionTemplate } from 'framer-motion'
 import { Focus, Heart, ShieldCheck, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
@@ -101,51 +101,76 @@ export function CultureChapter() {
           {/* Right: Large Display Area with Glitch Transition */}
           <div className="lg:w-3/4 flex items-center">
             <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSlug}
-                initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
-                animate={{ 
-                  opacity: 1, x: 0, filter: 'blur(0px)',
-                  transition: { duration: 0.4, ease: [0.17, 0.67, 0.83, 0.67] }
-                }}
-                exit={{ 
-                  opacity: 0, x: -20, filter: 'blur(10px)',
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-card/40 border border-white/5 p-10 md:p-20 rounded-[2.5rem] relative overflow-hidden backdrop-blur-md shadow-2xl w-full"
-              >
-                {/* Subtle Glitch Decoration */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
-                
-                <div className="relative z-10 space-y-8">
-                  <div className="flex items-center gap-4">
-                    <div className="p-4 rounded-2xl bg-primary/10 text-primary">
-                      <activeProtocol.icon size={32} />
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 font-headline block mb-1">
-                        {activeProtocol.tag}
-                      </span>
-                      <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground font-headline">
-                        {activeProtocol.title}
-                      </h3>
-                    </div>
-                  </div>
-                  
-                  <p className="text-base md:text-2xl text-muted-foreground leading-relaxed italic font-medium max-w-2xl">
-                    {activeProtocol.text}
-                  </p>
-
-                  <div className="pt-8 flex gap-4">
-                    <div className="w-12 h-1 bg-primary rounded-full" />
-                    <div className="w-2 h-1 bg-white/5 rounded-full" />
-                  </div>
-                </div>
-              </motion.div>
+              <ProtocolDisplay key={activeSlug} protocol={activeProtocol} />
             </AnimatePresence>
           </div>
         </div>
       </div>
     </Chapter>
+  )
+}
+
+function ProtocolDisplay({ protocol }: { protocol: typeof protocols[0] }) {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
+      animate={{ 
+        opacity: 1, x: 0, filter: 'blur(0px)',
+        transition: { duration: 0.4, ease: [0.17, 0.67, 0.83, 0.67] }
+      }}
+      exit={{ 
+        opacity: 0, x: -20, filter: 'blur(10px)',
+        transition: { duration: 0.2 }
+      }}
+      onMouseMove={handleMouseMove}
+      className="group bg-black border border-primary/40 p-10 md:p-20 rounded-[2.5rem] relative overflow-hidden backdrop-blur-md shadow-[0_0_50px_rgba(249,115,22,0.15)] w-full"
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[2.5rem] opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(249, 115, 22, 0.15),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      
+      <div className="relative z-10 space-y-8">
+        <div className="flex items-center gap-4">
+          <div className="p-4 rounded-2xl bg-primary/10 text-primary">
+            <protocol.icon size={32} />
+          </div>
+          <div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 font-headline block mb-1">
+              {protocol.tag}
+            </span>
+            <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-white font-headline">
+              {protocol.title}
+            </h3>
+          </div>
+        </div>
+        
+        <p className="text-base md:text-2xl text-muted-foreground leading-relaxed italic font-medium max-w-2xl">
+          {protocol.text}
+        </p>
+
+        <div className="pt-8 flex gap-4">
+          <div className="w-12 h-1 bg-primary rounded-full shadow-[0_0_15px_rgba(249,115,22,0.8)]" />
+          <div className="w-2 h-1 bg-white/5 rounded-full" />
+        </div>
+      </div>
+    </motion.div>
   )
 }

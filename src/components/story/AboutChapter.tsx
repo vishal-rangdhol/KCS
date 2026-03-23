@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useRef, useState, useEffect } from 'react'
@@ -56,6 +56,26 @@ export function AboutChapter() {
   const highlight2 = useTransform(scrollYProgress, [0.5, 0.55, 0.6, 0.65], [0.3, 1, 1, 0.3]);
   const highlight3 = useTransform(scrollYProgress, [0.6, 0.65, 0.7, 0.75], [0.3, 1, 1, 0.3]);
 
+  const visionContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const visionItemVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.8, ease: [0.17, 0.67, 0.83, 0.67] }
+    }
+  };
+
   return (
     <Chapter id="story" className="bg-background py-24 md:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -75,7 +95,7 @@ export function AboutChapter() {
             {/* 1. The Anchor (Left Side - 40%) */}
             <div className="w-full lg:w-[40%] space-y-8 relative">
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter text-foreground font-headline">
-                The <span className="text-primary italic">KCS Story.</span>
+                The <span className="text-primary italic glitch-text">KCS</span> Story.
               </h2>
               <div className="space-y-6 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium relative z-10">
                 <p>
@@ -126,7 +146,7 @@ export function AboutChapter() {
           className="mb-32 md:mb-64"
         >
           <div 
-            className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[500px]"
+            className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[500px] group/lab"
             onMouseEnter={() => setIsLabHovered(true)}
             onMouseLeave={() => setIsLabHovered(false)}
           >
@@ -147,7 +167,7 @@ export function AboutChapter() {
                 <div className="absolute inset-0 bg-primary/5 opacity-30 z-0" />
                 
                 {/* Node Wireframe Animation */}
-                <div className="absolute inset-0 z-10 opacity-40">
+                <div className="absolute inset-0 z-10 opacity-40 transition-transform duration-1000 group-hover/lab:scale-110">
                   <svg className="w-full h-full" viewBox="0 0 400 400">
                     {isMounted && (
                       <motion.g
@@ -264,25 +284,25 @@ export function AboutChapter() {
         {/* Part 4: Our Vision - Scroll Triggered Highlighting */}
         <motion.div
           ref={visionRef}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={visionContainerVariants}
           className="text-center"
         >
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-12 font-headline">
+          <motion.h3 variants={visionItemVariants} className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-12 font-headline">
             Our Vision.
-          </h3>
+          </motion.h3>
           <div className="max-w-4xl mx-auto space-y-12">
-            <p className="text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
+            <motion.p variants={visionItemVariants} className="text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
               KCS aims to become a global product lab for digital infrastructure — supporting
               founders, enterprises, and institutions in building the platforms that define the next
               era of business.
-            </p>
+            </motion.p>
             
-            <div className="text-lg md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight">
+            <motion.div variants={visionItemVariants} className="text-lg md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight">
               From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">Social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI-powered healthcare infrastructure</motion.span>, we are focused on building <motion.span style={{ opacity: highlight3, color: useTransform(highlight3, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">digital infrastructure</motion.span> that improves how people learn, connect, and access services.
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
