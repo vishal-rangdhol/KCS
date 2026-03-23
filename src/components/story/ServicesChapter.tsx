@@ -70,7 +70,7 @@ const services = [
   {
     id: "mobile",
     title: "Mobile & Cross-Platform Development",
-    description: "We build high-performance applications across all modern platforms — iOS, Android, and web.",
+    description: "We build high-performance applications across all modern platforms — iOS, Android, and web",
     extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
     icon: Smartphone,
     color: "bg-fuchsia-600/10",
@@ -82,11 +82,12 @@ const services = [
     id: "lifecycle",
     title: "Product Lifecycle Support",
     description: "Build. Run. Maintain. KCS supports digital products across their entire lifecycle:",
+    isCollapsible: true,
     points: [
-      { label: "Product Development", text: "architecture, UX, and infrastructure built from ground up." },
-      { label: "Operational Support", text: "post-launch ops for growth and marketing focus." },
-      { label: "Continuous Maintenance", text: "adaptive maintenance for OS and security standards." },
-      { label: "24/7 Global Support", text: "AI-assisted and human teams for troubleshooting." }
+      { label: "Product Development", text: "architecture design, user experience, and backend infrastructure built from the ground up." },
+      { label: "Operational Support", text: "post-launch technical operations so your team can focus on growth, marketing, and strategy." },
+      { label: "Continuous Maintenance", text: "adaptive maintenance ensuring your platforms remain compatible with new operating systems, security standards, and performance requirements. This prevents expensive legacy migrations down the road." },
+      { label: "24/7 Global Customer Support", text: "AI-assisted and human support teams handling technical queries, user assistance, product troubleshooting, and feedback analysis." }
     ],
     icon: RefreshCw,
     color: "bg-primary/10",
@@ -95,19 +96,26 @@ const services = [
   }
 ]
 
-function ServiceCard({ item, index }: { item: typeof services[0], index: number }) {
+interface ServiceCardProps {
+  item: typeof services[0]
+  index: number
+  className?: string
+}
+
+function ServiceCard({ item, index, className }: ServiceCardProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -15, scale: 1.02 }}
+      whileHover={{ y: -15, scale: 1.01 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
       className={cn(
         "group p-6 md:p-8 lg:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm shadow-2xl flex flex-col min-h-[400px] md:min-h-[580px]",
-        item.borderColor
+        item.borderColor,
+        className
       )}
     >
       <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", item.color)} />
@@ -127,7 +135,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
               {item.description}
             </p>
 
-            {item.isCollapsible && item.extraContent && (
+            {item.isCollapsible && (item.extraContent || item.points) && (
               <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
                 <CollapsibleTrigger asChild>
                   <button className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/trigger mt-2">
@@ -136,18 +144,33 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                   </button>
                 </CollapsibleTrigger>
                 <CollapsibleContent className="mt-4">
-                  <motion.p 
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-[11px] md:text-sm text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/20 pl-4"
-                  >
-                    {item.extraContent}
-                  </motion.p>
+                  {item.extraContent && (
+                    <motion.p 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-[11px] md:text-sm text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/20 pl-4 mb-4"
+                    >
+                      {item.extraContent}
+                    </motion.p>
+                  )}
+                  {item.points && (
+                    <div className="space-y-4 mt-2">
+                      {item.points.map((point, idx) => (
+                        <div key={idx} className="flex gap-3">
+                          <CheckCircle2 size={14} className="text-primary shrink-0 mt-1" />
+                          <div className="space-y-1">
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
+                            <span className="text-[10px] md:text-sm text-muted-foreground/80 leading-snug italic">{point.text}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </CollapsibleContent>
               </Collapsible>
             )}
 
-            {item.points && (
+            {!item.isCollapsible && item.points && (
               <div className="space-y-3 mt-4">
                 {item.points.map((point, idx) => (
                   <div key={idx} className="flex gap-3">
@@ -207,7 +230,18 @@ export function ServicesChapter() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
           {services.map((item, i) => (
-            <ServiceCard key={item.id} item={item} index={i} />
+            <div 
+              key={item.id}
+              className={cn(
+                i === 6 ? "md:col-span-2 lg:col-span-3 flex justify-center" : ""
+              )}
+            >
+              <ServiceCard 
+                item={item} 
+                index={i} 
+                className={i === 6 ? "max-w-4xl w-full" : ""}
+              />
+            </div>
           ))}
         </div>
       </div>
