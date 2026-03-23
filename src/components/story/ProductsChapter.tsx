@@ -74,7 +74,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         ease: [0.23, 1, 0.32, 1] 
       }}
       viewport={{ once: true }}
-      className="group relative h-[250px] sm:h-[280px] lg:h-[300px] w-full rounded-[1.2rem] sm:rounded-[1.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl"
+      className="group relative h-[300px] sm:h-[350px] lg:h-[400px] w-full rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl"
     >
       <div className="absolute inset-0 z-0">
         <div className={`absolute inset-0 bg-gradient-to-br ${product.color} z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700`} />
@@ -84,18 +84,18 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         </div>
       </div>
 
-      <div style={{ transform: "translateZ(30px)" }} className="absolute inset-0 z-20 p-5 sm:p-8 lg:p-10 flex flex-col justify-center text-center items-center">
-        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline">
+      <div style={{ transform: "translateZ(30px)" }} className="absolute inset-0 z-20 p-6 sm:p-10 flex flex-col justify-center text-center items-center">
+        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline">
           {product.name}
         </h3>
         
-        <p className="text-[10px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed mb-5 sm:mb-8 group-hover:text-foreground/80 transition-colors duration-500 max-w-sm italic">
+        <p className="text-[12px] sm:text-sm lg:text-base text-muted-foreground leading-relaxed mb-6 sm:mb-8 group-hover:text-foreground/80 transition-colors duration-500 max-w-sm italic">
           {product.description}
         </p>
         
         <Button 
           variant="outline" 
-          className="w-full sm:w-auto h-9 sm:h-10 px-5 sm:px-8 rounded-full border-2 border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-[10px] sm:text-xs font-bold group/btn shadow-sm"
+          className="w-full sm:w-auto h-12 px-8 rounded-full border-2 border-primary/20 text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-xs sm:text-sm font-bold group/btn shadow-sm"
           onClick={() => {
             if (product.href && product.href !== "#") {
               window.open(product.href, '_blank', 'noopener,noreferrer');
@@ -103,7 +103,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           }}
         >
           Explore Platform
-          <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
+          <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
         </Button>
       </div>
     </motion.div>
@@ -112,12 +112,12 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-10 lg:py-20 overflow-visible">
-      <div className="text-center mb-8 lg:mb-16 w-full px-4 sm:px-6">
+    <Chapter id="products" className="bg-background py-20 overflow-visible">
+      <div className="text-center mb-12 lg:mb-20 w-full px-4 sm:px-6">
         <motion.span 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-[8px] sm:text-[10px] mb-2 block font-bold"
+          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 block font-bold"
         >
           Proprietary Tech
         </motion.span>
@@ -125,7 +125,7 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-none font-headline"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none font-headline"
         >
           Our Platforms.
         </motion.h2>
@@ -133,7 +133,7 @@ export function ProductsChapter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-muted-foreground mt-4 w-full max-w-2xl mx-auto text-xs sm:text-base leading-relaxed px-4 italic"
+          className="text-muted-foreground mt-6 w-full max-w-2xl mx-auto text-sm sm:text-lg leading-relaxed px-4 italic"
         >
           Explore our specialized solutions designed to solve complex challenges in communication and healthcare infrastructure.
         </motion.p>
@@ -145,7 +145,7 @@ export function ProductsChapter() {
             align: "start",
             loop: false,
           }}
-          className="w-full max-w-5xl mx-auto"
+          className="w-full max-w-6xl mx-auto"
         >
           <CarouselContent className="-ml-4">
             {products.map((product, index) => (
@@ -155,9 +155,9 @@ export function ProductsChapter() {
             ))}
           </CarouselContent>
           
-          <div className="flex justify-center md:justify-end gap-2 sm:gap-3 mt-6 sm:mt-12">
-            <CarouselPrevious className="static translate-y-0 h-8 w-8 sm:h-10 sm:w-10 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
-            <CarouselNext className="static translate-y-0 h-8 w-8 sm:h-10 sm:w-10 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
+          <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-8 sm:mt-16">
+            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
+            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
           </div>
         </Carousel>
       </div>

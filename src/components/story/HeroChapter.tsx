@@ -47,7 +47,7 @@ export function HeroChapter() {
     <section 
       id="hero" 
       ref={containerRef}
-      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-6 sm:px-12 overflow-hidden pt-32 pb-40 bg-background"
+      className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 sm:px-12 overflow-hidden pt-32 pb-40 bg-background"
     >
       <motion.div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -64,13 +64,13 @@ export function HeroChapter() {
       <FloatingNode icon={Network} top="20%" left="82%" delay={0.4} smoothX={smoothX} smoothY={smoothY} speed={-45} />
       <FloatingNode icon={Zap} top="75%" left="85%" delay={0.6} smoothX={smoothX} smoothY={smoothY} speed={35} />
 
-      <div className="z-10 w-full max-w-7xl mx-auto">
+      <div className="z-10 w-full max-w-7xl mx-auto px-4">
         <motion.div style={{ x: subTextX, y: subTextY }}>
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-primary font-headline uppercase tracking-[0.6em] text-[10px] sm:text-[11px] mb-8 block font-bold"
+            className="text-primary font-headline uppercase tracking-[0.4em] md:tracking-[0.6em] text-[8px] sm:text-[11px] mb-6 md:mb-8 block font-bold"
           >
             Kandhugule Consultancy Services
           </motion.span>
@@ -78,7 +78,7 @@ export function HeroChapter() {
         
         <motion.h1 
           style={{ x: textX, y: textY }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[7rem] font-bold mb-8 sm:mb-10 leading-[0.85] tracking-tighter text-foreground font-headline"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7rem] font-bold mb-8 md:mb-10 leading-[1] md:leading-[0.85] tracking-tighter text-foreground font-headline"
         >
           {words.map((word, i) => (
             <motion.span
@@ -102,7 +102,7 @@ export function HeroChapter() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.6, duration: 1.2 }}
-            className="text-muted-foreground text-[10px] sm:text-xs md:text-base max-w-2xl mx-auto font-body mb-10 sm:mb-12 px-4 leading-relaxed font-medium italic"
+            className="text-muted-foreground text-[12px] sm:text-sm md:text-base max-w-2xl mx-auto font-body mb-10 md:mb-12 px-2 md:px-4 leading-relaxed font-medium italic"
           >
             KCS Product Lab designs, builds, and operates scalable technology platforms 
             powered by <span className="text-foreground">artificial intelligence</span>, 
@@ -122,11 +122,11 @@ export function HeroChapter() {
               variant="outline"
               size="lg" 
               asChild
-              className="h-10 sm:h-12 px-6 sm:px-8 text-[10px] sm:text-xs rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
+              className="h-12 px-8 text-xs sm:text-sm rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
             >
               <Link href="/contact">
                 Start Your Project
-                <Rocket className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                <Rocket className="ml-2 w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </Link>
             </Button>
           </MagneticButton>
@@ -135,10 +135,10 @@ export function HeroChapter() {
             <Button 
               size="lg" 
               onClick={scrollToNext}
-              className="h-10 sm:h-12 px-6 sm:px-8 text-[10px] sm:text-xs rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
+              className="h-12 px-8 text-xs sm:text-sm rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
             >
               Explore Our Platforms
-              <LayoutPanelLeft className="ml-2 w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
+              <LayoutPanelLeft className="ml-2 w-4 h-4 group-hover:rotate-12 transition-transform" />
             </Button>
           </MagneticButton>
         </motion.div>
@@ -148,13 +148,13 @@ export function HeroChapter() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.8, duration: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 md:gap-4 z-20"
       >
-        <span className="text-[8px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
+        <span className="text-[7px] md:text-[8px] uppercase tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-[1px] h-12 bg-gradient-to-b from-primary/60 to-transparent"
+          className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-primary/60 to-transparent"
         />
       </motion.div>
     </section>
@@ -171,7 +171,7 @@ function FloatingNode({ icon: Icon, top, left, delay, smoothX, smoothY, speed }:
       animate={{ opacity: 0.2, scale: 1 }}
       transition={{ delay, duration: 1.5, type: "spring" }}
       style={{ top, left, x, y }}
-      className="absolute p-4 rounded-[1.5rem] bg-white/40 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
+      className="absolute p-3 md:p-4 rounded-[1.2rem] md:rounded-[1.5rem] bg-white/40 text-primary border border-primary/10 hidden lg:flex items-center justify-center shadow-2xl backdrop-blur-sm"
     >
       <Icon size={24} strokeWidth={1} />
     </motion.div>
@@ -219,7 +219,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     >
       <motion.div
         style={{ x: springX, y: springY }}
-        className="relative z-10"
+        className="relative z-10 w-full"
       >
         {children}
       </motion.div>

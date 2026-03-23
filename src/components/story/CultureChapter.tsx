@@ -47,15 +47,15 @@ export function CultureChapter() {
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-6 font-headline">
               <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
             </span>
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-8 font-headline">
+            <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[0.9] md:leading-[0.8] tracking-tighter text-foreground mb-8 font-headline">
               Built on <br />
               <span className="text-primary italic">Focus, Not Burnout.</span>
             </h2>
           </motion.div>
         </div>
 
-        {/* Unique Tiles Structure - Reduced Height to Half */}
-        <div className="flex flex-col md:flex-row gap-4 h-[350px] md:h-[250px] w-full items-stretch">
+        {/* Unique Tiles Structure - Responsive Height */}
+        <div className="flex flex-col md:flex-row gap-4 h-[450px] md:h-[250px] w-full items-stretch px-2 md:px-0">
           {pillars.map((pillar, i) => {
             const isExpanded = expandedId === pillar.id;
             return (
@@ -64,7 +64,7 @@ export function CultureChapter() {
                 onMouseEnter={() => setExpandedId(pillar.id)}
                 className={cn(
                   "relative group overflow-hidden cursor-pointer rounded-[1.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
-                  isExpanded ? "flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
+                  isExpanded ? "flex-[5] md:flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
                 )}
                 layout
               >
@@ -74,18 +74,18 @@ export function CultureChapter() {
                   isExpanded && "opacity-100"
                 )} />
 
-                {/* Content Container - Compact Padding */}
+                {/* Content Container */}
                 <div className="relative z-10 p-4 md:p-6 h-full flex flex-col">
                   {/* Top Bar: Icon and Protocol ID */}
                   <div className="flex items-center justify-between mb-4">
                     <div className={cn(
-                      "p-3 rounded-lg transition-all duration-500",
+                      "p-2.5 md:p-3 rounded-lg transition-all duration-500",
                       isExpanded ? "bg-primary text-white scale-105 shadow-md shadow-primary/20" : "bg-primary/10 text-primary"
                     )}>
                       <pillar.icon size={18} />
                     </div>
                     <span className={cn(
-                      "text-[8px] font-bold uppercase tracking-[0.2em] font-headline transition-colors duration-500",
+                      "text-[7px] md:text-[8px] font-bold uppercase tracking-[0.2em] font-headline transition-colors duration-500",
                       isExpanded ? "text-primary/60" : "text-muted-foreground/30"
                     )}>
                       {pillar.tag}
@@ -95,7 +95,7 @@ export function CultureChapter() {
                   {/* Narrative Block */}
                   <div className="mt-auto">
                     <h3 className={cn(
-                      "text-lg md:text-xl font-bold tracking-tighter mb-2 transition-all duration-500 font-headline",
+                      "text-base md:text-xl font-bold tracking-tighter mb-2 transition-all duration-500 font-headline",
                       isExpanded ? "text-foreground" : "text-foreground/40"
                     )}>
                       {pillar.title}
@@ -109,7 +109,7 @@ export function CultureChapter() {
                           exit={{ opacity: 0, y: 5 }}
                           transition={{ duration: 0.4, ease: "easeOut" }}
                         >
-                          <p className="text-xs md:text-sm text-muted-foreground leading-snug italic max-w-2xl font-medium">
+                          <p className="text-[10px] md:text-sm text-muted-foreground leading-snug italic max-w-2xl font-medium">
                             {pillar.text}
                           </p>
                           <div className="mt-3 flex gap-1.5">
@@ -124,7 +124,7 @@ export function CultureChapter() {
 
                 {/* Decorative Architectural Element */}
                 <div className={cn(
-                  "absolute -bottom-6 -right-6 w-24 h-24 opacity-0 transition-opacity duration-1000",
+                  "absolute -bottom-6 -right-6 w-16 h-16 md:w-24 md:h-24 opacity-0 transition-opacity duration-1000",
                   isExpanded && "opacity-[0.05]"
                 )}>
                   <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1.5px,_transparent_1.5px)] bg-[size:10px_10px]" />

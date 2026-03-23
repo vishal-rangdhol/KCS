@@ -48,27 +48,27 @@ export function ProblemChapter() {
       {/* Background Gradient Effect - Solar Mode */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-5 pointer-events-none" />
       
-      <div ref={containerRef} className="relative h-full w-full flex items-center justify-center px-6 sm:px-12">
+      <div ref={containerRef} className="relative h-full w-full flex items-center justify-center px-4 sm:px-12">
         <div className="max-w-5xl w-full text-center space-y-0 relative">
           
           <div ref={text1Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-4 text-foreground">
-              Technology is evolving <br className="hidden sm:block" />
-              <span className="text-primary italic">faster than businesses</span> <br className="hidden sm:block" />
+            <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-2 md:px-4 text-foreground">
+              Technology is evolving <br className="hidden md:block" />
+              <span className="text-primary italic">faster than businesses</span> <br className="hidden md:block" />
               can adapt.
             </h2>
           </div>
 
           <div ref={text2Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-4 text-foreground">
-              Data is everywhere, <br className="hidden sm:block" />
+            <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-2 md:px-4 text-foreground">
+              Data is everywhere, <br className="hidden md:block" />
               but <span className="text-primary">insights are rare.</span>
             </h2>
           </div>
 
           <div ref={text3Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-4 text-foreground">
-              Security threats <br className="hidden sm:block" />
+            <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tighter px-2 md:px-4 text-foreground">
+              Security threats <br className="hidden md:block" />
               <span className="text-destructive">grow every second.</span>
             </h2>
           </div>
