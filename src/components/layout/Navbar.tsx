@@ -73,7 +73,7 @@ export function Navbar() {
             : 'px-4 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
         }`}
       >
-        {/* Left: Logo */}
+        {/* Left: Logo - Original Coloring Preserved */}
         <div className="flex-shrink-0">
           <Link 
             href="/"
@@ -93,7 +93,7 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Main Nav - Centered Journey Links */}
+        {/* Center: Main Nav - Sliding Underline Protocol */}
         <div className="hidden md:flex flex-1 justify-center px-4">
           <ul className="flex flex-row gap-4 lg:gap-8 items-center">
             {mainNavItems.map((item) => {
@@ -129,7 +129,7 @@ export function Navbar() {
           </ul>
         </div>
 
-        {/* Right: Contact Action Node */}
+        {/* Right: Contact Action Node - Solar Innovation Profile */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           {contactItem && (
             <div className="hidden md:block">
@@ -179,13 +179,19 @@ export function Navbar() {
                     <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
+                      className={`block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border relative ${
                         isActive 
                           ? 'bg-primary/10 border-primary/40 text-primary scale-105 shadow-sm' 
                           : 'bg-card/40 border-white/5 hover:bg-card text-foreground/70'
                       }`}
                     >
                       {item.name}
+                      {isActive && (
+                        <motion.span 
+                          layoutId="activeUnderlineMobile"
+                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-primary rounded-full"
+                        />
+                      )}
                     </Link>
                   </li>
                 )
