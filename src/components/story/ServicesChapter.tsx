@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, Sparkles, RefreshCw, CheckCircle2, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
@@ -118,58 +118,93 @@ function ServiceCard({ item, index, className }: ServiceCardProps) {
         className
       )}
     >
+      {/* Background Glow Effect */}
       <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", item.color)} />
       
+      {/* Background Grid Pattern Decoration */}
+      <div className="absolute -bottom-8 -right-8 w-24 h-24 md:w-32 md:h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
+      </div>
+
       <div className="relative z-10 h-full flex flex-col">
+        {/* Icon Terminal */}
         <div className="mb-6 md:mb-10">
-          <div className={cn("p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/20 w-fit", item.iconColor)}>
-            <item.icon size={24} className="md:size-[32px]" />
+          <div className={cn(
+            "p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/20 w-fit", 
+            item.iconColor
+          )}>
+            <item.icon size={24} className="md:size-[32px]" strokeWidth={1.5} />
           </div>
         </div>
         
         <div className="flex-1 flex flex-col">
-          <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-headline text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
+          {/* Headline Node */}
+          <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-headline text-foreground group-hover:text-primary transition-colors leading-tight">
+            {item.title}
+          </h3>
           
           <div className="space-y-4">
+            {/* Primary Narrative */}
             <p className="text-[12px] md:text-base lg:text-lg text-muted-foreground leading-relaxed italic font-medium group-hover:text-foreground/80 transition-colors">
               {item.description}
             </p>
 
+            {/* Spec Reveal Protocol */}
             {item.isCollapsible && (item.extraContent || item.points) && (
               <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
                 <CollapsibleTrigger asChild>
-                  <button className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/trigger mt-2">
+                  <button className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/trigger mt-2 py-2">
                     {isOpen ? "Collapse Specs" : "Expand Specs"}
-                    <ChevronDown size={14} className={cn("transition-transform duration-300", isOpen && "rotate-180")} />
+                    <ChevronDown size={14} className={cn("transition-transform duration-500 ease-[0.23,1,0.32,1]", isOpen && "rotate-180")} />
                   </button>
                 </CollapsibleTrigger>
-                <CollapsibleContent className="mt-4">
-                  {item.extraContent && (
-                    <motion.p 
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-[11px] md:text-sm text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/20 pl-4 mb-4"
-                    >
-                      {item.extraContent}
-                    </motion.p>
-                  )}
-                  {item.points && (
-                    <div className="space-y-4 mt-2">
-                      {item.points.map((point, idx) => (
-                        <div key={idx} className="flex gap-3">
-                          <CheckCircle2 size={14} className="text-primary shrink-0 mt-1" />
-                          <div className="space-y-1">
-                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
-                            <span className="text-[10px] md:text-sm text-muted-foreground/80 leading-snug italic">{point.text}</span>
-                          </div>
+                
+                <AnimatePresence>
+                  {isOpen && (
+                    <CollapsibleContent forceMount>
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-4 space-y-4">
+                          {item.extraContent && (
+                            <p className="text-[11px] md:text-sm text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/20 pl-4">
+                              {item.extraContent}
+                            </p>
+                          )}
+                          {item.points && (
+                            <div className="grid grid-cols-1 gap-4 mt-2">
+                              {item.points.map((point, idx) => (
+                                <motion.div 
+                                  key={idx}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: idx * 0.1 }}
+                                  className="flex gap-3"
+                                >
+                                  <div className="p-1 rounded-full bg-primary/10 h-fit mt-1">
+                                    <CheckCircle2 size={12} className="text-primary shrink-0" />
+                                  </div>
+                                  <div className="space-y-1">
+                                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
+                                    <span className="text-[10px] md:text-sm text-muted-foreground/80 leading-snug italic">{point.text}</span>
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      ))}
-                    </div>
+                      </motion.div>
+                    </CollapsibleContent>
                   )}
-                </CollapsibleContent>
+                </AnimatePresence>
               </Collapsible>
             )}
 
+            {/* Static Specs (Fall-back) */}
             {!item.isCollapsible && item.points && (
               <div className="space-y-3 mt-4">
                 {item.points.map((point, idx) => (
@@ -186,19 +221,16 @@ function ServiceCard({ item, index, className }: ServiceCardProps) {
           </div>
         </div>
       </div>
-
-      <div className="absolute -bottom-8 -right-8 w-24 h-24 md:w-32 md:h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
-      </div>
     </motion.div>
   )
 }
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="bg-background py-20 md:py-32 overflow-hidden">
+    <Chapter id="services" className="bg-background py-20 md:py-32 lg:py-48 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="text-center mb-16 md:mb-24">
+        {/* Narrative Header */}
+        <div className="text-center mb-16 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -214,32 +246,48 @@ export function ServicesChapter() {
               Operational Excellence
             </span>
             
-            <h2 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-10 md:mb-12 font-headline">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-10 md:mb-16 font-headline">
               Core <br />
               <span className="text-primary italic">Services.</span>
             </h2>
 
-            <div className="w-full py-12 md:py-16 border-y border-white/10 mb-12 md:mb-16 relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[300px] h-[250px] md:h-[300px] bg-primary/10 blur-[100px] md:blur-[120px] rounded-full pointer-events-none" />
-              <p className="text-lg md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic">
+            <div className="w-full py-12 md:py-24 border-y border-white/5 mb-12 md:mb-24 relative overflow-hidden group">
+              {/* Animated Accent Line */}
+              <motion.div 
+                className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+              
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[600px] h-[250px] md:h-[600px] bg-primary/5 blur-[100px] md:blur-[180px] rounded-full pointer-events-none" />
+              
+              <p className="text-lg md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic relative z-10 font-headline">
                 "We provide the technical discipline required to scale global businesses with absolute predictability."
               </p>
+
+              <motion.div 
+                className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+                animate={{ x: ['100%', '-100%'] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
             </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+        {/* Capability Grid Architecture */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full relative">
           {services.map((item, i) => (
             <div 
               key={item.id}
               className={cn(
-                i === 6 ? "md:col-span-2 lg:col-span-3 flex justify-center" : ""
+                "transition-all duration-700",
+                i === 6 ? "md:col-span-2 lg:col-span-3 flex justify-center mt-6 lg:mt-12" : ""
               )}
             >
               <ServiceCard 
                 item={item} 
                 index={i} 
-                className={i === 6 ? "max-w-4xl w-full" : ""}
+                className={i === 6 ? "max-w-5xl w-full border-primary/20 bg-primary/5" : ""}
               />
             </div>
           ))}
