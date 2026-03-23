@@ -11,8 +11,13 @@ const services = [
   {
     id: "ai",
     title: "Artificial Intelligence Solutions",
-    description: "We help businesses turn AI from a buzzword into a genuine operational advantage.",
-    extraContent: "Our AI capabilities span predictive analytics, machine learning models, intelligent process automation, and AI-driven decision systems — all engineered to integrate cleanly with existing infrastructure.",
+    description: "Turning AI from a buzzword into a genuine operational advantage.",
+    points: [
+      { label: "Predictive Analytics", text: "Forecasting trends to drive proactive strategy." },
+      { label: "Machine Learning", text: "Custom models engineered for complex data environments." },
+      { label: "Intelligent Automation", text: "Streamlining workflows via AI-driven process optimization." },
+      { label: "Seamless Integration", text: "Solutions designed to plug directly into your existing infrastructure." }
+    ],
     icon: BrainCircuit,
     color: "from-indigo-600/20 to-indigo-600/5",
     accent: "bg-indigo-500",
@@ -21,9 +26,13 @@ const services = [
   },
   {
     id: "cyber",
-    title: "Cybersecurity",
-    description: "Security isn't a feature we bolt on at the end. It's built into every system we design.",
-    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
+    title: "Cybersecurity & Compliance",
+    description: "Security isn't an afterthought—it’s the foundation of every system we design.",
+    points: [
+      { label: "Security Architecture", text: "End-to-end design focused on 'Secure by Default' principles." },
+      { label: "Risk & Threat Management", text: "Comprehensive assessments, detection systems, and incident response." },
+      { label: "Modern Compliance", text: "Ensuring every product meets global security and regulatory standards." }
+    ],
     icon: Shield,
     color: "from-rose-600/20 to-rose-600/5",
     accent: "bg-rose-500",
@@ -33,8 +42,12 @@ const services = [
   {
     id: "cloud",
     title: "Cloud & Infrastructure",
-    description: "Modern businesses require infrastructure that scales without breaking.",
-    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
+    description: "Scalable architectures built for global performance and high availability.",
+    points: [
+      { label: "Cloud-Native Development", text: "Purpose-built applications for the modern web." },
+      { label: "Multi-Cloud Expertise", text: "Architecture and implementation across AWS, Google Cloud, and Azure." },
+      { label: "Scalable Frameworks", text: "Infrastructure designed to grow alongside your business without friction." }
+    ],
     icon: Cloud,
     color: "from-emerald-600/20 to-emerald-600/5",
     accent: "bg-emerald-500",
@@ -43,9 +56,13 @@ const services = [
   },
   {
     id: "data",
-    title: "Data & Analytics",
-    description: "Data is only valuable when it drives decisions.",
-    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
+    title: "Data & Strategic Analytics",
+    description: "Transforming raw data into strategic clarity and actionable leadership insights.",
+    points: [
+      { label: "Business Intelligence", text: "Custom BI systems and real-time analytics dashboards." },
+      { label: "Data Architecture", text: "Robust foundations for managing complex data sets." },
+      { label: "Predictive Modeling", text: "Moving beyond historical data to anticipate 'what’s coming next.'" }
+    ],
     icon: BarChart3,
     color: "from-sky-600/20 to-sky-600/5",
     accent: "bg-sky-500",
@@ -54,9 +71,13 @@ const services = [
   },
   {
     id: "enterprise",
-    title: "Enterprise Software (ERP / CRM)",
-    description: "Your business has unique workflows. Your software should fit them — not the other way around.",
-    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
+    title: "Custom Enterprise Software",
+    description: "Software that fits your unique workflows—not the other way around.",
+    points: [
+      { label: "Custom ERP & CRM", text: "Tailored platforms built for the way your organization actually operates." },
+      { label: "Workflow Automation", text: "Removing manual bottlenecks with integrated digital tools." },
+      { label: "Unified Dashboards", text: "Centralized views of your entire business ecosystem." }
+    ],
     icon: Building2,
     color: "from-violet-600/20 to-violet-600/5",
     accent: "bg-violet-500",
@@ -66,8 +87,12 @@ const services = [
   {
     id: "mobile",
     title: "Mobile & Cross-Platform Development",
-    description: "We build high-performance applications across all modern platforms — iOS, Android, and web.",
-    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
+    description: "High-performance applications delivering seamless experiences across every device.",
+    points: [
+      { label: "Cross-Platform Mastery", text: "Expert development in Flutter and React Native." },
+      { label: "Native Precision", text: "Specialized builds using Swift, Kotlin, and .NET." },
+      { label: "Performance-First", text: "Optimized for speed, reliability, and intuitive user experiences." }
+    ],
     icon: Smartphone,
     color: "from-fuchsia-600/20 to-fuchsia-600/5",
     accent: "bg-fuchsia-500",
@@ -76,13 +101,13 @@ const services = [
   },
   {
     id: "lifecycle",
-    title: "Product Lifecycle Support",
-    description: "Build. Run. Maintain. KCS supports digital products across their entire lifecycle:",
+    title: "Full Product Lifecycle Support",
+    description: "From initial architecture to 24/7 global operations.",
     points: [
-      { label: "Product Development", text: "Architecture design, user experience, and backend infrastructure built from the ground up." },
-      { label: "Operational Support", text: "Post-launch technical operations so your team can focus on growth, marketing, and strategy." },
-      { label: "Continuous Maintenance", text: "Adaptive maintenance ensuring your platforms remain compatible with new operating systems and security standards." },
-      { label: "24/7 Global Support", text: "AI-assisted and human support teams handling technical queries and product troubleshooting." }
+      { label: "End-to-End Build", text: "UX design, backend infrastructure, and scalable development." },
+      { label: "Operational Support", text: "Post-launch technical management so you can focus on growth." },
+      { label: "Adaptive Maintenance", text: "Continuous updates to prevent legacy debt and ensure compatibility." },
+      { label: "24/7 Global Support", text: "Hybrid AI and human teams for troubleshooting and feedback analysis." }
     ],
     icon: RefreshCw,
     color: "from-primary/20 to-primary/5",
@@ -132,7 +157,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         <div className="flex-1 space-y-6">
           <motion.h3 
             layout="position"
-            className="text-3xl md:text-5xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight tracking-tighter"
           >
             {item.title}
           </motion.h3>
@@ -140,7 +165,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           <motion.p 
             layout="position"
             className={cn(
-              "text-xl md:text-3xl lg:text-4xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
+              "text-lg md:text-xl lg:text-2xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
               isExpanded ? "text-foreground/90" : "line-clamp-2"
             )}
           >
@@ -154,26 +179,19 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
                 transition={{ duration: 0.3 }}
-                className="pt-8 space-y-8"
+                className="pt-8 space-y-6"
               >
-                {item.extraContent && (
-                  <p className="text-lg md:text-2xl text-muted-foreground/80 leading-relaxed border-l-4 border-primary/30 pl-8 py-2">
-                    {item.extraContent}
-                  </p>
-                )}
-                {item.points && (
-                  <div className="grid grid-cols-1 gap-6 pt-4">
-                    {item.points.map((point, idx) => (
-                      <div key={idx} className="flex gap-4 items-start">
-                        <CheckCircle2 size={20} className="text-primary mt-1 shrink-0" />
-                        <div>
-                          <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-primary block mb-1">{point.label}</span>
-                          <span className="text-base md:text-xl text-muted-foreground italic leading-tight">{point.text}</span>
-                        </div>
+                <div className="grid grid-cols-1 gap-4 pt-4">
+                  {item.points.map((point, idx) => (
+                    <div key={idx} className="flex gap-4 items-start border-l-2 border-primary/20 pl-4 py-1">
+                      <CheckCircle2 size={16} className="text-primary mt-1 shrink-0" />
+                      <div>
+                        <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block mb-0.5">{point.label}</span>
+                        <span className="text-sm md:text-lg text-muted-foreground italic leading-tight">{point.text}</span>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -182,20 +200,20 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
           <motion.button
             layout="position"
-            className="text-sm md:text-lg font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-3 group/trigger"
+            className="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-3 group/trigger"
           >
-            Learn More
+            {isExpanded ? 'Close Dossier' : 'Learn More'}
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
             >
-              <ChevronDown size={20} />
+              <ChevronDown size={16} />
             </motion.div>
           </motion.button>
           
           <motion.span 
             layout="position"
-            className="text-[10px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
+            className="text-[8px] md:text-[10px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
           >
             KCS_PROTOCOL_0{index + 1}
           </motion.span>
@@ -221,7 +239,7 @@ export function ServicesChapter() {
               <Sparkles size={14} className="animate-pulse" /> Operational Precision
             </span>
             
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8.5rem] font-bold leading-[0.85] tracking-tighter text-foreground mb-12 font-headline whitespace-nowrap">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-12 font-headline">
               Core <span className="text-primary italic">Services.</span>
             </h2>
 
@@ -231,14 +249,14 @@ export function ServicesChapter() {
                 animate={{ x: ['-100%', '100%'] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
-              <p className="text-xl md:text-4xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
+              <p className="text-xl md:text-3xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
                 "Technical discipline required to scale global businesses with absolute predictability."
               </p>
             </div>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-16 w-full max-w-6xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 w-full max-w-6xl mx-auto items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
           ))}
