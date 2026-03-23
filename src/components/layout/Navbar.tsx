@@ -56,8 +56,8 @@ export function Navbar() {
     const observer = new IntersectionObserver(handleIntersection, observerOptions)
 
     navItems.forEach((item) => {
-      if (item.href.startsWith('/#')) {
-        const id = item.href.split('#')[1]
+      const id = item.href.includes('#') ? item.href.split('#')[1] : null
+      if (id) {
         const element = document.getElementById(id)
         if (element) observer.observe(element)
       }
@@ -72,7 +72,7 @@ export function Navbar() {
         className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[95%] transition-all duration-700 border ${
           isScrolled 
             ? 'px-4 py-2 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-[0.98] md:scale-100' 
-            : 'px-6 py-3 md:px-10 md:py-5 border-border/10 bg-background shadow-sm'
+            : 'px-6 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
         }`}
       >
         {/* Left: Logo */}
@@ -88,14 +88,14 @@ export function Navbar() {
                 alt="KCS Logo" 
                 width={100}
                 height={32}
-                className="h-7 md:h-9 w-auto object-contain antialiased"
+                className="h-7 md:h-9 w-auto object-contain antialiased brightness-200 contrast-150"
                 priority
               />
             </div>
           </Link>
         </div>
 
-        {/* Center: Main Nav - Centered with 10% Scale Active State */}
+        {/* Center: Main Nav - Centered Journey Links */}
         <div className="hidden md:flex flex-1 justify-center px-4">
           <ul className="flex flex-row gap-4 lg:gap-8 items-center">
             {mainNavItems.map((item) => {
@@ -116,7 +116,7 @@ export function Navbar() {
                     {isActive && (
                       <motion.span 
                         layoutId="activeUnderline"
-                        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.4)]"
+                        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.6)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -127,14 +127,14 @@ export function Navbar() {
           </ul>
         </div>
 
-        {/* Right: Contact with Magnetic Hover */}
+        {/* Right: Contact Action Node */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
                 <Link 
                   href={contactItem.href}
-                  className={`px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border-none shadow-[0_10px_30px_rgba(251,146,60,0.3)] bg-primary text-white hover:bg-secondary group relative overflow-hidden`}
+                  className={`px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border-none shadow-[0_0_20px_rgba(251,146,60,0.3)] bg-primary text-white hover:text-white group relative overflow-hidden`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
@@ -166,7 +166,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            className="absolute top-[70px] left-2 right-2 bg-background rounded-[1.5rem] p-4 md:hidden border border-border/10 shadow-2xl pointer-events-auto"
+            className="absolute top-[70px] left-2 right-2 bg-background rounded-[1.5rem] p-4 md:hidden border border-white/5 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-2">
               {navItems.map((item) => {
@@ -180,7 +180,7 @@ export function Navbar() {
                       className={`block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border ${
                         isActive 
                           ? 'bg-primary/10 border-primary/40 text-primary scale-105 shadow-sm' 
-                          : 'bg-card/40 border-border/5 hover:bg-card text-foreground/70'
+                          : 'bg-card/40 border-white/5 hover:bg-card text-foreground/70'
                       }`}
                     >
                       {item.name}
