@@ -1,65 +1,166 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, Layout, Globe, Cpu, Sparkles } from 'lucide-react'
+import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
 
-const expertise = [
-  { icon: BrainCircuit, label: "Artificial Intelligence" },
-  { icon: Cloud, label: "Cloud Infrastructure" },
-  { icon: Shield, label: "Cybersecurity" },
-  { icon: Layout, label: "Enterprise Software" },
-  { icon: Cpu, label: "Mobile Platforms" },
-  { icon: Globe, label: "Digital Ecosystems" }
+const values = [
+  {
+    title: "Technology Ownership",
+    description: "Clients retain full control of every system we build. No lock-in. No dependency.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Product-First Engineering",
+    description: "We treat every project as a long-term platform, not a short-term contract.",
+    icon: Zap,
+  },
+  {
+    title: "AI-Ready Architecture",
+    description: "Every system we design is built for future AI integration and intelligent automation.",
+    icon: Cpu,
+  },
+  {
+    title: "End-to-End Lifecycle",
+    description: "Build → Launch → Operate → Maintain → Scale",
+    icon: RefreshCw,
+  }
 ]
 
 export function AboutChapter() {
   return (
-    <Chapter id="story" className="bg-background relative py-24 md:py-48 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+    <Chapter id="story" className="bg-background py-24 md:py-48 overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Part 1: The KCS Story */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center"
+          className="mb-32 md:mb-64"
         >
-          <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 md:mb-12 font-headline">
-            <Sparkles size={14} className="animate-pulse" /> The KCS Origin
+          <span className="flex items-center gap-2 text-primary font-bold tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
+            <Sparkles size={14} className="animate-pulse" /> The Narrative
           </span>
           
-          <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] font-bold leading-[0.9] md:leading-[0.85] tracking-tighter text-foreground mb-8 md:mb-16 font-headline">
-            Architecting <br />
-            <span className="text-primary italic">Meaningful Impact.</span>
+          <h2 className="text-4xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-foreground mb-12 font-headline">
+            The <br />
+            <span className="text-primary italic">KCS Story.</span>
           </h2>
 
-          <div className="w-full py-12 md:py-24 border-y border-white/5 mb-12 md:mb-24 relative">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-primary/10 blur-[100px] md:blur-[150px] rounded-full pointer-events-none" />
-            <p className="text-2xl md:text-6xl font-bold tracking-tighter leading-[1] md:leading-[0.9] text-foreground max-w-6xl mx-auto px-4 italic font-headline">
-              "Technology should empower businesses to create meaningful impact — without locking them into systems they don't control."
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-start">
+            <div className="space-y-8 text-xl md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+              <p>
+                Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
+                on a single conviction: technology should empower businesses to create
+                meaningful impact — without locking them into systems they don't control.
+              </p>
+              <p>
+                As digital transformation accelerates, organizations face growing complexity in
+                building and maintaining modern technology. Artificial intelligence, cloud
+                infrastructure, cybersecurity, and data platforms must work together seamlessly.
+              </p>
+            </div>
+            <div className="space-y-8 text-xl md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+              <p>
+                Most organizations struggle to make that happen. 
+                <span className="text-foreground block mt-8 not-italic font-bold text-3xl md:text-6xl tracking-tighter">
+                  KCS was created to close that gap.
+                </span>
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Part 2: Product Lab Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-32 md:mb-64"
+        >
+          <div className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[4rem] p-8 md:p-24 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+             
+             <h3 className="text-3xl md:text-6xl font-bold tracking-tighter text-foreground mb-12 font-headline">
+               A Product Lab <br />
+               <span className="text-primary">for the Modern Era.</span>
+             </h3>
+             
+             <div className="max-w-4xl space-y-8 text-lg md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+                <p>
+                  Rather than functioning as a traditional consulting firm, KCS operates as a
+                  technology product lab. We don't just deliver software — we build complete digital
+                  ecosystems designed to support long-term growth.
+                </p>
+                <p>
+                  Our team brings together expertise across artificial intelligence, cloud infrastructure,
+                  cybersecurity, enterprise software, and mobile platforms. By integrating these
+                  disciplines, we help organizations move from idea to fully operational platform.
+                </p>
+             </div>
+          </div>
+        </motion.div>
+
+        {/* Part 3: What Makes KCS Different (Values) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="mb-32 md:mb-64"
+        >
+          <div className="text-center mb-16 md:mb-24">
+            <h3 className="text-3xl md:text-7xl font-bold tracking-tighter font-headline">
+              What Makes <br />
+              <span className="text-primary italic">KCS Different.</span>
+            </h3>
           </div>
 
-          <p className="text-base md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-16 md:mb-24 italic font-medium px-4">
-            Founded in Hyderabad, India, KCS operates as a technology product lab dedicated to closing the gap between AI, cloud infrastructure, and data platforms. We build complete digital ecosystems designed for long-term growth.
-          </p>
-          
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 w-full max-w-6xl px-4">
-            {expertise.map((item, i) => (
-              <motion.div 
-                key={i}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
+            {values.map((value, index) => (
+              <motion.div
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
-                viewport={{ once: true }}
-                className="flex flex-col items-center gap-3 md:gap-4 p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/5 group hover:border-primary/40 hover:bg-white/10 transition-all duration-500 shadow-2xl backdrop-blur-sm"
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="p-8 md:p-12 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 group"
               >
-                <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-primary/10 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                  <item.icon size={18} />
+                <div className="bg-primary/10 p-4 rounded-2xl w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                  <value.icon size={24} className="md:size-8" />
                 </div>
-                <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/50 group-hover:text-foreground transition-colors font-headline text-center">{item.label}</span>
+                <h4 className="text-xl md:text-3xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
+                <p className="text-sm md:text-xl text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Part 4: Our Vision */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <h3 className="text-3xl md:text-7xl font-bold tracking-tighter mb-12 font-headline">
+            Our <span className="text-primary">Vision.</span>
+          </h3>
+          <div className="max-w-4xl mx-auto space-y-8 text-lg md:text-4xl text-muted-foreground leading-relaxed italic font-medium">
+            <p>
+              KCS aims to become a global product lab for digital infrastructure — supporting
+              founders, enterprises, and institutions in building the platforms that define the next
+              era of business.
+            </p>
+            <p className="text-foreground font-bold not-italic tracking-tighter text-2xl md:text-5xl">
+              From social learning ecosystems to AI-powered healthcare infrastructure, we are
+              focused on building systems that improve how people learn, connect, and access
+              services.
+            </p>
           </div>
         </motion.div>
       </div>
