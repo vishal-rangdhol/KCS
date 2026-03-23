@@ -128,8 +128,7 @@ export default function CareersPage() {
                 <Sparkles size={12} className="animate-pulse" /> The Collective Protocol
               </span>
               <h1 className="text-4xl md:text-7xl lg:text-9xl font-bold tracking-tighter leading-[1.1] md:leading-[0.8] mb-8 md:mb-12 text-foreground font-headline">
-                Join the <br />
-                <span className="text-primary italic">KCS Team.</span>
+                Join the <span className="text-primary italic">KCS Team.</span>
               </h1>
               <p className="text-base md:text-3xl text-foreground font-medium leading-tight max-w-3xl italic">
                 We're building the next generation of digital platforms — and we're looking for architects who want to do the same.
@@ -155,7 +154,7 @@ export default function CareersPage() {
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 text-left w-full">
                     <div className="flex items-center gap-4 md:gap-8">
                       <div className="p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:scale-110 group-data-[state=open]:bg-primary group-data-[state=open]:text-white transition-all duration-500">
-                        <Briefcase size={20} className="md:size-[28px]" />
+                        <Briefcase size={20} />
                       </div>
                       <div>
                         <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-primary/60 mb-1 block font-headline">{job.category}</span>
@@ -231,11 +230,6 @@ export default function CareersPage() {
                               </li>
                             ))}
                           </ul>
-                        </div>
-                        <div className="pt-4 md:pt-8">
-                          <button className="w-full h-12 md:h-14 rounded-xl bg-primary text-white font-bold text-[11px] md:text-sm uppercase tracking-widest hover:bg-primary/90 transition-all shadow-xl">
-                            Apply for Architecture
-                          </button>
                         </div>
                       </div>
                     </div>
