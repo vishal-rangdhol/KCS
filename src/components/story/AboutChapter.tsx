@@ -3,27 +3,36 @@
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
 import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const values = [
   {
-    title: "Technology Ownership",
-    description: "Clients retain full control of every system we build. No lock-in. No dependency.",
+    id: "01",
+    title: "Zero Vendor Lock-In",
+    description: "Full IP Ownership. You own the code, the data, and the infrastructure. Complete sovereignty over your digital assets with no proprietary traps.",
     icon: ShieldCheck,
+    isTall: false,
   },
   {
-    title: "Product-First Engineering",
-    description: "We treat every project as a long-term platform, not a short-term contract.",
+    id: "02",
+    title: "Built for Longevity",
+    description: "Product-First Mindset. We don’t just deliver projects; we engineer sustainable platforms designed to evolve as your business scales without technical debt.",
     icon: Zap,
+    isTall: true,
   },
   {
-    title: "AI-Ready Architecture",
-    description: "Every system we design is built for future AI integration and intelligent automation.",
+    id: "03",
+    title: "Future-Proof Foundations",
+    description: "AI-Native Design. Every system is architected with a data-first mindset, ready for seamless AI and automation integration from day one.",
     icon: Cpu,
+    isTall: true,
   },
   {
-    title: "End-to-End Lifecycle",
-    description: "Build → Launch → Operate → Maintain → Scale",
+    id: "04",
+    title: "Continuous Partnership",
+    description: "Lifecycle Excellence. A model that spans from initial blueprint to global scale, ensuring 24/7 performance and growth at every stage.",
     icon: RefreshCw,
+    isTall: false,
   }
 ]
 
@@ -57,8 +66,8 @@ export function AboutChapter() {
                 </p>
               </div>
               
-              {/* Subtle Graphic Element */}
-              <div className="absolute -bottom-10 -left-10 w-64 h-64 opacity-[0.03] pointer-events-none select-none">
+              {/* Subtle Graphic Element - Hyderabad Mesh */}
+              <div className="absolute -bottom-10 -left-10 w-64 h-64 opacity-[0.03] pointer-events-none select-none text-primary">
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                   <path fill="currentColor" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.6,-0.7C84.4,14.2,78.5,28.5,70.1,41.2C61.7,53.9,50.8,65,37.8,72.4C24.8,79.8,9.7,83.5,-5.1,80.6C-19.9,77.7,-34.4,68.2,-46.8,56.8C-59.2,45.4,-69.4,32.1,-75.4,17.2C-81.4,2.3,-83.1,-14.2,-78.4,-29C-73.7,-43.8,-62.5,-56.9,-49.4,-64.4C-36.3,-71.9,-21.2,-73.8,-5.4,-70.7C10.4,-67.6,25.9,-59.5,44.7,-76.4Z" transform="translate(100 100)" />
                 </svg>
@@ -121,7 +130,7 @@ export function AboutChapter() {
           </div>
         </motion.div>
 
-        {/* Part 3: What Makes KCS Different (Values) */}
+        {/* Part 3: What Makes KCS Different (Values) - Asymmetric 2x2 Grid */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -135,7 +144,7 @@ export function AboutChapter() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-6xl mx-auto items-start">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -143,13 +152,33 @@ export function AboutChapter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="p-8 md:p-12 rounded-[2rem] bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-500 group"
+                className={cn(
+                  "relative p-8 md:p-12 rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 hover:bg-card/60 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md",
+                  value.isTall ? "md:min-h-[420px]" : "md:min-h-[380px]",
+                  index === 1 || index === 2 ? "md:translate-y-6" : ""
+                )}
               >
-                <div className="bg-primary/10 p-4 rounded-2xl w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-all">
-                  <value.icon size={24} />
+                {/* Tech-Brutalism Background Typography */}
+                <div className="absolute top-4 right-8 text-[8rem] font-bold font-headline text-white/[0.02] pointer-events-none select-none group-hover:text-primary/[0.04] transition-colors duration-500">
+                  {value.id}
                 </div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
-                <p className="text-sm md:text-base text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
+
+                {/* Glassmorphism Icon Treatment */}
+                <div className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 p-5 rounded-2xl w-fit mb-8 group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:scale-110 transition-all duration-500">
+                  <value.icon size={32} className="text-primary" />
+                </div>
+
+                <div className="relative z-10">
+                  <h4 className="text-xl md:text-2xl font-bold mb-4 tracking-tighter font-headline group-hover:text-primary transition-colors">
+                    {value.title}
+                  </h4>
+                  <p className="text-sm md:text-base text-muted-foreground italic leading-relaxed font-medium">
+                    {value.description}
+                  </p>
+                </div>
+
+                {/* Subtle outer glow on hover */}
+                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/[0.02] blur-3xl transition-all duration-700 pointer-events-none" />
               </motion.div>
             ))}
           </div>
