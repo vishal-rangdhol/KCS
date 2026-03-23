@@ -1,8 +1,9 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import {
@@ -19,22 +20,34 @@ const products = [
   {
     id: "letscatchup",
     name: "Let’s Catch Up",
-    description: "A next-generation social-learning ecosystem that brings communities together through meaningful knowledge sharing and structured collaboration.",
-    color: "from-orange-600/20 via-primary/10 to-transparent",
-    href: "https://letscatchup-kcs.com/",
-    tag: "Social Ecosystem",
+    tag: "Social Learning Platform",
+    description: "A next-generation social-learning ecosystem designed to combine community interaction with knowledge sharing. Traditional social platforms often prioritize engagement algorithms over meaningful connections. Let’s Catch Up focuses on learning, collaboration, and private communities.",
+    features: [
+      "Private community “Circles”",
+      "Integrated Learning Management System (LMS)",
+      "Safe digital space for students and professionals",
+      "Structured knowledge sharing"
+    ],
+    vision: "Create a healthy digital community platform where social interaction and education grow together.",
     image: PlaceHolderImages.find(img => img.id === 'product-chat')?.imageUrl || "https://picsum.photos/seed/kcs-chat/800/600",
-    hint: "communication app"
+    hint: "social learning app",
+    href: "https://letscatchup-kcs.com/"
   },
   {
     id: "sushrth",
     name: "Sushrth",
-    description: "An AI-native healthcare platform designed to modernize patient management and hospital operations for next-gen clinical infrastructure.",
-    color: "from-amber-600/20 via-primary/10 to-transparent",
-    href: "https://www.sushrth.com/",
-    tag: "AI Healthcare",
+    tag: "AI-Driven Healthcare Infrastructure",
+    description: "A modern healthcare technology platform designed to simplify medical operations and patient management. Healthcare systems worldwide often rely on outdated infrastructure that is difficult and expensive to modernize. Sushrth solves this by offering an AI-ready healthcare ecosystem built for scalability and efficiency.",
+    features: [
+      "Appointment management automation",
+      "Secure medical history tracking",
+      "Patient-centric healthcare interface",
+      "AI-ready clinical workflows"
+    ],
+    vision: "Deliver efficient, accessible, and intelligent healthcare technology for modern hospitals and clinics.",
     image: PlaceHolderImages.find(img => img.id === 'product-data')?.imageUrl || "https://picsum.photos/seed/kcs-health/800/600",
-    hint: "healthcare dashboard"
+    hint: "healthcare platform",
+    href: "https://www.sushrth.com/"
   }
 ]
 
@@ -46,8 +59,8 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-5deg", "5deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["5deg", "-5deg"])
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["-2deg", "2deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["2deg", "-2deg"])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (window.innerWidth < 768) return
@@ -74,47 +87,65 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         rotateY,
         transformStyle: "preserve-3d"
       }}
-      initial={{ opacity: 0, scale: 0.95, y: 30 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ 
-        duration: 0.8, 
-        delay: index * 0.1,
-        ease: [0.23, 1, 0.32, 1] 
-      }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative h-[450px] sm:h-[500px] lg:h-[550px] w-full rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl"
+      className="group relative min-h-[700px] w-full rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
-      {/* Product Image Layer */}
+      {/* Background Architectural Layer */}
       <div className="absolute inset-0 z-0">
         <Image 
           src={product.image}
           alt={product.name}
           fill
-          className="object-cover opacity-30 group-hover:opacity-50 transition-all duration-1000 group-hover:scale-110"
+          className="object-cover opacity-20 group-hover:opacity-40 transition-all duration-1000 group-hover:scale-105"
           data-ai-hint={product.hint}
         />
-        <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent z-10`} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background z-10" />
       </div>
 
-      <div style={{ transform: "translateZ(50px)" }} className="absolute inset-0 z-20 p-8 sm:p-12 flex flex-col justify-end text-left items-start">
-        <div className="flex items-center gap-3 mb-6">
-          <span className="px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[10px] font-bold uppercase tracking-widest font-headline">
-            {product.tag}
-          </span>
-          <div className="h-px w-8 bg-primary/30" />
+      {/* Content Layer */}
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-8 sm:p-12 flex-1 flex flex-col">
+        {/* Header Terminal */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest font-headline">
+              {product.tag}
+            </span>
+          </div>
+          <h3 className="text-4xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none mb-6">
+            {product.name}
+          </h3>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
+            {product.description}
+          </p>
         </div>
 
-        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline uppercase leading-none">
-          {product.name}
-        </h3>
-        
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8 group-hover:text-foreground transition-colors duration-500 max-w-md italic font-medium">
-          {product.description}
-        </p>
-        
+        {/* Features Protocol */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+          {product.features.map((feature, i) => (
+            <div key={i} className="flex items-start gap-3 p-4 rounded-2xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
+              <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <span className="text-xs md:text-sm font-medium text-foreground/80">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Vision Node */}
+        <div className="mt-auto pt-8 border-t border-white/5 mb-8">
+          <div className="flex items-center gap-2 mb-3">
+            <Sparkles size={14} className="text-primary animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">The Vision</span>
+          </div>
+          <p className="text-base md:text-lg font-bold text-foreground leading-tight italic tracking-tight">
+            "{product.vision}"
+          </p>
+        </div>
+
         <Button 
           variant="outline" 
-          className="h-12 px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-xs sm:text-sm font-bold group/btn shadow-xl"
+          className="h-14 px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
           onClick={() => {
             if (product.href && product.href !== "#") {
               window.open(product.href, '_blank', 'noopener,noreferrer');
@@ -126,9 +157,9 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
         </Button>
       </div>
 
-      {/* Architectural Element */}
-      <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-30 transition-opacity duration-700">
-         <Sparkles size={48} className="text-primary" />
+      {/* Decorative Branding */}
+      <div className="absolute top-12 right-12 opacity-5 group-hover:opacity-20 transition-opacity duration-1000 hidden lg:block">
+         <Sparkles size={120} className="text-primary" />
       </div>
     </motion.div>
   )
@@ -136,31 +167,31 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-24 overflow-visible">
-      <div className="text-center mb-16 lg:mb-24 w-full px-4 sm:px-6">
+    <Chapter id="products" className="bg-background py-32 overflow-visible">
+      <div className="text-center mb-16 lg:mb-24 w-full px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.5em] text-[10px] md:text-xs mb-6 block font-bold">
-            <Sparkles size={12} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
+          <span className="text-primary font-headline uppercase tracking-[0.5em] text-[10px] md:text-xs mb-8 block font-bold">
+            <Sparkles size={14} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
           </span>
-          <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none font-headline uppercase">
+          <h2 className="text-5xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline uppercase">
             Our Platforms.
           </h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-muted-foreground mt-8 w-full max-w-3xl mx-auto text-base sm:text-xl leading-relaxed px-4 italic font-medium"
+            className="text-muted-foreground mt-10 w-full max-w-3xl mx-auto text-lg md:text-2xl leading-relaxed italic font-medium"
           >
             Engineered solutions architected to bridge the gap between communication silos and healthcare infrastructure.
           </motion.p>
         </motion.div>
       </div>
 
-      <div className="w-full relative px-4 sm:px-12">
+      <div className="w-full relative px-4 md:px-12">
         <Carousel
           opts={{
             align: "start",
@@ -168,17 +199,17 @@ export function ProductsChapter() {
           }}
           className="w-full max-w-7xl mx-auto"
         >
-          <CarouselContent className="-ml-6">
+          <CarouselContent className="-ml-8">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-6 basis-full md:basis-1/2 perspective-2000">
+              <CarouselItem key={index} className="pl-8 basis-full lg:basis-full perspective-2000">
                 <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
           </CarouselContent>
           
-          <div className="flex justify-center md:justify-end gap-4 mt-12 sm:mt-20">
-            <CarouselPrevious className="static translate-y-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl" />
-            <CarouselNext className="static translate-y-0 h-12 w-12 sm:h-14 sm:w-14 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl" />
+          <div className="flex justify-center md:justify-end gap-6 mt-16 sm:mt-24">
+            <CarouselPrevious className="static translate-y-0 h-14 w-14 sm:h-16 sm:w-16 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
+            <CarouselNext className="static translate-y-0 h-14 w-14 sm:h-16 sm:w-16 rounded-2xl border-white/5 bg-white/5 text-foreground hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-2xl flex items-center justify-center" />
           </div>
         </Carousel>
       </div>
