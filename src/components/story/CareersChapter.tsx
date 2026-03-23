@@ -63,9 +63,8 @@ export function CareersChapter() {
             <Sparkles size={12} className="animate-pulse" /> The Talent Protocol
           </span>
           
-          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-foreground mb-10 font-headline uppercase">
-            Architect the <br />
-            <span className="text-primary italic">future with us.</span>
+          <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter text-foreground mb-10 font-headline">
+            Architect the <span className="text-primary italic">future with us.</span>
           </h2>
 
           <div className="max-w-4xl mx-auto space-y-8">
