@@ -415,24 +415,14 @@ export default function CareersPage() {
                   <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/60 font-mono mb-10 text-center">FTE_CONVERSION_PROTOCOL</h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                      { month: "MONTH 01", title: "INTEGRATION", desc: "System Init", progress: 20 },
-                      { month: "MONTH 02", title: "OWNERSHIP", desc: "Performance Tracking", progress: 60 },
-                      { month: "MONTH 03", title: "CONVERSION", desc: "FTE Offer Issued", progress: 100 },
+                      { month: "MONTH 01", title: "INTEGRATION", desc: "System Init" },
+                      { month: "MONTH 02", title: "OWNERSHIP", desc: "Performance Tracking" },
+                      { month: "MONTH 03", title: "CONVERSION", desc: "FTE Offer Issued" },
                     ].map((phase, i) => (
                       <div key={i} className="space-y-4 text-center group/phase">
                         <div className="text-[9px] font-bold font-mono text-primary/40 group-hover/phase:text-primary transition-colors">{phase.month}</div>
                         <div className="text-sm font-bold tracking-tight">{phase.title}</div>
                         <div className="text-[10px] italic text-muted-foreground">{phase.desc}</div>
-                        <div className="relative h-2 bg-white/5 rounded-full overflow-hidden">
-                           <motion.div 
-                            initial={{ width: 0 }}
-                            animate={{ width: `${phase.progress}%` }}
-                            transition={{ duration: 2, delay: 1 }}
-                            className="h-full bg-primary/60"
-                           />
-                           <div className="absolute top-0 right-0 h-full w-px bg-primary/40" />
-                        </div>
-                        <div className="text-[8px] font-mono text-primary/40">[{phase.progress}%]</div>
                       </div>
                     ))}
                   </div>
