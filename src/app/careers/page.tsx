@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
@@ -297,7 +296,7 @@ export default function CareersPage() {
                 <span className="text-[9px] font-bold uppercase tracking-widest font-mono">PROGRAM_MISSION</span>
               </div>
               <p className="text-[11px] italic text-muted-foreground leading-relaxed">
-                10 Seats. One Mission. Our 90-day elite gauntlet transitions the top 10% of talent into permanent FTE roles.
+                10 Seats. One Mission. Our 90-day elite gauntlet transitions the talent into permanent FTE roles.
               </p>
             </div>
           </div>
@@ -509,4 +508,3 @@ export default function CareersPage() {
     </main>
   )
 }
-
