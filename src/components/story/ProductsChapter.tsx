@@ -20,31 +20,31 @@ const products = [
     id: "letscatchup",
     name: "Let’s Catch Up",
     tag: "Social Learning Platform",
-    description: "A next-generation social-learning ecosystem designed to combine community interaction with knowledge sharing. Traditional social platforms often prioritize engagement algorithms over meaningful connections. Let’s Catch Up focuses on learning, collaboration, and private communities.",
+    description: "A next-generation social-learning ecosystem designed to combine community interaction with knowledge sharing. Focuses on learning, collaboration, and private communities.",
     features: [
-      "Private community “Circles”",
-      "Integrated Learning Management System (LMS)",
-      "Safe digital space for students and professionals",
+      "Private community Circles",
+      "Integrated Learning LMS",
+      "Safe student digital space",
       "Structured knowledge sharing"
     ],
-    vision: "Create a healthy digital community platform where social interaction and education grow together.",
+    vision: "Healthy education communities.",
     image: PlaceHolderImages.find(img => img.id === 'product-chat')?.imageUrl || "https://picsum.photos/seed/kcs-chat/800/600",
-    hint: "social learning app",
+    hint: "social learning",
     href: "https://letscatchup-kcs.com/"
   },
   {
     id: "sushrth",
     name: "Sushrth",
-    tag: "AI-Driven Healthcare Infrastructure",
-    description: "A modern healthcare technology platform designed to simplify medical operations and patient management. Healthcare systems worldwide often rely on outdated infrastructure that is difficult and expensive to modernize. Sushrth solves this by offering an AI-ready healthcare ecosystem built for scalability and efficiency.",
+    tag: "AI Healthcare Infrastructure",
+    description: "A modern healthcare technology platform designed to simplify medical operations and patient management through AI-ready infrastructure.",
     features: [
-      "Appointment management automation",
-      "Secure medical history tracking",
-      "Patient-centric healthcare interface",
-      "AI-ready clinical workflows"
+      "Appointment automation",
+      "Secure history tracking",
+      "Patient-centric interface",
+      "AI clinical workflows"
     ],
-    vision: "Deliver efficient, accessible, and intelligent healthcare technology for modern hospitals and clinics.",
-    image: "", // Image removed per request
+    vision: "Intelligent healthcare scaling.",
+    image: "", 
     hint: "healthcare platform",
     href: "https://www.sushrth.com/"
   }
@@ -91,7 +91,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       whileHover={{ y: -15, scale: 1.02 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative h-[550px] md:h-[750px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
+      className="group relative h-[380px] md:h-[700px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
       <div className="absolute inset-0 z-0">
         {product.image && (
@@ -99,59 +99,57 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover opacity-15 group-hover:opacity-30 transition-all duration-1000 group-hover:scale-105"
+            className="object-cover opacity-10 group-hover:opacity-20 transition-all duration-1000 group-hover:scale-105"
             data-ai-hint={product.hint}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/90 to-background z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/80 to-background z-10" />
       </div>
 
-      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 h-full flex flex-col">
-        <div className="mb-3 md:mb-8">
-          <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline mb-2">
+      <div style={{ transform: "translateZ(30px)" }} className="relative z-20 p-4 sm:p-10 h-full flex flex-col justify-between">
+        <div className="space-y-2 md:space-y-6">
+          <span className="inline-block px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[7px] md:text-[10px] font-bold uppercase tracking-widest font-headline">
             {product.tag}
           </span>
-          <h3 className="text-xl sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline leading-tight mb-2 md:mb-4">
+          <h3 className="text-lg sm:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline leading-tight">
             {product.name}
           </h3>
-          <p className="text-[9px] md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
+          <p className="text-[9px] md:text-base text-muted-foreground leading-relaxed max-w-2xl font-medium italic line-clamp-2 md:line-clamp-none">
             {product.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-4 mb-4 md:mb-8">
+        <div className="grid grid-cols-2 gap-1.5 md:gap-4 my-2 md:my-8">
           {product.features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-2 md:gap-3 p-1.5 md:p-3 rounded-lg md:rounded-xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
-              <CheckCircle2 className="w-3 h-3 md:w-4 md:h-4 text-primary shrink-0" />
-              <span className="text-[8px] md:text-sm font-medium text-foreground/80 leading-none">{feature}</span>
+            <div key={i} className="flex items-center gap-1.5 md:gap-3 p-1 md:p-3 rounded-lg md:rounded-xl bg-white/5 border border-white/5 group-hover:border-white/10 transition-all">
+              <CheckCircle2 className="w-2.5 h-2.5 md:w-4 md:h-4 text-primary shrink-0" />
+              <span className="text-[7px] md:text-sm font-medium text-foreground/80 leading-none truncate">{feature}</span>
             </div>
           ))}
         </div>
 
-        <div className="flex-1" />
-
-        <div className="pt-3 md:pt-8 border-t border-white/5 mb-4 md:mb-8">
-          <div className="flex items-center gap-1.5 mb-1 md:mb-2">
-            <Sparkles size={10} className="text-primary animate-pulse" />
-            <span className="text-[7px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">The Vision</span>
+        <div className="pt-2 md:pt-8 border-t border-white/5">
+          <div className="flex items-center gap-1 md:gap-2 mb-0.5 md:mb-2">
+            <Sparkles size={8} className="text-primary animate-pulse md:w-3 md:h-3" />
+            <span className="text-[6px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Vision</span>
           </div>
-          <p className="text-[10px] md:text-xl font-bold text-foreground leading-tight italic tracking-tight">
+          <p className="text-[10px] md:text-xl font-bold text-foreground leading-tight italic tracking-tight mb-3 md:mb-6">
             "{product.vision}"
           </p>
-        </div>
 
-        <Button 
-          variant="outline" 
-          className="h-8 md:h-12 px-6 md:px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-[9px] md:text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
-          onClick={() => {
-            if (product.href && product.href !== "#") {
-              window.open(product.href, '_blank', 'noopener,noreferrer');
-            }
-          }}
-        >
-          View Platform Preview
-          <ArrowRight className="ml-1.5 w-3 h-3 md:w-4 md:h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
-        </Button>
+          <Button 
+            variant="outline" 
+            className="h-7 md:h-12 px-4 md:px-8 rounded-full border border-primary/20 text-primary bg-background/40 backdrop-blur-md hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 text-[8px] md:text-sm font-bold group/btn shadow-xl w-full sm:w-fit"
+            onClick={() => {
+              if (product.href && product.href !== "#") {
+                window.open(product.href, '_blank', 'noopener,noreferrer');
+              }
+            }}
+          >
+            Preview
+            <ArrowRight className="ml-1 w-2.5 h-2.5 md:w-4 md:h-4 group-hover/btn:translate-x-1.5 transition-transform duration-500" />
+          </Button>
+        </div>
       </div>
     </motion.div>
   )
@@ -178,7 +176,7 @@ export function ProductsChapter() {
             transition={{ delay: 0.2 }}
             className="text-muted-foreground mt-4 md:mt-8 w-full max-w-3xl mx-auto text-sm md:text-2xl leading-relaxed italic font-medium"
           >
-            Engineered solutions architected to bridge the gap between communication silos and healthcare infrastructure.
+            Engineered solutions architected to bridge communication silos and healthcare infrastructure.
           </motion.p>
         </motion.div>
       </div>

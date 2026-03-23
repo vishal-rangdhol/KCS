@@ -48,9 +48,9 @@ export function Home() {
       >
         <HeroChapter />
         <ProblemChapter />
-        <VisionChapter />
         <ProductsChapter />
         <ServicesChapter />
+        <VisionChapter />
         <AboutChapter />
         <CultureChapter />
         <CareersChapter />

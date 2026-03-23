@@ -52,7 +52,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
         <div 
           className="bg-primary/5 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] w-fit mb-6 md:mb-10 border border-primary/20 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
         >
-          <value.icon className="w-8 h-8 md:w-12 md:h-12 text-primary" strokeWidth={1.5} />
+          <value.icon className="w-6 h-6 md:w-12 md:h-12 text-primary" strokeWidth={1.5} />
         </div>
         
         <h3 className="text-xl md:text-4xl font-bold mb-4 md:mb-6 tracking-tighter text-foreground leading-tight">
@@ -61,7 +61,7 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           </span>
         </h3>
         
-        <p className="text-sm md:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300 font-medium italic">
+        <p className="text-[12px] md:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300 font-medium italic">
           {value.description}
         </p>
       </div>
