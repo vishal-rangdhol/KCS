@@ -1,10 +1,8 @@
-
 "use client"
 
 import dynamic from 'next/dynamic'
 import { Navbar } from '@/components/layout/Navbar'
 import { HeroChapter } from '@/components/story/HeroChapter'
-import { ProblemChapter } from '@/components/story/ProblemChapter'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { Footer } from '@/components/layout/Footer'
@@ -49,7 +47,6 @@ export function Home() {
         <HeroChapter />
         <ServicesChapter />
         <ProductsChapter />
-        <ProblemChapter />
         <AboutChapter />
         <CultureChapter />
         <CareersChapter />
