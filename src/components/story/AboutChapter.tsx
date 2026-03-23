@@ -28,7 +28,7 @@ export function AboutChapter() {
             <Sparkles size={14} className="animate-pulse" /> The KCS Origin
           </span>
           
-          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.8] tracking-tighter text-foreground mb-16 font-headline">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[7rem] font-bold leading-[0.8] tracking-tighter text-foreground mb-16 font-headline">
             Architecting <br />
             <span className="text-primary italic">Meaningful Impact.</span>
           </h2>
