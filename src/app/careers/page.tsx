@@ -172,7 +172,7 @@ export default function CareersPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                       <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
                         <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
-                          <MapPin size={16} md:size={20} />
+                          <MapPin size={20} />
                         </div>
                         <div>
                           <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Location</p>
@@ -181,7 +181,7 @@ export default function CareersPage() {
                       </div>
                       <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
                         <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
-                          <Clock size={16} md:size={20} />
+                          <Clock size={20} />
                         </div>
                         <div>
                           <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Duration</p>
@@ -190,7 +190,7 @@ export default function CareersPage() {
                       </div>
                       <div className="flex items-center gap-3 p-4 md:p-5 rounded-xl md:rounded-2xl bg-white/10 border border-white/5">
                         <div className="p-2 md:p-3 rounded-lg md:rounded-xl bg-primary/10 text-primary">
-                          <Zap size={16} md:size={20} />
+                          <Zap size={20} />
                         </div>
                         <div>
                           <p className="text-[7px] md:text-[8px] font-bold uppercase tracking-wider text-muted-foreground font-headline">Path</p>
