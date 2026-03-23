@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
@@ -68,7 +69,7 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-2 md:p-6 pointer-events-none">
       <nav 
-        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[98%] md:max-w-[95%] transition-all duration-700 border ${
+        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[95%] transition-all duration-700 border ${
           isScrolled 
             ? 'px-4 py-2 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-[0.98] md:scale-100' 
             : 'px-6 py-3 md:px-10 md:py-5 border-border/10 bg-background shadow-sm'
@@ -115,8 +116,6 @@ export function Navbar() {
                     {isActive && (
                       <motion.span 
                         layoutId="activeUnderline"
-                        initial={{ scaleX: 0, originX: 0 }}
-                        animate={{ scaleX: 1, originX: 0 }}
                         className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(251,146,60,0.4)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
@@ -135,7 +134,7 @@ export function Navbar() {
               <MagneticButton>
                 <Link 
                   href={contactItem.href}
-                  className={`px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border-none shadow-lg bg-primary text-white hover:bg-secondary group relative overflow-hidden`}
+                  className={`px-5 py-2 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border-none shadow-[0_10px_30px_rgba(251,146,60,0.3)] bg-primary text-white hover:bg-secondary group relative overflow-hidden`}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
