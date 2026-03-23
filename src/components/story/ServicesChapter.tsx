@@ -2,21 +2,29 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, Sparkles } from 'lucide-react'
+import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, Sparkles, RefreshCw, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const services = [
   {
-    title: "Artificial Intelligence",
-    description: "Machine learning models, natural language processing systems, and predictive engines built for practical business impact.",
+    title: "Artificial Intelligence Solutions",
+    description: "We help businesses turn AI from a buzzword into a genuine operational advantage. Our AI capabilities span predictive analytics, machine learning models, intelligent process automation, and AI-driven decision systems — all engineered to integrate cleanly with existing infrastructure.",
     icon: BrainCircuit,
     color: "bg-indigo-600/10",
     borderColor: "group-hover:border-indigo-500/50",
     iconColor: "text-indigo-500",
   },
   {
-    title: "Cloud Infrastructure",
-    description: "Scalable, secure architecture deployed across AWS, Google Cloud, and Azure, designed for global performance.",
+    title: "Cybersecurity",
+    description: "Security isn't a feature we bolt on at the end. It's built into every system we design. KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
+    icon: Shield,
+    color: "bg-rose-600/10",
+    borderColor: "group-hover:border-rose-500/50",
+    iconColor: "text-rose-500",
+  },
+  {
+    title: "Cloud & Infrastructure",
+    description: "Modern businesses require infrastructure that scales without breaking. We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
     icon: Cloud,
     color: "bg-emerald-600/10",
     borderColor: "group-hover:border-emerald-500/50",
@@ -24,35 +32,41 @@ const services = [
   },
   {
     title: "Data & Analytics",
-    description: "From raw data pipelines to executive dashboards — we build systems that help organizations act on their data.",
+    description: "Data is only valuable when it drives decisions. We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
     icon: BarChart3,
     color: "bg-sky-600/10",
     borderColor: "group-hover:border-sky-500/50",
     iconColor: "text-sky-500",
   },
   {
-    title: "Cybersecurity",
-    description: "Security-first design across every layer — from architecture decisions through deployment and real-time monitoring.",
-    icon: Shield,
-    color: "bg-rose-600/10",
-    borderColor: "group-hover:border-rose-500/50",
-    iconColor: "text-rose-500",
-  },
-  {
-    title: "Enterprise Platforms",
-    description: "Custom ERP, CRM, and workflow systems built around how businesses actually operate, optimized for growth.",
+    title: "Enterprise Software (ERP / CRM)",
+    description: "Your business has unique workflows. Your software should fit them — not the other way around. KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
     icon: Building2,
     color: "bg-violet-600/10",
     borderColor: "group-hover:border-violet-500/50",
     iconColor: "text-violet-500",
   },
   {
-    title: "Mobile Applications",
-    description: "Cross-platform development across React Native, Swift, and Kotlin — optimized for iOS, Android, and web.",
+    title: "Mobile & Cross-Platform Development",
+    description: "We build high-performance applications across all modern platforms — iOS, Android, and web. Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
     icon: Smartphone,
     color: "bg-fuchsia-600/10",
     borderColor: "group-hover:border-fuchsia-500/50",
     iconColor: "text-fuchsia-500",
+  },
+  {
+    title: "Product Lifecycle Support",
+    description: "Build. Run. Maintain. KCS supports digital products across their entire lifecycle:",
+    points: [
+      { label: "Product Development", text: "architecture, UX, and infrastructure built from ground up." },
+      { label: "Operational Support", text: "post-launch ops for growth and marketing focus." },
+      { label: "Continuous Maintenance", text: "adaptive maintenance for OS and security standards." },
+      { label: "24/7 Global Support", text: "AI-assisted and human teams for troubleshooting." }
+    ],
+    icon: RefreshCw,
+    color: "bg-primary/10",
+    borderColor: "group-hover:border-primary/50",
+    iconColor: "text-primary",
   }
 ]
 
@@ -96,24 +110,38 @@ export function ServicesChapter() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
               className={cn(
-                "group p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm shadow-2xl min-h-[320px] md:min-h-[480px] flex flex-col",
+                "group p-6 md:p-8 lg:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm shadow-2xl flex flex-col min-h-[400px] md:min-h-[580px]",
                 item.borderColor
               )}
             >
               <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", item.color)} />
               
-              <div className="relative z-10 h-full flex flex-col justify-between">
-                <div className="mb-8 md:mb-12">
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="mb-6 md:mb-10">
                   <div className={cn("p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/20 w-fit", item.iconColor)}>
                     <item.icon size={24} className="md:size-[32px]" />
                   </div>
                 </div>
                 
-                <div>
+                <div className="flex-1">
                   <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-headline text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
-                  <p className="text-[12px] md:text-lg text-muted-foreground leading-relaxed italic font-medium group-hover:text-foreground/80 transition-colors">
+                  <p className="text-[12px] md:text-base lg:text-lg text-muted-foreground leading-relaxed italic font-medium group-hover:text-foreground/80 transition-colors mb-6">
                     {item.description}
                   </p>
+
+                  {item.points && (
+                    <div className="space-y-3 mt-4">
+                      {item.points.map((point, idx) => (
+                        <div key={idx} className="flex gap-3">
+                          <CheckCircle2 size={14} className="text-primary shrink-0 mt-1" />
+                          <div className="space-y-1">
+                            <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
+                            <span className="text-[10px] md:text-sm text-muted-foreground leading-tight italic">{point.text}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 
