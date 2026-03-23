@@ -1,7 +1,7 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, Sparkles, RefreshCw, CheckCircle2, ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
@@ -26,20 +26,24 @@ const services = [
   {
     id: "cyber",
     title: "Cybersecurity",
-    description: "Security isn't a feature we bolt on at the end. It's built into every system we design. KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
+    description: "Security isn't a feature we bolt on at the end. It's built into every system we design.",
+    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
     icon: Shield,
     color: "bg-rose-600/10",
     borderColor: "group-hover:border-rose-500/50",
     iconColor: "text-rose-500",
+    isCollapsible: true
   },
   {
     id: "cloud",
     title: "Cloud & Infrastructure",
-    description: "Modern businesses require infrastructure that scales without breaking. We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
+    description: "Modern businesses require infrastructure that scales without breaking.",
+    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
     icon: Cloud,
     color: "bg-emerald-600/10",
     borderColor: "group-hover:border-emerald-500/50",
     iconColor: "text-emerald-500",
+    isCollapsible: true
   },
   {
     id: "data",
@@ -154,7 +158,6 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         </div>
       </div>
 
-      {/* Decorative Element */}
       <div className="absolute -bottom-8 -right-8 w-24 h-24 md:w-32 md:h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
         <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
       </div>
