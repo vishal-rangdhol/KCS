@@ -42,7 +42,8 @@ export function CustomCursor() {
         target.closest('button') || 
         target.closest('a') ||
         target.classList.contains('cursor-pointer') ||
-        target.closest('.cursor-pointer')
+        target.closest('.cursor-pointer') ||
+        target.closest('[role="button"]')
       ) {
         setIsHovered(true)
       } else {
@@ -68,7 +69,7 @@ export function CustomCursor() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
       <motion.div
-        className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-multiply shadow-[0_0_20px_rgba(249,115,22,0.2)]"
+        className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center mix-blend-screen"
         style={{
           x,
           y,
@@ -76,8 +77,8 @@ export function CustomCursor() {
           translateY: '-50%',
         }}
         animate={{
-          scale: isPressed ? 0.7 : isHovered ? 1.6 : 1,
-          backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.15)' : 'rgba(249, 115, 22, 0.02)',
+          scale: isPressed ? 0.7 : isHovered ? 2 : 1,
+          backgroundColor: isHovered ? 'rgba(249, 115, 22, 0.1)' : 'rgba(249, 115, 22, 0)',
           borderColor: isHovered ? 'rgba(249, 115, 22, 1)' : 'rgba(249, 115, 22, 0.4)',
         }}
         transition={{ 
@@ -88,9 +89,9 @@ export function CustomCursor() {
         }}
       >
         <motion.div 
-          className="w-2.5 h-2.5 rounded-full bg-primary"
+          className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_rgba(249,115,22,0.8)]"
           animate={{ 
-            scale: isHovered ? 0.5 : 1,
+            scale: isHovered ? 0.3 : 1,
             opacity: isPressed ? 0.6 : 1
           }}
           transition={{ type: 'spring', damping: 20, stiffness: 200 }}

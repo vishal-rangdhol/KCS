@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -7,145 +6,144 @@ import { Focus, Heart, ShieldCheck, Sparkles } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
-const pillars = [
+const protocols = [
   { 
-    id: "focus",
+    id: "01",
+    slug: "focus",
     icon: Focus, 
     title: "Deep Focus", 
     text: "We prioritize deep work over constant distraction. Our environment is engineered for flow, allowing for the architectural precision that high-end digital products demand.",
     tag: "Protocol 01"
   },
   { 
-    id: "sustainable",
+    id: "02",
+    slug: "sustainable",
     icon: Heart, 
-    title: "Sustainable", 
+    title: "Sustainable Pace", 
     text: "Balance is the fuel for long-term technical excellence. We reject the industry standard of burnout, choosing instead a pace that preserves creativity and rigor.",
     tag: "Protocol 02"
   },
   { 
-    id: "reliability",
+    id: "03",
+    slug: "reliability",
     icon: ShieldCheck, 
-    title: "Reliability", 
+    title: "Operational Stability", 
     text: "Teams that thrive build products that last. By investing in our people's stability, we ensure the platforms we build remain robust and future-proof.",
     tag: "Protocol 03"
   }
 ]
 
 export function CultureChapter() {
-  const [expandedId, setExpandedId] = useState<string | null>("focus")
+  const [activeSlug, setActiveSlug] = useState("focus")
+  const activeProtocol = protocols.find(p => p.slug === activeSlug) || protocols[0]
 
   return (
-    <Chapter id="culture" className="bg-background py-16 md:py-32 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-24 md:py-48 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-10 md:mb-16 px-4">
+        <div className="text-center mb-16 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-4 font-headline">
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
               <Sparkles size={14} className="animate-pulse" /> The KCS Conviction
             </span>
             <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-6 font-headline">
-              Built on <span className="text-primary italic">Focus, Not Burnout.</span>
+              Built on Focus, Not Burnout.
             </h2>
           </motion.div>
         </div>
 
-        {/* Unique Tiles Structure - Responsive Height */}
-        <div className="flex flex-col md:flex-row gap-4 h-[400px] md:h-[250px] w-full items-stretch px-2 md:px-0">
-          {pillars.map((pillar, i) => {
-            const isExpanded = expandedId === pillar.id;
-            return (
-              <motion.div
-                key={pillar.id}
-                onMouseEnter={() => setExpandedId(pillar.id)}
-                onClick={() => setExpandedId(pillar.id)}
-                className={cn(
-                  "relative group overflow-hidden cursor-pointer rounded-[1.5rem] border border-border/40 transition-all duration-700 ease-[0.23, 1, 0.32, 1]",
-                  isExpanded ? "flex-[5] md:flex-[4] bg-card shadow-2xl" : "flex-1 bg-card/40 hover:bg-card/60"
-                )}
-                layout
-              >
-                {/* Background Accent Gradient */}
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 transition-opacity duration-700",
-                  isExpanded && "opacity-100"
-                )} />
-
-                {/* Content Container */}
-                <div className="relative z-10 p-3.5 md:p-6 h-full flex flex-col">
-                  {/* Top Bar: Icon and Protocol ID */}
-                  <div className="flex items-center justify-between mb-2 md:mb-4">
-                    <div className={cn(
-                      "p-1.5 md:p-3 rounded-lg transition-all duration-500",
-                      isExpanded ? "bg-primary text-white scale-105 shadow-md shadow-primary/20" : "bg-primary/10 text-primary"
-                    )}>
-                      <pillar.icon size={16} />
-                    </div>
+        {/* The Protocol Switcher Architecture */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-stretch min-h-[400px]">
+          {/* Left: Vertical Timeline Navigation */}
+          <div className="lg:w-1/4 flex flex-row lg:flex-col justify-center lg:justify-start gap-4 md:gap-8 relative">
+            <div className="absolute left-[23px] top-0 bottom-0 w-px bg-white/5 hidden lg:block" />
+            
+            {protocols.map((protocol) => {
+              const isActive = activeSlug === protocol.slug;
+              return (
+                <button
+                  key={protocol.slug}
+                  onClick={() => setActiveSlug(protocol.slug)}
+                  className="group relative flex items-center gap-6 text-left outline-none"
+                >
+                  <div className={cn(
+                    "relative z-10 w-12 h-12 rounded-full border flex items-center justify-center transition-all duration-500 font-headline font-bold text-xs",
+                    isActive 
+                      ? "bg-primary border-primary text-white shadow-[0_0_20px_rgba(249,115,22,0.4)]" 
+                      : "bg-background border-white/10 text-muted-foreground group-hover:border-primary/40 group-hover:text-primary"
+                  )}>
+                    {protocol.id}
+                  </div>
+                  <div className="hidden lg:block">
                     <span className={cn(
-                      "text-[6px] md:text-[8px] font-bold uppercase tracking-[0.2em] font-headline transition-colors duration-500",
-                      isExpanded ? "text-primary/60" : "text-muted-foreground/30"
+                      "text-[10px] font-bold uppercase tracking-[0.3em] font-headline transition-colors duration-500",
+                      isActive ? "text-primary" : "text-muted-foreground/40 group-hover:text-foreground"
                     )}>
-                      {pillar.tag}
+                      {protocol.title}
                     </span>
                   </div>
+                  {isActive && (
+                    <motion.div 
+                      layoutId="activeIndicator"
+                      className="absolute -left-1 w-14 h-14 bg-primary/10 rounded-full -z-10 blur-xl"
+                    />
+                  )}
+                </button>
+              )
+            })}
+          </div>
 
-                  {/* Narrative Block */}
-                  <div className="mt-auto">
-                    <h3 className={cn(
-                      "text-sm md:text-xl font-bold tracking-tighter mb-1.5 transition-all duration-500 font-headline",
-                      isExpanded ? "text-foreground" : "text-foreground/40"
-                    )}>
-                      {pillar.title}
-                    </h3>
+          {/* Right: Large Display Area with Glitch Transition */}
+          <div className="lg:w-3/4 flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSlug}
+                initial={{ opacity: 0, x: 20, filter: 'blur(10px)' }}
+                animate={{ 
+                  opacity: 1, x: 0, filter: 'blur(0px)',
+                  transition: { duration: 0.4, ease: [0.17, 0.67, 0.83, 0.67] }
+                }}
+                exit={{ 
+                  opacity: 0, x: -20, filter: 'blur(10px)',
+                  transition: { duration: 0.2 }
+                }}
+                className="bg-card/40 border border-white/5 p-10 md:p-20 rounded-[2.5rem] relative overflow-hidden backdrop-blur-md shadow-2xl w-full"
+              >
+                {/* Subtle Glitch Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
+                
+                <div className="relative z-10 space-y-8">
+                  <div className="flex items-center gap-4">
+                    <div className="p-4 rounded-2xl bg-primary/10 text-primary">
+                      <activeProtocol.icon size={32} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-primary/60 font-headline block mb-1">
+                        {activeProtocol.tag}
+                      </span>
+                      <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground font-headline">
+                        {activeProtocol.title}
+                      </h3>
+                    </div>
+                  </div>
+                  
+                  <p className="text-base md:text-2xl text-muted-foreground leading-relaxed italic font-medium max-w-2xl">
+                    {activeProtocol.text}
+                  </p>
 
-                    <AnimatePresence mode="wait">
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 5 }}
-                          transition={{ duration: 0.4, ease: "easeOut" }}
-                        >
-                          <p className="text-[9px] md:text-sm text-muted-foreground leading-snug italic max-w-2xl font-medium">
-                            {pillar.text}
-                          </p>
-                          <div className="mt-2 flex gap-1.5">
-                            <div className="w-6 h-0.5 bg-primary rounded-full" />
-                            <div className="w-1.5 h-0.5 bg-primary/20 rounded-full" />
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                  <div className="pt-8 flex gap-4">
+                    <div className="w-12 h-1 bg-primary rounded-full" />
+                    <div className="w-2 h-1 bg-white/5 rounded-full" />
                   </div>
                 </div>
-
-                {/* Decorative Architectural Element */}
-                <div className={cn(
-                  "absolute -bottom-4 -right-4 w-12 h-12 md:w-24 md:h-24 opacity-0 transition-opacity duration-1000",
-                  isExpanded && "opacity-[0.05]"
-                )}>
-                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
-                </div>
-
-                {/* Vertical Text when collapsed */}
-                {!isExpanded && (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 flex items-center justify-center pointer-events-none hidden md:flex"
-                  >
-                    <span className="rotate-90 text-[8px] font-bold uppercase tracking-[0.4em] text-foreground/10 whitespace-nowrap">
-                      Expand Protocol
-                    </span>
-                  </motion.div>
-                )}
               </motion.div>
-            )
-          })}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </Chapter>
