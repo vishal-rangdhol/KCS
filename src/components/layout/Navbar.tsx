@@ -7,13 +7,14 @@ import { Menu, X, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 const navItems = [
   { name: 'Home', href: '/#hero' },
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
   { name: 'About', href: '/#story' },
-  { name: 'Careers', href: '/#careers' },
+  { name: 'Careers', href: '/#careers', tag: '[HIRING]' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -21,6 +22,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
@@ -67,11 +69,12 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-2 md:p-6 pointer-events-none">
       <nav 
-        className={`rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[98%] md:max-w-[95%] transition-all duration-700 border ${
+        className={cn(
+          "rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[98%] md:max-w-[95%] transition-all duration-700 border border-white/5 backdrop-blur-xl",
           isScrolled 
-            ? 'px-4 py-2 md:px-8 bg-background/80 backdrop-blur-xl shadow-2xl border-primary/10 scale-[0.98] md:scale-100' 
-            : 'px-4 py-3 md:px-10 md:py-5 border-white/5 bg-background shadow-sm'
-        }`}
+            ? 'px-4 py-2 md:px-8 bg-background/80 shadow-2xl scale-[0.98] md:scale-100 border-primary/10' 
+            : 'px-4 py-3 md:px-10 md:py-5 bg-background/40 border-white/5'
+        )}
       >
         <div className="flex-shrink-0">
           <Link 
@@ -88,6 +91,7 @@ export function Navbar() {
                 className="h-6 md:h-9 w-auto object-contain antialiased"
                 priority
               />
+              <div className="absolute -right-2 top-0 w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#F97316]" />
             </div>
           </Link>
         </div>
@@ -97,28 +101,56 @@ export function Navbar() {
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
               const isActive = activeSection === id || (pathname === item.href)
+              const isHovered = hoveredItem === item.name
 
               return (
-                <li key={item.name} className="relative group flex items-center">
+                <li 
+                  key={item.name} 
+                  className="relative group flex items-center"
+                  onMouseEnter={() => setHoveredItem(item.name)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                >
                   <Link 
                     href={item.href}
-                    className={`text-[9px] font-bold uppercase tracking-[0.2em] lg:tracking-[0.3em] transition-all duration-500 block py-2 relative origin-center ${
+                    className={cn(
+                      "text-[9px] font-bold uppercase tracking-[0.2em] lg:tracking-[0.3em] transition-all duration-500 block py-2 relative origin-center flex items-center gap-1.5",
                       isActive 
-                        ? 'text-primary scale-110' 
+                        ? 'text-primary' 
                         : 'text-foreground/60 hover:text-foreground'
-                    }`}
+                    )}
                   >
                     {item.name}
+                    {item.tag && (
+                      <span className="text-[7px] font-mono text-primary animate-pulse">{item.tag}</span>
+                    )}
+                    
+                    {/* Hover Preview Underline */}
+                    {isHovered && !isActive && (
+                      <motion.span 
+                        layoutId="hoverUnderline"
+                        className="absolute bottom-[-1px] left-0 right-0 h-[1px] bg-primary/20 z-0 rounded-full"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+
+                    {/* Active Underline Protocol */}
                     {isActive && (
                       <motion.span 
                         layoutId="activeUnderline"
-                        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_10px_rgba(249,115,22,0.6)]"
+                        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_12px_rgba(249,115,22,0.8)]"
                         transition={{ 
                           type: "spring", 
                           stiffness: 380, 
                           damping: 30
                         }}
-                      />
+                      >
+                        {/* Breathing Pulse */}
+                        <motion.div 
+                          animate={{ opacity: [0.6, 1, 0.6] }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                          className="absolute inset-0 bg-white/20 rounded-full"
+                        />
+                      </motion.span>
                     )}
                   </Link>
                 </li>
@@ -133,16 +165,17 @@ export function Navbar() {
               <MagneticButton>
                 <Link 
                   href={contactItem.href}
-                  className={`px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border border-transparent hover:border-primary shadow-[0_0_20px_rgba(249,115,22,0.3)] bg-primary text-white hover:text-white group relative overflow-hidden`}
+                  className={cn(
+                    "px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border shadow-2xl relative overflow-hidden group",
+                    pathname === '/contact'
+                      ? 'bg-primary border-primary text-white'
+                      : 'bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]'
+                  )}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
                     <ArrowUpRight size={10} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </span>
-                  <motion.div 
-                    className="absolute inset-0 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    initial={false}
-                  />
                 </Link>
               </MagneticButton>
             </div>
@@ -164,7 +197,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            className="absolute top-[70px] left-2 right-2 bg-background rounded-[1.5rem] p-4 md:hidden border border-white/5 shadow-2xl pointer-events-auto"
+            className="absolute top-[70px] left-2 right-2 bg-background/95 backdrop-blur-2xl rounded-[1.5rem] p-4 md:hidden border border-white/5 shadow-2xl pointer-events-auto"
           >
             <ul className="grid grid-cols-2 gap-2">
               {navItems.map((item) => {
@@ -175,17 +208,18 @@ export function Navbar() {
                     <Link 
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border relative ${
+                      className={cn(
+                        "block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border relative",
                         isActive 
                           ? 'bg-primary/10 border-primary/40 text-primary scale-105 shadow-sm' 
                           : 'bg-card/40 border-white/5 hover:bg-card text-foreground/70'
-                      }`}
+                      )}
                     >
                       {item.name}
                       {isActive && (
                         <motion.span 
                           layoutId="activeUnderlineMobile"
-                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-primary rounded-full"
+                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-primary rounded-full shadow-[0_0_8px_#F97316]"
                         />
                       )}
                     </Link>
