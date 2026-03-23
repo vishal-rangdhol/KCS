@@ -54,7 +54,7 @@ const services = [
   {
     id: "enterprise",
     title: "Enterprise Software (ERP / CRM)",
-    description: "Your business has unique workflows. Your software should fit them.",
+    description: "Your business has unique workflows. Your software should fit them — not the other way around.",
     extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
     icon: Building2,
     color: "from-violet-600/20 to-violet-600/5",
@@ -64,8 +64,8 @@ const services = [
   },
   {
     id: "mobile",
-    title: "Mobile Development",
-    description: "We build high-performance applications across all modern platforms.",
+    title: "Mobile & Cross-Platform Development",
+    description: "We build high-performance applications across all modern platforms — iOS, Android, and web.",
     extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
     icon: Smartphone,
     color: "from-fuchsia-600/20 to-fuchsia-600/5",
@@ -76,12 +76,12 @@ const services = [
   {
     id: "lifecycle",
     title: "Product Lifecycle Support",
-    description: "Build. Run. Maintain. Comprehensive support across the entire digital lifecycle.",
+    description: "Build. Run. Maintain. KCS supports digital products across their entire lifecycle:",
     points: [
-      { label: "Product Development", text: "Architecture design, user experience, and backend infrastructure." },
-      { label: "Operational Support", text: "Post-launch technical operations and growth strategy." },
-      { label: "Continuous Maintenance", text: "Adaptive maintenance for security and performance standards." },
-      { label: "24/7 Global Support", text: "AI-assisted and human technical assistance." }
+      { label: "Product Development", text: "Architecture design, user experience, and backend infrastructure built from the ground up." },
+      { label: "Operational Support", text: "Post-launch technical operations so your team can focus on growth, marketing, and strategy." },
+      { label: "Continuous Maintenance", text: "Adaptive maintenance ensuring your platforms remain compatible with new operating systems, security standards, and performance requirements." },
+      { label: "24/7 Global Support", text: "AI-assisted and human support teams handling technical queries, user assistance, and troubleshooting." }
     ],
     icon: RefreshCw,
     color: "from-primary/20 to-primary/5",
@@ -99,13 +99,13 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -10, scale: 1.01 }}
+      whileHover={{ y: -15, scale: 1.02 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative flex flex-col rounded-[1.5rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit w-full",
+        "group relative flex flex-col rounded-[2rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit w-full",
         item.borderColor,
-        isExpanded ? "ring-1 ring-primary/30" : ""
+        isExpanded ? "ring-2 ring-primary/30" : ""
       )}
       onClick={() => setIsExpanded(!isExpanded)}
     >
@@ -116,23 +116,23 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
-      <div className="relative z-10 p-6 md:p-8 flex flex-col h-full">
-        <div className="flex items-start justify-between mb-6">
+      <div className="relative z-10 p-8 md:p-12 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-8">
           <motion.div 
             layout="position"
             className={cn(
-              "p-3 rounded-xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
+              "p-4 rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
               item.iconColor
             )}
           >
-            <item.icon size={24} />
+            <item.icon size={32} />
           </motion.div>
         </div>
 
-        <div className="flex-1 space-y-4">
+        <div className="flex-1 space-y-6">
           <motion.h3 
             layout="position"
-            className="text-xl md:text-2xl lg:text-3xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
           >
             {item.title}
           </motion.h3>
@@ -140,7 +140,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           <motion.p 
             layout="position"
             className={cn(
-              "text-base md:text-xl lg:text-2xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
+              "text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-snug italic font-medium transition-all duration-500",
               isExpanded ? "text-foreground/90" : "line-clamp-2"
             )}
           >
@@ -154,21 +154,21 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
                 transition={{ duration: 0.3 }}
-                className="pt-6 space-y-6"
+                className="pt-8 space-y-8"
               >
                 {item.extraContent && (
-                  <p className="text-sm md:text-base lg:text-lg text-muted-foreground/80 leading-relaxed border-l-2 border-primary/30 pl-6 py-2">
+                  <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground/80 leading-relaxed border-l-4 border-primary/30 pl-8 py-2">
                     {item.extraContent}
                   </p>
                 )}
                 {item.points && (
-                  <div className="grid grid-cols-1 gap-4 pt-2">
+                  <div className="grid grid-cols-1 gap-6 pt-4">
                     {item.points.map((point, idx) => (
-                      <div key={idx} className="flex gap-3 items-start">
-                        <CheckCircle2 size={16} className="text-primary mt-1 shrink-0" />
+                      <div key={idx} className="flex gap-4 items-start">
+                        <CheckCircle2 size={20} className="text-primary mt-1 shrink-0" />
                         <div>
-                          <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
-                          <span className="text-xs md:text-sm lg:text-base text-muted-foreground italic leading-tight">{point.text}</span>
+                          <span className="text-xs md:text-sm font-bold uppercase tracking-wider text-primary block mb-1">{point.label}</span>
+                          <span className="text-base md:text-lg lg:text-xl text-muted-foreground italic leading-tight">{point.text}</span>
                         </div>
                       </div>
                     ))}
@@ -179,28 +179,28 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
           </AnimatePresence>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+        <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
           <motion.button
             layout="position"
-            className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/trigger"
+            className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-primary hover:text-primary/80 transition-colors flex items-center gap-3 group/trigger"
             onClick={(e) => {
               e.stopPropagation();
               setIsExpanded(!isExpanded);
             }}
           >
-            Learn More
+            {isExpanded ? "Hide Spec" : "Learn More"}
             <motion.div
               animate={isExpanded ? { rotate: 180 } : { rotate: 0 }}
               className="transition-transform duration-300"
             >
-              <ChevronDown size={12} />
+              <ChevronDown size={16} />
             </motion.div>
-            {!isExpanded && <Sparkles size={10} className="animate-pulse opacity-40" />}
+            {!isExpanded && <Sparkles size={14} className="animate-pulse opacity-40" />}
           </motion.button>
           
           <motion.span 
             layout="position"
-            className="text-[9px] font-bold text-white/5 uppercase tracking-[0.3em] font-headline"
+            className="text-[10px] font-bold text-white/5 uppercase tracking-[0.4em] font-headline"
           >
             KCS_PROTOCOL_0{index + 1}
           </motion.span>
@@ -244,7 +244,7 @@ export function ServicesChapter() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 w-full max-w-6xl mx-auto relative items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 md:gap-16 w-full max-w-6xl mx-auto items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
           ))}

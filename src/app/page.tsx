@@ -8,10 +8,10 @@ import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import { Footer } from '@/components/layout/Footer'
 
-const VisionChapter = dynamic(() => import('@/components/story/VisionChapter').then(mod => mod.VisionChapter), { ssr: true })
-const AboutChapter = dynamic(() => import('@/components/story/AboutChapter').then(mod => mod.AboutChapter), { ssr: true })
 const ServicesChapter = dynamic(() => import('@/components/story/ServicesChapter').then(mod => mod.ServicesChapter), { ssr: true })
 const ProductsChapter = dynamic(() => import('@/components/story/ProductsChapter').then(mod => mod.ProductsChapter), { ssr: true })
+const VisionChapter = dynamic(() => import('@/components/story/VisionChapter').then(mod => mod.VisionChapter), { ssr: true })
+const AboutChapter = dynamic(() => import('@/components/story/AboutChapter').then(mod => mod.AboutChapter), { ssr: true })
 const CultureChapter = dynamic(() => import('@/components/story/CultureChapter').then(mod => mod.CultureChapter), { ssr: true })
 const CareersChapter = dynamic(() => import('@/components/story/CareersChapter').then(mod => mod.CareersChapter), { ssr: true })
 const CTAChapter = dynamic(() => import('@/components/story/CTAChapter').then(mod => mod.CTAChapter), { ssr: true })
@@ -48,8 +48,8 @@ export function Home() {
       >
         <HeroChapter />
         <ProblemChapter />
-        <ProductsChapter />
         <ServicesChapter />
+        <ProductsChapter />
         <VisionChapter />
         <AboutChapter />
         <CultureChapter />
