@@ -51,32 +51,32 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
           transition: { duration: 1, delay: index * 0.1, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className={`p-10 rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-md`}
+      className={`p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border ${value.border} ${value.hoverBorder} shadow-xl group relative overflow-hidden transition-all duration-700 hover:-translate-y-3 cursor-none backdrop-blur-md`}
     >
       {/* Subtle Background Glow on Hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
       
       <div className="relative z-10">
         <div 
-          className="bg-primary/5 p-6 rounded-[2rem] w-fit mb-10 border border-primary/20 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
+          className="bg-primary/5 p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] w-fit mb-6 md:mb-10 border border-primary/20 group-hover:border-primary/40 group-hover:bg-primary/10 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 shadow-sm"
         >
-          <value.icon className="w-12 h-12 text-primary" strokeWidth={1.5} />
+          <value.icon className="w-8 h-8 md:w-12 md:h-12 text-primary" strokeWidth={1.5} />
         </div>
         
-        <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tighter text-foreground leading-tight">
+        <h3 className="text-xl md:text-4xl font-bold mb-4 md:mb-6 tracking-tighter text-foreground leading-tight">
           <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
             {value.title}
           </span>
         </h3>
         
-        <p className="text-muted-foreground leading-relaxed text-xl group-hover:text-foreground transition-colors duration-300">
+        <p className="text-sm md:text-xl text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
           {value.description}
         </p>
       </div>
 
       {/* Decorative architectural grid element visible on hover */}
-      <div className="absolute -bottom-12 -right-12 w-48 h-48 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:12px_12px]" />
+      <div className="absolute -bottom-8 -right-8 w-32 h-32 md:w-48 md:h-48 opacity-0 group-hover:opacity-[0.05] transition-opacity duration-1000 pointer-events-none">
+        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:10px_10px]" />
       </div>
     </motion.div>
   )
@@ -84,15 +84,15 @@ function ValueCard({ value, index }: { value: typeof values[0], index: number })
 
 export function VisionChapter() {
   return (
-    <Chapter id="vision" className="py-32 bg-background">
-      <div className="w-full text-center mb-32 px-6">
+    <Chapter id="vision" className="py-20 md:py-32 bg-background">
+      <div className="w-full text-center mb-16 md:mb-32 px-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2 }}
         >
-          <span className="text-primary font-headline uppercase tracking-[0.6em] text-xs mb-8 block font-bold">The Core Protocol</span>
-          <h2 className="text-5xl md:text-9xl font-bold mb-12 tracking-tighter leading-none text-foreground">
+          <span className="text-primary font-headline uppercase tracking-[0.6em] text-[10px] md:text-xs mb-6 md:mb-8 block font-bold">The Core Protocol</span>
+          <h2 className="text-3xl md:text-9xl font-bold mb-8 md:mb-12 tracking-tighter leading-none text-foreground">
             Architectural <br />
             <span className="text-primary italic">Excellence.</span>
           </h2>
@@ -103,7 +103,7 @@ export function VisionChapter() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 relative w-full px-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-20 relative w-full px-6"
       >
         {values.map((value, index) => (
           <ValueCard key={index} value={value} index={index} />

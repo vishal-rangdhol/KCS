@@ -56,26 +56,26 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
           transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } 
         }
       }}
-      className="relative h-[400px] md:h-[520px] rounded-[2.5rem] md:rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-sm"
+      className="relative h-[320px] md:h-[520px] rounded-[2rem] md:rounded-[3rem] bg-white/5 border border-white/10 overflow-hidden group transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-sm"
     >
       <div className={cn(
         "absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 saturate-[0.85]",
         service.color
       )} />
 
-      <div className="relative z-20 h-full p-8 md:p-10 flex flex-col justify-center text-center">
-        <div className="absolute top-8 md:top-10 left-8 md:left-10 p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
-          <service.icon size={24} className="md:size-[32px]" strokeWidth={1.5} />
+      <div className="relative z-20 h-full p-6 md:p-10 flex flex-col justify-center text-center">
+        <div className="absolute top-6 md:top-10 left-6 md:left-10 p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-transparent transition-all duration-500 shadow-sm w-fit">
+          <service.icon size={20} className="md:size-[32px]" strokeWidth={1.5} />
         </div>
 
-        <div className="space-y-4 md:space-y-6">
-          <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 leading-tight">
+        <div className="space-y-3 md:space-y-6">
+          <h3 className="text-xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-white transition-colors duration-500 leading-tight">
             <span className="bg-left-bottom bg-gradient-to-r from-primary to-primary group-hover:from-white group-hover:to-white bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-1000 ease-out pb-1 inline">
               {service.title}
             </span>
           </h3>
           
-          <p className="text-muted-foreground leading-relaxed text-base md:text-lg group-hover:text-white/90 transition-colors duration-500 max-w-sm mx-auto">
+          <p className="text-muted-foreground leading-relaxed text-sm md:text-lg group-hover:text-white/90 transition-colors duration-500 max-w-sm mx-auto">
             {service.description}
           </p>
         </div>
@@ -86,19 +86,19 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
 
 export function DifferentiationChapter() {
   return (
-    <Chapter id="technology" className="py-24 md:py-32 bg-background">
-      <div className="text-center mb-16 md:mb-32 w-full px-4">
+    <Chapter id="technology" className="py-20 md:py-32 bg-background">
+      <div className="text-center mb-12 md:mb-32 w-full px-4">
         <motion.span 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block font-bold"
+          className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-3 md:mb-6 block font-bold"
         >
           Our Capabilities
         </motion.span>
-        <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-8 md:mb-10 tracking-tighter text-foreground">
+        <h2 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold mb-6 md:mb-10 tracking-tighter text-foreground">
           Solar <br /> <span className="text-secondary italic">Innovation.</span>
         </h2>
-        <p className="text-muted-foreground max-w-4xl mx-auto text-lg md:text-2xl leading-relaxed">
+        <p className="text-muted-foreground max-w-4xl mx-auto text-base md:text-2xl leading-relaxed">
           We architect hyper-scalable digital ecosystems with precision, turning complex engineering hurdles into seamless competitive advantages.
         </p>
       </div>
