@@ -199,7 +199,6 @@ export default function CareersPage() {
   const [activeId, setActiveId] = useState("01")
   const [isPoweredOn, setIsPoweredOn] = useState(false)
   const [isUplinking, setIsUplinking] = useState(false)
-  const [showResent, setShowResent] = useState(false)
   const activeJob = useMemo(() => jobDetails.find(j => j.id === activeId) || jobDetails[0], [activeId])
 
   useEffect(() => {
@@ -209,13 +208,10 @@ export default function CareersPage() {
 
   const handleInitializeUplink = () => {
     setIsUplinking(true)
+    // Simulate a brief "data uplink" period before opening mail client
     setTimeout(() => {
-      setShowResent(true)
-      setTimeout(() => {
-        window.location.href = `mailto:info@kandhugule-kcs.com?subject=2026 Internship Application - ${activeJob.title}`
-        setIsUplinking(false)
-        setShowResent(false)
-      }, 1500)
+      window.location.href = `mailto:info@kandhugule-kcs.com?subject=2026 Internship Application - ${activeJob.title}`
+      setIsUplinking(false)
     }, 2000)
   }
 
@@ -464,8 +460,8 @@ export default function CareersPage() {
                   className="rounded-xl bg-primary text-white font-bold text-xs uppercase tracking-widest px-8 h-12 group/btn relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
-                    {showResent ? 'RESUME_SENT' : 'INITIALIZE_UPLINK'}
-                    {!showResent && <Rocket size={14} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
+                    {isUplinking ? 'UPLINKING...' : 'INITIALIZE_UPLINK'}
+                    {!isUplinking && <Rocket size={14} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}
                   </span>
                   {isUplinking && (
                     <motion.div 
