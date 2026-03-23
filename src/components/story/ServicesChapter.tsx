@@ -1,15 +1,10 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, AnimatePresence } from 'framer-motion'
-import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, Sparkles, RefreshCw, CheckCircle2, ChevronDown } from 'lucide-react'
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
+import { BrainCircuit, Cloud, Shield, BarChart3, Building2, Smartphone, RefreshCw, CheckCircle2, ChevronDown, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import React, { useState } from 'react'
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 
 const services = [
   {
@@ -18,219 +13,205 @@ const services = [
     description: "We help businesses turn AI from a buzzword into a genuine operational advantage.",
     extraContent: "Our AI capabilities span predictive analytics, machine learning models, intelligent process automation, and AI-driven decision systems — all engineered to integrate cleanly with existing infrastructure.",
     icon: BrainCircuit,
-    color: "bg-indigo-600/10",
+    color: "from-indigo-600/20 to-indigo-600/5",
+    accent: "bg-indigo-500",
     borderColor: "group-hover:border-indigo-500/50",
-    iconColor: "text-indigo-500",
-    isCollapsible: true
+    iconColor: "text-indigo-400"
   },
   {
     id: "cyber",
     title: "Cybersecurity",
     description: "Security isn't a feature we bolt on at the end. It's built into every system we design.",
-    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
+    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies.",
     icon: Shield,
-    color: "bg-rose-600/10",
+    color: "from-rose-600/20 to-rose-600/5",
+    accent: "bg-rose-500",
     borderColor: "group-hover:border-rose-500/50",
-    iconColor: "text-rose-500",
-    isCollapsible: true
+    iconColor: "text-rose-400"
   },
   {
     id: "cloud",
     title: "Cloud & Infrastructure",
     description: "Modern businesses require infrastructure that scales without breaking.",
-    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
+    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability across AWS, Google Cloud, and Azure.",
     icon: Cloud,
-    color: "bg-emerald-600/10",
+    color: "from-emerald-600/20 to-emerald-600/5",
+    accent: "bg-emerald-500",
     borderColor: "group-hover:border-emerald-500/50",
-    iconColor: "text-emerald-500",
-    isCollapsible: true
+    iconColor: "text-emerald-400"
   },
   {
     id: "data",
     title: "Data & Analytics",
     description: "Data is only valuable when it drives decisions.",
-    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
+    extraContent: "We help organizations transform raw data into strategic clarity — building architectures, BI systems, and real-time dashboards for strategic vision.",
     icon: BarChart3,
-    color: "bg-sky-600/10",
+    color: "from-sky-600/20 to-sky-600/5",
+    accent: "bg-sky-500",
     borderColor: "group-hover:border-sky-500/50",
-    iconColor: "text-sky-500",
-    isCollapsible: true
+    iconColor: "text-sky-400"
   },
   {
     id: "enterprise",
     title: "Enterprise Software (ERP / CRM)",
-    description: "Your business has unique workflows. Your software should fit them — not the other way around.",
-    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
+    description: "Your business has unique workflows. Your software should fit them.",
+    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, and workflow automation tools tailored to your actual operations.",
     icon: Building2,
-    color: "bg-violet-600/10",
+    color: "from-violet-600/20 to-violet-600/5",
+    accent: "bg-violet-500",
     borderColor: "group-hover:border-violet-500/50",
-    iconColor: "text-violet-500",
-    isCollapsible: true
+    iconColor: "text-violet-400"
   },
   {
     id: "mobile",
-    title: "Mobile & Cross-Platform Development",
-    description: "We build high-performance applications across all modern platforms — iOS, Android, and web",
-    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
+    title: "Mobile Development",
+    description: "We build high-performance applications across iOS, Android, and web.",
+    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform.",
     icon: Smartphone,
-    color: "bg-fuchsia-600/10",
+    color: "from-fuchsia-600/20 to-fuchsia-600/5",
+    accent: "bg-fuchsia-500",
     borderColor: "group-hover:border-fuchsia-500/50",
-    iconColor: "text-fuchsia-500",
-    isCollapsible: true
+    iconColor: "text-fuchsia-400"
   },
   {
     id: "lifecycle",
     title: "Product Lifecycle Support",
-    description: "Build. Run. Maintain. KCS supports digital products across their entire lifecycle:",
-    isCollapsible: true,
+    description: "Build. Run. Maintain. Comprehensive support across the entire digital lifecycle.",
     points: [
-      { label: "Product Development", text: "architecture design, user experience, and backend infrastructure built from the ground up." },
-      { label: "Operational Support", text: "post-launch technical operations so your team can focus on growth, marketing, and strategy." },
-      { label: "Continuous Maintenance", text: "adaptive maintenance ensuring your platforms remain compatible with new operating systems, security standards, and performance requirements. This prevents expensive legacy migrations down the road." },
-      { label: "24/7 Global Customer Support", text: "AI-assisted and human support teams handling technical queries, user assistance, product troubleshooting, and feedback analysis." }
+      { label: "Product Development", text: "architecture design and backend infrastructure." },
+      { label: "Operational Support", text: "post-launch technical operations and strategy." },
+      { label: "Continuous Maintenance", text: "adaptive maintenance for OS and security standards." },
+      { label: "24/7 Global Support", text: "AI-assisted and human technical assistance." }
     ],
     icon: RefreshCw,
-    color: "bg-primary/10",
+    color: "from-primary/20 to-primary/5",
+    accent: "bg-primary",
     borderColor: "group-hover:border-primary/50",
     iconColor: "text-primary",
+    isHero: true
   }
 ]
 
-interface ServiceCardProps {
-  item: typeof services[0]
-  index: number
-  className?: string
-}
-
-function ServiceCard({ item, index, className }: ServiceCardProps) {
-  const [isOpen, setIsOpen] = useState(false)
+function ServiceCard({ item, index }: { item: typeof services[0], index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false)
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      layout
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -15, scale: 1.01 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group p-6 md:p-8 lg:p-10 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 transition-all duration-500 text-left relative overflow-hidden backdrop-blur-sm shadow-2xl flex flex-col min-h-[400px] md:min-h-[580px]",
+        "group relative flex flex-col rounded-[1.5rem] md:rounded-[2rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl",
         item.borderColor,
-        className
+        item.isHero ? "md:col-span-2 lg:col-span-3 lg:max-w-5xl lg:mx-auto w-full" : "",
+        isExpanded ? "ring-2 ring-white/10" : ""
       )}
+      onClick={() => setIsExpanded(!isExpanded)}
     >
-      {/* Background Glow Effect */}
-      <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none", item.color)} />
-      
-      {/* Background Grid Pattern Decoration */}
-      <div className="absolute -bottom-8 -right-8 w-24 h-24 md:w-32 md:h-32 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--primary)_1px,_transparent_1px)] bg-[size:8px_8px]" />
-      </div>
+      {/* Background Chromatic Gradient */}
+      <motion.div 
+        layout
+        className={cn(
+          "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none bg-gradient-to-br",
+          item.color
+        )} 
+      />
 
-      <div className="relative z-10 h-full flex flex-col">
-        {/* Icon Terminal */}
-        <div className="mb-6 md:mb-10">
-          <div className={cn(
-            "p-3 md:p-5 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/20 w-fit", 
-            item.iconColor
-          )}>
-            <item.icon size={24} className="md:size-[32px]" strokeWidth={1.5} />
-          </div>
-        </div>
-        
-        <div className="flex-1 flex flex-col">
-          {/* Headline Node */}
-          <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-headline text-foreground group-hover:text-primary transition-colors leading-tight">
-            {item.title}
-          </h3>
+      <div className="relative z-10 p-5 md:p-8 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-4">
+          <motion.div 
+            layout="position"
+            className={cn(
+              "p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
+              item.iconColor
+            )}
+          >
+            <item.icon size={20} className="md:size-[24px]" />
+          </motion.div>
           
-          <div className="space-y-4">
-            {/* Primary Narrative */}
-            <p className="text-[12px] md:text-base lg:text-lg text-muted-foreground leading-relaxed italic font-medium group-hover:text-foreground/80 transition-colors">
-              {item.description}
-            </p>
+          <motion.div 
+            layout="position"
+            className={cn(
+              "p-2 rounded-full transition-transform duration-500 bg-white/5 border border-white/5",
+              isExpanded && "rotate-180 bg-primary/20 text-primary border-primary/20"
+            )}
+          >
+            <ChevronDown size={14} />
+          </motion.div>
+        </div>
 
-            {/* Spec Reveal Protocol */}
-            {item.isCollapsible && (item.extraContent || item.points) && (
-              <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
-                <CollapsibleTrigger asChild>
-                  <button className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/trigger mt-2 py-2">
-                    {isOpen ? "Collapse Specs" : "Expand Specs"}
-                    <ChevronDown size={14} className={cn("transition-transform duration-500 ease-[0.23,1,0.32,1]", isOpen && "rotate-180")} />
-                  </button>
-                </CollapsibleTrigger>
-                
-                <AnimatePresence>
-                  {isOpen && (
-                    <CollapsibleContent forceMount>
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-4 space-y-4">
-                          {item.extraContent && (
-                            <p className="text-[11px] md:text-sm text-muted-foreground/70 leading-relaxed italic border-l-2 border-primary/20 pl-4">
-                              {item.extraContent}
-                            </p>
-                          )}
-                          {item.points && (
-                            <div className="grid grid-cols-1 gap-4 mt-2">
-                              {item.points.map((point, idx) => (
-                                <motion.div 
-                                  key={idx}
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: idx * 0.1 }}
-                                  className="flex gap-3"
-                                >
-                                  <div className="p-1 rounded-full bg-primary/10 h-fit mt-1">
-                                    <CheckCircle2 size={12} className="text-primary shrink-0" />
-                                  </div>
-                                  <div className="space-y-1">
-                                    <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
-                                    <span className="text-[10px] md:text-sm text-muted-foreground/80 leading-snug italic">{point.text}</span>
-                                  </div>
-                                </motion.div>
-                              ))}
-                            </div>
-                          )}
+        <div className="flex-1 space-y-2">
+          <motion.h3 
+            layout="position"
+            className="text-base md:text-xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
+          >
+            {item.title}
+          </motion.h3>
+          
+          <motion.p 
+            layout="position"
+            className={cn(
+              "text-[10px] md:text-sm text-muted-foreground leading-snug italic font-medium transition-all duration-500",
+              isExpanded ? "text-foreground/90" : "line-clamp-2"
+            )}
+          >
+            {item.description}
+          </motion.p>
+
+          <AnimatePresence mode="popLayout">
+            {isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 5 }}
+                transition={{ duration: 0.3 }}
+                className="pt-4 space-y-4"
+              >
+                {item.extraContent && (
+                  <p className="text-[10px] md:text-xs text-muted-foreground/80 leading-relaxed border-l-2 border-primary/30 pl-4 py-1">
+                    {item.extraContent}
+                  </p>
+                )}
+                {item.points && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {item.points.map((point, idx) => (
+                      <div key={idx} className="flex gap-2 items-start">
+                        <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />
+                        <div>
+                          <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-primary block">{point.label}</span>
+                          <span className="text-[9px] md:text-[11px] text-muted-foreground italic leading-tight">{point.text}</span>
                         </div>
-                      </motion.div>
-                    </CollapsibleContent>
-                  )}
-                </AnimatePresence>
-              </Collapsible>
-            )}
-
-            {/* Static Specs (Fall-back) */}
-            {!item.isCollapsible && item.points && (
-              <div className="space-y-3 mt-4">
-                {item.points.map((point, idx) => (
-                  <div key={idx} className="flex gap-3">
-                    <CheckCircle2 size={14} className="text-primary shrink-0 mt-1" />
-                    <div className="space-y-1">
-                      <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary block">{point.label}</span>
-                      <span className="text-[10px] md:text-sm text-muted-foreground leading-tight italic">{point.text}</span>
-                    </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
+                <div className="flex items-center gap-2 pt-2">
+                   <div className={cn("w-8 h-1 rounded-full", item.accent)} />
+                   <span className="text-[8px] font-bold uppercase tracking-widest text-primary/40">Technical Spec Reveal</span>
+                </div>
+              </motion.div>
             )}
-          </div>
+          </AnimatePresence>
         </div>
       </div>
+
+      {/* Collapsed Hint */}
+      {!isExpanded && (
+        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-40 transition-opacity">
+          <span className="text-[8px] font-bold uppercase tracking-widest text-primary">Click to Expand</span>
+        </div>
+      )}
     </motion.div>
   )
 }
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="bg-background py-20 md:py-32 lg:py-48 overflow-hidden">
+    <Chapter id="services" className="bg-background py-20 md:py-32 lg:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        {/* Narrative Header */}
-        <div className="text-center mb-16 md:mb-32">
+        <div className="text-center mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -238,60 +219,35 @@ export function ServicesChapter() {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 md:mb-10 font-headline">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span> 
-              Operational Excellence
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
+              <Sparkles size={14} className="animate-pulse" /> Operational Precision
             </span>
             
-            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-10 md:mb-16 font-headline">
+            <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[8rem] font-bold leading-[0.85] tracking-tighter text-foreground mb-10 font-headline">
               Core <br />
               <span className="text-primary italic">Services.</span>
             </h2>
 
-            <div className="w-full py-12 md:py-24 border-y border-white/5 mb-12 md:mb-24 relative overflow-hidden group">
-              {/* Animated Accent Line */}
+            <div className="w-full max-w-4xl py-8 border-y border-white/5 mb-16 relative overflow-hidden group">
               <motion.div 
                 className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"
                 animate={{ x: ['-100%', '100%'] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
               />
-              
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] md:w-[600px] h-[250px] md:h-[600px] bg-primary/5 blur-[100px] md:blur-[180px] rounded-full pointer-events-none" />
-              
-              <p className="text-lg md:text-5xl font-bold tracking-tighter leading-tight text-foreground max-w-5xl mx-auto px-4 italic relative z-10 font-headline">
-                "We provide the technical discipline required to scale global businesses with absolute predictability."
+              <p className="text-lg md:text-3xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
+                "Technical discipline required to scale global businesses with absolute predictability."
               </p>
-
-              <motion.div 
-                className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-                animate={{ x: ['100%', '-100%'] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
             </div>
           </motion.div>
         </div>
 
-        {/* Capability Grid Architecture */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 w-full relative">
-          {services.map((item, i) => (
-            <div 
-              key={item.id}
-              className={cn(
-                "transition-all duration-700",
-                i === 6 ? "md:col-span-2 lg:col-span-3 flex justify-center mt-6 lg:mt-12" : ""
-              )}
-            >
-              <ServiceCard 
-                item={item} 
-                index={i} 
-                className={i === 6 ? "max-w-5xl w-full border-primary/20 bg-primary/5" : ""}
-              />
-            </div>
-          ))}
-        </div>
+        <LayoutGroup>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full relative">
+            {services.map((item, i) => (
+              <ServiceCard key={item.id} item={item} index={i} />
+            ))}
+          </div>
+        </LayoutGroup>
       </div>
     </Chapter>
   )
