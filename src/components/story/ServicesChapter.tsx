@@ -22,7 +22,7 @@ const services = [
     id: "cyber",
     title: "Cybersecurity",
     description: "Security isn't a feature we bolt on at the end. It's built into every system we design.",
-    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product meets modern standards.",
+    extraContent: "KCS provides comprehensive cybersecurity services including security architecture design, risk assessments, threat detection systems, and incident response strategies — ensuring every product we develop meets modern compliance and security standards.",
     icon: Shield,
     color: "from-rose-600/20 to-rose-600/5",
     accent: "bg-rose-500",
@@ -33,7 +33,7 @@ const services = [
     id: "cloud",
     title: "Cloud & Infrastructure",
     description: "Modern businesses require infrastructure that scales without breaking.",
-    extraContent: "We design cloud-native architectures built for global performance and long-term reliability. Services include scalable infrastructure and cloud security across AWS, GCP, and Azure.",
+    extraContent: "We design cloud-native architectures built for global performance, high availability, and long-term reliability. Services include cloud-native application development, scalable infrastructure architecture, and cloud security implementation across AWS, Google Cloud, and Azure.",
     icon: Cloud,
     color: "from-emerald-600/20 to-emerald-600/5",
     accent: "bg-emerald-500",
@@ -44,7 +44,7 @@ const services = [
     id: "data",
     title: "Data & Analytics",
     description: "Data is only valuable when it drives decisions.",
-    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, BI systems, predictive models, and real-time analytics dashboards.",
+    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
     icon: BarChart3,
     color: "from-sky-600/20 to-sky-600/5",
     accent: "bg-sky-500",
@@ -55,7 +55,7 @@ const services = [
     id: "enterprise",
     title: "Enterprise Software (ERP / CRM)",
     description: "Your business has unique workflows. Your software should fit them.",
-    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, and workflow automation tools tailored to the way your organization actually operates.",
+    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
     icon: Building2,
     color: "from-violet-600/20 to-violet-600/5",
     accent: "bg-violet-500",
@@ -78,17 +78,16 @@ const services = [
     title: "Product Lifecycle Support",
     description: "Build. Run. Maintain. Comprehensive support across the entire digital lifecycle.",
     points: [
-      { label: "Product Development", text: "Architecture design and backend infrastructure." },
-      { label: "Operational Support", text: "Post-launch technical operations and strategy." },
-      { label: "Continuous Maintenance", text: "Adaptive maintenance for security standards." },
+      { label: "Product Development", text: "Architecture design, user experience, and backend infrastructure." },
+      { label: "Operational Support", text: "Post-launch technical operations and growth strategy." },
+      { label: "Continuous Maintenance", text: "Adaptive maintenance for security and performance standards." },
       { label: "24/7 Global Support", text: "AI-assisted and human technical assistance." }
     ],
     icon: RefreshCw,
     color: "from-primary/20 to-primary/5",
     accent: "bg-primary",
     borderColor: "group-hover:border-primary/50",
-    iconColor: "text-primary",
-    isHero: true
+    iconColor: "text-primary"
   }
 ]
 
@@ -100,13 +99,13 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
       layout
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -5, scale: 1.01 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
       viewport={{ once: true }}
       className={cn(
-        "group relative flex flex-col rounded-[1.5rem] md:rounded-[2rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit",
+        "group relative flex flex-col rounded-[1.5rem] bg-card/40 border border-white/5 transition-all duration-500 cursor-pointer overflow-hidden backdrop-blur-md shadow-2xl h-fit w-full",
         item.borderColor,
-        item.isHero ? "lg:col-span-3 lg:max-w-2xl lg:mx-auto w-full" : "w-full",
-        isExpanded ? "ring-2 ring-white/10" : ""
+        isExpanded ? "ring-1 ring-white/10" : ""
       )}
       onClick={() => setIsExpanded(!isExpanded)}
     >
@@ -118,16 +117,16 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         )} 
       />
 
-      <div className="relative z-10 p-5 md:p-8 flex flex-col min-h-[180px] md:min-h-[250px]">
+      <div className="relative z-10 p-5 md:p-6 flex flex-col min-h-[180px] md:min-h-[250px]">
         <div className="flex items-start justify-between mb-4">
           <motion.div 
             layout="position"
             className={cn(
-              "p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
+              "p-2.5 rounded-xl bg-white/5 border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:bg-white/10",
               item.iconColor
             )}
           >
-            <item.icon size={20} className="md:size-[24px]" />
+            <item.icon size={20} />
           </motion.div>
           
           <motion.div 
@@ -144,7 +143,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
         <div className="flex-1 space-y-2">
           <motion.h3 
             layout="position"
-            className="text-base md:text-xl font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
+            className="text-base font-bold font-headline text-foreground group-hover:text-primary transition-colors leading-tight"
           >
             {item.title}
           </motion.h3>
@@ -174,12 +173,12 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
                   </p>
                 )}
                 {item.points && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <div className="grid grid-cols-1 gap-3 pt-2">
                     {item.points.map((point, idx) => (
                       <div key={idx} className="flex gap-2 items-start">
                         <CheckCircle2 size={12} className="text-primary mt-0.5 shrink-0" />
                         <div>
-                          <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-primary block">{point.label}</span>
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-primary block">{point.label}</span>
                           <span className="text-[9px] md:text-[11px] text-muted-foreground italic leading-tight">{point.text}</span>
                         </div>
                       </div>
