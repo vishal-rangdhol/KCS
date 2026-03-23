@@ -48,29 +48,35 @@ const services = [
   {
     id: "data",
     title: "Data & Analytics",
-    description: "Data is only valuable when it drives decisions. We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
+    description: "Data is only valuable when it drives decisions.",
+    extraContent: "We help organizations transform raw data into strategic clarity — building data architectures, business intelligence systems, predictive models, and real-time analytics dashboards that give leadership a clear view of what's happening and what's coming.",
     icon: BarChart3,
     color: "bg-sky-600/10",
     borderColor: "group-hover:border-sky-500/50",
     iconColor: "text-sky-500",
+    isCollapsible: true
   },
   {
     id: "enterprise",
     title: "Enterprise Software (ERP / CRM)",
-    description: "Your business has unique workflows. Your software should fit them — not the other way around. KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
+    description: "Your business has unique workflows. Your software should fit them — not the other way around.",
+    extraContent: "KCS builds custom enterprise platforms including CRM systems, ERP solutions, workflow automation tools, and integrated business dashboards tailored to the way your organization actually operates.",
     icon: Building2,
     color: "bg-violet-600/10",
     borderColor: "group-hover:border-violet-500/50",
     iconColor: "text-violet-500",
+    isCollapsible: true
   },
   {
     id: "mobile",
     title: "Mobile & Cross-Platform Development",
-    description: "We build high-performance applications across all modern platforms — iOS, Android, and web. Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
+    description: "We build high-performance applications across all modern platforms — iOS, Android, and web.",
+    extraContent: "Our mobile development expertise covers Flutter, React Native, Swift, Kotlin, and .NET, delivering seamless experiences regardless of platform or device.",
     icon: Smartphone,
     color: "bg-fuchsia-600/10",
     borderColor: "group-hover:border-fuchsia-500/50",
     iconColor: "text-fuchsia-500",
+    isCollapsible: true
   },
   {
     id: "lifecycle",
@@ -178,7 +184,11 @@ export function ServicesChapter() {
             className="flex flex-col items-center"
           >
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] sm:text-xs mb-8 md:mb-10 font-headline">
-              <Sparkles size={14} className="animate-pulse" /> Operational Excellence
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span> 
+              Operational Excellence
             </span>
             
             <h2 className="text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-[0.8] tracking-tighter text-foreground mb-10 md:mb-12 font-headline">
