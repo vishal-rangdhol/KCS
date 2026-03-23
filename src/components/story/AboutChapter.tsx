@@ -44,13 +44,13 @@ export function AboutChapter() {
             <Sparkles size={14} className="animate-pulse" /> The Narrative
           </span>
           
-          <h2 className="text-4xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-foreground mb-12 font-headline">
+          <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold leading-[0.9] tracking-tighter text-foreground mb-12 font-headline">
             The <br />
             <span className="text-primary italic">KCS Story.</span>
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-24 items-start">
-            <div className="space-y-8 text-xl md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+            <div className="space-y-8 text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
               <p>
                 Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
                 on a single conviction: technology should empower businesses to create
@@ -62,10 +62,10 @@ export function AboutChapter() {
                 infrastructure, cybersecurity, and data platforms must work together seamlessly.
               </p>
             </div>
-            <div className="space-y-8 text-xl md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+            <div className="space-y-8 text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
               <p>
                 Most organizations struggle to make that happen. 
-                <span className="text-foreground block mt-8 not-italic font-bold text-3xl md:text-6xl tracking-tighter">
+                <span className="text-foreground block mt-8 not-italic font-bold text-2xl md:text-4xl lg:text-5xl tracking-tighter">
                   KCS was created to close that gap.
                 </span>
               </p>
@@ -81,15 +81,15 @@ export function AboutChapter() {
           viewport={{ once: true }}
           className="mb-32 md:mb-64"
         >
-          <div className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[4rem] p-8 md:p-24 relative overflow-hidden">
+          <div className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[4rem] p-8 md:p-20 relative overflow-hidden">
              <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
              
-             <h3 className="text-3xl md:text-6xl font-bold tracking-tighter text-foreground mb-12 font-headline">
+             <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground mb-12 font-headline">
                A Product Lab <br />
                <span className="text-primary">for the Modern Era.</span>
              </h3>
              
-             <div className="max-w-4xl space-y-8 text-lg md:text-3xl text-muted-foreground leading-relaxed italic font-medium">
+             <div className="max-w-4xl space-y-8 text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium">
                 <p>
                   Rather than functioning as a traditional consulting firm, KCS operates as a
                   technology product lab. We don't just deliver software — we build complete digital
@@ -113,7 +113,7 @@ export function AboutChapter() {
           className="mb-32 md:mb-64"
         >
           <div className="text-center mb-16 md:mb-24">
-            <h3 className="text-3xl md:text-7xl font-bold tracking-tighter font-headline">
+            <h3 className="text-2xl md:text-5xl lg:text-6xl font-bold tracking-tighter font-headline">
               What Makes <br />
               <span className="text-primary italic">KCS Different.</span>
             </h3>
@@ -132,8 +132,8 @@ export function AboutChapter() {
                 <div className="bg-primary/10 p-4 rounded-2xl w-fit mb-6 group-hover:bg-primary group-hover:text-white transition-all">
                   <value.icon size={24} className="md:size-8" />
                 </div>
-                <h4 className="text-xl md:text-3xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
-                <p className="text-sm md:text-xl text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
+                <h4 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 tracking-tighter font-headline">{value.title}</h4>
+                <p className="text-sm md:text-base lg:text-lg text-muted-foreground italic leading-relaxed font-medium">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -147,16 +147,16 @@ export function AboutChapter() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h3 className="text-3xl md:text-7xl font-bold tracking-tighter mb-12 font-headline">
+          <h3 className="text-2xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-12 font-headline">
             Our <span className="text-primary">Vision.</span>
           </h3>
-          <div className="max-w-4xl mx-auto space-y-8 text-lg md:text-4xl text-muted-foreground leading-relaxed italic font-medium">
+          <div className="max-w-4xl mx-auto space-y-8 text-base md:text-xl lg:text-2xl text-muted-foreground leading-relaxed italic font-medium">
             <p>
               KCS aims to become a global product lab for digital infrastructure — supporting
               founders, enterprises, and institutions in building the platforms that define the next
               era of business.
             </p>
-            <p className="text-foreground font-bold not-italic tracking-tighter text-2xl md:text-5xl">
+            <p className="text-foreground font-bold not-italic tracking-tighter text-xl md:text-3xl lg:text-4xl">
               From social learning ecosystems to AI-powered healthcare infrastructure, we are
               focused on building systems that improve how people learn, connect, and access
               services.
