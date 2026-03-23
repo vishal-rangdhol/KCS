@@ -73,7 +73,7 @@ const socialItems = [
 
 export function Footer() {
   return (
-    <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-black/5">
+    <footer className="w-full relative overflow-hidden bg-background pt-20 pb-12 border-t border-white/5">
       {/* Background Architectural Mark */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.03] select-none text-primary">
         <span className="text-[20rem] font-bold font-headline leading-none tracking-tighter">KCS</span>
@@ -89,7 +89,7 @@ export function Footer() {
                 alt="KCS Logo" 
                 width={120} 
                 height={40} 
-                className="h-8 w-auto opacity-100 group-hover:opacity-80 transition-opacity" 
+                className="h-8 w-auto brightness-200 contrast-150 group-hover:opacity-80 transition-opacity" 
               />
             </NextLink>
             <div className="relative">
@@ -98,7 +98,7 @@ export function Footer() {
                 Architecting the digital infrastructure that defines the next era of global business through AI and cloud precision.
               </p>
             </div>
-            <div className="mt-10 pt-10 border-t border-black/5">
+            <div className="mt-10 pt-10 border-t border-white/5">
               <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/40 font-headline">Headquarters: Hyderabad, India</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export function Footer() {
                     className="group transition-all"
                     aria-label={item.name}
                   >
-                    <div className={`p-2.5 rounded-lg bg-black/5 border border-black/5 transition-all duration-300 text-muted-foreground group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
+                    <div className={`p-2.5 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 text-muted-foreground group-hover:text-white ${item.hoverBg} ${item.glow} ${item.hoverBorder}`}>
                       <item.icon size={16} />
                     </div>
                   </a>
@@ -183,9 +183,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-12 border-t border-black/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
-            <p className="text-[9px] tracking-[0.3em] uppercase text-foreground/60 font-headline font-bold">
+            <p className="text-[9px] tracking-[0.3em] uppercase text-foreground/40 font-headline font-bold">
               2026 | ALL RIGHTS RESERVED BY KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED
             </p>
           </div>

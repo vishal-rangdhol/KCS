@@ -24,7 +24,7 @@ export function ThreeBackground() {
     containerRef.current.appendChild(renderer.domElement)
 
     const isMobile = window.innerWidth < 768
-    const particlesCount = isMobile ? 300 : 600
+    const particlesCount = isMobile ? 300 : 800
     const positions = new Float32Array(particlesCount * 3)
     const velocities = new Float32Array(particlesCount * 3)
     
@@ -37,17 +37,17 @@ export function ThreeBackground() {
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     
     const particlesMaterial = new THREE.PointsMaterial({
-      size: isMobile ? 0.03 : 0.02,
+      size: isMobile ? 0.025 : 0.015,
       color: 0xFB923C, // Solar Orange Primary
       transparent: true,
-      opacity: 0.2,
-      blending: THREE.NormalBlending 
+      opacity: 0.4,
+      blending: THREE.AdditiveBlending 
     })
     
     const particles = new THREE.Points(particlesGeometry, particlesMaterial)
     scene.add(particles)
 
-    const secondaryCount = isMobile ? 80 : 200
+    const secondaryCount = isMobile ? 100 : 300
     const secPositions = new Float32Array(secondaryCount * 3)
     for (let i = 0; i < secondaryCount * 3; i++) {
       secPositions[i] = (Math.random() - 0.5) * 15
@@ -55,11 +55,11 @@ export function ThreeBackground() {
     const secGeometry = new THREE.BufferGeometry()
     secGeometry.setAttribute('position', new THREE.BufferAttribute(secPositions, 3))
     const secMaterial = new THREE.PointsMaterial({
-      size: 0.025,
-      color: 0x0B1120, // Deep Navy Secondary
+      size: 0.02,
+      color: 0x334155, // Slate Slate for subtle contrast on dark bg
       transparent: true,
-      opacity: 0.15,
-      blending: THREE.NormalBlending
+      opacity: 0.3,
+      blending: THREE.AdditiveBlending
     })
     const secParticles = new THREE.Points(secGeometry, secMaterial)
     scene.add(secParticles)
@@ -127,5 +127,5 @@ export function ThreeBackground() {
     }
   }, [])
 
-  return <div ref={containerRef} className="canvas-container opacity-80" />
+  return <div ref={containerRef} className="canvas-container opacity-90" />
 }
