@@ -156,8 +156,8 @@ export function ProductsChapter() {
           </CarouselContent>
           
           <div className="flex justify-center md:justify-end gap-3 sm:gap-4 mt-8 sm:mt-16">
-            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
-            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white transition-all duration-500" />
+            <CarouselPrevious className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-xl" />
+            <CarouselNext className="static translate-y-0 h-10 w-10 sm:h-12 sm:w-12 rounded-lg border-white/10 bg-white/5 hover:bg-primary hover:text-white hover:border-primary transition-all duration-500 shadow-xl" />
           </div>
         </Carousel>
       </div>
