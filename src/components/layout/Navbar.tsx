@@ -14,7 +14,7 @@ const navItems = [
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
   { name: 'About', href: '/#story' },
-  { name: 'Careers', href: '/#careers', tag: '[HIRING]' },
+  { name: 'Careers', href: '/careers', tag: '[HIRING]' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -67,13 +67,13 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-2 md:p-6 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-0 pointer-events-none">
       <nav 
         className={cn(
-          "rounded-full pointer-events-auto flex items-center justify-between w-full max-w-[98%] md:max-w-[95%] transition-all duration-700 border border-white/5 backdrop-blur-xl",
+          "w-full transition-all duration-500 border-b pointer-events-auto flex items-center justify-between px-6 md:px-12",
           isScrolled 
-            ? 'px-4 py-2 md:px-8 bg-background/80 shadow-2xl scale-[0.98] md:scale-100 border-primary/10' 
-            : 'px-4 py-3 md:px-10 md:py-5 bg-background/40 border-white/5'
+            ? 'py-3 bg-white/90 backdrop-blur-xl border-black/5 shadow-sm' 
+            : 'py-5 bg-white/80 backdrop-blur-md border-black/5'
         )}
       >
         <div className="flex-shrink-0">
@@ -88,16 +88,16 @@ export function Navbar() {
                 alt="KCS Logo" 
                 width={100}
                 height={32}
-                className="h-6 md:h-9 w-auto object-contain antialiased"
+                className="h-6 md:h-8 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 priority
               />
-              <div className="absolute -right-2 top-0 w-1.5 h-1.5 bg-primary rounded-full animate-pulse shadow-[0_0_10px_#F97316]" />
+              <div className="absolute -right-2 top-0 w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_#F97316]" />
             </div>
           </Link>
         </div>
 
         <div className="hidden md:flex flex-1 justify-center px-4">
-          <ul className="flex flex-row gap-4 lg:gap-8 items-center">
+          <ul className="flex flex-row gap-8 lg:gap-12 items-center">
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
               const isActive = activeSection === id || (pathname === item.href)
@@ -113,44 +113,44 @@ export function Navbar() {
                   <Link 
                     href={item.href}
                     className={cn(
-                      "text-[9px] font-bold uppercase tracking-[0.2em] lg:tracking-[0.3em] transition-all duration-500 block py-2 relative origin-center flex items-center gap-1.5",
+                      "text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 relative flex items-center gap-1.5",
                       isActive 
-                        ? 'text-primary' 
-                        : 'text-foreground/60 hover:text-foreground'
+                        ? 'text-black' 
+                        : 'text-gray-500 hover:text-black'
                     )}
                   >
                     {item.name}
                     {item.tag && (
-                      <span className="text-[7px] font-mono text-primary animate-pulse">{item.tag}</span>
+                      <span className="text-[8px] font-mono text-primary font-bold ml-0.5">{item.tag}</span>
                     )}
                     
-                    {/* Hover Preview Underline */}
-                    {isHovered && !isActive && (
-                      <motion.span 
-                        layoutId="hoverUnderline"
-                        className="absolute bottom-[-1px] left-0 right-0 h-[1px] bg-primary/20 z-0 rounded-full"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
-                    )}
-
-                    {/* Active Underline Protocol */}
+                    {/* Liquid Underline Protocol */}
                     {isActive && (
-                      <motion.span 
+                      <motion.div 
                         layoutId="activeUnderline"
-                        className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary z-10 rounded-full shadow-[0_0_12px_rgba(249,115,22,0.8)]"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full"
                         transition={{ 
                           type: "spring", 
-                          stiffness: 380, 
-                          damping: 30
+                          stiffness: 300, 
+                          damping: 30 
                         }}
                       >
-                        {/* Breathing Pulse */}
+                        {/* Shimmer Effect */}
                         <motion.div 
-                          animate={{ opacity: [0.6, 1, 0.6] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="absolute inset-0 bg-white/20 rounded-full"
+                          animate={{ opacity: [0.3, 0.6, 0.3] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="absolute inset-0 bg-white/40 rounded-full"
                         />
-                      </motion.span>
+                      </motion.div>
+                    )}
+
+                    {/* Hover Preview Underline */}
+                    {isHovered && !isActive && (
+                      <motion.div 
+                        layoutId="hoverUnderline"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary/20 rounded-full"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
                     )}
                   </Link>
                 </li>
@@ -166,15 +166,15 @@ export function Navbar() {
                 <Link 
                   href={contactItem.href}
                   className={cn(
-                    "px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-500 flex items-center gap-2 border shadow-2xl relative overflow-hidden group",
+                    "px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 border group",
                     pathname === '/contact'
                       ? 'bg-primary border-primary text-white'
-                      : 'bg-transparent border-primary/40 text-primary hover:bg-primary/10 hover:border-primary hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]'
+                      : 'bg-transparent border-primary text-primary hover:bg-primary hover:text-white'
                   )}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
-                    <ArrowUpRight size={10} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </span>
                 </Link>
               </MagneticButton>
@@ -182,7 +182,7 @@ export function Navbar() {
           )}
 
           <button 
-            className="md:hidden p-2 text-foreground/80 hover:text-primary transition-colors focus:outline-none"
+            className="md:hidden p-2 text-black hover:text-primary transition-colors focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -194,12 +194,12 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.98 }}
-            className="absolute top-[70px] left-2 right-2 bg-background/95 backdrop-blur-2xl rounded-[1.5rem] p-4 md:hidden border border-white/5 shadow-2xl pointer-events-auto"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-[64px] left-0 right-0 bg-white border-b border-black/5 p-6 md:hidden pointer-events-auto shadow-xl"
           >
-            <ul className="grid grid-cols-2 gap-2">
+            <ul className="flex flex-col gap-6">
               {navItems.map((item) => {
                 const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
                 const isActive = activeSection === id || (pathname === item.href)
@@ -209,19 +209,11 @@ export function Navbar() {
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
-                        "block p-4 rounded-xl transition-all duration-500 text-[10px] font-headline font-bold tracking-widest text-center border relative",
-                        isActive 
-                          ? 'bg-primary/10 border-primary/40 text-primary scale-105 shadow-sm' 
-                          : 'bg-card/40 border-white/5 hover:bg-card text-foreground/70'
+                        "block text-xs font-bold uppercase tracking-widest transition-colors",
+                        isActive ? 'text-primary' : 'text-gray-500'
                       )}
                     >
-                      {item.name}
-                      {isActive && (
-                        <motion.span 
-                          layoutId="activeUnderlineMobile"
-                          className="absolute bottom-1 left-1/2 -translate-x-1/2 w-8 h-[2px] bg-primary rounded-full shadow-[0_0_8px_#F97316]"
-                        />
-                      )}
+                      {item.name} {item.tag && <span className="text-[8px] ml-1">{item.tag}</span>}
                     </Link>
                   </li>
                 )
@@ -276,8 +268,6 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       <motion.div
         style={{ x: springX, y: springY }}
         className="relative z-10"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
       >
         {children}
       </motion.div>
