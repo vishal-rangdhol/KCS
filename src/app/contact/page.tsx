@@ -191,8 +191,7 @@ export default function ContactPage() {
                     <div className="flex items-start gap-4">
                       <MapPin size={16} className="text-primary shrink-0 mt-1" />
                       <div className="text-sm text-muted-foreground italic leading-relaxed">
-                        Hyderabad, Telangana, India <br />
-                        <span className="text-[10px] font-mono text-primary/40">HYD_CORE: 17.3850° N, 78.4867° E</span>
+                        Hyderabad, Telangana, India
                       </div>
                     </div>
                     
