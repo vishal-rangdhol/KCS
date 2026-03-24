@@ -14,25 +14,17 @@ const navItems = [
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
   { name: 'About', href: '/#story' },
-  { name: 'Careers', href: '/#careers', tag: 'HIRING' },
+  { name: 'Careers', href: '/#careers', tag: '04' },
   { name: 'Contact', href: '/contact' },
 ]
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const [isClicked, setIsClicked] = useState(false)
-  const { scrollY } = useScroll()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   const mainNavItems = navItems.filter(item => item.name !== 'Contact')
   const contactItem = navItems.find(item => item.name === 'Contact')
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50)
-  })
 
   useEffect(() => {
     if (pathname === '/contact') {
@@ -42,7 +34,7 @@ export function Navbar() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px',
+      rootMargin: '-20% 0px -20% 0px',
       threshold: 0,
     }
 
@@ -67,38 +59,25 @@ export function Navbar() {
     return () => observer.disconnect()
   }, [pathname])
 
-  const handleNavClick = () => {
-    setIsClicked(true)
-    setTimeout(() => setIsClicked(false), 200)
-    setMobileMenuOpen(false)
-  }
-
   return (
     <header className="fixed top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
       <motion.nav 
-        animate={{ scale: isClicked ? 0.99 : 1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        whileTap={{ scale: 0.99 }}
         className={cn(
           "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5"
         )}
       >
         {/* KCS Logo */}
         <div className="flex-shrink-0">
-          <Link 
-            href="/"
-            className="flex items-center group cursor-pointer"
-            onClick={handleNavClick}
-          >
-            <div className="relative flex items-center justify-center">
-              <Image 
-                src="/kcs-logo.png" 
-                alt="KCS Logo" 
-                width={80}
-                height={26}
-                className="h-5 md:h-6 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                priority
-              />
-            </div>
+          <Link href="/" className="flex items-center group cursor-pointer">
+            <Image 
+              src="/kcs-logo.png" 
+              alt="KCS Logo" 
+              width={80}
+              height={26}
+              className="h-5 md:h-6 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              priority
+            />
           </Link>
         </div>
 
@@ -110,30 +89,24 @@ export function Navbar() {
               const isActive = activeSection === id || (pathname === item.href)
 
               return (
-                <li 
-                  key={item.name} 
-                  className="relative group flex items-center"
-                  onMouseEnter={() => setHoveredItem(item.name)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                >
+                <li key={item.name} className="relative group flex items-center">
                   <Link 
                     href={item.href}
-                    onClick={handleNavClick}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:tracking-[0.05em]",
-                      isActive 
-                        ? 'text-black' 
-                        : 'text-slate-500 hover:text-black'
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 group-hover:tracking-[0.05em] group-hover:text-black",
+                      isActive ? 'text-black' : 'text-slate-500'
                     )}
                   >
                     {item.name}
                     {item.tag && (
-                      <span className="text-[7px] font-mono text-primary bg-primary/5 px-1 py-0.5 rounded-sm font-bold align-top -mt-2">
-                        {item.tag}
-                      </span>
+                      <sup className="text-[7px] font-mono text-primary font-bold ml-0.5">
+                        [{item.tag}]
+                      </sup>
                     )}
                     
-                    {/* Ink-Flow Underline */}
+                    {/* Hover Dot Protocol */}
+                    <span className="absolute -right-2 top-1.5 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+
                     {isActive && (
                       <motion.div 
                         layoutId="activeUnderline"
@@ -144,13 +117,7 @@ export function Navbar() {
                           damping: 30,
                           mass: 1
                         }}
-                      >
-                        <motion.div 
-                          animate={{ opacity: [0.4, 0.8, 0.4] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                          className="absolute inset-0 bg-white/20 rounded-full"
-                        />
-                      </motion.div>
+                      />
                     )}
                   </Link>
                 </li>
@@ -164,34 +131,41 @@ export function Navbar() {
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
-                <Link 
-                  href={contactItem.href}
-                  onClick={handleNavClick}
-                  className={cn(
-                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
-                    pathname === '/contact'
-                      ? 'bg-primary text-white'
-                      : 'bg-transparent text-black'
-                  )}
-                >
-                  <motion.div 
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
-                    className="absolute inset-0 bg-primary z-0"
-                  />
-                  <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
-                    {contactItem.name}
-                    <motion.span
-                      initial={{ x: 10, opacity: 0, rotate: 0 }}
-                      whileHover={{ x: 0, opacity: 1, rotate: 45 }}
-                      className="inline-block"
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    >
-                      ↗
-                    </motion.span>
-                  </span>
-                </Link>
+                <motion.div initial="initial" whileHover="hover" animate="initial">
+                  <Link 
+                    href={contactItem.href}
+                    className={cn(
+                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
+                      pathname === '/contact'
+                        ? 'bg-primary text-white'
+                        : 'bg-transparent text-black'
+                    )}
+                  >
+                    {/* Liquid Fill */}
+                    <motion.div 
+                      variants={{
+                        initial: { x: '-100%' },
+                        hover: { x: 0 }
+                      }}
+                      transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
+                      className="absolute inset-0 bg-primary z-0"
+                    />
+                    
+                    <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                      {contactItem.name}
+                      <motion.span
+                        variants={{
+                          initial: { x: 10, opacity: 0, rotate: 0 },
+                          hover: { x: 0, opacity: 1, rotate: 45 }
+                        }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        className="inline-block"
+                      >
+                        ↗
+                      </motion.span>
+                    </span>
+                  </Link>
+                </motion.div>
               </MagneticButton>
             </div>
           )}
@@ -222,13 +196,13 @@ export function Navbar() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      onClick={handleNavClick}
+                      onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         "block text-xs font-bold uppercase tracking-widest transition-colors",
                         isActive ? 'text-primary' : 'text-slate-500'
                       )}
                     >
-                      {item.name} {item.tag && <span className="text-[7px] ml-1 text-primary">[{item.tag}]</span>}
+                      {item.name} {item.tag && <sup className="text-[7px] ml-1 text-primary">[{item.tag}]</sup>}
                     </Link>
                   </li>
                 )
@@ -281,8 +255,6 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       className="inline-block relative"
     >
       <motion.div
-        whileHover="hover"
-        initial="initial"
         style={{ x: springX, y: springY }}
         className="relative z-10"
       >
