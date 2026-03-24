@@ -3,9 +3,10 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
-import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen } from 'lucide-react'
+import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronRight } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 import {
   Collapsible,
   CollapsibleContent,
@@ -82,11 +83,9 @@ function BlueprintBackground() {
   return (
     <div className="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden">
       <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <defs>
-          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
-          </pattern>
-        </defs>
+        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+        </pattern>
         <rect width="100%" height="100%" fill="url(#grid)" />
         <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.1" />
         <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.1" />
@@ -312,6 +311,32 @@ export function FoundersChapter() {
                 Founding <br />
                 <span className="text-primary italic">Architecture.</span>
               </h2>
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mt-6 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium"
+            >
+              The KCS Board of Directors governs our digital infrastructure with a focus on institutional stability, 
+              architectural precision, and the ethical integration of human-centric safety protocols.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mt-8"
+            >
+              <Button 
+                variant="outline" 
+                className="rounded-full border-primary/20 hover:border-primary text-primary bg-primary/5 hover:bg-primary hover:text-white transition-all group px-8 h-12"
+              >
+                Learn More <ChevronRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </motion.div>
           </div>
           
