@@ -2,8 +2,7 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, User, Scale, Activity, Cpu, Database, Network, ArrowUpRight } from 'lucide-react'
-import Image from 'next/image'
+import { Shield, Activity, Scale, Cpu, Database, Network } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -15,11 +14,6 @@ const directors = [
     designation: "ORIGIN_NODE",
     description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
     manifesto: "Stability is the foundation upon which high-scale innovation is built.",
-    stats: {
-      years: "15+",
-      specialization: "STRATEGIC_GOVERNANCE"
-    },
-    image: "https://picsum.photos/seed/founder1/600/800",
     size: "large"
   },
   {
@@ -29,11 +23,6 @@ const directors = [
     designation: "ORIGIN_NODE",
     description: "Ensuring operational compliance and strict adherence to global engineering standards.",
     manifesto: "Precision in operation ensures longevity in product.",
-    stats: {
-      years: "12+",
-      specialization: "OPERATIONAL_COMPLIANCE"
-    },
-    image: "https://picsum.photos/seed/founder2/600/800",
     size: "medium"
   },
   {
@@ -43,11 +32,6 @@ const directors = [
     designation: "ARCHITECT_PRIMARY",
     description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
     manifesto: "Ethical growth is the only sustainable path for digital infrastructure.",
-    stats: {
-      years: "08+",
-      specialization: "INSTITUTIONAL_GROWTH"
-    },
-    image: "https://picsum.photos/seed/founder3/600/800",
     size: "medium"
   },
   {
@@ -57,11 +41,6 @@ const directors = [
     designation: "ARCHITECT_PRIMARY",
     description: "Driving administrative precision and high-fidelity operational workflows.",
     manifesto: "Workflows should be as optimized as the code they support.",
-    stats: {
-      years: "10+",
-      specialization: "WORKFLOW_PRECISION"
-    },
-    image: "https://picsum.photos/seed/founder4/600/800",
     size: "small"
   },
   {
@@ -71,11 +50,6 @@ const directors = [
     designation: "ARCHITECT_PRIMARY",
     description: "Architecting market penetration and scaling the KCS brand across global sectors.",
     manifesto: "A brand is the narrative that bridges technology and human impact.",
-    stats: {
-      years: "10+",
-      specialization: "MARKET_PENETRATION"
-    },
-    image: "https://picsum.photos/seed/founder5/600/800",
     size: "large"
   }
 ]
@@ -136,7 +110,6 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
     >
       <BlueprintBackground />
       
-      {/* Background Aura Pulse */}
       <motion.div 
         animate={{ 
           scale: isHovered ? [1, 1.1, 1] : 1,
@@ -148,22 +121,9 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
 
       <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(30px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
-          {/* Portrait Container */}
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shrink-0">
-            <Image 
-              src={director.image} 
-              alt={director.name}
-              fill
-              className={cn(
-                "object-cover transition-all duration-700",
-                isHovered ? "grayscale-0 scale-110" : "grayscale"
-              )}
-            />
-            {/* Duotone Overlay */}
-            <div className={cn(
-              "absolute inset-0 bg-primary/20 mix-blend-color transition-opacity duration-500",
-              isHovered ? "opacity-0" : "opacity-40"
-            )} />
+          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shrink-0 overflow-hidden">
+            {/* Empty Image Placeholder */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
           </div>
 
           <div className="space-y-2">
@@ -194,25 +154,6 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
               {director.manifesto}
             </p>
           </div>
-        </div>
-
-        {/* System Stats Footer */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap justify-between items-end gap-4">
-          <div className="space-y-3 font-mono text-[8px] md:text-[9px]">
-            <div className="flex items-center gap-2">
-              <span className="text-primary/40">EXP_METRIC:</span>
-              <span className="text-foreground">{director.stats.years} YEARS</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-primary/40">SPECIALIZATION:</span>
-              <span className="text-foreground">{director.stats.specialization}</span>
-            </div>
-          </div>
-
-          <button className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 text-[10px] font-bold uppercase tracking-widest group/btn">
-            UPLINK
-            <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-          </button>
         </div>
       </div>
     </motion.div>
@@ -248,7 +189,6 @@ export function FoundersChapter() {
           </div>
         </div>
 
-        {/* Asymmetrical Matrix Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {directors.map((director, index) => (
             <FounderCard key={index} director={director} index={index} />
