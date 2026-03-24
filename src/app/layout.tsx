@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Space_Grotesk } from 'next/font/google';
 import { SmoothScrollProvider } from '@/components/layout/SmoothScrollProvider';
-import { CustomCursor } from '@/components/ui/CustomCursor';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,7 +30,6 @@ export default function RootLayout({
       <body className="font-body antialiased bg-background text-foreground selection:bg-primary selection:text-white">
         <div className="kcs-overlay" aria-hidden="true" />
         <SmoothScrollProvider>
-          <CustomCursor />
           {children}
         </SmoothScrollProvider>
       </body>

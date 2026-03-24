@@ -32,12 +32,6 @@
   * {
     @apply border-border;
   }
-  
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-  }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
