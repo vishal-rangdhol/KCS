@@ -79,7 +79,7 @@ export function Navbar() {
         animate={{ scale: isClicked ? 0.99 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className={cn(
-          "w-full max-w-[95%] transition-all duration-500 border pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl border-black/5 shadow-lg shadow-black/5"
+          "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5"
         )}
       >
         {/* KCS Logo */}
@@ -108,7 +108,6 @@ export function Navbar() {
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
               const isActive = activeSection === id || (pathname === item.href)
-              const isHovered = hoveredItem === item.name
 
               return (
                 <li 
@@ -121,10 +120,10 @@ export function Navbar() {
                     href={item.href}
                     onClick={handleNavClick}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:tracking-[0.05em]",
                       isActive 
                         ? 'text-black' 
-                        : 'text-slate-500 hover:text-black hover:tracking-[0.05em]'
+                        : 'text-slate-500 hover:text-black'
                     )}
                   >
                     {item.name}
@@ -169,10 +168,10 @@ export function Navbar() {
                   href={contactItem.href}
                   onClick={handleNavClick}
                   className={cn(
-                    "relative overflow-hidden px-6 py-2 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-black/10",
+                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
                     pathname === '/contact'
-                      ? 'bg-black text-white'
-                      : 'bg-white text-black hover:text-white'
+                      ? 'bg-primary text-white'
+                      : 'bg-transparent text-black'
                   )}
                 >
                   <motion.div 
@@ -181,12 +180,13 @@ export function Navbar() {
                     transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
                     className="absolute inset-0 bg-primary z-0"
                   />
-                  <span className="relative z-10 flex items-center gap-1">
+                  <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
                     {contactItem.name}
                     <motion.span
-                      initial={{ x: 5, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
+                      initial={{ x: 10, opacity: 0, rotate: 0 }}
+                      whileHover={{ x: 0, opacity: 1, rotate: 45 }}
                       className="inline-block"
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
                       ↗
                     </motion.span>
@@ -281,6 +281,8 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       className="inline-block relative"
     >
       <motion.div
+        whileHover="hover"
+        initial="initial"
         style={{ x: springX, y: springY }}
         className="relative z-10"
       >
