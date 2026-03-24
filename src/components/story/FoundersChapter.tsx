@@ -2,7 +2,7 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, Activity, Scale, Cpu, Database, Network } from 'lucide-react'
+import { Shield, Activity, Scale, Cpu, Database, Network, HeartPulse } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -50,6 +50,15 @@ const directors = [
     designation: "ARCHITECT_PRIMARY",
     description: "Architecting market penetration and scaling the KCS brand across global sectors.",
     manifesto: "A brand is the narrative that bridges technology and human impact.",
+    size: "large"
+  },
+  {
+    id: "06",
+    name: "N. Shraddha Vas",
+    role: "Head of Psychology & User Wellbeing",
+    designation: "PSYCHOLOGY_BRAIN",
+    description: "Integrating Clinical and Rehabilitation expertise to ensure digital spaces are genuinely safe, focusing on student wellbeing and crisis intervention.",
+    manifesto: "Safe digital environments are a clinical requirement, not a secondary feature.",
     size: "large"
   }
 ]
@@ -122,10 +131,13 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
       <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
           <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-inner">
-            {/* Empty High-Fidelity Placeholder */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-white/5" />
             <div className="absolute inset-0 flex items-center justify-center opacity-10">
-              <Shield className="w-12 h-12 text-primary" strokeWidth={0.5} />
+              {director.id === "06" ? (
+                <HeartPulse className="w-12 h-12 text-primary" strokeWidth={0.5} />
+              ) : (
+                <Shield className="w-12 h-12 text-primary" strokeWidth={0.5} />
+              )}
             </div>
           </div>
 
