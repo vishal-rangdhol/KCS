@@ -234,16 +234,6 @@ function FounderCard({ director, index }: { director: any, index: number }) {
 
           <div className="space-y-8">
             <div className="grid grid-cols-1 gap-6">
-              <div className="space-y-3">
-                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
-                <div className="flex flex-wrap gap-2">
-                  {director.specializations?.map((spec: string) => (
-                    <span key={spec} className="text-[9px] font-mono font-bold text-primary/80 bg-primary/5 px-3 py-1.5 rounded-lg border border-primary/10 transition-colors hover:bg-primary/10">
-                      {spec}
-                    </span>
-                  ))}
-                </div>
-              </div>
               {isWellbeing && (
                 <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 space-y-3 backdrop-blur-md">
                   <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
@@ -253,15 +243,9 @@ function FounderCard({ director, index }: { director: any, index: number }) {
                 </div>
               )}
             </div>
-
-            <div className="p-6 md:p-8 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
-              <div className="flex items-center gap-2 mb-1">
-                <Sparkles size={12} className="text-primary/60" />
-                <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
-                  {isWellbeing ? "HUMAN_CENTRIC_PROTOCOL" : "VISION_PROTOCOL"}
-                </span>
-              </div>
-              <p className="text-sm text-foreground/80 leading-relaxed font-medium italic">
+            
+            <div className="space-y-4 mt-auto">
+              <p className="text-sm md:text-base text-foreground/80 leading-relaxed font-medium italic">
                 "{director.manifesto}"
               </p>
             </div>
@@ -317,4 +301,3 @@ export default function FoundersPage() {
     </main>
   )
 }
-
