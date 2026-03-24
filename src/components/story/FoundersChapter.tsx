@@ -104,7 +104,7 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] bg-card border border-white/10 hover:border-primary/40 transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
+        "group relative rounded-[2.5rem] bg-card/90 border border-white/10 hover:border-primary/40 transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
         director.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
       )}
     >
@@ -196,24 +196,6 @@ export function FoundersChapter() {
           {directors.map((director, index) => (
             <FounderCard key={index} director={director} index={index} />
           ))}
-        </div>
-
-        <div className="mt-24 md:mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex gap-12 text-[9px] md:text-[11px] font-mono text-primary/60 uppercase tracking-[0.4em]">
-            <div className="flex items-center gap-3">
-              <Cpu size={14} /> SYSTEM_STATUS: SECURE
-            </div>
-            <div className="flex items-center gap-3">
-              <Database size={14} /> ARCHIVE_ID: KCS_LEADERSHIP_V1
-            </div>
-            <div className="flex items-center gap-3">
-              <Network size={14} /> SYNC_STATE: OPTIMIZED
-            </div>
-          </div>
-          
-          <p className="text-[10px] md:text-xs text-muted-foreground italic font-medium max-w-xl text-center md:text-right">
-            Operating under high-fidelity governance protocols to ensure the global scaling of the KCS digital narrative.
-          </p>
         </div>
       </div>
     </Chapter>
