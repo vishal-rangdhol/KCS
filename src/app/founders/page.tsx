@@ -118,7 +118,8 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[400px]",
+        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
+        isLarge ? "min-h-[400px]" : "min-h-[260px] md:min-h-[400px]",
         isWellbeing 
           ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5 border-primary/20" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
@@ -137,9 +138,12 @@ function FounderCard({ director, index }: { director: any, index: number }) {
         />
       )}
 
-      <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
-        <div className={cn("grid gap-8 md:gap-12 items-start mb-8", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
-          <div className="space-y-4">
+      <div className={cn(
+        "relative z-10 flex flex-col h-full",
+        isLarge ? "p-8 md:p-10" : "p-6 md:p-10"
+      )} style={{ transform: 'translateZ(40px)' }}>
+        <div className={cn("grid gap-4 md:gap-12 items-start mb-6 md:mb-8", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
+          <div className="space-y-2 md:space-y-4">
             <div className="flex items-center justify-between gap-4">
               <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
                 <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
@@ -147,7 +151,10 @@ function FounderCard({ director, index }: { director: any, index: number }) {
               </span>
             </div>
             
-            <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
+            <h3 className={cn(
+              "font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight",
+              isLarge ? "text-2xl md:text-4xl" : "text-xl md:text-3xl"
+            )}>
               {director.name}
             </h3>
             
@@ -156,7 +163,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
             </div>
           </div>
 
-          {isWellbeing && director.extraDetails && (
+          {isLarge && director.extraDetails && (
             <div className="space-y-4">
               <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3 overflow-hidden backdrop-blur-md">
                 <div className="space-y-1">
@@ -176,13 +183,16 @@ function FounderCard({ director, index }: { director: any, index: number }) {
           )}
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-4 md:space-y-6 flex-grow">
           <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
-          <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+          <p className={cn(
+            "text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors",
+            isLarge ? "text-sm md:text-base" : "text-xs md:text-base"
+          )}>
             "{director.description}"
           </p>
-          {isWellbeing && director.extraDetails && (
-            <p className="text-[11px] text-muted-foreground italic leading-relaxed pl-6 max-w-2xl">
+          {isLarge && director.extraDetails && (
+            <p className="text-[11px] text-muted-foreground italic leading-relaxed pl-6 max-w-2xl hidden md:block">
               {director.extraDetails.fullNarrative}
             </p>
           )}
@@ -218,7 +228,7 @@ export default function FoundersPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
           {directors.map((director, index) => (
             <div 
               key={index} 
