@@ -72,7 +72,7 @@ const directors = [
     specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_PSYCHOLOGY", "NEURODIVERSITY"],
     systemFocus: "Anxiety & Depression // Academic Burnout // PTSD // Trauma",
     manifesto: "Translating years of clinical expertise into the digital architecture where students actually spend their time.",
-    size: "large",
+    size: "xl",
     extraDetails: {
       credentials: "MSc. Clinical Psychology · PGDRP Rehabilitation Psychology",
       professionalTitle: "Clinical & Rehabilitation Psychologist",
@@ -134,22 +134,22 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       className={cn(
         "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[450px]",
         isWellbeing 
-          ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5" 
+          ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5 border-primary/20" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
       )}
     >
       <BlueprintBackground />
 
-      <motion.div 
-        animate={isWellbeing ? { 
-          boxShadow: ["0 0 0px rgba(249,115,22,0)", "0 0 40px rgba(249,115,22,0.15)", "0 0 0px rgba(249,115,22,0)"],
-          borderColor: ["rgba(255,255,255,0.05)", "rgba(249,115,22,0.3)", "rgba(255,255,255,0.05)"]
-        } : {}}
-        className={cn(
-          "absolute inset-0 blur-[100px] rounded-full z-0",
-          isHovered && !isWellbeing ? "bg-primary/5" : "opacity-0"
-        )}
-      />
+      {isWellbeing && (
+        <motion.div 
+          animate={{ 
+            boxShadow: ["0 0 0px rgba(249,115,22,0)", "0 0 40px rgba(249,115,22,0.15)", "0 0 0px rgba(249,115,22,0)"],
+            borderColor: ["rgba(255,255,255,0.05)", "rgba(249,115,22,0.3)", "rgba(255,255,255,0.05)"]
+          }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 pointer-events-none z-0"
+        />
+      )}
 
       <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="space-y-4 mb-8">
@@ -159,13 +159,13 @@ function FounderCard({ director, index }: { director: any, index: number }) {
               {director.designation}
             </span>
             {isWellbeing && (
-              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[6px] font-bold uppercase tracking-widest backdrop-blur-xl">
-                <CheckCircle2 size={8} /> [ VERIFIED ]
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl">
+                <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
               </div>
             )}
           </div>
           
-          <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
+          <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
             {director.name}
           </h3>
           
@@ -174,93 +174,97 @@ function FounderCard({ director, index }: { director: any, index: number }) {
           </div>
         </div>
 
-        <div className="flex-1 space-y-8">
-          <div className="space-y-3">
-            <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
-            <p className="text-sm text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
-              "{director.description}"
-            </p>
-          </div>
-
-          {isWellbeing && director.extraDetails && (
-            <div className="space-y-4">
-              <Collapsible
-                open={isOpen}
-                onOpenChange={setIsOpen}
-                className="w-full space-y-2"
-              >
-                <div className="flex items-center justify-between space-x-4 px-0">
-                  <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
-                    <BookOpen size={10} /> CLINICAL_DOSSIER
-                  </h4>
-                  <CollapsibleTrigger asChild>
-                    <button className="p-1 rounded-lg hover:bg-white/5 transition-colors group/trigger">
-                      <ChevronDown 
-                        size={14} 
-                        className={cn(
-                          "text-primary/60 transition-transform duration-300",
-                          isOpen ? "rotate-180" : "rotate-0"
-                        )} 
-                      />
-                    </button>
-                  </CollapsibleTrigger>
-                </div>
-                <CollapsibleContent className="space-y-4">
-                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-3 overflow-hidden">
-                    <div className="space-y-1">
-                      <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
-                      <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
-                        {director.extraDetails.credentials}
-                      </p>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
-                      <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
-                        {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
-                      </p>
-                    </div>
-                    <div className="pt-2 border-t border-white/5">
-                      <p className="text-[10px] text-muted-foreground italic leading-relaxed">
-                        {director.extraDetails.fullNarrative}
-                      </p>
-                    </div>
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 gap-6">
+        <div className={cn("flex-1 grid gap-8", director.size === 'xl' ? "lg:grid-cols-2" : "grid-cols-1")}>
+          <div className="space-y-8">
             <div className="space-y-3">
-              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
-              <div className="flex flex-wrap gap-2">
-                {director.specializations?.map((spec: string) => (
-                  <span key={spec} className="text-[8px] font-mono font-bold text-primary/80 bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
-                    {spec}
-                  </span>
-                ))}
-              </div>
+              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
+              <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+                "{director.description}"
+              </p>
             </div>
-            {isWellbeing && (
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
-                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
-                  <UserCheck size={10} /> SYSTEM_FOCUS
-                </h4>
-                <p className="text-[10px] font-mono text-muted-foreground leading-relaxed">{director.systemFocus}</p>
+
+            {isWellbeing && director.extraDetails && (
+              <div className="space-y-4">
+                <Collapsible
+                  open={isOpen}
+                  onOpenChange={setIsOpen}
+                  className="w-full space-y-2"
+                >
+                  <div className="flex items-center justify-between space-x-4 px-0">
+                    <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                      <BookOpen size={10} /> CLINICAL_DOSSIER
+                    </h4>
+                    <CollapsibleTrigger asChild>
+                      <button className="p-1 rounded-lg hover:bg-white/5 transition-colors group/trigger">
+                        <ChevronDown 
+                          size={14} 
+                          className={cn(
+                            "text-primary/60 transition-transform duration-300",
+                            isOpen ? "rotate-180" : "rotate-0"
+                          )} 
+                        />
+                      </button>
+                    </CollapsibleTrigger>
+                  </div>
+                  <CollapsibleContent className="space-y-4">
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-4 overflow-hidden backdrop-blur-md">
+                      <div className="space-y-1">
+                        <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
+                        <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
+                          {director.extraDetails.credentials}
+                        </p>
+                      </div>
+                      <div className="space-y-1">
+                        <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
+                        <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
+                          {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
+                        </p>
+                      </div>
+                      <div className="pt-3 border-t border-white/5">
+                        <p className="text-[11px] text-muted-foreground italic leading-relaxed">
+                          {director.extraDetails.fullNarrative}
+                        </p>
+                      </div>
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
               </div>
             )}
           </div>
 
-          <div className="p-5 md:p-6 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
-            <div className="flex items-center gap-2 mb-1">
-              <Sparkles size={12} className="text-primary/60" />
-              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
-                {isWellbeing ? "HUMAN_CENTRIC_PROTOCOL" : "VISION_PROTOCOL"}
-              </span>
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="space-y-3">
+                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
+                <div className="flex flex-wrap gap-2">
+                  {director.specializations?.map((spec: string) => (
+                    <span key={spec} className="text-[9px] font-mono font-bold text-primary/80 bg-primary/5 px-3 py-1.5 rounded-lg border border-primary/10 transition-colors hover:bg-primary/10">
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              {isWellbeing && (
+                <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 space-y-3 backdrop-blur-md">
+                  <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                    <UserCheck size={10} /> SYSTEM_FOCUS
+                  </h4>
+                  <p className="text-xs font-mono text-muted-foreground leading-relaxed">{director.systemFocus}</p>
+                </div>
+              )}
             </div>
-            <p className="text-xs text-foreground/80 leading-relaxed font-medium italic">
-              "{director.manifesto}"
-            </p>
+
+            <div className="p-6 md:p-8 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
+              <div className="flex items-center gap-2 mb-1">
+                <Sparkles size={12} className="text-primary/60" />
+                <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
+                  {isWellbeing ? "HUMAN_CENTRIC_PROTOCOL" : "VISION_PROTOCOL"}
+                </span>
+              </div>
+              <p className="text-sm text-foreground/80 leading-relaxed font-medium italic">
+                "{director.manifesto}"
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -296,7 +300,15 @@ export default function FoundersPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {directors.map((director, index) => (
-            <FounderCard key={index} director={director} index={index} />
+            <div 
+              key={index} 
+              className={cn(
+                "transition-all duration-700",
+                director.size === 'xl' ? "lg:col-span-2 lg:row-span-1" : ""
+              )}
+            >
+              <FounderCard director={director} index={index} />
+            </div>
           ))}
         </div>
       </div>
@@ -305,3 +317,4 @@ export default function FoundersPage() {
     </main>
   )
 }
+
