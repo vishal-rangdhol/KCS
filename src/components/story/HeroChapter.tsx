@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useRef, useEffect } from 'react'
@@ -48,7 +49,7 @@ export function HeroChapter() {
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=300%",
+          end: "+=200%",
           pin: true,
           scrub: 1,
           anticipatePin: 1,
@@ -56,13 +57,13 @@ export function HeroChapter() {
       })
 
       tl.fromTo(text1Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 })
-        .to(text1Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=1")
+        .to(text1Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=0.5")
         
         .fromTo(text2Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 })
-        .to(text2Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=1")
+        .to(text2Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=0.5")
         
         .fromTo(text3Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 })
-        .to(text3Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=1")
+        .to(text3Ref.current, { opacity: 0, y: -50, duration: 1 }, "+=0.5")
     }
 
     return () => {
@@ -83,7 +84,7 @@ export function HeroChapter() {
     <>
       <section 
         id="hero" 
-        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-24 pb-32 md:pt-32 md:pb-40 bg-background"
+        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-28 pb-32 md:pt-32 md:pb-40 bg-background"
       >
         <motion.div 
           className="absolute inset-0 pointer-events-none z-0"
@@ -106,7 +107,7 @@ export function HeroChapter() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-primary font-headline uppercase tracking-[0.3em] md:tracking-[0.6em] text-[9px] sm:text-[11px] mb-4 md:mb-8 block font-bold"
+              className="text-primary font-headline uppercase tracking-[0.2em] md:tracking-[0.6em] text-[9px] sm:text-[11px] mb-4 md:mb-8 block font-bold"
             >
               Kandhugule Consultancy Services
             </motion.span>
@@ -114,7 +115,7 @@ export function HeroChapter() {
           
           <motion.h1 
             style={{ x: textX, y: textY }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7rem] font-bold mb-6 md:mb-10 leading-[1.1] md:leading-[0.85] tracking-tighter text-foreground font-headline"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[7rem] font-bold mb-6 md:mb-10 leading-[1.1] md:leading-[0.85] tracking-tighter text-foreground font-headline break-words"
           >
             {words.map((word, i) => (
               <motion.span
@@ -126,7 +127,7 @@ export function HeroChapter() {
                   delay: 0.4 + (i * 0.08),
                   ease: [0.2, 0.65, 0.3, 0.9]
                 }}
-                className="inline-block mr-[0.2em] sm:mr-[0.25em]"
+                className="inline-block mr-[0.2em]"
               >
                 {word}
               </motion.span>
@@ -138,7 +139,7 @@ export function HeroChapter() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.6, duration: 1.2 }}
-              className="text-muted-foreground text-[11px] sm:text-sm md:text-base max-w-2xl mx-auto font-body mb-8 md:mb-12 px-2 md:px-4 leading-relaxed font-medium italic"
+              className="text-muted-foreground text-[12px] sm:text-sm md:text-base max-w-2xl mx-auto font-body mb-10 md:mb-12 px-4 leading-relaxed font-medium italic"
             >
               KCS Product Lab designs, builds, and operates scalable technology platforms 
               powered by <span className="text-foreground">artificial intelligence</span>, 
@@ -151,14 +152,14 @@ export function HeroChapter() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 2, duration: 1 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
           >
             <MagneticButton>
               <Button 
                 variant="outline"
                 size="lg" 
                 asChild
-                className="h-10 md:h-12 px-6 md:px-8 text-xs sm:text-sm rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
+                className="h-11 md:h-12 px-8 text-xs sm:text-sm rounded-full group border border-primary/20 bg-white/5 text-foreground hover:bg-primary/5 hover:border-primary transition-all duration-500 w-full sm:w-auto font-bold shadow-xl backdrop-blur-md"
               >
                 <Link href="/contact">
                   Start Your Project
@@ -171,7 +172,7 @@ export function HeroChapter() {
               <Button 
                 size="lg" 
                 onClick={scrollToNext}
-                className="h-10 md:h-12 px-6 md:px-8 text-xs sm:text-sm rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
+                className="h-11 md:h-12 px-8 text-xs sm:text-sm rounded-full group bg-primary border-none hover:bg-primary/90 transition-all duration-500 w-full sm:w-auto font-bold text-white shadow-[0_10px_30px_rgba(249,115,22,0.3)]"
               >
                 Explore Services
                 <LayoutPanelLeft className="ml-2 w-4 h-4 group-hover:rotate-12 transition-transform" />
@@ -186,11 +187,11 @@ export function HeroChapter() {
           transition={{ delay: 2.8, duration: 1.5 }}
           className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-20"
         >
-          <span className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] md:tracking-[0.6em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
+          <span className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-[1px] h-6 md:h-12 bg-gradient-to-b from-primary/60 to-transparent"
+            className="w-[1px] h-8 md:h-12 bg-gradient-to-b from-primary/60 to-transparent"
           />
         </motion.div>
       </section>
@@ -198,7 +199,7 @@ export function HeroChapter() {
       <section ref={problemSectionRef} id="problem" className="relative h-screen w-full bg-background overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_70%)] opacity-5 pointer-events-none" />
         
-        <div ref={problemContainerRef} className="relative h-full w-full flex items-center justify-center px-4 md:px-12">
+        <div ref={problemContainerRef} className="relative h-full w-full flex items-center justify-center px-6 md:px-12">
           <div className="max-w-7xl w-full text-center space-y-0 relative h-full flex items-center justify-center">
             
             <div ref={text1Ref} className="absolute inset-0 flex flex-col items-center justify-center opacity-0 pointer-events-none px-4">

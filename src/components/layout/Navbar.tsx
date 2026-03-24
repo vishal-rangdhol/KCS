@@ -22,7 +22,6 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [isContactHovered, setIsContactHovered] = useState(false)
   const pathname = usePathname()
 
   const mainNavItems = navItems.filter(item => item.name !== 'Contact')
@@ -70,7 +69,7 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
+    <header className="fixed top-4 md:top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
       <motion.nav 
         animate={{ 
           y: scrolled ? 0 : 4,
@@ -78,7 +77,7 @@ export function Navbar() {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
-          "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
+          "w-full max-w-[95%] md:max-w-7xl transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-5 md:px-8 py-2.5 md:py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
           scrolled && "shadow-2xl border-black/10 bg-white/90"
         )}
       >
@@ -90,7 +89,7 @@ export function Navbar() {
               alt="KCS Logo" 
               width={80}
               height={26}
-              className="h-5 md:h-6 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+              className="h-4 md:h-6 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               priority
             />
           </Link>
@@ -98,7 +97,7 @@ export function Navbar() {
 
         {/* Nav Links */}
         <div className="hidden md:flex flex-1 justify-center px-4">
-          <ul className="flex flex-row gap-6 lg:gap-10 items-center">
+          <ul className="flex flex-row gap-4 lg:gap-10 items-center">
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
               const isActive = activeSection === id || (pathname === '/' && id === 'hero' && activeSection === 'hero')
@@ -108,7 +107,7 @@ export function Navbar() {
                   <Link 
                     href={item.href}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em]",
+                      "text-[10px] lg:text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em]",
                       isActive ? 'text-black' : 'text-slate-500'
                     )}
                   >
@@ -146,17 +145,11 @@ export function Navbar() {
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
-                <motion.div 
-                  initial="initial" 
-                  whileHover="hover" 
-                  className="relative"
-                  onMouseEnter={() => setIsContactHovered(true)}
-                  onMouseLeave={() => setIsContactHovered(false)}
-                >
+                <motion.div initial="initial" whileHover="hover" className="relative">
                   <Link 
                     href={contactItem.href}
                     className={cn(
-                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-500 flex items-center gap-1 group border border-primary/40 min-w-[120px] justify-center",
+                      "relative overflow-hidden px-5 lg:px-6 py-2 md:py-2.5 rounded-full text-[10px] lg:text-[11px] font-bold uppercase tracking-tight transition-all duration-500 flex items-center gap-1 group border border-primary/40 min-w-[110px] lg:min-w-[120px] justify-center",
                       pathname === '/contact'
                         ? 'bg-primary text-white'
                         : 'bg-transparent text-black'
@@ -196,7 +189,7 @@ export function Navbar() {
                         }}
                         className="absolute inset-0 flex items-center justify-center"
                       >
-                        Initialize_Uplink
+                        UPLINK
                       </motion.span>
 
                       <motion.span
@@ -235,9 +228,9 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-[70px] left-0 right-0 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-3xl"
+            className="absolute top-[64px] left-4 right-4 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-3xl z-[120]"
           >
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-5">
               {navItems.map((item) => {
                 const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
                 const isActive = activeSection === id || (pathname === item.href)
@@ -286,12 +279,11 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const moveX = clientX - centerX
     const moveY = clientY - centerY
     
-    // Snap within a threshold
     const distance = Math.sqrt(moveX ** 2 + moveY ** 2)
     const threshold = 150
 
     if (distance < threshold) {
-      const factor = 0.35 // Magnetic strength
+      const factor = 0.35 
       x.set(moveX * factor)
       y.set(moveY * factor)
     } else {
