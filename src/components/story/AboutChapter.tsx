@@ -195,7 +195,7 @@ export function AboutChapter() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 max-w-6xl mx-auto">
+          <div className="flex overflow-x-auto pb-10 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 max-w-6xl mx-auto snap-x snap-mandatory scrollbar-hide">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -203,7 +203,7 @@ export function AboutChapter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={cn(
-                  "relative p-8 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[320px] md:min-h-[400px]",
+                  "shrink-0 w-[85vw] md:w-full snap-center relative p-8 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[320px] md:min-h-[400px]",
                   (index === 1 || index === 2) && "md:translate-y-6"
                 )}
               >
