@@ -103,7 +103,7 @@ export function Navbar() {
                   <Link 
                     href={item.href}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em] group-hover:letter-spacing-[0.05em]",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em]",
                       isActive ? 'text-black' : 'text-slate-500'
                     )}
                   >

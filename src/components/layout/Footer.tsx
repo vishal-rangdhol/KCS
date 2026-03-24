@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from 'react'
@@ -105,11 +106,6 @@ export function Footer() {
             <p className="text-muted-foreground text-xs md:text-sm leading-relaxed italic font-medium max-w-xs">
               Ensuring technology remains a competitive advantage through architectural precision and AI-native design.
             </p>
-
-            <div className="flex items-center gap-2 md:gap-3 pt-2 md:pt-4">
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_#10b981]" />
-              <span className="text-[8px] md:text-[10px] font-mono font-bold tracking-[0.2em] text-emerald-500 uppercase">System_Status: Optimized</span>
-            </div>
             
             <div className="pt-4 md:pt-6 border-t border-white/5">
               <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-foreground/40 font-headline">HQ: HYDERABAD // INDIA</p>
@@ -144,18 +140,6 @@ export function Footer() {
             </h5>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8">
-              <div className="space-y-4">
-                <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground block">Newsletter_Terminal</span>
-                <div className="relative max-w-xs group">
-                  <input 
-                    type="email" 
-                    placeholder="SUBSCRIBE_TO_UPDATES_" 
-                    className="w-full bg-transparent border-b border-white/10 py-2 md:py-3 pr-8 md:pr-10 text-[9px] md:text-[10px] font-mono focus:border-primary transition-colors outline-none text-foreground placeholder:text-foreground/20"
-                  />
-                  <div className="absolute right-0 bottom-2.5 md:bottom-3 w-1 md:w-1.5 h-3 md:h-3.5 bg-primary animate-pulse cursor-blink" />
-                </div>
-              </div>
-
               <div className="space-y-4">
                 <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground block">Social_Nodes</span>
                 <div className="flex gap-3 md:gap-4 relative">

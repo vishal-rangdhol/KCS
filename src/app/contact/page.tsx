@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -158,10 +159,6 @@ export default function ContactPage() {
             <h1 className="text-4xl md:text-7xl font-bold tracking-tighter leading-none font-headline">
               Contact <span className="text-primary italic">Terminal.</span>
             </h1>
-          </div>
-          <div className="text-right font-mono text-[9px] text-muted-foreground/40 space-y-1">
-            <div>PRIORITY: HIGH_AVAILABILITY</div>
-            <div>ENCRYPTION: AES_256_ACTIVE</div>
           </div>
         </div>
 
