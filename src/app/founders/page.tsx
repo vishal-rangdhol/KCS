@@ -3,7 +3,7 @@
 
 import React, { useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
-import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronLeft } from 'lucide-react'
+import { Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -132,7 +132,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[500px]",
+        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[450px]",
         isWellbeing 
           ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
@@ -151,40 +151,26 @@ function FounderCard({ director, index }: { director: any, index: number }) {
         )}
       />
 
-      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
-        <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
-          <div className={cn(
-            "relative w-20 h-20 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-2xl flex items-center justify-center",
-            isWellbeing && "border-primary/20 bg-primary/5"
-          )}>
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/5" />
-            {isWellbeing ? (
-              <HeartPulse className="w-10 h-10 md:w-16 md:h-16 text-primary/80 animate-pulse" strokeWidth={0.75} />
-            ) : (
-              <Shield className="w-10 h-10 md:w-16 md:h-16 text-primary/40" strokeWidth={0.5} />
+      <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
+        <div className="space-y-4 mb-8">
+          <div className="flex items-center justify-between gap-4">
+            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
+              <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
+              {director.designation}
+            </span>
+            {isWellbeing && (
+              <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[6px] font-bold uppercase tracking-widest backdrop-blur-xl">
+                <CheckCircle2 size={8} /> [ VERIFIED ]
+              </div>
             )}
           </div>
-
-          <div className="space-y-3 flex-1">
-            <div className="flex items-center justify-between gap-4">
-              <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
-                <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
-                {director.designation}
-              </span>
-              {isWellbeing && (
-                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[6px] font-bold uppercase tracking-widest backdrop-blur-xl">
-                  <CheckCircle2 size={8} /> [ VERIFIED ]
-                </div>
-              )}
-            </div>
-            
-            <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
-              {director.name}
-            </h3>
-            
-            <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
-              {director.role}
-            </div>
+          
+          <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
+            {director.name}
+          </h3>
+          
+          <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+            {director.role}
           </div>
         </div>
 
