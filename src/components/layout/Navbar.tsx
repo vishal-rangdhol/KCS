@@ -2,8 +2,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from 'framer-motion'
-import { Menu, X, Rocket, ArrowUpRight } from 'lucide-react'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { Menu, X, Rocket, ArrowUpRight, Activity } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -22,6 +22,7 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isContactHovered, setIsContactHovered] = useState(false)
   const pathname = usePathname()
 
   const mainNavItems = navItems.filter(item => item.name !== 'Contact')
@@ -71,10 +72,14 @@ export function Navbar() {
   return (
     <header className="fixed top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
       <motion.nav 
-        whileTap={{ scale: 0.99 }}
+        animate={{ 
+          y: scrolled ? 0 : 4,
+          scale: scrolled ? 0.98 : 1,
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
           "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
-          scrolled && "shadow-xl border-black/10"
+          scrolled && "shadow-2xl border-black/10 bg-white/90"
         )}
       >
         {/* KCS Logo */}
@@ -138,14 +143,34 @@ export function Navbar() {
 
         {/* Contact CTA */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
+          <AnimatePresence>
+            {isContactHovered && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[8px] font-mono font-bold text-primary tracking-widest"
+              >
+                <Activity size={10} className="animate-pulse" />
+                UPLINK_READY: HYD_CORE
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
-                <motion.div initial="initial" whileHover="hover" className="relative">
+                <motion.div 
+                  initial="initial" 
+                  whileHover="hover" 
+                  className="relative"
+                  onMouseEnter={() => setIsContactHovered(true)}
+                  onMouseLeave={() => setIsContactHovered(false)}
+                >
                   <Link 
                     href={contactItem.href}
                     className={cn(
-                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/40",
+                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-500 flex items-center gap-1 group border border-primary/40 min-w-[120px] justify-center",
                       pathname === '/contact'
                         ? 'bg-primary text-white'
                         : 'bg-transparent text-black'
@@ -168,7 +193,26 @@ export function Navbar() {
                       }}
                       className="relative z-10 flex items-center gap-0.5 transition-colors duration-300"
                     >
-                      {contactItem.name}
+                      <motion.span
+                        variants={{
+                          initial: { opacity: 1, y: 0 },
+                          hover: { opacity: 0, y: -10 }
+                        }}
+                        className="inline-block"
+                      >
+                        {contactItem.name}
+                      </motion.span>
+                      
+                      <motion.span
+                        variants={{
+                          initial: { opacity: 0, y: 10 },
+                          hover: { opacity: 1, y: 0 }
+                        }}
+                        className="absolute inset-0 flex items-center justify-center"
+                      >
+                        Initialize_Uplink
+                      </motion.span>
+
                       <motion.span
                         variants={{
                           initial: { x: -8, opacity: 0, width: 0 },
@@ -256,9 +300,18 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const moveX = clientX - centerX
     const moveY = clientY - centerY
     
-    const factor = 0.2
-    x.set(moveX * factor)
-    y.set(moveY * factor)
+    // Snap within a threshold
+    const distance = Math.sqrt(moveX ** 2 + moveY ** 2)
+    const threshold = 150
+
+    if (distance < threshold) {
+      const factor = 0.35 // Magnetic strength
+      x.set(moveX * factor)
+      y.set(moveY * factor)
+    } else {
+      x.set(0)
+      y.set(0)
+    }
   }
 
   const handleMouseLeave = () => {
