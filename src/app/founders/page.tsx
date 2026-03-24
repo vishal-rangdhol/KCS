@@ -3,17 +3,12 @@
 
 import React, { useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
-import { Activity, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronLeft } from 'lucide-react'
+import { Activity, Sparkles, CheckCircle2, UserCheck, BookOpen, ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { Footer } from '@/components/layout/Footer'
 import { cn } from '@/lib/utils'
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
 
 const directors = [
   {
@@ -91,13 +86,13 @@ function BlueprintBackground() {
 
 function FounderCard({ director, index }: { director: any, index: number }) {
   const [isHovered, setIsHovered] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), { stiffness: 100, damping: 20 })
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), { stiffness: 100, damping: 20 })
 
   const isWellbeing = director.type === "wellbeing"
+  const isLarge = director.size === 'xl'
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -165,63 +160,40 @@ function FounderCard({ director, index }: { director: any, index: number }) {
           </div>
         </div>
 
-        <div className={cn("flex-1 grid gap-8", director.size === 'xl' ? "lg:grid-cols-2" : "grid-cols-1")}>
-          <div className="space-y-8">
-            <div className="space-y-3">
-              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
-              <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
-                "{director.description}"
-              </p>
-            </div>
-
-            {isWellbeing && director.extraDetails && (
-              <div className="space-y-4">
-                <Collapsible
-                  open={isOpen}
-                  onOpenChange={setIsOpen}
-                  className="w-full space-y-2"
-                >
-                  <div className="flex items-center justify-between space-x-4 px-0">
-                    <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
-                      <BookOpen size={10} /> CLINICAL_DOSSIER
-                    </h4>
-                    <CollapsibleTrigger asChild>
-                      <button className="p-1 rounded-lg hover:bg-white/5 transition-colors group/trigger">
-                        <ChevronDown 
-                          size={14} 
-                          className={cn(
-                            "text-primary/60 transition-transform duration-300",
-                            isOpen ? "rotate-180" : "rotate-0"
-                          )} 
-                        />
-                      </button>
-                    </CollapsibleTrigger>
-                  </div>
-                  <CollapsibleContent className="space-y-4">
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-4 overflow-hidden backdrop-blur-md">
-                      <div className="space-y-1">
-                        <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
-                        <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
-                          {director.extraDetails.credentials}
-                        </p>
-                      </div>
-                      <div className="space-y-1">
-                        <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
-                        <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
-                          {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
-                        </p>
-                      </div>
-                      <div className="pt-3 border-t border-white/5">
-                        <p className="text-[11px] text-muted-foreground italic leading-relaxed">
-                          {director.extraDetails.fullNarrative}
-                        </p>
-                      </div>
-                    </div>
-                  </CollapsibleContent>
-                </Collapsible>
-              </div>
-            )}
+        <div className={cn("flex-1 grid gap-8 md:gap-12", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
+          <div className="space-y-6">
+            <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
+            <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+              "{director.description}"
+            </p>
           </div>
+
+          {isWellbeing && director.extraDetails && (
+            <div className="space-y-6">
+              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                <BookOpen size={10} /> CLINICAL_DOSSIER
+              </h4>
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-4 overflow-hidden backdrop-blur-md">
+                <div className="space-y-1">
+                  <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
+                  <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
+                    {director.extraDetails.credentials}
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
+                  <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
+                    {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-white/5">
+                  <p className="text-[11px] text-muted-foreground italic leading-relaxed">
+                    {director.extraDetails.fullNarrative}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
@@ -273,4 +245,3 @@ export default function FoundersPage() {
     </main>
   )
 }
-
