@@ -143,12 +143,6 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       )}
     >
       <BlueprintBackground />
-      
-      {isWellbeing && (
-        <div className="absolute top-6 right-6 z-30 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-          <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
-        </div>
-      )}
 
       <motion.div 
         animate={{ 
@@ -162,31 +156,46 @@ function FounderCard({ director, index }: { director: any, index: number }) {
         )}
       />
 
-      <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
+      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
           <div className={cn(
-            "relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-2xl flex items-center justify-center",
+            "relative w-20 h-20 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-2xl flex items-center justify-center",
             isWellbeing && "border-primary/20 bg-primary/5"
           )}>
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/5" />
             {isWellbeing ? (
-              <HeartPulse className="w-12 h-12 text-primary/80 animate-pulse" strokeWidth={0.75} />
+              <HeartPulse className="w-10 h-10 md:w-16 md:h-16 text-primary/80 animate-pulse" strokeWidth={0.75} />
             ) : (
-              <Shield className="w-12 h-12 text-primary/40" strokeWidth={0.5} />
+              <Shield className="w-10 h-10 md:w-16 md:h-16 text-primary/40" strokeWidth={0.5} />
             )}
           </div>
 
-          <div className="space-y-3">
-            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
-              <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
-              {director.designation}
-            </span>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-none">
+          <div className="space-y-3 flex-1">
+            <div className="flex items-center justify-between gap-4">
+              <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
+                <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
+                {director.designation}
+              </span>
+              {isWellbeing && (
+                <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[6px] font-bold uppercase tracking-widest backdrop-blur-xl">
+                  <CheckCircle2 size={8} /> [ VERIFIED ]
+                </div>
+              )}
+            </div>
+            
+            <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
               {director.name}
             </h3>
+            
             <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
               {director.role}
             </div>
+
+            {isWellbeing && (
+              <div className="sm:hidden flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[6px] font-bold uppercase tracking-widest w-fit">
+                <CheckCircle2 size={8} /> [ VERIFIED ]
+              </div>
+            )}
           </div>
         </div>
 
@@ -267,7 +276,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
             )}
           </div>
 
-          <div className="p-6 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
+          <div className="p-5 md:p-6 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
             <div className="flex items-center gap-2 mb-1">
               <Sparkles size={12} className="text-primary/60" />
               <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
