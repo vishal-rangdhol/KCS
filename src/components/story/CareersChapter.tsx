@@ -105,6 +105,36 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
   );
 }
 
+function RevealText({ text }: { text: string }) {
+  const words = text.split(" ");
+  return (
+    <motion.div 
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="flex flex-wrap justify-center gap-x-[0.3em]"
+    >
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0, y: 10, letterSpacing: "0.2em" },
+            visible: { 
+              opacity: 1, 
+              y: 0, 
+              letterSpacing: "0em",
+              transition: { duration: 1, delay: i * 0.1, ease: [0.2, 0.65, 0.3, 0.9] } 
+            }
+          }}
+          className="inline-block"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+}
+
 function ScrambleText({ text, animateOnInView = false }: { text: string, animateOnInView?: boolean }) {
   const [displayText, setDisplayText] = useState(text);
   const chars = "!@#$%^&*()_+{}[]|;:,.<>?";
@@ -392,30 +422,22 @@ export function CareersChapter() {
             </motion.div>
 
             <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-12 font-headline leading-tight">
-              <ScrambleText text="Initialize your career architecture." animateOnInView={true} />
+              <RevealText text="Initialize your career architecture." />
             </h2>
             
             <div className="flex flex-col items-center gap-12">
               <MagneticButton>
                 <Link href="/careers">
-                  <Button 
-                    size="lg" 
-                    className="rounded-full h-14 md:h-20 px-10 md:px-16 text-[10px] md:text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_40px_rgba(249,115,22,0.4)] border-none text-white transition-all duration-500 relative overflow-hidden group-hover:shadow-[0_0_50px_rgba(249,115,22,0.8)]"
-                  >
-                    <span className="flex items-center gap-3 relative z-10">
-                      View Open Roles 
-                      <div className="relative w-5 h-5 overflow-hidden">
-                        <motion.div
-                          animate={{ x: [0, 20, -20, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                          className="flex items-center"
-                        >
-                          <ArrowRight className="w-5 h-5 shrink-0" />
-                        </motion.div>
-                      </div>
-                    </span>
-                    {/* Scale-in Bounce is handled by motion.div wrapper */}
-                  </Button>
+                  <LiquidButton>
+                    View Open Roles 
+                    <motion.span
+                      className="inline-block"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <ArrowRight className="w-5 h-5" />
+                    </motion.span>
+                  </LiquidButton>
                 </Link>
               </MagneticButton>
 
@@ -432,6 +454,28 @@ export function CareersChapter() {
         </div>
       </div>
     </Chapter>
+  )
+}
+
+function LiquidButton({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="group relative overflow-hidden rounded-full border-2 border-primary text-primary font-bold transition-colors duration-500 hover:text-white shadow-[0_10px_40px_rgba(249,115,22,0.2)]">
+      {/* Liquid Fill */}
+      <motion.span 
+        initial={{ x: "-100%" }}
+        whileHover={{ x: "0%" }}
+        transition={{ duration: 0.5, ease: [0.7, 0, 0.2, 1] }}
+        className="absolute inset-0 z-0 bg-primary" 
+      />
+      
+      {/* Content */}
+      <span className="relative z-10 flex items-center gap-3 px-10 md:px-16 py-4 md:py-6 text-[10px] md:text-sm uppercase tracking-widest">
+        {children}
+      </span>
+      
+      {/* Aura Pulse Shadow Bloom */}
+      <div className="absolute inset-0 z-[-1] rounded-full group-hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] transition-shadow duration-500" />
+    </div>
   )
 }
 
@@ -453,7 +497,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const distanceY = clientY - centerY
     const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
 
-    // Snap to cursor within 50px threshold
+    // Snap to cursor within threshold
     if (distance < 150) {
       const factor = 0.4 // Magnetic strength
       x.set(distanceX * factor)
