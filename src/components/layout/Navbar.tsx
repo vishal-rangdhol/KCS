@@ -143,20 +143,6 @@ export function Navbar() {
 
         {/* Contact CTA */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
-          <AnimatePresence>
-            {isContactHovered && (
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[8px] font-mono font-bold text-primary tracking-widest"
-              >
-                <Activity size={10} className="animate-pulse" />
-                UPLINK_READY: HYD_CORE
-              </motion.div>
-            )}
-          </AnimatePresence>
-
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
