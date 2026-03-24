@@ -18,46 +18,6 @@ import {
 const directors = [
   {
     id: "01",
-    name: "Kandhugule Babu Rao",
-    role: "Director",
-    designation: "ORIGIN_NODE",
-    description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
-    size: "large"
-  },
-  {
-    id: "02",
-    name: "Kandhugule Nagu Bai",
-    role: "Director",
-    designation: "ORIGIN_NODE",
-    description: "Ensuring operational compliance and strict adherence to global engineering standards.",
-    size: "medium"
-  },
-  {
-    id: "03",
-    name: "Mali Patil Pratika",
-    role: "Director",
-    designation: "ARCHITECT_PRIMARY",
-    description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
-    size: "medium"
-  },
-  {
-    id: "04",
-    name: "Hunusnale Sampatha",
-    role: "Director",
-    designation: "ARCHITECT_PRIMARY",
-    description: "Driving administrative precision and high-fidelity operational workflows.",
-    size: "small"
-  },
-  {
-    id: "05",
-    name: "Kandhugule Krishna Kumar",
-    role: "Director of Marketing and Sales",
-    designation: "ARCHITECT_PRIMARY",
-    description: "Architecting market penetration and scaling the KCS brand across global sectors.",
-    size: "large"
-  },
-  {
-    id: "06",
     name: "N. Shraddha Vas",
     role: "Head of Psychology & User Wellbeing",
     designation: "PSYCHOLOGY_INFRASTRUCTURE",
@@ -70,6 +30,46 @@ const directors = [
       sectors: "School · Private · Public sectors",
       fullNarrative: "The psychology brain behind Let's Catch Up. Shraddha and her team make sure every space on the platform — school, private, public — is genuinely safe, not just on paper. CBT, crisis intervention, child psychology, rehab programs — she's done it all clinically and now brings that expertise to where students actually spend their time."
     }
+  },
+  {
+    id: "02",
+    name: "Kandhugule Babu Rao",
+    role: "Director",
+    designation: "ORIGIN_NODE",
+    description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
+    size: "large"
+  },
+  {
+    id: "03",
+    name: "Kandhugule Nagu Bai",
+    role: "Director",
+    designation: "ORIGIN_NODE",
+    description: "Ensuring operational compliance and strict adherence to global engineering standards.",
+    size: "medium"
+  },
+  {
+    id: "04",
+    name: "Mali Patil Pratika",
+    role: "Director",
+    designation: "ARCHITECT_PRIMARY",
+    description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
+    size: "medium"
+  },
+  {
+    id: "05",
+    name: "Hunusnale Sampatha",
+    role: "Director",
+    designation: "ARCHITECT_PRIMARY",
+    description: "Driving administrative precision and high-fidelity operational workflows.",
+    size: "small"
+  },
+  {
+    id: "06",
+    name: "Kandhugule Krishna Kumar",
+    role: "Director of Marketing and Sales",
+    designation: "ARCHITECT_PRIMARY",
+    description: "Architecting market penetration and scaling the KCS brand across global sectors.",
+    size: "large"
   }
 ]
 
@@ -273,3 +273,4 @@ export default function FoundersPage() {
     </main>
   )
 }
+
