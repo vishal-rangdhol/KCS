@@ -2,10 +2,15 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck } from 'lucide-react'
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
+import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
 
 const directors = [
   {
@@ -63,7 +68,13 @@ const directors = [
     specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_PSYCHOLOGY", "NEURODIVERSITY"],
     systemFocus: "Anxiety & Depression // Academic Burnout // PTSD // Trauma",
     manifesto: "Translating years of clinical expertise into the digital architecture where students actually spend their time.",
-    size: "large"
+    size: "large",
+    extraDetails: {
+      credentials: "MSc. Clinical Psychology · PGDRP Rehabilitation Psychology",
+      professionalTitle: "Clinical & Rehabilitation Psychologist",
+      sectors: "School · Private · Public sectors",
+      fullNarrative: "The psychology brain behind Let's Catch Up. Shraddha and her team make sure every space on the platform — school, private, public — is genuinely safe, not just on paper. CBT, crisis intervention, child psychology, rehab programs — she's done it all clinically and now brings that expertise to where students actually spend their time."
+    }
   }
 ]
 
@@ -87,6 +98,7 @@ function BlueprintBackground() {
 
 function FounderCard({ director, index }: { director: any, index: number }) {
   const [isHovered, setIsHovered] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), { stiffness: 100, damping: 20 })
@@ -123,7 +135,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
+        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[500px]",
         isWellbeing 
           ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
@@ -186,26 +198,74 @@ function FounderCard({ director, index }: { director: any, index: number }) {
             </p>
           </div>
 
-          {isWellbeing && (
-            <div className="grid grid-cols-1 gap-6">
-              <div className="space-y-3">
-                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
-                <div className="flex flex-wrap gap-2">
-                  {director.specializations?.map((spec: string) => (
-                    <span key={spec} className="text-[8px] font-mono font-bold text-primary/80 bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
-                      {spec}
-                    </span>
-                  ))}
+          {isWellbeing && director.extraDetails && (
+            <div className="space-y-4">
+              <Collapsible
+                open={isOpen}
+                onOpenChange={setIsOpen}
+                className="w-full space-y-2"
+              >
+                <div className="flex items-center justify-between space-x-4 px-0">
+                  <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                    <BookOpen size={10} /> CLINICAL_DOSSIER
+                  </h4>
+                  <CollapsibleTrigger asChild>
+                    <button className="p-1 rounded-lg hover:bg-white/5 transition-colors group/trigger">
+                      <ChevronDown 
+                        size={14} 
+                        className={cn(
+                          "text-primary/60 transition-transform duration-300",
+                          isOpen ? "rotate-180" : "rotate-0"
+                        )} 
+                      />
+                    </button>
+                  </CollapsibleTrigger>
                 </div>
+                <CollapsibleContent className="space-y-4">
+                  <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-3 overflow-hidden">
+                    <div className="space-y-1">
+                      <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
+                      <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
+                        {director.extraDetails.credentials}
+                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
+                      <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
+                        {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-white/5">
+                      <p className="text-[10px] text-muted-foreground italic leading-relaxed">
+                        {director.extraDetails.fullNarrative}
+                      </p>
+                    </div>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-6">
+            <div className="space-y-3">
+              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
+              <div className="flex flex-wrap gap-2">
+                {director.specializations?.map((spec: string) => (
+                  <span key={spec} className="text-[8px] font-mono font-bold text-primary/80 bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
+                    {spec}
+                  </span>
+                ))}
               </div>
+            </div>
+            {isWellbeing && (
               <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
                 <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
                   <UserCheck size={10} /> SYSTEM_FOCUS
                 </h4>
                 <p className="text-[10px] font-mono text-muted-foreground leading-relaxed">{director.systemFocus}</p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="p-6 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
             <div className="flex items-center gap-2 mb-1">
