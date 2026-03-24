@@ -56,7 +56,7 @@ const directors = [
 
 function BlueprintBackground() {
   return (
-    <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 opacity-[0.04] pointer-events-none overflow-hidden">
       <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
         <defs>
           <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -104,7 +104,7 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col h-full",
+        "group relative rounded-[2.5rem] bg-card border border-white/10 hover:border-primary/40 transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
         director.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
       )}
     >
@@ -113,28 +113,31 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
       <motion.div 
         animate={{ 
           scale: isHovered ? [1, 1.1, 1] : 1,
-          opacity: isHovered ? 0.4 : 0
+          opacity: isHovered ? 0.6 : 0
         }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute inset-0 bg-primary/10 blur-3xl rounded-full z-0"
+        className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full z-0"
       />
 
-      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(30px)' }}>
+      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shrink-0 overflow-hidden">
-            {/* Empty Image Placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-inner">
+            {/* Empty High-Fidelity Placeholder */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-white/5" />
+            <div className="absolute inset-0 flex items-center justify-center opacity-10">
+              <Shield className="w-12 h-12 text-primary" strokeWidth={0.5} />
+            </div>
           </div>
 
           <div className="space-y-2">
-            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline">
+            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
               <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
               {director.designation}
             </span>
             <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-none">
               {director.name}
             </h3>
-            <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+            <div className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest shadow-sm">
               {director.role}
             </div>
           </div>
@@ -145,12 +148,12 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
             "{director.description}"
           </p>
 
-          <div className="p-4 rounded-2xl bg-black/20 border border-white/5 space-y-3">
+          <div className="p-5 rounded-3xl bg-black/40 border border-white/10 space-y-3 shadow-inner">
             <div className="flex items-center gap-2 mb-1">
               <Shield size={12} className="text-primary/60" />
-              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/40 font-mono">VISION_PROTOCOL</span>
+              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">VISION_PROTOCOL</span>
             </div>
-            <p className="text-[10px] md:text-xs text-foreground/80 leading-relaxed font-medium">
+            <p className="text-[10px] md:text-xs text-foreground/90 leading-relaxed font-medium italic">
               {director.manifesto}
             </p>
           </div>
@@ -196,7 +199,7 @@ export function FoundersChapter() {
         </div>
 
         <div className="mt-24 md:mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex gap-12 text-[9px] md:text-[11px] font-mono text-primary/40 uppercase tracking-[0.4em]">
+          <div className="flex gap-12 text-[9px] md:text-[11px] font-mono text-primary/60 uppercase tracking-[0.4em]">
             <div className="flex items-center gap-3">
               <Cpu size={14} /> SYSTEM_STATUS: SECURE
             </div>
