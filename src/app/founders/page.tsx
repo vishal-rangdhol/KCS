@@ -138,61 +138,61 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       )}
 
       <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
-        <div className="space-y-4 mb-8">
-          <div className="flex items-center justify-between gap-4">
-            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
-              <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
-              {director.designation}
-            </span>
-            {isWellbeing && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl">
-                <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
-              </div>
-            )}
-          </div>
-          
-          <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
-            {director.name}
-          </h3>
-          
-          <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
-            {director.role}
-          </div>
-        </div>
-
-        <div className={cn("flex-1 grid gap-8 md:gap-12 items-start", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
-          <div className="space-y-6">
-            <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
-            <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
-              "{director.description}"
-            </p>
+        <div className={cn("grid gap-8 md:gap-12 items-start mb-8", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between gap-4">
+              <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
+                <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
+                {director.designation}
+              </span>
+              {isWellbeing && (
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl">
+                  <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
+                </div>
+              )}
+            </div>
+            
+            <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
+              {director.name}
+            </h3>
+            
+            <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+              {director.role}
+            </div>
           </div>
 
           {isWellbeing && director.extraDetails && (
-            <div className="space-y-6">
+            <div className="space-y-4">
               <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
                 <BookOpen size={10} /> CLINICAL_DOSSIER
               </h4>
-              <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-4 overflow-hidden backdrop-blur-md">
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3 overflow-hidden backdrop-blur-md">
                 <div className="space-y-1">
                   <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
-                  <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
+                  <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
                     {director.extraDetails.credentials}
                   </p>
                 </div>
                 <div className="space-y-1">
                   <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Professional_Status</span>
-                  <p className="text-[11px] font-mono text-foreground/80 leading-relaxed">
-                    {director.extraDetails.professionalTitle} // {director.extraDetails.sectors}
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-white/5">
-                  <p className="text-[11px] text-muted-foreground italic leading-relaxed">
-                    {director.extraDetails.fullNarrative}
+                  <p className="text-[10px] font-mono text-foreground/80 leading-relaxed">
+                    {director.extraDetails.professionalTitle}
                   </p>
                 </div>
               </div>
             </div>
+          )}
+        </div>
+
+        <div className="space-y-6">
+          <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
+          <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+            "{director.description}"
+          </p>
+          {isWellbeing && director.extraDetails && (
+            <p className="text-[11px] text-muted-foreground italic leading-relaxed pl-6 max-w-2xl">
+              {director.extraDetails.fullNarrative}
+            </p>
           )}
         </div>
       </div>
