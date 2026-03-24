@@ -412,15 +412,6 @@ export function CareersChapter() {
           />
           
           <div className="relative z-10 max-w-4xl mx-auto text-center">
-            {/* Talent Status Counter */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              className="mb-8 font-mono text-primary/60 text-[9px] md:text-[11px] tracking-[0.4em] font-bold"
-            >
-              [ STATUS: 10_POSITIONS_ACTIVE ]
-            </motion.div>
-
             <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-12 font-headline leading-tight">
               <RevealText text="Initialize your career architecture." />
             </h2>
