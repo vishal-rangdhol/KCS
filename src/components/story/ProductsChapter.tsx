@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -86,7 +85,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative h-[480px] md:h-[700px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
+      className="group relative h-[650px] md:h-[750px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
       <div className="absolute inset-0 z-0">
         <Image src={product.image} alt={product.name} fill className="object-cover opacity-10 group-hover:opacity-5 transition-all duration-1000 group-hover:scale-110" data-ai-hint={product.hint} />
@@ -121,7 +120,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
             <Sparkles size={12} className="text-primary animate-pulse" />
             <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Vision Protocol</span>
           </div>
-          <p className="text-base md:text-2xl font-bold text-foreground leading-tight italic tracking-tight mb-8">
+          <p className="text-sm md:text-2xl font-bold text-foreground leading-tight italic tracking-tight mb-6 md:mb-8">
             "{product.vision}"
           </p>
 
