@@ -79,7 +79,7 @@ export function Navbar() {
         animate={{ scale: isClicked ? 0.99 : 1 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className={cn(
-          "w-full max-w-6xl transition-all duration-500 border pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl border-black/5 shadow-lg shadow-black/5"
+          "w-full max-w-[95%] transition-all duration-500 border pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl border-black/5 shadow-lg shadow-black/5"
         )}
       >
         {/* KCS Logo */}
