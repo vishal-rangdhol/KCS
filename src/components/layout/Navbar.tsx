@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -121,27 +121,27 @@ export function Navbar() {
                     href={item.href}
                     onClick={handleNavClick}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1.5",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1",
                       isActive 
                         ? 'text-black' 
-                        : 'text-slate-500 hover:text-black'
+                        : 'text-slate-500 hover:text-black hover:tracking-[0.05em]'
                     )}
                   >
                     {item.name}
                     {item.tag && (
-                      <span className="text-[8px] font-mono text-primary bg-primary/5 px-1.5 py-0.5 rounded-sm font-bold ml-0.5">
+                      <span className="text-[7px] font-mono text-primary bg-primary/5 px-1 py-0.5 rounded-sm font-bold align-top -mt-2">
                         {item.tag}
                       </span>
                     )}
                     
-                    {/* Elastic Underline Trace */}
+                    {/* Ink-Flow Underline */}
                     {isActive && (
                       <motion.div 
                         layoutId="activeUnderline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_0_10px_rgba(249,115,22,0.3)]"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_-2px_6px_rgba(249,115,22,0.3)] z-[-1]"
                         transition={{ 
                           type: "spring", 
-                          stiffness: 380, 
+                          stiffness: 300, 
                           damping: 30,
                           mass: 1
                         }}
@@ -169,15 +169,27 @@ export function Navbar() {
                   href={contactItem.href}
                   onClick={handleNavClick}
                   className={cn(
-                    "px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-2 border group",
+                    "relative overflow-hidden px-6 py-2 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-black/10",
                     pathname === '/contact'
-                      ? 'bg-black border-black text-white'
-                      : 'bg-black border-black text-white hover:bg-primary hover:border-primary'
+                      ? 'bg-black text-white'
+                      : 'bg-white text-black hover:text-white'
                   )}
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <motion.div 
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: 0 }}
+                    transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
+                    className="absolute inset-0 bg-primary z-0"
+                  />
+                  <span className="relative z-10 flex items-center gap-1">
                     {contactItem.name}
-                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:rotate-45" />
+                    <motion.span
+                      initial={{ x: 5, opacity: 0 }}
+                      whileHover={{ x: 0, opacity: 1 }}
+                      className="inline-block"
+                    >
+                      ↗
+                    </motion.span>
                   </span>
                 </Link>
               </MagneticButton>
@@ -216,7 +228,7 @@ export function Navbar() {
                         isActive ? 'text-primary' : 'text-slate-500'
                       )}
                     >
-                      {item.name} {item.tag && <span className="text-[8px] ml-1 text-primary">[{item.tag}]</span>}
+                      {item.name} {item.tag && <span className="text-[7px] ml-1 text-primary">[{item.tag}]</span>}
                     </Link>
                   </li>
                 )
