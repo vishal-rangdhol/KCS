@@ -1,53 +1,229 @@
 "use client"
 
 import { Chapter } from './Chapter'
-import { motion } from 'framer-motion'
-import { Shield, User, Scale } from 'lucide-react'
-import React from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { Shield, User, Scale, Activity, Cpu, Database, Network, ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 const directors = [
   {
     id: "01",
     name: "Kandhugule Babu Rao",
     role: "Director",
-    designation: "GOVERNANCE_NODE",
+    designation: "ORIGIN_NODE",
     description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
+    manifesto: "Stability is the foundation upon which high-scale innovation is built.",
+    stats: {
+      years: "15+",
+      specialization: "STRATEGIC_GOVERNANCE"
+    },
+    image: "https://picsum.photos/seed/founder1/600/800",
+    size: "large"
   },
   {
     id: "02",
     name: "Kandhugule Nagu Bai",
     role: "Director",
-    designation: "GOVERNANCE_NODE",
+    designation: "ORIGIN_NODE",
     description: "Ensuring operational compliance and strict adherence to global engineering standards.",
+    manifesto: "Precision in operation ensures longevity in product.",
+    stats: {
+      years: "12+",
+      specialization: "OPERATIONAL_COMPLIANCE"
+    },
+    image: "https://picsum.photos/seed/founder2/600/800",
+    size: "medium"
   },
   {
     id: "03",
     name: "Mali Patil Pratika",
     role: "Director",
-    designation: "GOVERNANCE_NODE",
+    designation: "ARCHITECT_PRIMARY",
     description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
+    manifesto: "Ethical growth is the only sustainable path for digital infrastructure.",
+    stats: {
+      years: "08+",
+      specialization: "INSTITUTIONAL_GROWTH"
+    },
+    image: "https://picsum.photos/seed/founder3/600/800",
+    size: "medium"
   },
   {
     id: "04",
     name: "Hunusnale Sampatha",
     role: "Director",
-    designation: "GOVERNANCE_NODE",
+    designation: "ARCHITECT_PRIMARY",
     description: "Driving administrative precision and high-fidelity operational workflows.",
+    manifesto: "Workflows should be as optimized as the code they support.",
+    stats: {
+      years: "10+",
+      specialization: "WORKFLOW_PRECISION"
+    },
+    image: "https://picsum.photos/seed/founder4/600/800",
+    size: "small"
   },
   {
     id: "05",
     name: "Kandhugule Krishna Kumar",
     role: "Director of Marketing and Sales",
-    designation: "STRATEGIC_NODE",
-    description: "Architecting market penetration and scaling the KCS brand across global technology sectors.",
+    designation: "ARCHITECT_PRIMARY",
+    description: "Architecting market penetration and scaling the KCS brand across global sectors.",
+    manifesto: "A brand is the narrative that bridges technology and human impact.",
+    stats: {
+      years: "10+",
+      specialization: "MARKET_PENETRATION"
+    },
+    image: "https://picsum.photos/seed/founder5/600/800",
+    size: "large"
   }
 ]
 
+function BlueprintBackground() {
+  return (
+    <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden">
+      <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <defs>
+          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.1" />
+        <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.1" />
+        <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="0.1" />
+      </svg>
+    </div>
+  )
+}
+
+function FounderCard({ director, index }: { director: typeof directors[0], index: number }) {
+  const [isHovered, setIsHovered] = useState(false)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), { stiffness: 100, damping: 20 })
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), { stiffness: 100, damping: 20 })
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const mouseX = (e.clientX - rect.left) / rect.width - 0.5
+    const mouseY = (e.clientY - rect.top) / rect.height - 0.5
+    x.set(mouseX)
+    y.set(mouseY)
+  }
+
+  function handleMouseLeave() {
+    setIsHovered(false)
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+      className={cn(
+        "group relative rounded-[2.5rem] bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-700 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col h-full",
+        director.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
+      )}
+    >
+      <BlueprintBackground />
+      
+      {/* Background Aura Pulse */}
+      <motion.div 
+        animate={{ 
+          scale: isHovered ? [1, 1.1, 1] : 1,
+          opacity: isHovered ? 0.4 : 0
+        }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute inset-0 bg-primary/10 blur-3xl rounded-full z-0"
+      />
+
+      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(30px)' }}>
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
+          {/* Portrait Container */}
+          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shrink-0">
+            <Image 
+              src={director.image} 
+              alt={director.name}
+              fill
+              className={cn(
+                "object-cover transition-all duration-700",
+                isHovered ? "grayscale-0 scale-110" : "grayscale"
+              )}
+            />
+            {/* Duotone Overlay */}
+            <div className={cn(
+              "absolute inset-0 bg-primary/20 mix-blend-color transition-opacity duration-500",
+              isHovered ? "opacity-0" : "opacity-40"
+            )} />
+          </div>
+
+          <div className="space-y-2">
+            <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/60 font-headline">
+              <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
+              {director.designation}
+            </span>
+            <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-none">
+              {director.name}
+            </h3>
+            <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/5 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+              {director.role}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex-1 space-y-6">
+          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+            "{director.description}"
+          </p>
+
+          <div className="p-4 rounded-2xl bg-black/20 border border-white/5 space-y-3">
+            <div className="flex items-center gap-2 mb-1">
+              <Shield size={12} className="text-primary/60" />
+              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/40 font-mono">VISION_PROTOCOL</span>
+            </div>
+            <p className="text-[10px] md:text-xs text-foreground/80 leading-relaxed font-medium">
+              {director.manifesto}
+            </p>
+          </div>
+        </div>
+
+        {/* System Stats Footer */}
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap justify-between items-end gap-4">
+          <div className="space-y-3 font-mono text-[8px] md:text-[9px]">
+            <div className="flex items-center gap-2">
+              <span className="text-primary/40">EXP_METRIC:</span>
+              <span className="text-foreground">{director.stats.years} YEARS</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-primary/40">SPECIALIZATION:</span>
+              <span className="text-foreground">{director.stats.specialization}</span>
+            </div>
+          </div>
+
+          <button className="flex items-center gap-2 px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 text-[10px] font-bold uppercase tracking-widest group/btn">
+            UPLINK
+            <ArrowUpRight size={14} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 export function FoundersChapter() {
   return (
-    <Chapter id="founders" className="bg-background py-16 md:py-32 overflow-visible">
+    <Chapter id="founders" className="bg-background py-16 md:py-32 lg:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16 md:mb-24 border-b border-black/5 pb-12">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16 md:mb-32">
           <div className="max-w-2xl text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -55,78 +231,45 @@ export function FoundersChapter() {
               transition={{ duration: 1 }}
               viewport={{ once: true }}
             >
-              <span className="flex items-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[9px] md:text-xs mb-6 font-headline">
-                <Scale size={14} className="text-primary/60" /> Governance Protocol
+              <span className="flex items-center gap-2 text-primary font-bold tracking-[0.5em] md:tracking-[0.6em] uppercase text-[9px] md:text-xs mb-6 font-headline">
+                <Scale size={14} className="text-primary/60 animate-pulse" /> Governance Protocol
               </span>
-              <h2 className="text-3xl md:text-7xl font-bold tracking-tighter leading-none text-foreground font-headline">
+              <h2 className="text-3xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-none text-foreground font-headline">
                 Founding <br />
                 <span className="text-primary italic">Architecture.</span>
               </h2>
             </motion.div>
           </div>
           
-          <div className="text-right">
-            <p className="text-[10px] md:text-sm text-muted-foreground font-mono uppercase tracking-widest max-w-[200px]">
-              KANDHUGULE CONSULTANCY SERVICES PVT LTD // BOARD_OF_DIRECTORS
+          <div className="text-right hidden md:block">
+            <p className="text-[10px] md:text-sm text-muted-foreground font-mono uppercase tracking-[0.3em] max-w-[300px] leading-relaxed">
+              KANDHUGULE CONSULTANCY SERVICES PVT LTD // <span className="text-primary">BOARD_OF_DIRECTORS</span>
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Asymmetrical Matrix Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {directors.map((director, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative p-6 md:p-10 rounded-[2rem] bg-card/40 border border-black/5 hover:border-primary/20 transition-all duration-500 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col h-full"
-            >
-              <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors pointer-events-none">
-                <Shield size={100} strokeWidth={0.5} />
-              </div>
-
-              <div className="relative z-10 flex-1">
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="p-3 md:p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                    <User size={20} />
-                  </div>
-                  <div>
-                    <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline block">
-                      {director.designation}
-                    </span>
-                    <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
-                      {director.name}
-                    </h3>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="inline-block px-3 py-1 rounded-full bg-black/5 border border-black/5 text-[8px] md:text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
-                    {director.role}
-                  </div>
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium">
-                    "{director.description}"
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-black/5 flex justify-between items-center text-[7px] md:text-[8px] font-mono text-foreground/20">
-                <span>SYSTEM_ID: {director.id}</span>
-                <span>STATUS: SECURE_NODE</span>
-              </div>
-
-              {/* Liquid Hover Indicator */}
-              <motion.div 
-                className="absolute bottom-0 left-0 h-1 bg-primary w-0 group-hover:w-full transition-all duration-700"
-              />
-            </motion.div>
+            <FounderCard key={index} director={director} index={index} />
           ))}
         </div>
 
-        <div className="mt-20 text-center">
-          <p className="text-[10px] md:text-xs text-muted-foreground italic font-medium max-w-2xl mx-auto">
-            KCS operates under strict architectural and legal governance to ensure the highest standards of digital infrastructure delivery for our global partners.
+        <div className="mt-24 md:mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex gap-12 text-[9px] md:text-[11px] font-mono text-primary/40 uppercase tracking-[0.4em]">
+            <div className="flex items-center gap-3">
+              <Cpu size={14} /> SYSTEM_STATUS: SECURE
+            </div>
+            <div className="flex items-center gap-3">
+              <Database size={14} /> ARCHIVE_ID: KCS_LEADERSHIP_V1
+            </div>
+            <div className="flex items-center gap-3">
+              <Network size={14} /> SYNC_STATE: OPTIMIZED
+            </div>
+          </div>
+          
+          <p className="text-[10px] md:text-xs text-muted-foreground italic font-medium max-w-xl text-center md:text-right">
+            Operating under high-fidelity governance protocols to ensure the global scaling of the KCS digital narrative.
           </p>
         </div>
       </div>
