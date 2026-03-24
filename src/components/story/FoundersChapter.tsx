@@ -1,8 +1,9 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, Activity, Scale, Cpu, Database, Network, HeartPulse } from 'lucide-react'
+import { Shield, Activity, Scale, HeartPulse } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -57,8 +58,8 @@ const directors = [
     name: "N. Shraddha Vas",
     role: "Head of Psychology & User Wellbeing",
     designation: "PSYCHOLOGY_BRAIN",
-    description: "Integrating Clinical and Rehabilitation expertise to ensure digital spaces are genuinely safe, focusing on student wellbeing and crisis intervention.",
-    manifesto: "Safe digital environments are a clinical requirement, not a secondary feature.",
+    description: "MSc. Clinical Psychology · PGDRP Rehabilitation Psychology. Clinical & Rehabilitation Psychologist. The psychology brain behind Let's Catch Up, ensuring every digital space is genuinely safe through CBT, crisis intervention, and child psychology expertise.",
+    manifesto: "Specialises in: Anxiety · Depression · Trauma · PTSD · Learning Disabilities · Behavioural Issues · Addiction · Grief · Academic Burnout",
     size: "large"
   }
 ]
