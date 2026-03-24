@@ -3,7 +3,7 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -59,10 +59,10 @@ const directors = [
     role: "Head of Psychology & User Wellbeing",
     designation: "PSYCHOLOGY_INFRASTRUCTURE",
     type: "wellbeing",
-    description: "Chief Architect of Mental Safety. Shraddha leads the clinical oversight for the Let's Catch Up ecosystem, ensuring that the digital infrastructure for schools and public spaces is psychologically grounded and safe.",
-    specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_REHABILITATION", "NEURODIVERSITY_SUPPORT"],
-    systemFocus: "Anxiety & Depression // Academic Burnout // PTSD & Trauma // Learning Disabilities",
-    manifesto: "Shraddha translates years of clinical expertise into the digital architecture where students actually spend their time.",
+    description: "Chief Architect of Mental Safety. Shraddha leads the clinical oversight for the Let's Catch Up ecosystem, ensuring that the digital infrastructure is psychologically grounded.",
+    specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_PSYCHOLOGY", "NEURODIVERSITY"],
+    systemFocus: "Anxiety & Depression // Academic Burnout // PTSD // Trauma",
+    manifesto: "Translating years of clinical expertise into the digital architecture where students actually spend their time.",
     size: "large"
   }
 ]
@@ -114,8 +114,8 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       animate={isWellbeing ? { 
-        boxShadow: ["0 0 0px rgba(249,115,22,0)", "0 0 30px rgba(249,115,22,0.1)", "0 0 0px rgba(249,115,22,0)"],
-        borderColor: ["rgba(255,255,255,0.05)", "rgba(249,115,22,0.2)", "rgba(255,255,255,0.05)"]
+        boxShadow: ["0 0 0px rgba(249,115,22,0)", "0 0 40px rgba(249,115,22,0.15)", "0 0 0px rgba(249,115,22,0)"],
+        borderColor: ["rgba(255,255,255,0.05)", "rgba(249,115,22,0.3)", "rgba(255,255,255,0.05)"]
       } : {}}
       viewport={{ once: true }}
       onMouseMove={handleMouseMove}
@@ -125,16 +125,15 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       className={cn(
         "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
         isWellbeing 
-          ? "bg-gradient-to-br from-gray-950/80 via-slate-900/40 to-primary/5" 
+          ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
         director.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
       )}
     >
       <BlueprintBackground />
       
-      {/* Audit Badge for Wellbeing */}
       {isWellbeing && (
-        <div className="absolute top-6 right-6 z-30 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-md">
+        <div className="absolute top-6 right-6 z-30 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl shadow-[0_0_15px_rgba(16,185,129,0.2)]">
           <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
         </div>
       )}
@@ -147,74 +146,76 @@ function FounderCard({ director, index }: { director: any, index: number }) {
         transition={{ duration: 2, repeat: Infinity }}
         className={cn(
           "absolute inset-0 blur-[100px] rounded-full z-0",
-          isWellbeing ? "bg-primary/5" : "bg-primary/10"
+          isWellbeing ? "bg-primary/10" : "bg-primary/20"
         )}
       />
 
-      <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
+      <div className="relative z-10 flex flex-col h-full p-8 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
           <div className={cn(
-            "relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-inner",
-            isWellbeing && "border-primary/20"
+            "relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-2xl flex items-center justify-center",
+            isWellbeing && "border-primary/20 bg-primary/5"
           )}>
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-white/5" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              {isWellbeing ? (
-                <HeartPulse className="w-12 h-12 text-primary" strokeWidth={0.5} />
-              ) : (
-                <Shield className="w-12 h-12 text-primary" strokeWidth={0.5} />
-              )}
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-white/5" />
+            {isWellbeing ? (
+              <HeartPulse className="w-12 h-12 text-primary/80 animate-pulse" strokeWidth={0.75} />
+            ) : (
+              <Shield className="w-12 h-12 text-primary/40" strokeWidth={0.5} />
+            )}
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-3">
             <span className="flex items-center gap-2 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.4em] text-primary/80 font-headline">
               <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
               {director.designation}
             </span>
-            <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-none">
+            <h3 className="text-2xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-none">
               {director.name}
             </h3>
-            <div className="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest shadow-sm">
+            <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
               {director.role}
             </div>
           </div>
         </div>
 
-        <div className="flex-1 space-y-6">
-          <div className="space-y-2">
+        <div className="flex-1 space-y-8">
+          <div className="space-y-3">
             <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
-            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+            <p className="text-sm text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
               "{director.description}"
             </p>
           </div>
 
           {isWellbeing && (
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-2">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="space-y-3">
                 <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
-                <div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-2">
                   {director.specializations?.map((spec: string) => (
-                    <span key={spec} className="text-[7px] font-mono text-foreground/70 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">{spec}</span>
+                    <span key={spec} className="text-[8px] font-mono font-bold text-primary/80 bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
+                      {spec}
+                    </span>
                   ))}
                 </div>
               </div>
-              <div className="space-y-2">
-                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">SYSTEM_FOCUS</h4>
-                <p className="text-[8px] font-mono text-muted-foreground leading-tight">{director.systemFocus}</p>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/5 space-y-2">
+                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                  <UserCheck size={10} /> SYSTEM_FOCUS
+                </h4>
+                <p className="text-[10px] font-mono text-muted-foreground leading-relaxed">{director.systemFocus}</p>
               </div>
             </div>
           )}
 
-          <div className="p-5 rounded-3xl bg-black/40 border border-white/10 space-y-3 shadow-inner mt-auto">
+          <div className="p-6 rounded-[2rem] bg-black/40 border border-white/10 space-y-4 shadow-inner mt-auto">
             <div className="flex items-center gap-2 mb-1">
               <Sparkles size={12} className="text-primary/60" />
               <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
                 {isWellbeing ? "HUMAN_CENTRIC_PROTOCOL" : "VISION_PROTOCOL"}
               </span>
             </div>
-            <p className="text-[10px] md:text-xs text-foreground/90 leading-relaxed font-medium italic">
-              {director.manifesto}
+            <p className="text-xs text-foreground/80 leading-relaxed font-medium italic">
+              "{director.manifesto}"
             </p>
           </div>
         </div>
@@ -252,7 +253,7 @@ export function FoundersChapter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {directors.map((director, index) => (
             <FounderCard key={index} director={director} index={index} />
           ))}
