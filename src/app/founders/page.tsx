@@ -160,7 +160,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
           </div>
         </div>
 
-        <div className={cn("flex-1 grid gap-8 md:gap-12", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
+        <div className={cn("flex-1 grid gap-8 md:gap-12 items-start", isLarge ? "lg:grid-cols-2" : "grid-cols-1")}>
           <div className="space-y-6">
             <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
             <p className="text-sm md:text-base text-foreground/90 leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
