@@ -105,11 +105,13 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
   );
 }
 
-function ScrambleText({ text }: { text: string }) {
+function ScrambleText({ text, animateOnInView = false }: { text: string, animateOnInView?: boolean }) {
   const [displayText, setDisplayText] = useState(text);
   const chars = "!@#$%^&*()_+{}[]|;:,.<>?";
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
-  const handleMouseEnter = () => {
+  const runScramble = () => {
     let iteration = 0;
     const interval = setInterval(() => {
       setDisplayText(prev => 
@@ -123,13 +125,35 @@ function ScrambleText({ text }: { text: string }) {
     }, 30);
   };
 
-  const handleMouseLeave = () => setDisplayText(text);
+  useEffect(() => {
+    if (animateOnInView && isInView) {
+      runScramble();
+    }
+  }, [isInView, animateOnInView]);
 
   return (
-    <span onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <span ref={ref} onMouseEnter={() => !animateOnInView && runScramble()}>
       {displayText}
     </span>
   );
+}
+
+function useInView(ref: React.RefObject<HTMLElement | null>, options?: IntersectionObserverInit & { once?: boolean }) {
+  const [isInView, setIsInView] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsInView(true);
+        if (options?.once) observer.disconnect();
+      } else if (!options?.once) {
+        setIsInView(false);
+      }
+    }, options);
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [ref, options]);
+  return isInView;
 }
 
 export function CareersChapter() {
@@ -150,11 +174,25 @@ export function CareersChapter() {
 
   const [isIndicatorHovered, setIsIndicatorHovered] = useState(false)
 
+  // Final CTA Mouse Tracking
+  const ctaRef = useRef<HTMLDivElement>(null)
+  const ctaMouseX = useMotionValue(0)
+  const ctaMouseY = useMotionValue(0)
+  const ctaGlowX = useSpring(ctaMouseX, { stiffness: 100, damping: 20 })
+  const ctaGlowY = useSpring(ctaMouseY, { stiffness: 100, damping: 20 })
+
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
     mouseX.set(e.clientX - (rect.left + rect.width / 2))
     mouseY.set(e.clientY - (rect.top + 200))
+  }
+
+  const handleCtaMouseMove = (e: React.MouseEvent) => {
+    if (!ctaRef.current) return
+    const rect = ctaRef.current.getBoundingClientRect()
+    ctaMouseX.set(e.clientX - rect.left)
+    ctaMouseY.set(e.clientY - rect.top)
   }
 
   return (
@@ -330,26 +368,67 @@ export function CareersChapter() {
         </div>
 
         {/* Final CTA Impact Section */}
-        <div className="relative w-full py-16 md:py-24 px-4 overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[radial-gradient(circle_at_center,_#1a0b00_0%,_#090e1a_100%)] border border-white/5">
-          <div className="absolute inset-0 bg-[url('https://picsum.photos/seed/tech-mesh/1920/1080')] opacity-5 mix-blend-overlay" />
+        <div 
+          ref={ctaRef}
+          onMouseMove={handleCtaMouseMove}
+          className="relative w-full py-20 md:py-32 px-6 overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gray-950 border border-white/5 group"
+        >
+          {/* Mouse-tracking Radial Glow */}
+          <motion.div 
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{
+              background: useMotionTemplate`radial-gradient(600px circle at ${ctaGlowX}px ${ctaGlowY}px, rgba(249, 115, 22, 0.08), transparent 80%)`
+            }}
+          />
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="text-center relative z-10"
-          >
-            <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tighter mb-6 md:mb-10 font-headline">Ready to make an impact?</h3>
-            <MagneticButton>
-              <Link href="/careers">
-                <Button size="lg" className="rounded-full h-12 md:h-16 px-8 md:px-14 text-[10px] md:text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_40px_rgba(249,115,22,0.4)] border-none text-white transition-all duration-500">
-                  <span className="flex items-center gap-2">
-                    View Open Roles 
-                    <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-2 transition-transform duration-300" />
-                  </span>
-                </Button>
-              </Link>
-            </MagneticButton>
-          </motion.div>
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
+            {/* Talent Status Counter */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="mb-8 font-mono text-primary/60 text-[9px] md:text-[11px] tracking-[0.4em] font-bold"
+            >
+              [ STATUS: 10_POSITIONS_ACTIVE ]
+            </motion.div>
+
+            <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-12 font-headline leading-tight">
+              <ScrambleText text="Initialize your career architecture." animateOnInView={true} />
+            </h2>
+            
+            <div className="flex flex-col items-center gap-12">
+              <MagneticButton>
+                <Link href="/careers">
+                  <Button 
+                    size="lg" 
+                    className="rounded-full h-14 md:h-20 px-10 md:px-16 text-[10px] md:text-sm font-bold group bg-primary hover:bg-primary/90 shadow-[0_10px_40px_rgba(249,115,22,0.4)] border-none text-white transition-all duration-500 relative overflow-hidden group-hover:shadow-[0_0_50px_rgba(249,115,22,0.8)]"
+                  >
+                    <span className="flex items-center gap-3 relative z-10">
+                      View Open Roles 
+                      <div className="relative w-5 h-5 overflow-hidden">
+                        <motion.div
+                          animate={{ x: [0, 20, -20, 0] }}
+                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          className="flex items-center"
+                        >
+                          <ArrowRight className="w-5 h-5 shrink-0" />
+                        </motion.div>
+                      </div>
+                    </span>
+                    {/* Scale-in Bounce is handled by motion.div wrapper */}
+                  </Button>
+                </Link>
+              </MagneticButton>
+
+              {/* Footer Context Note */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 0.4 }}
+                className="text-[8px] md:text-[10px] font-mono text-foreground italic tracking-widest mt-4"
+              >
+                *Direct Uplink to HR@kandhugule-kcs.com to provide immediate contact info.
+              </motion.p>
+            </div>
+          </div>
         </div>
       </div>
     </Chapter>
@@ -374,8 +453,9 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const distanceY = clientY - centerY
     const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
 
+    // Snap to cursor within 50px threshold
     if (distance < 150) {
-      const factor = 0.3
+      const factor = 0.4 // Magnetic strength
       x.set(distanceX * factor)
       y.set(distanceY * factor)
     } else {
@@ -396,7 +476,12 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       onMouseLeave={handleMouseLeave}
       className="inline-block relative w-full sm:w-auto"
     >
-      <motion.div style={{ x: springX, y: springY }}>
+      <motion.div 
+        initial={{ scale: 0.8 }}
+        whileInView={{ scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+        style={{ x: springX, y: springY }}
+      >
         {children}
       </motion.div>
     </div>
