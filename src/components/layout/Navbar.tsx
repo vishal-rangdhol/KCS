@@ -103,7 +103,7 @@ export function Navbar() {
                   <Link 
                     href={item.href}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em]",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em] group-hover:letter-spacing-[0.05em]",
                       isActive ? 'text-black' : 'text-slate-500'
                     )}
                   >
@@ -115,7 +115,7 @@ export function Navbar() {
                     )}
                     
                     {/* Hover Dot Protocol */}
-                    <span className="absolute -right-2 top-1.5 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="absolute -right-2 top-2 w-1 h-1 bg-primary rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
 
                     {isActive && (
                       <motion.div 
@@ -144,7 +144,7 @@ export function Navbar() {
                 <Link 
                   href={contactItem.href}
                   className={cn(
-                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
+                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/40",
                     pathname === '/contact'
                       ? 'bg-primary text-white'
                       : 'bg-transparent text-black'
@@ -152,21 +152,25 @@ export function Navbar() {
                 >
                   {/* Liquid Fill */}
                   <motion.div 
-                    initial={{ x: '-100%' }}
+                    initial={{ x: '-101%' }}
                     whileHover={{ x: 0 }}
-                    transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
+                    transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
                     className="absolute inset-0 bg-primary z-0"
                   />
                   
-                  <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                  <span className="relative z-10 flex items-center gap-0.5 transition-colors duration-300 group-hover:text-white">
                     {contactItem.name}
                     <motion.span
-                      initial={{ x: -10, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1, rotate: 45 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="inline-block"
+                      initial={{ x: -12, opacity: 0, width: 0 }}
+                      whileHover={{ x: 0, opacity: 1, width: 'auto', rotate: 45 }}
+                      transition={{ 
+                        x: { type: "spring", stiffness: 300, damping: 20 },
+                        opacity: { duration: 0.2 },
+                        rotate: { duration: 0.3 }
+                      }}
+                      className="inline-block overflow-hidden whitespace-nowrap"
                     >
-                      ↗
+                      <span className="ml-1">↗</span>
                     </motion.span>
                   </span>
                 </Link>
