@@ -3,7 +3,7 @@
 
 import { Chapter } from './Chapter'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { Shield, Activity, Scale, HeartPulse } from 'lucide-react'
+import { Shield, Activity, Scale, HeartPulse, Sparkles, CheckCircle2 } from 'lucide-react'
 import React, { useState } from 'react'
 import { cn } from '@/lib/utils'
 
@@ -57,9 +57,12 @@ const directors = [
     id: "06",
     name: "N. Shraddha Vas",
     role: "Head of Psychology & User Wellbeing",
-    designation: "PSYCHOLOGY_BRAIN",
-    description: "MSc. Clinical Psychology · PGDRP Rehabilitation Psychology. Clinical & Rehabilitation Psychologist. The psychology brain behind Let's Catch Up, ensuring every digital space is genuinely safe through CBT, crisis intervention, and child psychology expertise.",
-    manifesto: "Specialises in: Anxiety · Depression · Trauma · PTSD · Learning Disabilities · Behavioural Issues · Addiction · Grief · Academic Burnout",
+    designation: "PSYCHOLOGY_INFRASTRUCTURE",
+    type: "wellbeing",
+    description: "Chief Architect of Mental Safety. Shraddha leads the clinical oversight for the Let's Catch Up ecosystem, ensuring that the digital infrastructure for schools and public spaces is psychologically grounded and safe.",
+    specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_REHABILITATION", "NEURODIVERSITY_SUPPORT"],
+    systemFocus: "Anxiety & Depression // Academic Burnout // PTSD & Trauma // Learning Disabilities",
+    manifesto: "Shraddha translates years of clinical expertise into the digital architecture where students actually spend their time.",
     size: "large"
   }
 ]
@@ -82,12 +85,14 @@ function BlueprintBackground() {
   )
 }
 
-function FounderCard({ director, index }: { director: typeof directors[0], index: number }) {
+function FounderCard({ director, index }: { director: any, index: number }) {
   const [isHovered, setIsHovered] = useState(false)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [5, -5]), { stiffness: 100, damping: 20 })
   const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-5, 5]), { stiffness: 100, damping: 20 })
+
+  const isWellbeing = director.type === "wellbeing"
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -108,33 +113,53 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
+      animate={isWellbeing ? { 
+        boxShadow: ["0 0 0px rgba(249,115,22,0)", "0 0 30px rgba(249,115,22,0.1)", "0 0 0px rgba(249,115,22,0)"],
+        borderColor: ["rgba(255,255,255,0.05)", "rgba(249,115,22,0.2)", "rgba(255,255,255,0.05)"]
+      } : {}}
       viewport={{ once: true }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] bg-card/90 border border-white/10 hover:border-primary/40 transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
+        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full",
+        isWellbeing 
+          ? "bg-gradient-to-br from-gray-950/80 via-slate-900/40 to-primary/5" 
+          : "bg-card/90 border-white/10 hover:border-primary/40",
         director.size === "large" ? "md:col-span-2 lg:col-span-1" : ""
       )}
     >
       <BlueprintBackground />
       
+      {/* Audit Badge for Wellbeing */}
+      {isWellbeing && (
+        <div className="absolute top-6 right-6 z-30 flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-md">
+          <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
+        </div>
+      )}
+
       <motion.div 
         animate={{ 
           scale: isHovered ? [1, 1.1, 1] : 1,
           opacity: isHovered ? 0.6 : 0
         }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full z-0"
+        className={cn(
+          "absolute inset-0 blur-[100px] rounded-full z-0",
+          isWellbeing ? "bg-primary/5" : "bg-primary/10"
+        )}
       />
 
       <div className="relative z-10 flex flex-col h-full p-6 md:p-10" style={{ transform: 'translateZ(40px)' }}>
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8 items-start">
-          <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-inner">
+          <div className={cn(
+            "relative w-24 h-24 md:w-32 md:h-32 rounded-2xl bg-white/5 border border-white/10 group-hover:border-primary/60 transition-colors duration-500 shrink-0 overflow-hidden shadow-inner",
+            isWellbeing && "border-primary/20"
+          )}>
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-white/5" />
-            <div className="absolute inset-0 flex items-center justify-center opacity-10">
-              {director.id === "06" ? (
+            <div className="absolute inset-0 flex items-center justify-center opacity-20">
+              {isWellbeing ? (
                 <HeartPulse className="w-12 h-12 text-primary" strokeWidth={0.5} />
               ) : (
                 <Shield className="w-12 h-12 text-primary" strokeWidth={0.5} />
@@ -157,14 +182,36 @@ function FounderCard({ director, index }: { director: typeof directors[0], index
         </div>
 
         <div className="flex-1 space-y-6">
-          <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
-            "{director.description}"
-          </p>
+          <div className="space-y-2">
+            <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">ROLE_OVERVIEW</h4>
+            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium border-l-2 border-primary/20 pl-6 group-hover:border-primary/50 transition-colors">
+              "{director.description}"
+            </p>
+          </div>
 
-          <div className="p-5 rounded-3xl bg-black/40 border border-white/10 space-y-3 shadow-inner">
+          {isWellbeing && (
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-2">
+                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">CORE_SPECIALIZATIONS</h4>
+                <div className="flex flex-wrap gap-1">
+                  {director.specializations?.map((spec: string) => (
+                    <span key={spec} className="text-[7px] font-mono text-foreground/70 bg-white/5 px-1.5 py-0.5 rounded border border-white/5">{spec}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono">SYSTEM_FOCUS</h4>
+                <p className="text-[8px] font-mono text-muted-foreground leading-tight">{director.systemFocus}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="p-5 rounded-3xl bg-black/40 border border-white/10 space-y-3 shadow-inner mt-auto">
             <div className="flex items-center gap-2 mb-1">
-              <Shield size={12} className="text-primary/60" />
-              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">VISION_PROTOCOL</span>
+              <Sparkles size={12} className="text-primary/60" />
+              <span className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">
+                {isWellbeing ? "HUMAN_CENTRIC_PROTOCOL" : "VISION_PROTOCOL"}
+              </span>
             </div>
             <p className="text-[10px] md:text-xs text-foreground/90 leading-relaxed font-medium italic">
               {director.manifesto}
