@@ -3,12 +3,11 @@
 
 import React, { useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion'
-import { Activity, Scale, HeartPulse, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronLeft } from 'lucide-react'
+import { Activity, Sparkles, CheckCircle2, UserCheck, ChevronDown, BookOpen, ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
 import { Footer } from '@/components/layout/Footer'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import {
   Collapsible,
@@ -23,7 +22,6 @@ const directors = [
     role: "Director",
     designation: "ORIGIN_NODE",
     description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
-    manifesto: "Stability is the foundation upon which high-scale innovation is built.",
     size: "large"
   },
   {
@@ -32,7 +30,6 @@ const directors = [
     role: "Director",
     designation: "ORIGIN_NODE",
     description: "Ensuring operational compliance and strict adherence to global engineering standards.",
-    manifesto: "Precision in operation ensures longevity in product.",
     size: "medium"
   },
   {
@@ -41,7 +38,6 @@ const directors = [
     role: "Director",
     designation: "ARCHITECT_PRIMARY",
     description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
-    manifesto: "Ethical growth is the only sustainable path for digital infrastructure.",
     size: "medium"
   },
   {
@@ -50,7 +46,6 @@ const directors = [
     role: "Director",
     designation: "ARCHITECT_PRIMARY",
     description: "Driving administrative precision and high-fidelity operational workflows.",
-    manifesto: "Workflows should be as optimized as the code they support.",
     size: "small"
   },
   {
@@ -59,7 +54,6 @@ const directors = [
     role: "Director of Marketing and Sales",
     designation: "ARCHITECT_PRIMARY",
     description: "Architecting market penetration and scaling the KCS brand across global sectors.",
-    manifesto: "A brand is the narrative that bridges technology and human impact.",
     size: "large"
   },
   {
@@ -69,9 +63,6 @@ const directors = [
     designation: "PSYCHOLOGY_INFRASTRUCTURE",
     type: "wellbeing",
     description: "Chief Architect of Mental Safety. Shraddha leads the clinical oversight for the Let's Catch Up ecosystem, ensuring that the digital infrastructure is psychologically grounded.",
-    specializations: ["CRISIS_INTERVENTION", "CBT_PROTOCOLS", "REHAB_PSYCHOLOGY", "NEURODIVERSITY"],
-    systemFocus: "Anxiety & Depression // Academic Burnout // PTSD // Trauma",
-    manifesto: "Translating years of clinical expertise into the digital architecture where students actually spend their time.",
     size: "xl",
     extraDetails: {
       credentials: "MSc. Clinical Psychology · PGDRP Rehabilitation Psychology",
@@ -132,7 +123,7 @@ function FounderCard({ director, index }: { director: any, index: number }) {
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
       className={cn(
-        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[450px]",
+        "group relative rounded-[2.5rem] border transition-all duration-700 shadow-[0_20px_50px_rgba(0,0,0,0.5)] backdrop-blur-xl overflow-hidden flex flex-col h-full min-h-[400px]",
         isWellbeing 
           ? "bg-gradient-to-br from-gray-950/90 via-slate-900/60 to-primary/5 border-primary/20" 
           : "bg-card/90 border-white/10 hover:border-primary/40",
@@ -231,25 +222,6 @@ function FounderCard({ director, index }: { director: any, index: number }) {
               </div>
             )}
           </div>
-
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 gap-6">
-              {isWellbeing && (
-                <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 space-y-3 backdrop-blur-md">
-                  <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
-                    <UserCheck size={10} /> SYSTEM_FOCUS
-                  </h4>
-                  <p className="text-xs font-mono text-muted-foreground leading-relaxed">{director.systemFocus}</p>
-                </div>
-              )}
-            </div>
-            
-            <div className="space-y-4 mt-auto">
-              <p className="text-sm md:text-base text-foreground/80 leading-relaxed font-medium italic">
-                "{director.manifesto}"
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </motion.div>
@@ -274,7 +246,7 @@ export default function FoundersPage() {
 
         <div className="mb-16 md:mb-24 space-y-6">
           <span className="flex items-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] font-headline">
-            <Scale size={14} className="animate-pulse" /> [ GOVERNANCE_TERMINAL_V1.0 ]
+            <Activity size={14} className="animate-pulse" /> [ GOVERNANCE_TERMINAL_V1.0 ]
           </span>
           <h1 className="text-4xl md:text-8xl font-bold tracking-tighter leading-none font-headline">Founding <span className="text-primary italic">Board.</span></h1>
           <p className="text-sm md:text-xl text-muted-foreground italic font-medium max-w-2xl leading-relaxed">
