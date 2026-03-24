@@ -2,24 +2,44 @@
 
 import { Chapter } from './Chapter'
 import { motion } from 'framer-motion'
-import { Shield, Sparkles, User, Scale } from 'lucide-react'
+import { Shield, User, Scale } from 'lucide-react'
 import React from 'react'
-import { cn } from '@/lib/utils'
 
 const directors = [
   {
     id: "01",
-    name: "Director Name 01",
-    role: "Managing Director",
-    designation: "EXECUTIVE_NODE",
-    description: "Architect of the core KCS mission and long-term technical strategy.",
+    name: "Kandhugule Babu Rao",
+    role: "Director",
+    designation: "GOVERNANCE_NODE",
+    description: "Overseeing executive alignment and long-term institutional stability within the KCS ecosystem.",
   },
   {
     id: "02",
-    name: "Director Name 02",
+    name: "Kandhugule Nagu Bai",
     role: "Director",
     designation: "GOVERNANCE_NODE",
-    description: "Ensuring operational integrity and alignment with global engineering standards.",
+    description: "Ensuring operational compliance and strict adherence to global engineering standards.",
+  },
+  {
+    id: "03",
+    name: "Mali Patil Pratika",
+    role: "Director",
+    designation: "GOVERNANCE_NODE",
+    description: "Guiding institutional growth and the ethical expansion of the digital narrative.",
+  },
+  {
+    id: "04",
+    name: "Hunusnale Sampatha",
+    role: "Director",
+    designation: "GOVERNANCE_NODE",
+    description: "Driving administrative precision and high-fidelity operational workflows.",
+  },
+  {
+    id: "05",
+    name: "Kandhugule Krishna Kumar",
+    role: "Director of Marketing and Sales",
+    designation: "STRATEGIC_NODE",
+    description: "Architecting market penetration and scaling the KCS brand across global technology sectors.",
   }
 ]
 
@@ -27,8 +47,8 @@ export function FoundersChapter() {
   return (
     <Chapter id="founders" className="bg-background py-16 md:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16 md:mb-24 border-b border-white/5 pb-12">
-          <div className="max-w-2xl">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16 md:mb-24 border-b border-black/5 pb-12">
+          <div className="max-w-2xl text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -52,48 +72,48 @@ export function FoundersChapter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {directors.map((director, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group relative p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 hover:border-primary/20 transition-all duration-500 shadow-2xl backdrop-blur-md overflow-hidden"
+              className="group relative p-6 md:p-10 rounded-[2rem] bg-card/40 border border-black/5 hover:border-primary/20 transition-all duration-500 shadow-2xl backdrop-blur-md overflow-hidden flex flex-col h-full"
             >
-              <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors">
-                <Shield size={120} strokeWidth={0.5} />
+              <div className="absolute top-0 right-0 p-8 text-primary/5 group-hover:text-primary/10 transition-colors pointer-events-none">
+                <Shield size={100} strokeWidth={0.5} />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 flex-1">
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                    <User size={24} />
+                  <div className="p-3 md:p-4 rounded-2xl bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                    <User size={20} />
                   </div>
                   <div>
-                    <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline block">
+                    <span className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline block">
                       {director.designation}
                     </span>
-                    <h3 className="text-xl md:text-3xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="text-lg md:text-xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">
                       {director.name}
                     </h3>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                  <div className="inline-block px-3 py-1 rounded-full bg-black/5 border border-black/5 text-[8px] md:text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
                     {director.role}
                   </div>
-                  <p className="text-sm md:text-lg text-muted-foreground leading-relaxed italic font-medium">
+                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed italic font-medium">
                     "{director.description}"
                   </p>
                 </div>
+              </div>
 
-                <div className="mt-12 pt-8 border-t border-white/5 flex justify-between items-center text-[8px] md:text-[10px] font-mono text-foreground/20">
-                  <span>SYSTEM_INIT: SUCCESS</span>
-                  <span>ID: {director.id} // SECURE</span>
-                </div>
+              <div className="mt-8 pt-6 border-t border-black/5 flex justify-between items-center text-[7px] md:text-[8px] font-mono text-foreground/20">
+                <span>SYSTEM_ID: {director.id}</span>
+                <span>STATUS: SECURE_NODE</span>
               </div>
 
               {/* Liquid Hover Indicator */}
