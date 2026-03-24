@@ -145,11 +145,6 @@ function FounderCard({ director, index }: { director: any, index: number }) {
                 <Activity size={10} className={cn("transition-colors", isHovered ? "text-primary" : "text-primary/40")} />
                 {director.designation}
               </span>
-              {isWellbeing && (
-                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[7px] font-bold uppercase tracking-widest backdrop-blur-xl">
-                  <CheckCircle2 size={10} /> [ HUMAN_CENTRIC_AUDIT: PASSED ]
-                </div>
-              )}
             </div>
             
             <h3 className="text-2xl md:text-4xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors font-headline leading-tight">
@@ -163,9 +158,6 @@ function FounderCard({ director, index }: { director: any, index: number }) {
 
           {isWellbeing && director.extraDetails && (
             <div className="space-y-4">
-              <h4 className="text-[8px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
-                <BookOpen size={10} /> CLINICAL_DOSSIER
-              </h4>
               <div className="p-5 rounded-2xl bg-white/5 border border-white/5 space-y-3 overflow-hidden backdrop-blur-md">
                 <div className="space-y-1">
                   <span className="text-[7px] uppercase tracking-widest text-primary/40 block">Academic_Credentials</span>
