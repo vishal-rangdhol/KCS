@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react'
@@ -188,7 +187,8 @@ export default function ContactPage() {
                     <div className="flex items-start gap-4">
                       <MapPin size={16} className="text-primary shrink-0 mt-1" />
                       <div className="text-sm text-muted-foreground italic leading-relaxed">
-                        Hyderabad, Telangana, India
+                        3-37 RC Puram, behind SR chambers,<br />
+                        Hyderabad, 502032, Telangana
                       </div>
                     </div>
                     
