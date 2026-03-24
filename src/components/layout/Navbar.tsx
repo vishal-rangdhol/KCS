@@ -14,7 +14,7 @@ const navItems = [
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
   { name: 'About', href: '/#story' },
-  { name: 'Careers', href: '/careers', tag: '[HIRING]' },
+  { name: 'Careers', href: '/careers', tag: 'HIRING' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -23,6 +23,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [isClicked, setIsClicked] = useState(false)
   const { scrollY } = useScroll()
   const pathname = usePathname()
 
@@ -66,38 +67,44 @@ export function Navbar() {
     return () => observer.disconnect()
   }, [pathname])
 
+  const handleNavClick = () => {
+    setIsClicked(true)
+    setTimeout(() => setIsClicked(false), 200)
+    setMobileMenuOpen(false)
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-[110] flex justify-center p-0 pointer-events-none">
-      <nav 
+    <header className="fixed top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
+      <motion.nav 
+        animate={{ scale: isClicked ? 0.99 : 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
         className={cn(
-          "w-full transition-all duration-500 border-b pointer-events-auto flex items-center justify-between px-6 md:px-12",
-          isScrolled 
-            ? 'py-3 bg-white/90 backdrop-blur-xl border-black/5 shadow-sm' 
-            : 'py-5 bg-white/80 backdrop-blur-md border-black/5'
+          "w-full max-w-6xl transition-all duration-500 border pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl border-black/5 shadow-lg shadow-black/5"
         )}
       >
+        {/* KCS Logo */}
         <div className="flex-shrink-0">
           <Link 
             href="/"
             className="flex items-center group cursor-pointer"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={handleNavClick}
           >
             <div className="relative flex items-center justify-center">
               <Image 
                 src="/kcs-logo.png" 
                 alt="KCS Logo" 
-                width={100}
-                height={32}
-                className="h-6 md:h-8 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                width={80}
+                height={26}
+                className="h-5 md:h-6 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
                 priority
               />
-              <div className="absolute -right-2 top-0 w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_#F97316]" />
             </div>
           </Link>
         </div>
 
+        {/* Nav Links */}
         <div className="hidden md:flex flex-1 justify-center px-4">
-          <ul className="flex flex-row gap-8 lg:gap-12 items-center">
+          <ul className="flex flex-row gap-6 lg:gap-10 items-center">
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
               const isActive = activeSection === id || (pathname === item.href)
@@ -112,45 +119,39 @@ export function Navbar() {
                 >
                   <Link 
                     href={item.href}
+                    onClick={handleNavClick}
                     className={cn(
-                      "text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 block py-2 relative flex items-center gap-1.5",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1.5",
                       isActive 
                         ? 'text-black' 
-                        : 'text-gray-500 hover:text-black'
+                        : 'text-slate-500 hover:text-black'
                     )}
                   >
                     {item.name}
                     {item.tag && (
-                      <span className="text-[8px] font-mono text-primary font-bold ml-0.5">{item.tag}</span>
+                      <span className="text-[8px] font-mono text-primary bg-primary/5 px-1.5 py-0.5 rounded-sm font-bold ml-0.5">
+                        {item.tag}
+                      </span>
                     )}
                     
-                    {/* Liquid Underline Protocol */}
+                    {/* Elastic Underline Trace */}
                     {isActive && (
                       <motion.div 
                         layoutId="activeUnderline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_0_10px_rgba(249,115,22,0.3)]"
                         transition={{ 
                           type: "spring", 
-                          stiffness: 300, 
-                          damping: 30 
+                          stiffness: 380, 
+                          damping: 30,
+                          mass: 1
                         }}
                       >
-                        {/* Shimmer Effect */}
                         <motion.div 
-                          animate={{ opacity: [0.3, 0.6, 0.3] }}
+                          animate={{ opacity: [0.4, 0.8, 0.4] }}
                           transition={{ duration: 2, repeat: Infinity }}
-                          className="absolute inset-0 bg-white/40 rounded-full"
+                          className="absolute inset-0 bg-white/20 rounded-full"
                         />
                       </motion.div>
-                    )}
-
-                    {/* Hover Preview Underline */}
-                    {isHovered && !isActive && (
-                      <motion.div 
-                        layoutId="hoverUnderline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary/20 rounded-full"
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                      />
                     )}
                   </Link>
                 </li>
@@ -159,22 +160,24 @@ export function Navbar() {
           </ul>
         </div>
 
+        {/* Contact CTA */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
                 <Link 
                   href={contactItem.href}
+                  onClick={handleNavClick}
                   className={cn(
-                    "px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 flex items-center gap-2 border group",
+                    "px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-2 border group",
                     pathname === '/contact'
-                      ? 'bg-primary border-primary text-white'
-                      : 'bg-transparent border-primary text-primary hover:bg-primary hover:text-white'
+                      ? 'bg-black border-black text-white'
+                      : 'bg-black border-black text-white hover:bg-primary hover:border-primary'
                   )}
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     {contactItem.name}
-                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    <ArrowUpRight className="w-3 h-3 transition-transform group-hover:rotate-45" />
                   </span>
                 </Link>
               </MagneticButton>
@@ -189,15 +192,15 @@ export function Navbar() {
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-[64px] left-0 right-0 bg-white border-b border-black/5 p-6 md:hidden pointer-events-auto shadow-xl"
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-[70px] left-0 right-0 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-3xl"
           >
             <ul className="flex flex-col gap-6">
               {navItems.map((item) => {
@@ -207,13 +210,13 @@ export function Navbar() {
                   <li key={item.name}>
                     <Link 
                       href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={handleNavClick}
                       className={cn(
                         "block text-xs font-bold uppercase tracking-widest transition-colors",
-                        isActive ? 'text-primary' : 'text-gray-500'
+                        isActive ? 'text-primary' : 'text-slate-500'
                       )}
                     >
-                      {item.name} {item.tag && <span className="text-[8px] ml-1">{item.tag}</span>}
+                      {item.name} {item.tag && <span className="text-[8px] ml-1 text-primary">[{item.tag}]</span>}
                     </Link>
                   </li>
                 )
