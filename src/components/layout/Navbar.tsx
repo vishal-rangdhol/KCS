@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from 'framer-motion'
-import { Menu, X, Rocket } from 'lucide-react'
+import { Menu, X, Rocket, ArrowUpRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -141,39 +141,50 @@ export function Navbar() {
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
-                <Link 
-                  href={contactItem.href}
-                  className={cn(
-                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/40",
-                    pathname === '/contact'
-                      ? 'bg-primary text-white'
-                      : 'bg-transparent text-black'
-                  )}
-                >
-                  {/* Liquid Fill */}
-                  <motion.div 
-                    initial={{ x: '-101%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
-                    className="absolute inset-0 bg-primary z-0"
-                  />
-                  
-                  <span className="relative z-10 flex items-center gap-0.5 transition-colors duration-300 group-hover:text-white">
-                    {contactItem.name}
-                    <motion.span
-                      initial={{ x: -12, opacity: 0, width: 0 }}
-                      whileHover={{ x: 0, opacity: 1, width: 'auto', rotate: 45 }}
-                      transition={{ 
-                        x: { type: "spring", stiffness: 300, damping: 20 },
-                        opacity: { duration: 0.2 },
-                        rotate: { duration: 0.3 }
+                <motion.div initial="initial" whileHover="hover" className="relative">
+                  <Link 
+                    href={contactItem.href}
+                    className={cn(
+                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/40",
+                      pathname === '/contact'
+                        ? 'bg-primary text-white'
+                        : 'bg-transparent text-black'
+                    )}
+                  >
+                    {/* Liquid Fill */}
+                    <motion.div 
+                      variants={{
+                        initial: { x: '-101%' },
+                        hover: { x: 0 }
                       }}
-                      className="inline-block overflow-hidden whitespace-nowrap"
+                      transition={{ duration: 0.6, ease: [0.7, 0, 0.2, 1] }}
+                      className="absolute inset-0 bg-primary z-0"
+                    />
+                    
+                    <motion.span 
+                      variants={{
+                        initial: { color: pathname === '/contact' ? "#ffffff" : "#000000" },
+                        hover: { color: "#ffffff" }
+                      }}
+                      className="relative z-10 flex items-center gap-0.5 transition-colors duration-300"
                     >
-                      <span className="ml-1">↗</span>
+                      {contactItem.name}
+                      <motion.span
+                        variants={{
+                          initial: { x: -8, opacity: 0, width: 0 },
+                          hover: { x: 0, opacity: 1, width: 'auto' }
+                        }}
+                        transition={{ 
+                          x: { type: "spring", stiffness: 300, damping: 20 },
+                          opacity: { duration: 0.2 }
+                        }}
+                        className="inline-block overflow-hidden whitespace-nowrap"
+                      >
+                        <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                      </motion.span>
                     </motion.span>
-                  </span>
-                </Link>
+                  </Link>
+                </motion.div>
               </MagneticButton>
             </div>
           )}
