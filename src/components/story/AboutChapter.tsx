@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -76,7 +77,7 @@ export function AboutChapter() {
   };
 
   return (
-    <Chapter id="story" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
+    <Chapter id="about" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Part 1: The KCS Story - F-Pattern Architecture */}
         <motion.div

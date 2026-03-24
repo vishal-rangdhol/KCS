@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent, useMotionValue, useSpring } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Rocket } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -13,7 +13,7 @@ const navItems = [
   { name: 'Home', href: '/#hero' },
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
-  { name: 'About', href: '/#story' },
+  { name: 'About', href: '/#about' },
   { name: 'Careers', href: '/#careers', tag: '04' },
   { name: 'Contact', href: '/contact' },
 ]
@@ -21,10 +21,19 @@ const navItems = [
 export function Navbar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
   const mainNavItems = navItems.filter(item => item.name !== 'Contact')
   const contactItem = navItems.find(item => item.name === 'Contact')
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (pathname === '/contact') {
@@ -34,7 +43,7 @@ export function Navbar() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -20% 0px',
+      rootMargin: '-40% 0px -40% 0px',
       threshold: 0,
     }
 
@@ -64,7 +73,8 @@ export function Navbar() {
       <motion.nav 
         whileTap={{ scale: 0.99 }}
         className={cn(
-          "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5"
+          "w-full max-w-[95%] transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
+          scrolled && "shadow-xl border-black/10"
         )}
       >
         {/* KCS Logo */}
@@ -86,14 +96,14 @@ export function Navbar() {
           <ul className="flex flex-row gap-6 lg:gap-10 items-center">
             {mainNavItems.map((item) => {
               const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
-              const isActive = activeSection === id || (pathname === item.href)
+              const isActive = activeSection === id || (pathname === '/' && id === 'hero' && activeSection === 'hero')
 
               return (
                 <li key={item.name} className="relative group flex items-center">
                   <Link 
                     href={item.href}
                     className={cn(
-                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 group-hover:tracking-[0.05em] group-hover:text-black",
+                      "text-[11px] font-bold uppercase tracking-tight transition-all duration-300 block py-1.5 relative flex items-center gap-1 hover:text-black group-hover:tracking-[0.05em]",
                       isActive ? 'text-black' : 'text-slate-500'
                     )}
                   >
@@ -110,7 +120,7 @@ export function Navbar() {
                     {isActive && (
                       <motion.div 
                         layoutId="activeUnderline"
-                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_-2px_6px_rgba(249,115,22,0.3)] z-[-1]"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary rounded-full shadow-[0_0_10px_rgba(249,115,22,0.3)] z-[-1]"
                         transition={{ 
                           type: "spring", 
                           stiffness: 300, 
@@ -131,41 +141,35 @@ export function Navbar() {
           {contactItem && (
             <div className="hidden md:block">
               <MagneticButton>
-                <motion.div initial="initial" whileHover="hover" animate="initial">
-                  <Link 
-                    href={contactItem.href}
-                    className={cn(
-                      "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
-                      pathname === '/contact'
-                        ? 'bg-primary text-white'
-                        : 'bg-transparent text-black'
-                    )}
-                  >
-                    {/* Liquid Fill */}
-                    <motion.div 
-                      variants={{
-                        initial: { x: '-100%' },
-                        hover: { x: 0 }
-                      }}
-                      transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
-                      className="absolute inset-0 bg-primary z-0"
-                    />
-                    
-                    <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
-                      {contactItem.name}
-                      <motion.span
-                        variants={{
-                          initial: { x: 10, opacity: 0, rotate: 0 },
-                          hover: { x: 0, opacity: 1, rotate: 45 }
-                        }}
-                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        className="inline-block"
-                      >
-                        ↗
-                      </motion.span>
-                    </span>
-                  </Link>
-                </motion.div>
+                <Link 
+                  href={contactItem.href}
+                  className={cn(
+                    "relative overflow-hidden px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-tight transition-all duration-300 flex items-center gap-1 group border border-primary/30",
+                    pathname === '/contact'
+                      ? 'bg-primary text-white'
+                      : 'bg-transparent text-black'
+                  )}
+                >
+                  {/* Liquid Fill */}
+                  <motion.div 
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: 0 }}
+                    transition={{ type: "tween", duration: 0.4, ease: "circOut" }}
+                    className="absolute inset-0 bg-primary z-0"
+                  />
+                  
+                  <span className="relative z-10 flex items-center gap-1 transition-colors duration-300 group-hover:text-white">
+                    {contactItem.name}
+                    <motion.span
+                      initial={{ x: -10, opacity: 0 }}
+                      whileHover={{ x: 0, opacity: 1, rotate: 45 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      className="inline-block"
+                    >
+                      ↗
+                    </motion.span>
+                  </span>
+                </Link>
               </MagneticButton>
             </div>
           )}
