@@ -245,15 +245,12 @@ export default function CareersPage() {
                           </div>
                         ))}
                       </div>
-                      <div className="pt-4 border-t border-white/5">
-                        <div className="text-[8px] font-mono text-muted-foreground uppercase">Protocol Status: High_Verification</div>
-                      </div>
                     </section>
                     <section className="space-y-4">
                       <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">SKILLS_REQUIRED</h4>
                       <div className="flex flex-wrap gap-2">
                         {activeJob.tech.map((t) => (
-                          <div key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-primary/40 uppercase tracking-widest">{t}</div>
+                          <div key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-primary/40 uppercase tracking-widest hover:bg-primary/10 hover:border-primary/40 hover:text-primary transition-all duration-300 cursor-default">{t}</div>
                         ))}
                       </div>
                     </section>
