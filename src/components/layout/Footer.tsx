@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect } from 'react'
@@ -57,7 +56,7 @@ function OdometerNumber({ num }: { num: string }) {
 }
 
 const protocols = [
-  { id: '01', name: 'THE NARRATIVE', href: '/#story' },
+  { id: '01', name: 'THE NARRATIVE', href: '/#hero' },
   { id: '02', name: 'CORE SERVICES', href: '/#services' },
   { id: '03', name: 'PRODUCT LAB', href: '/#products' },
   { id: '04', name: 'TALENT PROTOCOL', href: '/#careers' },
@@ -172,9 +171,9 @@ export function Footer() {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-[7px] md:text-[8px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] font-headline">
-            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
-            <NextLink href="#" className="text-primary hover:text-foreground transition-colors duration-300">Usage_Terms</NextLink>
-            <NextLink href="/contact" className="text-primary hover:text-foreground transition-colors duration-300">Support_Terminal</NextLink>
+            <NextLink href="/privacy" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="/terms" className="text-primary hover:text-foreground transition-colors duration-300">Terms_&_Conditions</NextLink>
+            <NextLink href="/user-terms" className="text-primary hover:text-foreground transition-colors duration-300">User_Terms</NextLink>
           </div>
         </div>
       </div>
