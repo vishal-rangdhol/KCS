@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect } from 'react'
@@ -171,7 +172,7 @@ export function Footer() {
           </div>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-[7px] md:text-[8px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] font-headline">
-            <NextLink href="/privacy" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Protocol</NextLink>
+            <NextLink href="/privacy" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Policy</NextLink>
             <NextLink href="/terms" className="text-primary hover:text-foreground transition-colors duration-300">Terms_&_Conditions</NextLink>
             <NextLink href="/user-terms" className="text-primary hover:text-foreground transition-colors duration-300">User_Terms</NextLink>
           </div>

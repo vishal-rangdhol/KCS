@@ -7,7 +7,6 @@ import { Shield, ArrowLeft, Lock, Info, EyeOff, Mail, Globe, ShieldAlert, Scale,
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
-import { Footer } from '@/components/layout/Footer'
 
 export default function PrivacyPage() {
   return (
@@ -143,7 +142,6 @@ export default function PrivacyPage() {
           </div>
         </section>
       </div>
-      <Footer />
     </main>
   )
 }

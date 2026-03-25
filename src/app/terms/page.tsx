@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react'
@@ -6,7 +7,6 @@ import { Scale, ArrowLeft, Info, ShieldCheck, AlertTriangle, Globe, Gavel, Refre
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
-import { Footer } from '@/components/layout/Footer'
 
 export default function TermsPage() {
   return (
@@ -179,7 +179,6 @@ export default function TermsPage() {
           </div>
         </section>
       </div>
-      <Footer />
     </main>
   )
 }

@@ -1,3 +1,4 @@
+
 "use client"
 
 import React from 'react'
@@ -6,7 +7,6 @@ import { Users, ArrowLeft, UserCheck, Mail, Globe, Send, ShieldOff, Info, XCircl
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
-import { Footer } from '@/components/layout/Footer'
 
 export default function UserTermsPage() {
   return (
@@ -178,7 +178,6 @@ export default function UserTermsPage() {
           </div>
         </section>
       </div>
-      <Footer />
     </main>
   )
 }
