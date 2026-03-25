@@ -108,7 +108,9 @@ export function Footer() {
             </p>
             
             <div className="pt-4 md:pt-6 border-t border-white/5">
-              <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-foreground/40 font-headline">HQ: HYDERABAD // INDIA</p>
+              <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.1em] text-foreground/40 font-headline leading-relaxed">
+                HQ: 3-37, RC REDDY COLONY, BHEL, HYDERABAD, TELANGANA 502032 // INDIA
+              </p>
             </div>
           </div>
 

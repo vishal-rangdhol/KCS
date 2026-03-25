@@ -168,7 +168,9 @@ export default function CareersPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1a0b00_0%,_transparent_100%)] opacity-40" />
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8 font-headline leading-none">Ready to <span className="text-primary italic">Initialize?</span></h2>
-            <p className="text-base md:text-2xl text-muted-foreground italic max-w-2xl mx-auto leading-relaxed">Initiate your application to the info@kandhugule-kcs.com. Successful classification leads to immediate FTE conversion.</p>
+            <p className="text-base md:text-2xl text-muted-foreground italic max-w-2xl mx-auto leading-relaxed">
+              Initiate your application to the <span className="text-primary font-bold not-italic">info@kandhugule-kcs.com</span>. Successful classification leads to immediate FTE conversion.
+            </p>
           </div>
         </section>
       </motion.div>
