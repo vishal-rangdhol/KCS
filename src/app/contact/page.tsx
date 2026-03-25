@@ -31,9 +31,6 @@ export default function ContactPage() {
         </div>
 
         <div className="w-full mb-12 md:mb-20 space-y-4 text-center">
-          <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.5em] uppercase text-[10px] font-headline">
-            <Sparkles size={12} className="animate-pulse" /> [ GEOSPATIAL_TERMINAL_V1.0 ]
-          </span>
           <h1 className="text-4xl md:text-8xl font-bold tracking-tighter leading-none font-headline">Contact <span className="text-primary italic">Terminal.</span></h1>
         </div>
 

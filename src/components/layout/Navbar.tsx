@@ -36,6 +36,13 @@ export function Navbar() {
   }, [])
 
   useEffect(() => {
+    // Purge active highlights on legal policy nodes
+    const policyRoutes = ['/privacy', '/terms', '/user-terms']
+    if (policyRoutes.includes(pathname)) {
+      setActiveSection('')
+      return
+    }
+
     if (pathname === '/contact') {
       setActiveSection('contact')
       return
