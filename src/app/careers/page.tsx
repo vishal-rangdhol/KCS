@@ -1,9 +1,8 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
-import { MapPin, ArrowLeft, Sparkles, Clock, Rocket, CheckCircle2, Terminal as TerminalIcon, ChevronRight, ChevronDown } from 'lucide-react'
+import { MapPin, ArrowLeft, Sparkles, Clock, Rocket, CheckCircle2, Terminal as TerminalIcon, ChevronRight, ChevronDown, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -44,20 +43,21 @@ const jobDetails = [
     category: "BUSINESS_DEVELOPMENT", 
     overview: "Serve as a frontline representative of KCS, driving client acquisition and market penetration for our platform across Hyderabad. Own the full B2B outreach cycle from prospect identification to live product demonstrations.", 
     responsibilities: [
-      "Identify and map B2B prospects: schools, colleges, and coaching institutes", 
-      "Execute outreach via in-person visits, cold calls, and institutional emails", 
+      "Identify and map B2B prospects: schools, colleges, universities, coaching institutes, and corporate L&D teams", 
+      "Execute outreach via in-person visits, cold calls, and professional emails to institutional decision-makers", 
       "Schedule and deliver live product demonstrations to stakeholders", 
-      "Maintain a structured lead pipeline using CRM tools", 
-      "Assist in developing pitch decks and sales collateral", 
+      "Maintain a structured lead pipeline using CRM tools or spreadsheets", 
+      "Assist in developing pitch decks, brochures, and sales collateral", 
       "Represent KCS at educational events and networking forums", 
       "Meet monthly outreach and demonstration targets"
     ], 
     requirements: [
-      "Field-Based: Mobility preferred", 
-      "English + Telugu/Hindi fluency", 
-      "Discipline: Any graduate"
+      "Any discipline", 
+      "Strong English + Telugu/Hindi", 
+      "Personal mobility preferred",
+      "Field-Based: Domain Penetration"
     ], 
-    tech: ['B2B Sales', 'Business Development', 'Lead Generation', 'CRM Basics', 'Product Demonstration', 'Presentation Skills', 'Market Mapping'], 
+    tech: ['B2B Sales', 'Business Development', 'Cold Calling', 'Lead Generation', 'CRM Basics', 'Product Demonstration', 'Presentation Skills', 'Market Mapping', 'Client Communication', 'Target-Driven Mindset'], 
     location: "Hyderabad (Field-Based)" 
   },
   { 
@@ -67,18 +67,19 @@ const jobDetails = [
     category: "WEB_MOBILE", 
     overview: "Contribute to the development and scaling of our platform across web and mobile. Work within an engineering team to build features, integrate APIs, and maintain clean, production-ready code.", 
     responsibilities: [
-      "Build UI components using React.js and React Native", 
+      "Build and maintain UI components using React.js (web) and React Native (mobile)", 
       "Design and implement RESTful APIs with Node.js and Express.js", 
       "Manage MongoDB schemas, collections, and queries", 
-      "Integrate payment gateways and push notifications", 
-      "Implement JWT/OAuth-based authentication", 
+      "Integrate third-party services: payment gateways, push notifications, video SDKs", 
+      "Implement JWT/OAuth-based authentication and authorization", 
       "Translate Figma designs into functional interfaces", 
-      "Participate in agile ceremonies and code reviews"
+      "Participate in code reviews, sprint planning, and agile ceremonies"
     ], 
     requirements: [
       "CS/IT or related field", 
-      "Demonstrable MERN project", 
-      "Git proficiency mandatory"
+      "One demonstrable MERN project required", 
+      "Git proficiency mandatory",
+      "Agile/Scrum Exposure"
     ], 
     tech: ['React.js', 'React Native', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'JWT / OAuth', 'JavaScript', 'Git', 'Figma'], 
     location: "Hyderabad (On-Site)" 
@@ -88,20 +89,21 @@ const jobDetails = [
     slug: "devops", 
     title: "DevOps Intern — Mobile Infrastructure", 
     category: "INFRASTRUCTURE", 
-    overview: "Support the deployment, stability, and scalability of our application infrastructure. Manage cloud environments, automate delivery pipelines, and ensure operational reliability.", 
+    overview: "Support the deployment, stability, and scalability of our application infrastructure. Manage cloud environments, automate delivery pipelines, and ensure operational reliability across development and production.", 
     responsibilities: [
-      "Manage cloud infrastructure on AWS or Azure", 
-      "Configure and maintain Docker containers", 
-      "Optimize CI/CD pipelines via GitHub Actions", 
-      "Monitor server health, uptime, and logs", 
-      "Assist with Play Store and App Store releases", 
-      "Write shell scripts to automate tasks", 
-      "Document deployment runbooks"
+      "Manage cloud infrastructure resources on AWS or Azure", 
+      "Configure and maintain Docker containers across environments", 
+      "Set up and optimize CI/CD pipelines using GitHub Actions or Jenkins", 
+      "Monitor server health, uptime, and logs; escalate issues proactively", 
+      "Assist with Play Store and App Store release workflows", 
+      "Write shell scripts to automate operational tasks", 
+      "Document infrastructure procedures and deployment runbooks"
     ], 
     requirements: [
       "CS/IT or related field", 
       "Linux CLI comfort mandatory", 
-      "Cloud & Docker exposure"
+      "Cloud and Docker exposure required",
+      "Networking Fundamentals"
     ], 
     tech: ['AWS / Azure', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions', 'Linux / Bash', 'Server Monitoring', 'Networking', 'Git'], 
     location: "Hyderabad (On-Site)" 
@@ -111,19 +113,20 @@ const jobDetails = [
     slug: "ai", 
     title: "AI Engineer Intern — Content Safety", 
     category: "SAFETY_MODERATION", 
-    overview: "Build and refine AI systems that keep our social learning application safe and policy-compliant. Develop models to detect and flag content violations before they reach users.", 
+    overview: "Build and refine AI systems that keep our social learning application safe and policy-compliant. Develop models to detect and flag NSFW imagery, harmful text, and content violations before they reach users.", 
     responsibilities: [
-      "Train classification models for NSFW detection", 
-      "Build NLP-based text moderation models", 
-      "Design detection → confidence scoring pipelines", 
-      "Evaluate metrics: Precision, Recall, F1, and AUC", 
-      "Contribute to trust and safety dashboards", 
-      "Document model architecture and training data"
+      "Train and fine-tune image classification models for NSFW detection using TensorFlow or PyTorch", 
+      "Build or integrate NLP-based text moderation models and APIs (OpenAI Moderation, Perspective API)", 
+      "Design an end-to-end moderation pipeline: detection → confidence scoring → human review queue", 
+      "Evaluate model performance using Precision, Recall, F1, and AUC metrics", 
+      "Contribute to an internal moderation dashboard for the trust and safety team", 
+      "Document model architecture, training data, and deployment methodology"
     ], 
     requirements: [
-      "CS / Data Science / AI-ML", 
+      "CS / Data Science / AI-ML or related field", 
       "Prior ML project strongly preferred", 
-      "Responsible AI focus"
+      "Responsible AI focus",
+      "Mathematical Foundations"
     ], 
     tech: ['Python', 'TensorFlow / PyTorch', 'Computer Vision', 'Image Classification', 'CNNs', 'NLP', 'Model Evaluation', 'ML Pipeline'], 
     location: "Hyderabad (On-Site)" 
@@ -228,16 +231,23 @@ export default function CareersPage() {
                     </section>
                   </div>
                   <div className="md:col-span-4 space-y-10">
-                    <section className="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/5 space-y-6">
-                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono mb-6">ELIGIBILITY</h4>
-                      {activeJob.requirements.map((req, i) => (
-                        <div key={i} className="space-y-2">
-                          <div className="text-[10px] font-bold text-foreground/80 uppercase tracking-tight">{req}</div>
-                          <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                            <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1.5, delay: 0.5 + (i * 0.2) }} className="h-full bg-primary/40" />
+                    <section className="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/5 space-y-8">
+                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono flex items-center gap-2">
+                        <ShieldCheck size={14} /> ELIGIBILITY_TERMINAL
+                      </h4>
+                      <div className="space-y-5">
+                        {activeJob.requirements.map((req, i) => (
+                          <div key={i} className="flex items-start gap-3 group/elig">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0 group-hover/elig:scale-150 transition-transform duration-300" />
+                            <div className="text-[11px] md:text-xs font-bold text-foreground/80 uppercase tracking-tight leading-snug">
+                              {req}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
+                      <div className="pt-4 border-t border-white/5">
+                        <div className="text-[8px] font-mono text-muted-foreground uppercase">Protocol Status: High_Verification</div>
+                      </div>
                     </section>
                     <section className="space-y-4">
                       <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">SKILLS_REQUIRED</h4>
