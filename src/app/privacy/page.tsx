@@ -40,10 +40,10 @@ export default function PrivacyPage() {
             {/* 1. Introduction */}
             <div className="p-8 rounded-[2rem] bg-white/5 border border-white/5 space-y-4">
               <h3 className="text-xl font-bold font-headline flex items-center gap-3">
-                <Info size={20} className="text-primary" /> 01. INTRODUCTION
+                <div className="w-8 h-px bg-primary/40" /> 01. INTRODUCTION
               </h3>
               <p className="text-muted-foreground leading-relaxed italic">
-                Welcome to Kandhugule Consultancy Services ("we," "us," or "our"). We are committed to protecting your privacy. This Privacy Policy explains how we handle information when you visit our website at kandhugule-kcs.com (the "Website"). Please read this policy carefully. By accessing or using our Website, you acknowledge that you have read and understood this Privacy Policy.
+                Welcome to Kandhugule Consultancy Services ("we," "us," or "our"). We are committed to protecting your privacy. This Privacy Policy explains how we handle information when you visit our website at www.kandhugule-kcs.com (the "Website"). Please read this policy carefully. By accessing or using our Website, you acknowledge that you have read and understood this Privacy Policy.
               </p>
             </div>
 
@@ -135,8 +135,8 @@ export default function PrivacyPage() {
               </h3>
               <p className="text-muted-foreground leading-relaxed italic font-bold">
                 Kandhugule Consultancy Services<br />
-                Hyderabad, Telangana, India<br />
-                kandhugule-kcs.com
+                3-37, RC Reddy Colony, Bharat Heavy Electricals Limited, Hyderabad, Telangana 502032<br />
+                www.kandhugule-kcs.com
               </p>
             </div>
           </div>

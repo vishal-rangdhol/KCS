@@ -43,7 +43,7 @@ export default function UserTermsPage() {
                 <Users size={20} className="text-primary" /> 01. WHO_THESE_TERMS_APPLY_TO
               </h3>
               <p className="text-muted-foreground leading-relaxed italic">
-                These User Terms ("User Terms") apply to any individual ("you" or "user") who visits, browses, or interacts with the website at kandhugule-kcs.com (the "Website"), including those who view job listings and submit applications via email. By using the Website, you confirm that you are at least 18 years of age and agree to conduct yourself in accordance with these User Terms.
+                These User Terms ("User Terms") apply to any individual ("you" or "user") who visits, browses, or interacts with the website at www.kandhugule-kcs.com (the "Website"), including those who view job listings and submit applications via email. By using the Website, you confirm that you are at least 18 years of age and agree to conduct yourself in accordance with these User Terms.
               </p>
             </div>
 
@@ -97,7 +97,7 @@ export default function UserTermsPage() {
                   <ul className="text-[11px] font-mono text-muted-foreground/80 list-disc pl-4 space-y-1">
                     <li>Copy/Reproduce content without permission</li>
                     <li>Use content for commercial purposes</li>
-                    <li>Frame or mirror the Website without authorization</li>
+                    <li>Frame or mirror the Website on any other site without authorization</li>
                     <li>Use automated tools/bots for data extraction</li>
                   </ul>
                 </div>
@@ -171,8 +171,8 @@ export default function UserTermsPage() {
               </h3>
               <p className="text-muted-foreground leading-relaxed italic font-bold">
                 Kandhugule Consultancy Services<br />
-                Hyderabad, Telangana, India<br />
-                kandhugule-kcs.com
+                3-37, RC Reddy Colony, Bharat Heavy Electricals Limited, Hyderabad, Telangana 502032<br />
+                www.kandhugule-kcs.com
               </p>
             </div>
           </div>

@@ -43,7 +43,7 @@ export default function TermsPage() {
                 <div className="w-8 h-px bg-primary/40" /> 01. ACCEPTANCE_OF_TERMS
               </h3>
               <p className="text-muted-foreground leading-relaxed italic">
-                By accessing and using the website at kandhugule-kcs.com (the "Website"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use our Website. These Terms apply to all visitors and users of the Website.
+                By accessing and using the website at www.kandhugule-kcs.com (the "Website"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, please do not use our Website. These Terms apply to all visitors and users of the Website.
               </p>
             </div>
 
@@ -172,8 +172,8 @@ export default function TermsPage() {
               </h3>
               <p className="text-muted-foreground leading-relaxed italic font-bold">
                 Kandhugule Consultancy Services<br />
-                Hyderabad, Telangana, India<br />
-                kandhugule-kcs.com
+                3-37, RC Reddy Colony, Bharat Heavy Electricals Limited, Hyderabad, Telangana 502032<br />
+                www.kandhugule-kcs.com
               </p>
             </div>
           </div>
