@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useRef, useEffect } from 'react'
@@ -45,11 +44,12 @@ export function HeroChapter() {
     const section = problemSectionRef.current
     const container = problemContainerRef.current
     if (section && container) {
+      const isMobile = window.innerWidth < 768
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
-          end: "+=200%",
+          end: isMobile ? "+=150%" : "+=200%",
           pin: true,
           scrub: 1,
           anticipatePin: 1,
@@ -84,7 +84,7 @@ export function HeroChapter() {
     <>
       <section 
         id="hero" 
-        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-28 pb-32 md:pt-32 md:pb-40 bg-background"
+        className="min-h-screen w-full flex flex-col justify-center items-center relative text-center px-4 md:px-12 overflow-hidden pt-28 pb-20 md:pt-32 md:pb-40 bg-background"
       >
         <motion.div 
           className="absolute inset-0 pointer-events-none z-0"
@@ -107,7 +107,7 @@ export function HeroChapter() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-primary font-headline uppercase tracking-[0.2em] md:tracking-[0.6em] text-[9px] sm:text-[11px] mb-4 md:mb-8 block font-bold"
+              className="text-primary font-headline uppercase tracking-[0.2em] md:tracking-[0.6em] text-[10px] sm:text-[11px] mb-4 md:mb-8 block font-bold"
             >
               Kandhugule Consultancy Services
             </motion.span>
@@ -187,7 +187,7 @@ export function HeroChapter() {
           transition={{ delay: 2.8, duration: 1.5 }}
           className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 md:gap-4 z-20"
         >
-          <span className="text-[7px] md:text-[8px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
+          <span className="text-[8px] md:text-[9px] uppercase tracking-[0.4em] text-muted-foreground/40 font-bold font-headline">Scroll Story</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}

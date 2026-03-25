@@ -10,7 +10,7 @@ import Link from 'next/link'
 export function CTAChapter() {
   return (
     <Chapter id="cta" className="py-12 overflow-visible px-4 sm:px-6">
-      <div className="w-full relative rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[40px] p-8 sm:p-12 md:p-20 text-center overflow-hidden border border-white/5 group bg-card/40 shadow-2xl backdrop-blur-md">
+      <div className="w-full relative rounded-[2rem] md:rounded-[40px] p-10 sm:p-12 md:p-20 text-center overflow-hidden border border-white/5 group bg-card/40 shadow-2xl backdrop-blur-md">
         <motion.div
           animate={{ 
             scale: [1, 1.2, 1],
@@ -30,7 +30,7 @@ export function CTAChapter() {
             <span className="text-primary italic">Something Great.</span>
           </motion.h2>
           
-          <p className="text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto px-4 leading-relaxed">
+          <p className="text-sm sm:text-base text-muted-foreground mb-10 max-w-xl mx-auto px-4 leading-relaxed italic font-medium">
             Whether you're launching a new platform or modernizing your infrastructure, KCS Product Lab can help you design and scale the technology behind your vision.
           </p>
 

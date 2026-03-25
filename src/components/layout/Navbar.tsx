@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect, useRef } from 'react'
@@ -14,7 +13,7 @@ const navItems = [
   { name: 'Services', href: '/#services' },
   { name: 'Products', href: '/#products' },
   { name: 'About', href: '/#about' },
-  { name: 'Careers', href: '/#careers', tag: '04' },
+  { name: 'Careers', href: '/careers', tag: '04' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -91,7 +90,7 @@ export function Navbar() {
   }, [pathname])
 
   return (
-    <header className="fixed top-4 md:top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-4">
+    <header className="fixed top-2 md:top-6 left-0 right-0 z-[110] flex justify-center pointer-events-none px-3 md:px-4">
       <motion.nav 
         animate={{ 
           y: scrolled ? 0 : 4,
@@ -99,7 +98,7 @@ export function Navbar() {
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={cn(
-          "w-full max-w-[95%] md:max-w-7xl transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-5 md:px-8 py-2.5 md:py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
+          "w-full max-w-7xl transition-all duration-500 border border-black/5 pointer-events-auto flex items-center justify-between px-4 md:px-8 py-2 md:py-3 rounded-full bg-white/80 backdrop-blur-xl shadow-lg shadow-black/5",
           scrolled && "shadow-2xl border-black/10 bg-white/90"
         )}
       >
@@ -234,7 +233,7 @@ export function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-[64px] left-4 right-4 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-3xl z-[120]"
+            className="absolute top-[60px] left-3 right-3 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-[2rem] z-[120]"
           >
             <ul className="flex flex-col gap-5">
               {navItems.map((item) => {

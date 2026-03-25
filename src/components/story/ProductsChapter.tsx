@@ -85,7 +85,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative h-[650px] md:h-[750px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
+      className="group relative h-[600px] md:h-[750px] w-full rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden bg-card/40 border border-white/5 hover:border-primary/40 transition-all duration-700 shadow-2xl flex flex-col"
     >
       <div className="absolute inset-0 z-0">
         <Image src={product.image} alt={product.name} fill className="object-cover opacity-10 group-hover:opacity-5 transition-all duration-1000 group-hover:scale-110" data-ai-hint={product.hint} />
@@ -101,14 +101,14 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
           <h3 className="text-2xl md:text-5xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors duration-500 font-headline leading-tight">
             {product.name}
           </h3>
-          <p className="text-xs md:text-lg text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
+          <p className="text-[11px] md:text-lg text-muted-foreground leading-relaxed max-w-2xl font-medium italic">
             {product.description}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 my-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 md:gap-4 my-6">
           {product.features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5 group-hover:bg-primary/5 transition-all">
+            <div key={i} className="flex items-center gap-2.5 p-2.5 md:p-3 rounded-xl bg-white/5 border border-white/5 group-hover:bg-primary/5 transition-all">
               <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
               <span className="text-[10px] md:text-sm font-medium text-foreground/80 leading-none truncate">{feature}</span>
             </div>
@@ -120,13 +120,13 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
             <Sparkles size={12} className="text-primary animate-pulse" />
             <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Vision Protocol</span>
           </div>
-          <p className="text-sm md:text-2xl font-bold text-foreground leading-tight italic tracking-tight mb-6 md:mb-8">
+          <p className="text-xs md:text-2xl font-bold text-foreground leading-tight italic tracking-tight mb-6 md:mb-8">
             "{product.vision}"
           </p>
 
           <Button 
             variant="outline" 
-            className="h-11 md:h-14 px-8 rounded-full border-2 border-primary text-primary bg-background/40 hover:bg-primary hover:text-white transition-all duration-500 text-xs md:text-base font-bold group/btn w-full md:w-auto"
+            className="h-10 md:h-14 px-6 md:px-8 rounded-full border-2 border-primary text-primary bg-background/40 hover:bg-primary hover:text-white transition-all duration-500 text-[10px] md:text-base font-bold group/btn w-full md:w-auto"
             onClick={() => product.href && window.open(product.href, '_blank')}
           >
             {product.cta}
@@ -140,33 +140,33 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-20 md:py-32 overflow-visible">
-      <div className="max-w-7xl mx-auto px-6 w-full mb-12 md:mb-24 text-center">
+    <Chapter id="products" className="bg-background py-16 md:py-32 overflow-visible">
+      <div className="max-w-7xl mx-auto px-4 w-full mb-10 md:mb-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}>
-          <span className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6 block font-bold">
+          <span className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block font-bold">
             <Sparkles size={14} className="inline-block mr-2 animate-pulse" /> Proprietary Protocol
           </span>
-          <h2 className="text-4xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline">
+          <h2 className="text-3xl md:text-8xl lg:text-[8rem] font-bold tracking-tighter leading-none font-headline">
             Our Platforms.
           </h2>
-          <p className="text-sm md:text-2xl text-muted-foreground mt-8 max-w-3xl mx-auto italic font-medium leading-relaxed">
+          <p className="text-sm md:text-2xl text-muted-foreground mt-6 md:mt-8 max-w-3xl mx-auto italic font-medium leading-relaxed">
             Engineered solutions architected to bridge communication silos and healthcare infrastructure.
           </p>
         </motion.div>
       </div>
 
-      <div className="w-full relative px-6 md:px-12">
+      <div className="w-full relative px-4 md:px-12">
         <Carousel opts={{ align: "start", loop: false }} className="w-full max-w-7xl mx-auto">
-          <CarouselContent className="-ml-4 md:-ml-10">
+          <CarouselContent className="-ml-3 md:-ml-10">
             {products.map((product, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-10 basis-full lg:basis-1/2">
+              <CarouselItem key={index} className="pl-3 md:pl-10 basis-full lg:basis-1/2">
                 <ProductCard product={product} index={index} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="flex justify-center md:justify-end gap-4 mt-10 md:mt-20">
-            <CarouselPrevious className="static translate-y-0 h-12 w-12 md:h-16 md:w-16 rounded-2xl border border-white/5 bg-white/5 hover:bg-primary transition-all shadow-2xl" />
-            <CarouselNext className="static translate-y-0 h-12 w-12 md:h-16 md:w-16 rounded-2xl border border-white/5 bg-white/5 hover:bg-primary transition-all shadow-2xl" />
+          <div className="flex justify-center md:justify-end gap-3 md:gap-4 mt-8 md:mt-20">
+            <CarouselPrevious className="static translate-y-0 h-10 w-10 md:h-16 md:w-16 rounded-2xl border border-white/5 bg-white/5 hover:bg-primary transition-all shadow-2xl" />
+            <CarouselNext className="static translate-y-0 h-10 w-10 md:h-16 md:w-16 rounded-2xl border border-white/5 bg-white/5 hover:bg-primary transition-all shadow-2xl" />
           </div>
         </Carousel>
       </div>

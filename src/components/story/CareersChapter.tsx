@@ -460,7 +460,7 @@ function LiquidButton({ children }: { children: React.ReactNode }) {
       />
       
       {/* Content */}
-      <span className="relative z-10 flex items-center gap-3 px-10 md:px-16 py-4 md:py-6 text-[10px] md:text-sm uppercase tracking-widest">
+      <span className="relative z-10 flex items-center gap-3 px-10 md:px-16 py-4 md:py-6 text-[11px] md:text-sm uppercase tracking-widest">
         {children}
       </span>
       

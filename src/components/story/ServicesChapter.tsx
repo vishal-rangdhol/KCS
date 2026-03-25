@@ -119,7 +119,7 @@ function TypewriterQuote({ text }: { text: string }) {
   }, [isInView, text])
 
   return (
-    <p ref={ref} className="text-base md:text-2xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
+    <p ref={ref} className="text-base sm:text-xl md:text-2xl font-bold tracking-tighter leading-tight text-foreground italic relative z-10 font-headline">
       "{displayText}"
       <motion.span
         animate={{ opacity: [1, 0, 1] }}
@@ -255,7 +255,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="bg-background py-16 md:py-24 lg:py-32 overflow-visible">
+    <Chapter id="services" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-10 md:mb-20">
           <motion.div
@@ -265,7 +265,7 @@ export function ServicesChapter() {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] sm:text-xs mb-4 md:mb-6 font-headline">
+            <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] sm:text-[10px] md:text-xs mb-4 md:mb-6 font-headline">
               Operational Precision
             </span>
             
@@ -284,7 +284,7 @@ export function ServicesChapter() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 w-full max-w-7xl mx-auto items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 w-full max-w-7xl mx-auto items-start">
           {services.map((item, i) => (
             <ServiceCard key={item.id} item={item} index={i} />
           ))}
