@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
@@ -200,7 +201,9 @@ export default function CareersPage() {
           <div className="lg:col-span-9 relative">
             <AnimatePresence mode="wait">
               <motion.div key={activeId} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.4 }} className="relative bg-gray-950/40 backdrop-blur-xl border border-white/5 rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 shadow-2xl overflow-hidden">
-                <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-10 md:mb-16">
+                
+                {/* Job Header */}
+                <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
                   <div className="space-y-4 md:space-y-6">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-bold uppercase tracking-widest font-mono">
                       <TerminalIcon size={12} /> {activeJob.category}
@@ -211,6 +214,34 @@ export default function CareersPage() {
                     </div>
                   </div>
                 </div>
+
+                {/* Internship Info Highlight Bar */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mb-10 p-5 rounded-2xl bg-primary/10 border border-primary/30 flex items-center gap-4 shadow-[0_0_30px_rgba(249,115,22,0.1)] relative group overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                  <div className="p-2.5 rounded-xl bg-primary text-white shadow-lg shrink-0">
+                    <Rocket size={18} />
+                  </div>
+                  <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5 flex-1">
+                    <div className="flex flex-col">
+                      <span className="text-[9px] font-mono text-primary/60 font-bold uppercase tracking-[0.2em] mb-0.5">Program_Structure</span>
+                      <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-primary font-mono leading-none">
+                        3-MONTH UNPAID INTERNSHIP
+                      </span>
+                    </div>
+                    <div className="hidden md:block w-px h-8 bg-primary/20" />
+                    <div className="flex flex-col">
+                      <span className="text-[9px] font-mono text-muted-foreground/60 font-bold uppercase tracking-[0.2em] mb-0.5">Career_Uplink</span>
+                      <span className="text-[11px] md:text-sm font-bold uppercase tracking-widest text-foreground/90 font-mono leading-none">
+                        STRUCTURED PATH TO FULL-TIME EMPLOYMENT
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
                   <div className="md:col-span-8 space-y-10 md:space-y-12">
