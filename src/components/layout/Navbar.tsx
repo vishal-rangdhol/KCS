@@ -172,25 +172,9 @@ export function Navbar() {
                       }}
                       className="relative z-10 flex items-center gap-0.5 transition-colors duration-300"
                     >
-                      <motion.span
-                        variants={{
-                          initial: { opacity: 1, y: 0 },
-                          hover: { opacity: 0, y: -10 }
-                        }}
-                        className="inline-block"
-                      >
+                      <span className="inline-block">
                         {contactItem.name}
-                      </motion.span>
-                      
-                      <motion.span
-                        variants={{
-                          initial: { opacity: 0, y: 10 },
-                          hover: { opacity: 1, y: 0 }
-                        }}
-                        className="absolute inset-0 flex items-center justify-center"
-                      >
-                        UPLINK
-                      </motion.span>
+                      </span>
 
                       <motion.span
                         variants={{
