@@ -53,6 +53,16 @@ export function Navbar() {
       return
     }
 
+    if (pathname === '/founders') {
+      setActiveSection('about')
+      return
+    }
+
+    if (pathname !== '/') {
+        setActiveSection('')
+        return
+    }
+
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -40% 0px',

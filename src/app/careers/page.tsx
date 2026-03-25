@@ -46,18 +46,9 @@ const jobDetails = [
 export default function CareersPage() {
   const [activeId, setActiveId] = useState("01")
   const [isPoweredOn, setIsPoweredOn] = useState(false)
-  const [isUplinking, setIsUplinking] = useState(false)
   const activeJob = useMemo(() => jobDetails.find(j => j.id === activeId) || jobDetails[0], [activeId])
 
   useEffect(() => { setIsPoweredOn(true); }, [])
-
-  const handleInitializeUplink = () => {
-    setIsUplinking(true)
-    setTimeout(() => {
-      window.location.href = `mailto:info@kandhugule-kcs.com?subject=2026 Application - ${activeJob.title}`
-      setIsUplinking(false)
-    }, 1500)
-  }
 
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -177,15 +168,7 @@ export default function CareersPage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_#1a0b00_0%,_transparent_100%)] opacity-40" />
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8 font-headline leading-none">Ready to <span className="text-primary italic">Initialize?</span></h2>
-            <p className="text-base md:text-2xl text-muted-foreground mb-12 italic max-w-2xl mx-auto leading-relaxed">Initiate your data uplink to the KCS Engine Room. Successful classification leads to immediate FTE conversion.</p>
-            <div className="flex flex-col items-center gap-10">
-              <Button disabled={isUplinking} onClick={handleInitializeUplink} className="w-full max-w-md h-14 md:h-16 rounded-2xl bg-primary text-white font-bold text-sm uppercase tracking-widest group relative overflow-hidden">
-                <span className="relative z-10 flex items-center justify-center gap-3">
-                  {isUplinking ? 'UPLINKING...' : 'INITIALIZE_UPLINK'} <Rocket size={18} />
-                </span>
-                {isUplinking && <motion.div initial={{ x: '-100%' }} animate={{ x: '100%' }} transition={{ duration: 1.5, repeat: Infinity }} className="absolute inset-0 bg-white/20" />}
-              </Button>
-            </div>
+            <p className="text-base md:text-2xl text-muted-foreground italic max-w-2xl mx-auto leading-relaxed">Initiate your application to the info@kandhugule-kcs.com. Successful classification leads to immediate FTE conversion.</p>
           </div>
         </section>
       </motion.div>
