@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef, useMemo } from 'react'
@@ -141,6 +140,11 @@ export default function CareersPage() {
 
   useEffect(() => { setIsPoweredOn(true); }, [])
 
+  // Utility to clean title for the directory view
+  const getDirectoryTitle = (title: string) => {
+    return title.replace(/ — (Mobile Infrastructure|Content Safety)/, '')
+  }
+
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navbar />
@@ -172,7 +176,7 @@ export default function CareersPage() {
             <div className="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
                <div className="flex flex-col">
                  <span className="text-[9px] font-mono text-primary/60 font-bold uppercase mb-1">Active Selection</span>
-                 <span className="text-sm font-bold">{activeJob.title}</span>
+                 <span className="text-sm font-bold">{getDirectoryTitle(activeJob.title)}</span>
                </div>
                <div className="flex gap-2">
                   {jobDetails.map((j) => (
@@ -190,7 +194,7 @@ export default function CareersPage() {
                   <OdometerNumber num={job.id} />
                   <div className="flex-1">
                     <div className="text-[8px] font-bold tracking-widest uppercase mb-1 opacity-60 font-mono">{job.category.split('_')[0]}</div>
-                    <div className="text-xs lg:text-sm font-bold leading-tight">{job.title}</div>
+                    <div className="text-xs lg:text-sm font-bold leading-tight">{getDirectoryTitle(job.title)}</div>
                   </div>
                   <ChevronRight size={14} className={cn("transition-transform", activeId === job.id ? "opacity-100" : "opacity-0")} />
                 </button>
