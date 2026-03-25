@@ -1,9 +1,9 @@
 
 "use client"
 
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, ArrowLeft, MapPin, Clock, Globe, ExternalLink } from 'lucide-react'
+import { Sparkles, ArrowLeft, MapPin, Globe, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import { Navbar } from '@/components/layout/Navbar'
 import { ThreeBackground } from '@/components/canvas/ThreeBackground'
@@ -11,17 +11,9 @@ import { Footer } from '@/components/layout/Footer'
 import { cn } from '@/lib/utils'
 
 export default function ContactPage() {
-  const [time, setTime] = useState<string | null>(null)
   const address = "3-37, RC Reddy Colony, Bharat Heavy Electricals Limited, Hyderabad, Telangana 502032"
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
   const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=17&ie=UTF8&iwloc=B&output=embed`
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour12: false, hour: '2-digit', minute: '2-digit' }))
-    }, 1000)
-    return () => clearInterval(timer)
-  }, [])
 
   return (
     <main className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -45,7 +37,7 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-8xl font-bold tracking-tighter leading-none font-headline">Contact <span className="text-primary italic">Terminal.</span></h1>
         </div>
 
-        <section className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20 items-stretch">
+        <section className="w-full max-w-4xl mb-20">
           <div className="p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-card/40 border border-white/5 relative overflow-hidden backdrop-blur-xl">
             <div className="relative z-10 space-y-8">
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60 font-headline">Global Headquarters</span>
@@ -60,16 +52,6 @@ export default function ContactPage() {
                   <a href="mailto:info@kandhugule-kcs.com" className="font-bold text-foreground hover:text-primary transition-colors underline decoration-primary/20 underline-offset-4">info@kandhugule-kcs.com</a>
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] bg-gray-950/40 border border-white/5 relative flex items-center justify-center backdrop-blur-xl">
-            <div className="text-center space-y-4">
-              <div className="flex items-center justify-center gap-4 text-sm md:text-base">
-                <Clock size={18} className="text-primary" />
-                <span className="font-mono text-foreground font-bold">{time || '12:00'} <span className="text-primary/40 text-[10px] ml-2">IST_ZONE</span></span>
-              </div>
-              <p className="text-[9px] md:text-[10px] font-mono text-muted-foreground uppercase tracking-widest">System Latency: Optimized</p>
             </div>
           </div>
         </section>
