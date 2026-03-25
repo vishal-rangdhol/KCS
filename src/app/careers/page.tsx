@@ -37,10 +37,97 @@ function OdometerNumber({ num }: { num: string }) {
 }
 
 const jobDetails = [
-  { id: "01", slug: "sales", title: "Sales & Marketing Intern", category: "BUSINESS_DEVELOPMENT", overview: "The Sales & Marketing Intern will be the \"boots on the ground\" driving market penetration for KCS. This role sits at the intersection of business strategy and client acquisition.", responsibilities: ["B2B Outreach: Qualify potential business clients.", "Product Demonstrations: Deliver live presentations.", "Market Feedback: Collect real-time data.", "Lead Management: Maintain a pipeline of prospects."], requirements: ["Communication: Exceptional verbal skills.", "Mobility: Ready for on-site client meetings.", "Growth Mindset: Results-driven attitude.", "Adaptability: Pivot based on market trends."], tech: ['CRM', 'B2B Strategy', 'Growth'], location: "Hyderabad, India" },
-  { id: "02", slug: "mern", title: "MERN Full Stack Intern", category: "WEB_MOBILE", overview: "The MERN Full Stack Intern will support the development and scaling of integrated digital solutions. You will work across the entire lifecycle, from database to UI.", responsibilities: ["Feature Development: Build scalable web features.", "API Integration: Develop and integrate robust APIs.", "Code Optimization: Ensure high performance.", "Cross-Platform Sync: Work with React Native."], requirements: ["Technical Stack: MongoDB, Express, React, Node.", "State Management: Redux or Context API.", "Version Control: Proficiency in Git.", "Problem Solving: Strong debugging skills."], tech: ['React', 'NodeJS', 'MongoDB', 'Next.js'], location: "Hyderabad, India" },
-  { id: "03", slug: "devops", title: "DevOps Intern", category: "INFRASTRUCTURE", overview: "The DevOps Intern will support the reliability and scalability of our infrastructure, working at the intersection of dev and ops to automate workflows.", responsibilities: ["CI/CD Implementation: Support automated pipelines.", "Cloud Orchestration: Manage cloud resources.", "Containerization: Docker and Kubernetes usage.", "Infrastructure Monitoring: Track system health."], requirements: ["Systems Admin: Knowledge of Linux and networking.", "Scripting Proficiency: Bash, Python experience.", "Architectural Awareness: Microservices knowledge.", "Detail Orientation: Security protocol management."], tech: ['Docker', 'AWS', 'Kubernetes', 'CI/CD'], location: "Remote / HYD" },
-  { id: "04", slug: "ai", title: "AI Engineer Intern", category: "SAFETY_MODERATION", overview: "The AI Engineer Intern will focus on the \"Digital Safety\" pillar. You will develop AI models designed to detect and moderate content.", responsibilities: ["Model Training: Build Computer Vision models.", "NLP Implementation: Develop text detection tools.", "Dataset Management: Curate and label datasets.", "Performance Tuning: Optimize for low-latency."], requirements: ["AI/ML Fundamentals: Python and PyTorch/TF.", "Computer Vision: Image processing techniques.", "Data Ethics: Commitment to user privacy.", "Math Proficiency: Linear algebra and stats."], tech: ['Python', 'PyTorch', 'Gemini', 'NLP'], location: "Hyderabad, India" }
+  { 
+    id: "01", 
+    slug: "sales", 
+    title: "Sales & Marketing Intern", 
+    category: "BUSINESS_DEVELOPMENT", 
+    overview: "Serve as a frontline representative of KCS, driving client acquisition and market penetration for our platform across Hyderabad. Own the full B2B outreach cycle from prospect identification to live product demonstrations.", 
+    responsibilities: [
+      "Identify and map B2B prospects: schools, colleges, and coaching institutes", 
+      "Execute outreach via in-person visits, cold calls, and institutional emails", 
+      "Schedule and deliver live product demonstrations to stakeholders", 
+      "Maintain a structured lead pipeline using CRM tools", 
+      "Assist in developing pitch decks and sales collateral", 
+      "Represent KCS at educational events and networking forums", 
+      "Meet monthly outreach and demonstration targets"
+    ], 
+    requirements: [
+      "Field-Based: Mobility preferred", 
+      "English + Telugu/Hindi fluency", 
+      "Discipline: Any graduate"
+    ], 
+    tech: ['B2B Sales', 'Business Development', 'Lead Generation', 'CRM Basics', 'Product Demonstration', 'Presentation Skills', 'Market Mapping'], 
+    location: "Hyderabad (Field-Based)" 
+  },
+  { 
+    id: "02", 
+    slug: "mern", 
+    title: "MERN Full Stack Intern", 
+    category: "WEB_MOBILE", 
+    overview: "Contribute to the development and scaling of our platform across web and mobile. Work within an engineering team to build features, integrate APIs, and maintain clean, production-ready code.", 
+    responsibilities: [
+      "Build UI components using React.js and React Native", 
+      "Design and implement RESTful APIs with Node.js and Express.js", 
+      "Manage MongoDB schemas, collections, and queries", 
+      "Integrate payment gateways and push notifications", 
+      "Implement JWT/OAuth-based authentication", 
+      "Translate Figma designs into functional interfaces", 
+      "Participate in agile ceremonies and code reviews"
+    ], 
+    requirements: [
+      "CS/IT or related field", 
+      "Demonstrable MERN project", 
+      "Git proficiency mandatory"
+    ], 
+    tech: ['React.js', 'React Native', 'Node.js', 'Express.js', 'MongoDB', 'REST API', 'JWT / OAuth', 'JavaScript', 'Git', 'Figma'], 
+    location: "Hyderabad (On-Site)" 
+  },
+  { 
+    id: "03", 
+    slug: "devops", 
+    title: "DevOps Intern — Mobile Infrastructure", 
+    category: "INFRASTRUCTURE", 
+    overview: "Support the deployment, stability, and scalability of our application infrastructure. Manage cloud environments, automate delivery pipelines, and ensure operational reliability.", 
+    responsibilities: [
+      "Manage cloud infrastructure on AWS or Azure", 
+      "Configure and maintain Docker containers", 
+      "Optimize CI/CD pipelines via GitHub Actions", 
+      "Monitor server health, uptime, and logs", 
+      "Assist with Play Store and App Store releases", 
+      "Write shell scripts to automate tasks", 
+      "Document deployment runbooks"
+    ], 
+    requirements: [
+      "CS/IT or related field", 
+      "Linux CLI comfort mandatory", 
+      "Cloud & Docker exposure"
+    ], 
+    tech: ['AWS / Azure', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions', 'Linux / Bash', 'Server Monitoring', 'Networking', 'Git'], 
+    location: "Hyderabad (On-Site)" 
+  },
+  { 
+    id: "04", 
+    slug: "ai", 
+    title: "AI Engineer Intern — Content Safety", 
+    category: "SAFETY_MODERATION", 
+    overview: "Build and refine AI systems that keep our social learning application safe and policy-compliant. Develop models to detect and flag content violations before they reach users.", 
+    responsibilities: [
+      "Train classification models for NSFW detection", 
+      "Build NLP-based text moderation models", 
+      "Design detection → confidence scoring pipelines", 
+      "Evaluate metrics: Precision, Recall, F1, and AUC", 
+      "Contribute to trust and safety dashboards", 
+      "Document model architecture and training data"
+    ], 
+    requirements: [
+      "CS / Data Science / AI-ML", 
+      "Prior ML project strongly preferred", 
+      "Responsible AI focus"
+    ], 
+    tech: ['Python', 'TensorFlow / PyTorch', 'Computer Vision', 'Image Classification', 'CNNs', 'NLP', 'Model Evaluation', 'ML Pipeline'], 
+    location: "Hyderabad (On-Site)" 
+  }
 ]
 
 export default function CareersPage() {
@@ -115,7 +202,10 @@ export default function CareersPage() {
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[9px] font-bold uppercase tracking-widest font-mono">
                       <TerminalIcon size={12} /> {activeJob.category}
                     </div>
-                    <h1 className="text-3xl md:text-6xl font-bold tracking-tighter leading-[1.1] font-headline">{activeJob.title}</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-[1.1] font-headline">{activeJob.title}</h1>
+                    <div className="flex items-center gap-2 text-muted-foreground font-mono text-[10px] uppercase tracking-widest">
+                      <MapPin size={12} className="text-primary" /> {activeJob.location}
+                    </div>
                   </div>
                 </div>
 
@@ -139,10 +229,10 @@ export default function CareersPage() {
                   </div>
                   <div className="md:col-span-4 space-y-10">
                     <section className="p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-white/5 border border-white/5 space-y-6">
-                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono mb-6">VERIFICATION</h4>
+                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono mb-6">ELIGIBILITY</h4>
                       {activeJob.requirements.map((req, i) => (
                         <div key={i} className="space-y-2">
-                          <div className="text-[10px] font-bold text-foreground/80">{req.split(':')[0]}</div>
+                          <div className="text-[10px] font-bold text-foreground/80 uppercase tracking-tight">{req}</div>
                           <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
                             <motion.div initial={{ width: 0 }} whileInView={{ width: '100%' }} transition={{ duration: 1.5, delay: 0.5 + (i * 0.2) }} className="h-full bg-primary/40" />
                           </div>
@@ -150,7 +240,7 @@ export default function CareersPage() {
                       ))}
                     </section>
                     <section className="space-y-4">
-                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">TECH_STACK</h4>
+                      <h4 className="text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">SKILLS_REQUIRED</h4>
                       <div className="flex flex-wrap gap-2">
                         {activeJob.tech.map((t) => (
                           <div key={t} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-primary/40 uppercase tracking-widest">{t}</div>
@@ -169,7 +259,7 @@ export default function CareersPage() {
           <div className="relative z-10 max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-8xl font-bold tracking-tighter mb-8 font-headline leading-none">Ready to <span className="text-primary italic">Initialize?</span></h2>
             <p className="text-base md:text-2xl text-muted-foreground italic max-w-2xl mx-auto leading-relaxed">
-              Initiate your application to the <span className="text-primary font-bold not-italic">info@kandhugule-kcs.com</span>. Successful classification leads to immediate FTE conversion.
+              Initiate your application to the <span className="text-primary font-bold not-italic px-1 underline decoration-primary/30 underline-offset-8">info@kandhugule-kcs.com</span>. Successful classification leads to immediate FTE conversion.
             </p>
           </div>
         </section>
