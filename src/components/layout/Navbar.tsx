@@ -41,6 +41,11 @@ export function Navbar() {
       return
     }
 
+    if (pathname === '/careers') {
+      setActiveSection('careers')
+      return
+    }
+
     const observerOptions = {
       root: null,
       rootMargin: '-40% 0px -40% 0px',
