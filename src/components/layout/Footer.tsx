@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Linkedin, Instagram, Facebook, ArrowUpRight } from 'lucide-react'
 import NextLink from 'next/link'
 import { motion } from 'framer-motion'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 // Custom X (formerly Twitter) Icon Component
 const XIcon = ({ size = 14 }: { size?: number }) => (
@@ -71,9 +72,19 @@ const socialNodes = [
 ]
 
 export function Footer() {
+  const isMobile = useIsMobile()
+  
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  // Conditionally adjust Careers href for mobile in the footer
+  const adjustedProtocols = protocols.map(item => {
+    if (item.name === 'TALENT PROTOCOL' && isMobile) {
+      return { ...item, href: '/careers' }
+    }
+    return item
+  })
 
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-16 md:pt-20 pb-8 md:pb-12 border-t border-white/5">
@@ -119,7 +130,7 @@ export function Footer() {
               <span className="w-4 md:w-6 h-px bg-primary/30" /> The Protocols
             </h5>
             <ul className="space-y-4 md:space-y-5">
-              {protocols.map((item) => (
+              {adjustedProtocols.map((item) => (
                 <li key={item.name}>
                   <NextLink 
                     href={item.href} 

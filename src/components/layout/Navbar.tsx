@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 const navItems = [
   { name: 'Home', href: '/#hero' },
@@ -22,9 +23,18 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
+  const isMobile = useIsMobile()
 
-  const mainNavItems = navItems.filter(item => item.name !== 'Contact')
-  const contactItem = navItems.find(item => item.name === 'Contact')
+  // Conditionally adjust Careers href for mobile
+  const adjustedNavItems = navItems.map(item => {
+    if (item.name === 'Careers' && isMobile) {
+      return { ...item, href: '/careers' }
+    }
+    return item
+  })
+
+  const mainNavItems = adjustedNavItems.filter(item => item.name !== 'Contact')
+  const contactItem = adjustedNavItems.find(item => item.name === 'Contact')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -236,7 +246,7 @@ export function Navbar() {
             className="absolute top-[60px] left-3 right-3 bg-white/95 backdrop-blur-xl border border-black/5 p-6 md:hidden pointer-events-auto shadow-xl rounded-[2rem] z-[120]"
           >
             <ul className="flex flex-col gap-5">
-              {navItems.map((item) => {
+              {adjustedNavItems.map((item) => {
                 const id = item.href.includes('#') ? item.href.split('#')[1] : item.href.replace('/', '')
                 const isActive = activeSection === id || (pathname === item.href)
                 return (
