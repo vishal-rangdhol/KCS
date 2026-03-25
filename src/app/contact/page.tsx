@@ -90,7 +90,7 @@ export default function ContactPage() {
 
             <iframe 
               src={embedUrl}
-              className="w-full h-[400px] md:h-[650px] border-none grayscale invert opacity-70 contrast-125 saturate-50 group-hover:opacity-90 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700 ease-in-out"
+              className="w-full h-[200px] md:h-[325px] border-none grayscale invert opacity-70 contrast-125 saturate-50 group-hover:opacity-90 group-hover:grayscale-0 group-hover:invert-0 transition-all duration-700 ease-in-out"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
