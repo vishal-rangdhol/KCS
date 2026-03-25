@@ -12,9 +12,9 @@ import { cn } from '@/lib/utils'
 
 export default function ContactPage() {
   const [time, setTime] = useState<string | null>(null)
-  const address = "3-37 RC Puram, behind SR chambers, Hyderabad, 502032, Telangana"
+  const address = "3-37, RC Reddy Colony, Bharat Heavy Electricals Limited, Hyderabad, Telangana 502032"
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
-  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=15&ie=UTF8&iwloc=&output=embed`
+  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=17&ie=UTF8&iwloc=B&output=embed`
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,7 +53,7 @@ export default function ContactPage() {
               <div className="space-y-6 pt-6 border-t border-white/5">
                 <div className="flex items-start gap-4 text-muted-foreground italic leading-relaxed text-sm md:text-base">
                   <MapPin size={18} className="text-primary shrink-0 mt-1" />
-                  <span>3-37 RC Puram, behind SR chambers,<br />Hyderabad, 502032, Telangana</span>
+                  <span>3-37, RC Reddy Colony,<br />Bharat Heavy Electricals Limited,<br />Hyderabad, Telangana 502032</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm md:text-base">
                   <Globe size={18} className="text-primary" />
