@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export function FoundersChapter() {
   return (
-    <Chapter id="founders" className="bg-background py-4 md:py-20 lg:py-32 overflow-visible">
+    <Chapter id="founders" className="bg-background pt-0 pb-4 md:py-20 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="max-w-3xl">
