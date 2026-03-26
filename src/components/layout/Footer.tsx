@@ -66,7 +66,7 @@ const protocols = [
 
 const socialNodes = [
   { name: 'LinkedIn', href: 'https://www.linkedin.com/company/kandhuguleconsultancyservicespvtltd/', icon: Linkedin },
-  { name: 'X', href: 'https://x.com/KCS_Pvt_Ltd', icon: XIcon },
+  { name: 'X', href: 'https://x.com/Kandhugule_KCS', icon: XIcon },
   { name: 'Instagram', href: 'https://www.instagram.com/kandhugule_kcs/', icon: Instagram },
   { name: 'Facebook', href: 'https://www.facebook.com/people/Kandhugule-Consultancy-Services/61563863545091/#', icon: Facebook },
 ]
