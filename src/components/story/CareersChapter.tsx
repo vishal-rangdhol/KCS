@@ -74,7 +74,7 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       onMouseMove={handleMouseMove}
-      className="relative p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-gray-950 border border-white/5 overflow-hidden group cursor-default shadow-xl card-glass"
+      className="relative p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] bg-gray-950 border border-white/5 overflow-hidden group cursor-default shadow-xl card-glass h-full"
     >
       <motion.div
         className="pointer-events-none absolute -inset-px rounded-[1.5rem] md:rounded-[2rem] opacity-0 transition duration-300 group-hover:opacity-100"
@@ -332,9 +332,11 @@ export function CareersChapter() {
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="flex overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory scrollbar-hide">
             {advantages.map((adv, i) => (
-              <AdvantageCard key={i} adv={adv} i={i} />
+              <div key={i} className="shrink-0 w-[85vw] md:w-full snap-center">
+                <AdvantageCard adv={adv} i={i} />
+              </div>
             ))}
           </div>
         </div>
@@ -354,7 +356,7 @@ export function CareersChapter() {
             <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">Our Cultural Pillars</h3>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
+          <div className="flex overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-12 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
             {pillars.map((pillar, i) => (
               <motion.div
                 key={i}
@@ -363,7 +365,7 @@ export function CareersChapter() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                 className={cn(
-                  "flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass",
+                  "flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass shrink-0 w-[85vw] md:w-auto snap-center",
                   pillar.bg,
                   pillar.size === "large" ? "md:col-span-7" : "md:col-span-5"
                 )}
