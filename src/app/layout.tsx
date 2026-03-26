@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'KCS | Immersive Storytelling',
+  title: 'KCS',
   description: 'Experience the vision of Kandhugule Consultancy Services through a premium narrative journey.',
 };
 
