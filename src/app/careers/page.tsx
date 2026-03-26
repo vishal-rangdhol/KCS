@@ -285,7 +285,12 @@ export default function CareersPage() {
                       <h4 className="text-[8px] md:text-[9px] font-bold uppercase tracking-widest text-primary/60 font-mono">SKILLS_REQUIRED</h4>
                       <div className="flex flex-wrap gap-1.5 md:gap-2">
                         {activeJob.tech.map((t) => (
-                          <div key={t} className="px-2 md:px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[8px] md:text-[9px] font-mono text-primary/40 uppercase tracking-widest hover:bg-primary/10 hover:border-primary/40 hover:text-primary transition-all duration-300 cursor-default">{t}</div>
+                          <div 
+                            key={t} 
+                            className="px-3 md:px-4 py-1.5 rounded-full bg-primary/5 border border-primary/20 text-[9px] md:text-[10px] font-mono text-primary/80 uppercase tracking-widest hover:bg-primary/20 hover:border-primary/50 hover:text-primary hover:shadow-[0_0_15px_rgba(249,115,22,0.2)] transition-all duration-300 cursor-default"
+                          >
+                            {t}
+                          </div>
                         ))}
                       </div>
                     </section>
