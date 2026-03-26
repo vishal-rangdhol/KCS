@@ -147,7 +147,7 @@ export function Footer() {
             
             <div className="space-y-6">
               <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground block">Social_Nodes</span>
-              <div className="flex justify-between items-center sm:justify-start sm:gap-6 relative">
+              <div className="flex items-center gap-5 sm:gap-6 relative">
                 {socialNodes.map((item) => (
                   <a 
                     key={item.name} 
@@ -157,8 +157,8 @@ export function Footer() {
                     className="group transition-all"
                     aria-label={item.name}
                   >
-                    <div className="p-3 md:p-2.5 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 text-muted-foreground group-hover:text-white group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
-                      <item.icon size={18} className="md:size-[16px]" />
+                    <div className="p-3.5 md:p-2.5 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 text-muted-foreground group-hover:text-white group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                      <item.icon size={22} className="md:size-[16px]" />
                     </div>
                   </a>
                 ))}

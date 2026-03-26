@@ -288,6 +288,11 @@ export function CareersChapter() {
               </div>
             ))}
           </div>
+          {isMobile && (
+            <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary/40 mt-4 text-center animate-pulse">
+              Swipe to Navigate Advantages
+            </p>
+          )}
         </div>
 
         {/* Cultural Pillars - Bento Box Grid */}
@@ -338,6 +343,11 @@ export function CareersChapter() {
               </motion.div>
             ))}
           </div>
+          {isMobile && (
+            <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary/40 mt-4 text-center animate-pulse">
+              Swipe to Navigate Pillars
+            </p>
+          )}
         </div>
 
         {/* Final CTA Impact Section */}
@@ -390,7 +400,7 @@ function LiquidButton({ children }: { children: React.ReactNode }) {
         transition={{ duration: 0.5, ease: [0.7, 0, 0.2, 1] }}
         className="absolute inset-0 z-0 bg-primary" 
       />
-      <span className="relative z-10 flex items-center gap-3 px-8 md:px-16 py-4 md:py-6 text-[10px] md:text-sm uppercase tracking-widest whitespace-nowrap">
+      <span className="relative z-10 flex items-center gap-3 px-8 md:px-12 py-3 md:py-6 text-[10px] md:text-sm uppercase tracking-widest whitespace-nowrap">
         {children}
       </span>
     </div>
