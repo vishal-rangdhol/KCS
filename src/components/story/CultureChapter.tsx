@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -38,7 +39,7 @@ export function CultureChapter() {
   const activeProtocol = protocols.find(p => p.slug === activeSlug) || protocols[0]
 
   return (
-    <Chapter id="culture" className="bg-background py-16 md:py-24 lg:py-48 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-8 md:py-16 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
         <div className="text-center mb-12 md:mb-32">

@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { Sparkles, ShieldCheck, Zap, Cpu, RefreshCw } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useRef, useState, useEffect } from 'react'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 const values = [
   {
@@ -47,6 +48,7 @@ export function AboutChapter() {
 
   const [isLabHovered, setIsLabHovered] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     setIsMounted(true);
@@ -77,7 +79,7 @@ export function AboutChapter() {
   };
 
   return (
-    <Chapter id="about" className="bg-background py-16 md:py-32 lg:py-48 overflow-visible">
+    <Chapter id="about" className="bg-background py-8 md:py-20 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 w-full">
         {/* Part 1: The KCS Story */}
         <motion.div
@@ -85,7 +87,7 @@ export function AboutChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-24 md:mb-40 lg:mb-64"
+          className="mb-12 md:mb-24 lg:mb-40"
         >
           <span className="flex items-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
             <Sparkles size={14} className="animate-pulse" /> The Narrative
@@ -94,7 +96,7 @@ export function AboutChapter() {
           <div className="flex flex-col lg:flex-row gap-10 md:gap-16 lg:gap-24 items-start">
             <div className="w-full lg:w-[40%] space-y-6 md:space-y-8 relative">
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tighter text-foreground font-headline">
-                The <span className="text-primary italic glitch-text">KCS</span> Story.
+                The <span className="text-primary italic">KCS</span> Story.
               </h2>
               <div className="space-y-5 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium relative z-10">
                 <p>
@@ -135,7 +137,7 @@ export function AboutChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-24 md:mb-40 lg:mb-64"
+          className="mb-12 md:mb-24 lg:mb-40"
         >
           <div 
             className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[450px] md:min-h-[500px] group/lab"
@@ -168,7 +170,10 @@ export function AboutChapter() {
                 </div>
                 <motion.div 
                   initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-                  animate={{ opacity: isLabHovered ? 1 : 0, backdropFilter: isLabHovered ? 'blur(20px)' : 'blur(0px)' }}
+                  animate={{ 
+                    opacity: (isLabHovered || isMobile) ? 1 : 0, 
+                    backdropFilter: (isLabHovered || isMobile) ? 'blur(20px)' : 'blur(0px)' 
+                  }}
                   className="absolute inset-0 z-30 p-8 md:p-12 lg:p-20 flex flex-col justify-center items-center text-center bg-background/60"
                 >
                   <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed italic font-medium max-w-md">
@@ -187,7 +192,7 @@ export function AboutChapter() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-24 md:mb-40 lg:mb-64"
+          className="mb-12 md:mb-24 lg:mb-40"
         >
           <div className="text-center mb-16 lg:mb-24">
             <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter font-headline">
@@ -230,7 +235,7 @@ export function AboutChapter() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={visionContainerVariants}
-          className="text-center py-10"
+          className="text-center py-8"
         >
           <motion.h3 variants={visionItemVariants} className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter mb-10 md:mb-12 font-headline">
             Our Vision.

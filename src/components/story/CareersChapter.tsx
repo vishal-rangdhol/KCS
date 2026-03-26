@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Chapter } from './Chapter'
@@ -226,7 +227,7 @@ export function CareersChapter() {
   }
 
   return (
-    <Chapter id="careers" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
+    <Chapter id="careers" className="bg-background py-8 md:py-16 lg:py-32 overflow-visible">
       <div ref={containerRef} onMouseMove={handleMouseMove} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Hero Section */}
         <div className="text-center mb-16 md:mb-24 lg:mb-40 relative">
