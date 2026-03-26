@@ -18,6 +18,9 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'KCS',
   description: 'Experience the vision of Kandhugule Consultancy Services through a premium narrative journey.',
+  icons: {
+    icon: '/kcs-logo.png',
+  },
 };
 
 export default function RootLayout({
