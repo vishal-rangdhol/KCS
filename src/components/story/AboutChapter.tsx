@@ -78,7 +78,7 @@ export function AboutChapter() {
   };
 
   return (
-    <Chapter id="about" className="bg-background pt-4 pb-0 md:py-20 lg:py-32 overflow-visible">
+    <Chapter id="about" className="bg-background pt-20 pb-10 md:py-20 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 w-full">
         {/* Part 1: The KCS Story */}
         <motion.div
