@@ -82,6 +82,17 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Custom horizontal scroll indication for mobile */
+  .custom-scrollbar-x::-webkit-scrollbar {
+    height: 2px;
+  }
+  .custom-scrollbar-x::-webkit-scrollbar-track {
+    @apply bg-white/5;
+  }
+  .custom-scrollbar-x::-webkit-scrollbar-thumb {
+    @apply bg-primary/40 rounded-full;
+  }
 }
 
 @keyframes glitch {

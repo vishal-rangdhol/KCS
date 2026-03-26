@@ -78,7 +78,6 @@ export function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Conditionally adjust Careers href for mobile in the footer
   const adjustedProtocols = protocols.map(item => {
     if (item.name === 'TALENT PROTOCOL' && isMobile) {
       return { ...item, href: '/careers' }
@@ -88,7 +87,6 @@ export function Footer() {
 
   return (
     <footer className="w-full relative overflow-hidden bg-background pt-16 md:pt-20 pb-8 md:pb-12 border-t border-white/5">
-      {/* Background Architectural Mark */}
       <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 pointer-events-none opacity-[0.02] select-none text-primary hidden lg:block">
         <span className="text-[25rem] font-bold font-headline leading-none tracking-tighter">TERMINAL</span>
       </div>
@@ -96,7 +94,6 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-24 mb-16 md:mb-20">
           
-          {/* Column 01: Brand Core */}
           <div className="space-y-6 md:space-y-8">
             <button 
               onClick={scrollToTop}
@@ -110,21 +107,19 @@ export function Footer() {
                 height={38} 
                 className="h-6 md:h-10 w-auto relative z-10 group-hover:opacity-80 transition-opacity" 
               />
-              <span className="absolute -bottom-4 left-0 text-[6px] font-bold uppercase tracking-widest text-primary opacity-0 group-hover:opacity-100 transition-opacity">System Reset</span>
             </button>
             
             <p className="text-muted-foreground text-xs md:text-sm leading-relaxed italic font-medium max-w-xs">
-              Ensuring technology remains a competitive advantage through architectural precision and AI-native design.
+              Ensuring technology remains a competitive advantage through architectural precision.
             </p>
             
             <div className="pt-4 md:pt-6 border-t border-white/5">
               <p className="text-[8px] md:text-[9px] font-bold uppercase tracking-[0.1em] text-foreground/40 font-headline leading-relaxed">
-                HQ: 3-37, RC REDDY COLONY, BHEL, HYDERABAD, TELANGANA 502032 // INDIA
+                HQ: HYDERABAD, TELANGANA 502032 // INDIA
               </p>
             </div>
           </div>
 
-          {/* Column 02: The Protocols */}
           <div className="space-y-8 md:space-y-10">
             <h5 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-primary font-headline flex items-center gap-3">
               <span className="w-4 md:w-6 h-px bg-primary/30" /> The Protocols
@@ -145,31 +140,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 03: Global Connectivity */}
           <div className="space-y-8 md:space-y-10 sm:col-span-2 lg:col-span-1">
             <h5 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] md:tracking-[0.5em] text-primary font-headline flex items-center gap-3">
-              <span className="w-4 md:w-6 h-px bg-primary/30" /> Global Connectivity
+              <span className="w-4 md:w-6 h-px bg-primary/30" /> Connectivity
             </h5>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8">
-              <div className="space-y-4">
-                <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground block">Social_Nodes</span>
-                <div className="flex gap-3 md:gap-4 relative">
-                  {socialNodes.map((item) => (
-                    <a 
-                      key={item.name} 
-                      href={item.href} 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group transition-all"
-                      aria-label={item.name}
-                    >
-                      <div className="p-2 md:p-2.5 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 text-muted-foreground group-hover:text-white group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
-                        <item.icon size={14} className="md:size-[16px]" />
-                      </div>
-                    </a>
-                  ))}
-                </div>
+            <div className="space-y-6">
+              <span className="text-[8px] font-bold uppercase tracking-widest text-muted-foreground block">Social_Nodes</span>
+              <div className="flex justify-between items-center sm:justify-start sm:gap-6 relative">
+                {socialNodes.map((item) => (
+                  <a 
+                    key={item.name} 
+                    href={item.href} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group transition-all"
+                    aria-label={item.name}
+                  >
+                    <div className="p-3 md:p-2.5 rounded-lg bg-white/5 border border-white/5 transition-all duration-300 text-muted-foreground group-hover:text-white group-hover:bg-primary/20 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]">
+                      <item.icon size={18} className="md:size-[16px]" />
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -177,16 +169,14 @@ export function Footer() {
         </div>
 
         <div className="pt-8 md:pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
-          <div className="flex flex-col gap-2 items-center md:items-start text-center md:text-left">
-            <p className="text-[7px] md:text-[8px] tracking-[0.2em] md:tracking-[0.3em] uppercase text-foreground/40 font-headline font-bold">
-              © 2026 | KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED
-            </p>
-          </div>
+          <p className="text-[7px] md:text-[8px] tracking-[0.2em] md:tracking-[0.3em] uppercase text-foreground/40 font-headline font-bold text-center">
+            © 2026 | KANDHUGULE CONSULTANCY SERVICES PRIVATE LIMITED
+          </p>
           
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-[7px] md:text-[8px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] font-headline">
-            <NextLink href="/privacy" className="text-primary hover:text-foreground transition-colors duration-300">Privacy_Policy</NextLink>
-            <NextLink href="/terms" className="text-primary hover:text-foreground transition-colors duration-300">Terms_&_Conditions</NextLink>
-            <NextLink href="/user-terms" className="text-primary hover:text-foreground transition-colors duration-300">User_Terms</NextLink>
+            <NextLink href="/privacy" className="text-primary hover:text-foreground">Privacy</NextLink>
+            <NextLink href="/terms" className="text-primary hover:text-foreground">Terms</NextLink>
+            <NextLink href="/user-terms" className="text-primary hover:text-foreground">User_Terms</NextLink>
           </div>
         </div>
       </div>

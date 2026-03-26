@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Zap, Cpu, Heart, Focus, ShieldCheck, RefreshCw } 
 import Link from 'next/link'
 import { useRef, useState, useEffect } from 'react'
 import { cn } from '@/lib/utils'
+import { useIsMobile } from '@/hooks/use-mobile'
 
 const advantages = [
   {
@@ -28,7 +29,7 @@ const advantages = [
 
 const pillars = [
   {
-    title: "Focused Work > Performative Busyness",
+    title: "Focused Work",
     text: "We value deep work and outcomes over long hours and 'busy work.'",
     icon: Focus,
     size: "large",
@@ -36,21 +37,21 @@ const pillars = [
   },
   {
     title: "Quality-First Engineering",
-    text: "We don't just ship code; we take pride in the architectural integrity of everything we build.",
+    text: "We take pride in the architectural integrity of everything we build.",
     icon: ShieldCheck,
     size: "small",
     bg: "bg-card/40"
   },
   {
     title: "Supported Growth",
-    text: "We provide the space, tools, and mentorship needed for you to do your best work and level up your skills.",
+    text: "We provide the space, tools, and mentorship needed for you to do your best work.",
     icon: RefreshCw,
     size: "small",
     bg: "bg-card/20 backdrop-blur-md"
   },
   {
-    title: "Wellbeing as a Priority",
-    text: "We take the health and balance of our people as seriously as our system uptime.",
+    title: "Wellbeing Protocol",
+    text: "We take the health and balance of our people as seriously as our systems.",
     icon: Heart,
     size: "large",
     bg: "bg-card/60",
@@ -96,10 +97,10 @@ function AdvantageCard({ adv, i }: { adv: typeof advantages[0], i: number }) {
         >
           <adv.icon size={20} className="md:size-[24px]" />
         </motion.div>
-        <h4 className="text-base md:text-lg font-bold mb-2 md:mb-3 font-headline uppercase tracking-tight group-hover:text-primary transition-colors">
+        <h4 className="text-sm md:text-lg font-bold mb-2 md:mb-3 font-headline uppercase tracking-tight group-hover:text-primary transition-colors">
           <ScrambleText text={adv.title} />
         </h4>
-        <p className="text-[11px] md:text-sm text-muted-foreground italic leading-relaxed font-medium">{adv.text}</p>
+        <p className="text-[10px] md:text-sm text-muted-foreground italic leading-relaxed font-medium">{adv.text}</p>
       </div>
     </motion.div>
   );
@@ -188,6 +189,7 @@ function useInView(ref: React.RefObject<HTMLElement | null>, options?: Intersect
 
 export function CareersChapter() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
@@ -250,77 +252,21 @@ export function CareersChapter() {
                 className="relative flex items-center justify-center gap-2 md:gap-3 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[8px] sm:text-[10px] md:text-xs font-headline cursor-crosshair px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-primary/10 bg-black/40 backdrop-blur-sm"
                >
                 <Sparkles size={10} className="animate-pulse md:size-[12px]" /> The Talent Protocol
-                <motion.div
-                  initial={false}
-                  animate={{ 
-                    width: isIndicatorHovered ? 150 : 0,
-                    opacity: isIndicatorHovered ? 1 : 0
-                  }}
-                  className="absolute left-full ml-4 whitespace-nowrap overflow-hidden text-primary/60 font-bold tracking-widest text-[7px] hidden md:block"
-                >
-                  PRECISION ENGINEERING. HUMAN CULTURE.
-                </motion.div>
               </span>
             </div>
             
-            <motion.div
+            <motion.h2 
               style={{ x: headlineX, y: headlineY }}
-              className="relative"
+              className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[1] tracking-tight text-foreground mb-6 font-headline"
             >
-              <h2 
-                className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[1] md:leading-[0.95] tracking-tight md:tracking-[-0.04em] text-foreground mb-6 md:mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
-              >
-                Architect the <br className="hidden md:block" />
-                <span className="italic text-primary">future with us.</span>
-              </h2>
-            </motion.div>
+              Architect the <br className="hidden md:block" />
+              <span className="italic text-primary">future with us.</span>
+            </motion.h2>
 
             <div className="max-w-4xl mx-auto space-y-8 md:space-y-16">
-              <motion.p 
-                initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
-                whileInView={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="text-base md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground/80 leading-tight italic"
-              >
+              <p className="text-base md:text-2xl lg:text-3xl font-bold tracking-tight text-foreground/80 leading-tight italic">
                 Building the Next Generation of Digital Platforms.
-              </motion.p>
-              
-              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center text-left border-t border-white/5 pt-8 md:pt-12">
-                <div className="flex-1">
-                  <p className="text-sm md:text-xl text-muted-foreground leading-relaxed italic font-medium">
-                    We’re looking for engineers, designers, and technologists who don’t just want a job—they want to build products that matter. At KCS, we believe the best work happens when high-level engineering meets a culture of genuine support.
-                  </p>
-                </div>
-                
-                <div className="w-full lg:w-[350px] p-5 md:p-6 rounded-2xl bg-white/5 border border-white/10 font-mono text-[8px] md:text-[10px] space-y-2 md:space-y-3 shadow-2xl backdrop-blur-xl group/status hover:border-primary/40 transition-colors">
-                  <div className="flex justify-between border-b border-white/5 pb-1.5 md:pb-2">
-                    <span className="text-primary/60">SYSTEM_ID:</span>
-                    <span className="text-foreground">KCS_TALENT_LAB_01</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-primary/60">EST_ORIGIN:</span>
-                    <span className="text-foreground">HYDERABAD // 2026</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-primary/60">LATENCY:</span>
-                    <span className="text-foreground">OPTIMIZED</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-primary/60">CULTURE:</span>
-                    <span className="text-primary group-hover/status:animate-pulse">ANTI_BURNOUT_V3</span>
-                  </div>
-                  <div className="pt-1 md:pt-2 flex gap-1">
-                    <div className="h-1 flex-1 bg-primary/20 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '100%' }}
-                        transition={{ duration: 2, ease: "easeInOut" }}
-                        className="h-full bg-primary"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </p>
             </div>
           </motion.div>
         </div>
@@ -332,21 +278,16 @@ export function CareersChapter() {
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
           </div>
           
-          <div className="flex overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory scrollbar-hide">
+          <div className={cn(
+            "flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 gap-4 md:gap-6 snap-x snap-mandatory",
+            isMobile ? "custom-scrollbar-x" : "scrollbar-hide"
+          )}>
             {advantages.map((adv, i) => (
-              <div key={i} className="shrink-0 w-[85vw] md:w-full snap-center">
+              <div key={i} className="shrink-0 w-[80vw] md:w-full snap-center">
                 <AdvantageCard adv={adv} i={i} />
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-12 md:my-24 relative">
-          <motion.div 
-            animate={{ left: ["0%", "100%"] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 -translate-y-1/2 w-6 md:w-8 h-px bg-primary shadow-[0_0_10px_#F97316]"
-          />
         </div>
 
         {/* Cultural Pillars - Bento Box Grid */}
@@ -356,7 +297,10 @@ export function CareersChapter() {
             <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">Our Cultural Pillars</h3>
           </div>
           
-          <div className="flex overflow-x-auto pb-6 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-12 gap-4 md:gap-8 snap-x snap-mandatory scrollbar-hide">
+          <div className={cn(
+            "flex overflow-x-auto pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-12 gap-4 md:gap-8 snap-x snap-mandatory",
+            isMobile ? "custom-scrollbar-x" : "scrollbar-hide"
+          )}>
             {pillars.map((pillar, i) => (
               <motion.div
                 key={i}
@@ -365,7 +309,7 @@ export function CareersChapter() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
                 className={cn(
-                  "flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass shrink-0 w-[85vw] md:w-auto snap-center",
+                  "flex flex-col p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border border-white/5 group hover:border-primary/40 transition-all duration-500 shadow-2xl overflow-hidden relative card-glass shrink-0 w-[80vw] md:w-auto snap-center",
                   pillar.bg,
                   pillar.size === "large" ? "md:col-span-7" : "md:col-span-5"
                 )}
@@ -381,17 +325,14 @@ export function CareersChapter() {
                 </div>
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <motion.div 
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0 h-fit w-fit mb-4 md:mb-8 shadow-sm"
-                  >
+                  <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white/5 border border-white/10 text-primary group-hover:bg-primary group-hover:text-white transition-all shrink-0 h-fit w-fit mb-4 md:mb-8 shadow-sm">
                     <pillar.icon size={24} className="md:size-[28px]" />
-                  </motion.div>
+                  </div>
                   <div>
                     <h4 className="text-base md:text-xl lg:text-2xl font-bold mb-2 md:mb-4 font-headline tracking-tighter group-hover:text-primary transition-colors">
                       <ScrambleText text={pillar.title} />
                     </h4>
-                    <p className="text-[11px] md:text-sm lg:text-base text-muted-foreground italic leading-relaxed font-medium max-w-sm">{pillar.text}</p>
+                    <p className="text-[10px] md:text-sm lg:text-base text-muted-foreground italic leading-relaxed font-medium max-w-sm">{pillar.text}</p>
                   </div>
                 </div>
               </motion.div>
@@ -405,7 +346,6 @@ export function CareersChapter() {
           onMouseMove={handleCtaMouseMove}
           className="relative w-full py-20 md:py-32 px-6 overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-gray-950 border border-white/5 group"
         >
-          {/* Mouse-tracking Radial Glow */}
           <motion.div 
             className="absolute inset-0 pointer-events-none z-0"
             style={{
@@ -413,7 +353,7 @@ export function CareersChapter() {
             }}
           />
           
-          <div className="relative z-10 max-w-4xl mx-auto text-center">
+          <div className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
             <h2 className="text-3xl md:text-6xl lg:text-7xl font-bold tracking-tighter mb-12 font-headline leading-tight">
               <RevealText text="Initialize your career architecture." />
             </h2>
@@ -422,7 +362,7 @@ export function CareersChapter() {
               <MagneticButton>
                 <Link href="/careers">
                   <LiquidButton>
-                    View Open Roles 
+                    View Roles
                     <motion.span
                       className="inline-block"
                       whileHover={{ x: 5 }}
@@ -433,15 +373,6 @@ export function CareersChapter() {
                   </LiquidButton>
                 </Link>
               </MagneticButton>
-
-              {/* Footer Context Note */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.4 }}
-                className="text-[8px] md:text-[10px] font-mono text-foreground italic tracking-widest mt-4"
-              >
-                *Direct Uplink to HR@kandhugule-kcs.com to provide immediate contact info.
-              </motion.p>
             </div>
           </div>
         </div>
@@ -453,21 +384,15 @@ export function CareersChapter() {
 function LiquidButton({ children }: { children: React.ReactNode }) {
   return (
     <div className="group relative overflow-hidden rounded-full border-2 border-primary text-primary font-bold transition-colors duration-500 hover:text-white shadow-[0_10px_40px_rgba(249,115,22,0.2)]">
-      {/* Liquid Fill */}
       <motion.span 
         initial={{ x: "-100%" }}
         whileHover={{ x: "0%" }}
         transition={{ duration: 0.5, ease: [0.7, 0, 0.2, 1] }}
         className="absolute inset-0 z-0 bg-primary" 
       />
-      
-      {/* Content */}
-      <span className="relative z-10 flex items-center gap-3 px-10 md:px-16 py-4 md:py-6 text-[11px] md:text-sm uppercase tracking-widest">
+      <span className="relative z-10 flex items-center gap-3 px-8 md:px-16 py-4 md:py-6 text-[10px] md:text-sm uppercase tracking-widest whitespace-nowrap">
         {children}
       </span>
-      
-      {/* Aura Pulse Shadow Bloom */}
-      <div className="absolute inset-0 z-[-1] rounded-full group-hover:shadow-[0_0_50px_rgba(249,115,22,0.6)] transition-shadow duration-500" />
     </div>
   )
 }
@@ -490,9 +415,8 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
     const distanceY = clientY - centerY
     const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
 
-    // Snap to cursor within threshold
     if (distance < 150) {
-      const factor = 0.4 // Magnetic strength
+      const factor = 0.4 
       x.set(distanceX * factor)
       y.set(distanceY * factor)
     } else {
@@ -511,7 +435,7 @@ function MagneticButton({ children }: { children: React.ReactNode }) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="inline-block relative w-full sm:w-auto"
+      className="inline-block relative w-fit"
     >
       <motion.div 
         initial={{ scale: 0.8 }}

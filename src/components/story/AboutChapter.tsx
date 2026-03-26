@@ -11,28 +11,28 @@ const values = [
   {
     id: "01",
     title: "Zero Vendor Lock-In",
-    description: "Full IP Ownership. You own the code, the data, and the infrastructure. Complete sovereignty over your digital assets with no proprietary traps.",
+    description: "Full IP Ownership. You own the code, the data, and the infrastructure. Complete sovereignty over your digital assets.",
     icon: ShieldCheck,
     isTall: false,
   },
   {
     id: "02",
     title: "Built for Longevity",
-    description: "Product-First Mindset. We don’t just deliver projects; we engineer sustainable platforms designed to evolve as your business scales without technical debt.",
+    description: "Product-First Mindset. We don’t just deliver projects; we engineer sustainable platforms designed to evolve.",
     icon: Zap,
     isTall: true,
   },
   {
     id: "03",
     title: "Future-Proof Foundations",
-    description: "AI-Native Design. Every system is architected with a data-first mindset, ready for seamless AI and automation integration from day one.",
+    description: "AI-Native Design. Every system is architected with a data-first mindset, ready for seamless AI integration.",
     icon: Cpu,
     isTall: true,
   },
   {
     id: "04",
     title: "Continuous Partnership",
-    description: "Lifecycle Excellence. A model that spans from initial blueprint to global scale, ensuring 24/7 performance and growth at every stage.",
+    description: "Lifecycle Excellence. A model that spans from initial blueprint to global scale, ensuring 24/7 performance.",
     icon: RefreshCw,
     isTall: false,
   }
@@ -101,7 +101,7 @@ export function AboutChapter() {
                 <p>
                   Kandhugule Consultancy Services (KCS) Pvt Ltd was founded in Hyderabad, India,
                   on a single conviction: technology should empower businesses to create
-                  meaningful impact — without locking them into systems they don't control.
+                  meaningful impact.
                 </p>
               </div>
             </div>
@@ -110,12 +110,11 @@ export function AboutChapter() {
               <div className="space-y-6 md:space-y-8 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed font-medium">
                 <p>
                   As digital transformation accelerates, organizations face growing complexity in
-                  building and maintaining modern technology. Artificial intelligence, cloud
-                  infrastructure, cybersecurity, and data platforms must work together seamlessly.
+                  building and maintaining modern technology.
                 </p>
                 <div className="relative pl-6 md:pl-8 border-l-2 border-primary/30 py-2">
                   <p className="text-foreground italic text-base md:text-2xl font-bold tracking-tight">
-                    "Most organizations struggle to make that happen. KCS was created to close that gap by providing a bridge between high-level engineering and practical business application."
+                    "KCS was created to provide a bridge between high-level engineering and practical business application."
                   </p>
                 </div>
               </div>
@@ -124,7 +123,7 @@ export function AboutChapter() {
 
           <div className="mt-12 md:mt-24 pt-10 border-t border-white/5">
             <h3 className="text-xl md:text-4xl lg:text-6xl font-bold tracking-tighter text-foreground leading-tight">
-              We exist to ensure technology remains a <span className="text-primary italic">competitive advantage</span>, not an operational burden.
+              We exist to ensure technology remains a <span className="text-primary italic">competitive advantage</span>.
               <div className="h-1 w-16 md:w-32 bg-primary mt-6 rounded-full" />
             </h3>
           </div>
@@ -149,8 +148,7 @@ export function AboutChapter() {
                 </h3>
                 <p className="text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed italic font-medium max-w-xl">
                   Rather than functioning as a traditional consulting firm, KCS operates as a
-                  technology product lab. We don't just deliver software — we build complete digital
-                  ecosystems designed to support long-term growth.
+                  technology product lab.
                 </p>
              </div>
 
@@ -177,8 +175,7 @@ export function AboutChapter() {
                 >
                   <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed italic font-medium max-w-md">
                     Our team brings together expertise across artificial intelligence, cloud infrastructure,
-                    cybersecurity, enterprise software, and mobile platforms. By integrating these
-                    disciplines, we help organizations move from idea to fully operational platform.
+                    and cybersecurity.
                   </p>
                 </motion.div>
              </div>
@@ -193,13 +190,21 @@ export function AboutChapter() {
           viewport={{ once: true }}
           className="mb-8 md:mb-24 lg:mb-40"
         >
-          <div className="text-center mb-10 lg:mb-24">
+          <div className="text-center mb-8 lg:mb-24 px-4">
             <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter font-headline">
               What Makes <span className="text-primary italic">KCS Different.</span>
             </h3>
+            {isMobile && (
+              <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-primary/40 mt-2 animate-pulse">
+                Swipe to Navigate Protocols
+              </p>
+            )}
           </div>
 
-          <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-4 md:gap-10 lg:gap-12 max-w-6xl mx-auto snap-x snap-mandatory scrollbar-hide">
+          <div className={cn(
+            "flex overflow-x-auto pb-8 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-4 md:gap-10 lg:gap-12 max-w-6xl mx-auto snap-x snap-mandatory",
+            isMobile ? "custom-scrollbar-x" : "scrollbar-hide"
+          )}>
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -207,18 +212,18 @@ export function AboutChapter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={cn(
-                  "shrink-0 w-[75vw] md:w-full snap-center relative p-6 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[260px] md:min-h-[400px]",
+                  "shrink-0 w-[70vw] md:w-full snap-center relative p-6 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[220px] md:min-h-[400px]",
                   (index === 1 || index === 2) && "md:translate-y-6"
                 )}
               >
                 <div className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 p-3 md:p-5 rounded-2xl w-fit mb-4 md:mb-8 group-hover:bg-primary/10 transition-all duration-500">
-                  <value.icon size={24} className="text-primary md:size-[32px]" />
+                  <value.icon size={20} className="text-primary md:size-[32px]" />
                 </div>
                 <div className="relative z-10">
-                  <h4 className="text-base md:text-xl lg:text-2xl font-bold mb-3 tracking-tighter font-headline group-hover:text-primary transition-colors">
+                  <h4 className="text-sm md:text-xl lg:text-2xl font-bold mb-2 tracking-tighter font-headline group-hover:text-primary transition-colors">
                     {value.title}
                   </h4>
-                  <p className="text-[11px] lg:text-base text-muted-foreground italic leading-relaxed font-medium">
+                  <p className="text-[10px] lg:text-base text-muted-foreground italic leading-relaxed font-medium">
                     {value.description}
                   </p>
                 </div>
@@ -241,13 +246,11 @@ export function AboutChapter() {
           </motion.h3>
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-12">
             <motion.p variants={visionItemVariants} className="text-sm md:text-base lg:text-xl text-muted-foreground leading-relaxed italic font-medium px-4">
-              KCS aims to become a global product lab for digital infrastructure — supporting
-              founders, enterprises, and institutions in building the platforms that define the next
-              era of business.
+              KCS aims to become a global product lab for digital infrastructure.
             </motion.p>
             
             <motion.div variants={visionItemVariants} className="text-base md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight px-2">
-              From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">Social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI-powered healthcare infrastructure</motion.span>, we are focused on building <motion.span style={{ opacity: highlight3, color: useTransform(highlight3, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">digital infrastructure</motion.span> that improves how people learn, connect, and access services.
+              From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">Social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI healthcare infrastructure</motion.span>.
             </motion.div>
           </div>
         </motion.div>
