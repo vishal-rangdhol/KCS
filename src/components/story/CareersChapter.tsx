@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -227,10 +226,10 @@ export function CareersChapter() {
   }
 
   return (
-    <Chapter id="careers" className="bg-background py-8 md:py-16 lg:py-32 overflow-visible">
+    <Chapter id="careers" className="bg-background py-4 md:py-16 lg:py-32 overflow-visible">
       <div ref={containerRef} onMouseMove={handleMouseMove} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Hero Section */}
-        <div className="text-center mb-16 md:mb-24 lg:mb-40 relative">
+        <div className="text-center mb-12 md:mb-24 lg:mb-40 relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -269,7 +268,7 @@ export function CareersChapter() {
               className="relative"
             >
               <h2 
-                className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[1] md:leading-[0.95] tracking-tight md:tracking-[-0.04em] text-foreground mb-8 md:mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
+                className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold leading-[1] md:leading-[0.95] tracking-tight md:tracking-[-0.04em] text-foreground mb-6 md:mb-12 font-headline bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
               >
                 Architect the <br className="hidden md:block" />
                 <span className="italic text-primary">future with us.</span>
@@ -327,7 +326,7 @@ export function CareersChapter() {
         </div>
 
         {/* Advantage Grid */}
-        <div className="mb-16 md:mb-32">
+        <div className="mb-12 md:mb-32">
           <div className="flex items-center gap-3 md:gap-4 mb-8 md:mb-12">
             <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">The KCS Advantage</h3>
             <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
@@ -340,7 +339,7 @@ export function CareersChapter() {
           </div>
         </div>
 
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-16 md:my-24 relative">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent my-12 md:my-24 relative">
           <motion.div 
             animate={{ left: ["0%", "100%"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
@@ -349,7 +348,7 @@ export function CareersChapter() {
         </div>
 
         {/* Cultural Pillars - Bento Box Grid */}
-        <div className="mb-16 md:mb-32">
+        <div className="mb-12 md:mb-32">
           <div className="flex items-center gap-3 md:gap-4 mb-8 md:mb-12">
             <div className="h-px flex-1 bg-gradient-to-l from-primary/30 to-transparent" />
             <h3 className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] text-primary font-headline">Our Cultural Pillars</h3>

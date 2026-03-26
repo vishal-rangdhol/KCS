@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -39,10 +38,10 @@ export function CultureChapter() {
   const activeProtocol = protocols.find(p => p.slug === activeSlug) || protocols[0]
 
   return (
-    <Chapter id="culture" className="bg-background py-8 md:py-16 lg:py-32 overflow-hidden">
+    <Chapter id="culture" className="bg-background py-4 md:py-16 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Philosophy Header */}
-        <div className="text-center mb-12 md:mb-32">
+        <div className="text-center mb-8 md:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +51,7 @@ export function CultureChapter() {
             <span className="flex items-center justify-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] sm:text-xs mb-6 md:mb-8 font-headline">
               <Sparkles size={14} className="animate-pulse md:size-[16px]" /> The KCS Conviction
             </span>
-            <h2 className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-6 font-headline">
+            <h2 className="text-2xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tighter text-foreground mb-4 font-headline">
               Built on Focus, Not Burnout.
             </h2>
           </motion.div>

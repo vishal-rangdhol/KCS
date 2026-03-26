@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -10,7 +9,7 @@ import Link from 'next/link'
 
 export function FoundersChapter() {
   return (
-    <Chapter id="founders" className="bg-background py-8 md:py-20 lg:py-32 overflow-visible">
+    <Chapter id="founders" className="bg-background py-4 md:py-20 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="max-w-3xl">
@@ -34,7 +33,7 @@ export function FoundersChapter() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
               viewport={{ once: true }}
-              className="mt-8 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium"
+              className="mt-6 md:mt-8 text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed italic font-medium"
             >
               The KCS Board of Directors governs our digital infrastructure with a focus on institutional stability, 
               architectural precision, and the ethical integration of human-centric safety protocols. Our leadership 
@@ -46,7 +45,7 @@ export function FoundersChapter() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-12"
+              className="mt-10 md:mt-12"
             >
               <Button 
                 asChild

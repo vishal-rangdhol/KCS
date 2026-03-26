@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Chapter } from './Chapter'
@@ -79,7 +78,7 @@ export function AboutChapter() {
   };
 
   return (
-    <Chapter id="about" className="bg-background py-8 md:py-20 lg:py-32 overflow-visible">
+    <Chapter id="about" className="bg-background py-4 md:py-20 lg:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-8 w-full">
         {/* Part 1: The KCS Story */}
         <motion.div
@@ -87,7 +86,7 @@ export function AboutChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-12 md:mb-24 lg:mb-40"
+          className="mb-8 md:mb-24 lg:mb-40"
         >
           <span className="flex items-center gap-2 text-primary font-bold tracking-[0.4em] md:tracking-[0.6em] uppercase text-[10px] sm:text-xs mb-8 font-headline">
             <Sparkles size={14} className="animate-pulse" /> The Narrative
@@ -123,7 +122,7 @@ export function AboutChapter() {
             </div>
           </div>
 
-          <div className="mt-16 md:mt-24 pt-10 border-t border-white/5">
+          <div className="mt-12 md:mt-24 pt-10 border-t border-white/5">
             <h3 className="text-xl md:text-4xl lg:text-6xl font-bold tracking-tighter text-foreground leading-tight">
               We exist to ensure technology remains a <span className="text-primary italic">competitive advantage</span>, not an operational burden.
               <div className="h-1 w-16 md:w-32 bg-primary mt-6 rounded-full" />
@@ -137,14 +136,14 @@ export function AboutChapter() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-12 md:mb-24 lg:mb-40"
+          className="mb-8 md:mb-24 lg:mb-40"
         >
           <div 
-            className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[450px] md:min-h-[500px] group/lab"
+            className="bg-card/40 border border-white/5 rounded-[2rem] md:rounded-[3rem] lg:rounded-[4rem] relative overflow-hidden flex flex-col lg:flex-row items-stretch min-h-[400px] md:min-h-[500px] group/lab"
             onMouseEnter={() => setIsLabHovered(true)}
             onMouseLeave={() => setIsLabHovered(false)}
           >
-             <div className="flex-1 p-8 md:p-12 lg:p-20 flex flex-col justify-center relative z-20 bg-background/20 lg:border-r border-white/5">
+             <div className="flex-1 p-6 md:p-12 lg:p-20 flex flex-col justify-center relative z-20 bg-background/20 lg:border-r border-white/5">
                 <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter text-foreground mb-6 md:mb-10 font-headline">
                   A Product Lab for the Modern Era.
                 </h3>
@@ -155,7 +154,7 @@ export function AboutChapter() {
                 </p>
              </div>
 
-             <div className="flex-1 relative flex items-center justify-center overflow-hidden cursor-crosshair min-h-[350px] md:min-h-[400px]">
+             <div className="flex-1 relative flex items-center justify-center overflow-hidden cursor-crosshair min-h-[300px] md:min-h-[400px]">
                 <div className="absolute inset-0 bg-primary/5 opacity-30 z-0" />
                 <div className="absolute inset-0 z-10 opacity-40 transition-transform duration-1000 group-hover/lab:scale-110">
                   <svg className="w-full h-full" viewBox="0 0 400 400">
@@ -174,7 +173,7 @@ export function AboutChapter() {
                     opacity: (isLabHovered || isMobile) ? 1 : 0, 
                     backdropFilter: (isLabHovered || isMobile) ? 'blur(20px)' : 'blur(0px)' 
                   }}
-                  className="absolute inset-0 z-30 p-8 md:p-12 lg:p-20 flex flex-col justify-center items-center text-center bg-background/60"
+                  className="absolute inset-0 z-30 p-6 md:p-12 lg:p-20 flex flex-col justify-center items-center text-center bg-background/60"
                 >
                   <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed italic font-medium max-w-md">
                     Our team brings together expertise across artificial intelligence, cloud infrastructure,
@@ -192,15 +191,15 @@ export function AboutChapter() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-12 md:mb-24 lg:mb-40"
+          className="mb-8 md:mb-24 lg:mb-40"
         >
-          <div className="text-center mb-16 lg:mb-24">
+          <div className="text-center mb-10 lg:mb-24">
             <h3 className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter font-headline">
               What Makes <span className="text-primary italic">KCS Different.</span>
             </h3>
           </div>
 
-          <div className="flex overflow-x-auto pb-10 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-6 md:gap-10 lg:gap-12 max-w-6xl mx-auto snap-x snap-mandatory scrollbar-hide">
+          <div className="flex overflow-x-auto pb-6 -mx-6 px-6 md:mx-0 md:px-0 md:grid md:grid-cols-2 gap-4 md:gap-10 lg:gap-12 max-w-6xl mx-auto snap-x snap-mandatory scrollbar-hide">
             {values.map((value, index) => (
               <motion.div
                 key={index}
@@ -208,18 +207,18 @@ export function AboutChapter() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={cn(
-                  "shrink-0 w-[85vw] md:w-full snap-center relative p-8 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[320px] md:min-h-[400px]",
+                  "shrink-0 w-[75vw] md:w-full snap-center relative p-6 md:p-10 lg:p-12 rounded-[2rem] md:rounded-[2.5rem] bg-card/40 border-t-2 border-transparent hover:border-primary border-x border-b border-white/5 transition-all duration-500 group overflow-hidden shadow-2xl backdrop-blur-md min-h-[260px] md:min-h-[400px]",
                   (index === 1 || index === 2) && "md:translate-y-6"
                 )}
               >
-                <div className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 p-4 md:p-5 rounded-2xl w-fit mb-6 md:mb-8 group-hover:bg-primary/10 transition-all duration-500">
-                  <value.icon size={28} className="text-primary md:size-[32px]" />
+                <div className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 p-3 md:p-5 rounded-2xl w-fit mb-4 md:mb-8 group-hover:bg-primary/10 transition-all duration-500">
+                  <value.icon size={24} className="text-primary md:size-[32px]" />
                 </div>
                 <div className="relative z-10">
-                  <h4 className="text-lg md:text-xl lg:text-2xl font-bold mb-4 tracking-tighter font-headline group-hover:text-primary transition-colors">
+                  <h4 className="text-base md:text-xl lg:text-2xl font-bold mb-3 tracking-tighter font-headline group-hover:text-primary transition-colors">
                     {value.title}
                   </h4>
-                  <p className="text-sm lg:text-base text-muted-foreground italic leading-relaxed font-medium">
+                  <p className="text-[11px] lg:text-base text-muted-foreground italic leading-relaxed font-medium">
                     {value.description}
                   </p>
                 </div>
@@ -235,19 +234,19 @@ export function AboutChapter() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           variants={visionContainerVariants}
-          className="text-center py-8"
+          className="text-center py-4 md:py-8"
         >
-          <motion.h3 variants={visionItemVariants} className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter mb-10 md:mb-12 font-headline">
+          <motion.h3 variants={visionItemVariants} className="text-2xl md:text-3xl lg:text-5xl font-bold tracking-tighter mb-8 md:mb-12 font-headline">
             Our Vision.
           </motion.h3>
-          <div className="max-w-4xl mx-auto space-y-8 md:space-y-12">
+          <div className="max-w-4xl mx-auto space-y-6 md:space-y-12">
             <motion.p variants={visionItemVariants} className="text-sm md:text-base lg:text-xl text-muted-foreground leading-relaxed italic font-medium px-4">
               KCS aims to become a global product lab for digital infrastructure — supporting
               founders, enterprises, and institutions in building the platforms that define the next
               era of business.
             </motion.p>
             
-            <motion.div variants={visionItemVariants} className="text-lg md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight px-2">
+            <motion.div variants={visionItemVariants} className="text-base md:text-2xl lg:text-4xl font-bold tracking-tighter leading-tight px-2">
               From <motion.span style={{ opacity: highlight1, color: useTransform(highlight1, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">Social learning ecosystems</motion.span> to <motion.span style={{ opacity: highlight2, color: useTransform(highlight2, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">AI-powered healthcare infrastructure</motion.span>, we are focused on building <motion.span style={{ opacity: highlight3, color: useTransform(highlight3, [0.3, 1], ["rgba(255,255,255,0.3)", "var(--primary)"]) }} className="transition-all duration-300">digital infrastructure</motion.span> that improves how people learn, connect, and access services.
             </motion.div>
           </div>
