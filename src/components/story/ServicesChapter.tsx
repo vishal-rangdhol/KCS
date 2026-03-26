@@ -255,7 +255,7 @@ function ServiceCard({ item, index }: { item: typeof services[0], index: number 
 
 export function ServicesChapter() {
   return (
-    <Chapter id="services" className="bg-background py-16 md:py-24 lg:py-48 overflow-visible">
+    <Chapter id="services" className="bg-background py-12 md:py-24 lg:py-48 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center mb-10 md:mb-20">
           <motion.div

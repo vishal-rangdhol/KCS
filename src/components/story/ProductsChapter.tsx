@@ -140,7 +140,7 @@ function ProductCard({ product, index }: { product: typeof products[0], index: n
 
 export function ProductsChapter() {
   return (
-    <Chapter id="products" className="bg-background py-16 md:py-32 overflow-visible">
+    <Chapter id="products" className="bg-background py-12 md:py-32 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 w-full mb-10 md:mb-24 text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}>
           <span className="text-primary font-headline uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block font-bold">

@@ -1,4 +1,3 @@
-
 "use client"
 
 import { ReactNode } from 'react'
@@ -14,7 +13,7 @@ export function Chapter({ children, id, className = "" }: ChapterProps) {
   return (
     <section 
       id={id}
-      className={`min-h-screen w-full flex flex-col justify-center items-center px-6 md:px-12 lg:px-20 relative overflow-hidden scroll-mt-32 ${className}`}
+      className={`min-h-fit md:min-h-screen w-full flex flex-col justify-center items-center px-6 md:px-12 lg:px-20 relative overflow-hidden scroll-mt-32 ${className}`}
     >
       <motion.div
         initial={{ opacity: 0, y: 30 }}

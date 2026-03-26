@@ -226,7 +226,7 @@ export function CareersChapter() {
   }
 
   return (
-    <Chapter id="careers" className="bg-background py-4 md:py-16 lg:py-32 overflow-visible">
+    <Chapter id="careers" className="bg-background py-12 md:py-24 lg:py-32 overflow-visible">
       <div ref={containerRef} onMouseMove={handleMouseMove} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         {/* Hero Section */}
         <div className="text-center mb-12 md:mb-24 lg:mb-40 relative">
@@ -246,7 +246,7 @@ export function CareersChapter() {
                />
                <span 
                 onMouseEnter={() => setIsIndicatorHovered(true)}
-                onMouseLeave={() => setIsIndicatorHovered(false)}
+                onMouseLeave={() => { setIsIndicatorHovered(false) }}
                 className="relative flex items-center justify-center gap-2 md:gap-3 text-primary font-bold tracking-[0.4em] md:tracking-[0.5em] uppercase text-[8px] sm:text-[10px] md:text-xs font-headline cursor-crosshair px-4 md:px-6 py-1.5 md:py-2 rounded-full border border-primary/10 bg-black/40 backdrop-blur-sm"
                >
                 <Sparkles size={10} className="animate-pulse md:size-[12px]" /> The Talent Protocol
